@@ -1,0 +1,122 @@
+# Components
+
+Learn how to use and create components in your Muni documentation.
+
+## Built-in Components
+
+Muni comes with several built-in components that you can use in your MDX files.
+
+### Code Blocks
+
+Use fenced code blocks for syntax highlighting:
+
+```javascript
+function hello() {
+console.log("Hello, Muni!");
+}
+```
+
+```typescript
+interface User {
+name: string;
+email: string;
+}
+
+const user: User = {
+name: "John Doe",
+email: "john@example.com"
+};
+```
+
+### Callouts
+
+> **Note**: This is an important note that readers should pay attention to.
+
+> **Warning**: Be careful when following these instructions.
+
+### Lists
+
+#### Unordered Lists
+
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+
+#### Ordered Lists
+
+1. First step
+2. Second step
+3. Third step
+
+### Tables
+
+| Feature             | Description                   | Status |
+| ------------------- | ----------------------------- | ------ |
+| MDX Support         | Write docs in MDX             | ✅     |
+| Syntax Highlighting | Code blocks with highlighting | ✅     |
+| Dark Mode           | Theme switching               | ✅     |
+| Search              | Full-text search              | 🚧     |
+
+## Custom Components
+
+You can create custom React components and use them in your MDX files.
+
+### Creating a Custom Component
+
+```tsx
+// components/custom-alert.tsx
+interface AlertProps {
+type: 'info' | 'warning' | 'error';
+children: React.ReactNode;
+}
+
+export function CustomAlert({ type, children }: AlertProps) {
+  const styles = {
+    info: 'bg-blue-50 border-blue-200 text-blue-800',
+    warning: 'bg-yellow-50 border-yellow-200 text-yellow-800',
+    error: 'bg-red-50 border-red-200 text-red-800',
+  };
+
+return (
+<div className={`p-4 border rounded-md ${styles[type]}`}>
+{children}
+</div>
+);
+}
+```
+
+### Using Custom Components
+
+To use custom components in MDX, import them at the top of your file:
+
+```mdx
+import { CustomAlert } from '@/components/custom-alert'
+
+# My Page
+
+<CustomAlert type="info">This is a custom alert component!</CustomAlert>
+```
+
+## Best Practices
+
+### Component Organization
+
+- Keep components in the `components/` directory
+- Use TypeScript for better type safety
+- Follow consistent naming conventions
+
+### Performance
+
+- Use dynamic imports for large components
+- Optimize images and media
+- Keep bundle sizes small
+
+### Accessibility
+
+- Use semantic HTML elements
+- Include proper ARIA labels
+- Ensure good color contrast
+- Test with screen readers
+  ```

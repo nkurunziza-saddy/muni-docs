@@ -1,0 +1,119 @@
+import { Button } from "@/components/ui/button";
+
+# Code Block [Example code block]
+
+We will create a simple example code block `tsx file`
+
+```tsx [example.tsx]
+import { http, createPublicClient } from "viem";
+import { mainnet } from "viem/chains";
+
+const client = createPublicClient({
+  chain: mainnet,
+  transport: http(),
+});
+```
+
+:::success
+Info callout
+:::
+
+### Code group
+
+:::code-group
+
+```ts app [example.ts]
+import { client } from "./client.js";
+
+const blockNumber = await client.getBlockNumber();
+```
+
+```ts app [client.ts] filename="client.ts"
+import { http, createPublicClient } from "viem";
+import { mainnet } from "viem/chains";
+
+export const client = createPublicClient({
+  chain: mainnet,
+  transport: http(),
+});
+```
+
+:::
+
+---
+
+### Testing `include`
+
+The following code block should include the content from `components/ui/button.tsx`.
+
+```ts [example.ts]
+// [!include ~/components/ui/button.tsx]
+```
+
+---
+
+### Line Numbers and Highlighting
+
+You can add line numbers and highlight specific lines using meta options on a code block.
+
+```ts showLineNumbers [example.ts]
+// [!include ~/components/ui/button.tsx]
+// This is an extra line for demonstration.
+// And another one.
+// Final line.
+```
+
+### Diffs
+
+Show additions and deletions easily.
+
+```diff
+- const a = 1;
++ const b = 2;
+```
+
+---
+
+### Details Directive
+
+You can create collapsible sections using the `details` directive.
+
+:::details[Click to expand]
+
+This content is inside a collapsible details block.
+
+:::
+
+---
+
+### Steps Directive
+
+The `steps` directive is great for tutorials.
+
+:::steps
+
+#### Step 1
+
+This is the first step.
+
+#### Step 2
+
+This is the second step.
+
+```ts
+console.log("A code block inside a step.");
+```
+
+:::
+
+---
+
+### Importing components
+
+You can import and use custom components within your MDX files.
+
+```tsx
+import { CustomComponent } from "../components/ui/Button";
+```
+
+<Button>Click Me</Button>

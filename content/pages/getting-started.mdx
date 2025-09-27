@@ -1,0 +1,64 @@
+# Getting Started
+
+Welcome to Muni! This guide will help you get up and running quickly.
+
+## Installation
+
+First, make sure you have Node.js installed on your system. Then follow these steps:
+
+```bash
+
+# Clone the repository
+
+git clone https://github.com/your-username/muni-docs.git
+
+# Navigate to the project directory
+
+cd muni-docs
+
+# Install dependencies
+
+pnpm install
+
+# Start the development server
+
+pnpm dev
+```
+
+## Project Structure
+
+Here's how your Muni project is organized:
+
+```
+muni-docs/
+├── app/
+│ ├── docs/
+│ │ └── [[...slug]]/
+│ │ └── page.tsx
+│ └── layout.tsx
+├── content/
+│ └── pages/
+│ ├── index.mdx
+│ ├── getting-started.mdx
+│ └── ...
+├── components/
+│ └── docs-layout.tsx
+└── next.config.mjs
+```
+
+## Creating Content
+
+To create new documentation pages:
+
+1. Add a new `.mdx` file to the `content/pages/` directory
+2. Update the navigation in `app/docs/[[...slug]]/page.tsx`
+3. Your page will be automatically available at `/docs/your-filename`
+
+## Next Steps
+
+Now that you have Muni set up, explore these sections:
+
+- [Components Guide](/docs/guide/components) - Learn about available components
+- [Code Snippets](/docs/guide/code-snippets) - See how to add code examples
+- [API Reference](/docs/api/config) - Understand configuration options
+  ```
