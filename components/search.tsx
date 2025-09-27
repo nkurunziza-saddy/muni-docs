@@ -110,20 +110,24 @@ export function SearchComp({ className }: SearchProps) {
   };
 
   return (
-    <div className={cn("w-xs", className)}>
-      <button
+    <div className={cn("w-auto", className)}>
+      <Button
         onClick={() => setIsOpen(true)}
-        className="group relative flex items-center w-full bg-card border border-border rounded px-4 h-11 text-left text-muted-foreground shadow-sm transition-all duration-200 hover:border-border/80 hover:shadow-md focus:border-ring focus:ring-2 focus:ring-ring/20 focus:outline-none"
+        variant="outline"
+        className={cn(
+          "h-9 w-40 justify-start rounded-md px-3 text-sm text-muted-foreground sm:w-64",
+          className
+        )}
       >
-        <Search className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-foreground/80" />
-        <span className="flex-1 text-sm">Search docs</span>
-        <kbd className="hidden sm:flex items-center gap-1 px-1 py-0.5 bg-muted border border-border rounded text-xs font-medium text-muted-foreground">
+        <Search className="mr-2 h-4 w-4" />
+        <span>Search...</span>
+        <kbd className="ml-auto hidden sm:flex items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium">
           ⌘K
         </kbd>
-      </button>
+      </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="p-0 w-3xl" showCloseButton={false}>
+        <DialogContent className="p-0 max-w-2xl lg:max-w-3xl top-[10vh] translate-y-0" showCloseButton={false}>
           <DialogTitle className="sr-only">Search Documentation</DialogTitle>
           <div className="flex items-center border-b border-border px-3">
             <Search className="h-5 w-5 text-muted-foreground mr-3" />
