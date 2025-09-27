@@ -16,7 +16,7 @@ export function TableOfContents() {
   useEffect(() => {
     const extractHeadings = () => {
       const headings = Array.from(
-        document.querySelectorAll("h1, h2, h3, h4, h5, h6")
+        document.querySelectorAll("h2, h3, h4, h5, h6")
       )
         .filter((heading) => heading.id)
         .map((heading) => ({
@@ -77,9 +77,11 @@ export function TableOfContents() {
   }
 
   return (
-    <div className="pb-3">
-      <h4 className="text-sm font-semibold text-foreground">On This Page</h4>
-      <nav className="space-y-1">
+    <div className="py-4">
+      <h4 className="text-sm pb-3 font-semibold text-foreground">
+        On This Page
+      </h4>
+      <nav className="space-y-2">
         {toc.map((item) => (
           <button
             key={item.id}
@@ -93,7 +95,7 @@ export function TableOfContents() {
               item.level === 5 && "pl-8",
               item.level === 6 && "pl-10",
               activeId === item.id
-                ? "text-foreground font-medium border-l-2 border-primary pl-3"
+                ? "text-foreground font-medium"
                 : "text-muted-foreground"
             )}
           >

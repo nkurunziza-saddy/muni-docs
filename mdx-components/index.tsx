@@ -69,10 +69,6 @@ const mdxComponents: MDXComponents = {
   ul: (props) => <List ordered={false} {...props} />,
 };
 
-export function useMDXComponents(
-  components: MDXComponents = mdxComponents
-): MDXComponents {
-  return {
-    ...components,
-  };
+export function useMDXComponents(): MDXComponents {
+  return mdxComponents;
 }

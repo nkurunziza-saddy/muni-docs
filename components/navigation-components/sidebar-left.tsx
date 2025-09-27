@@ -16,7 +16,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export function SidebarLeft() {
-  const [isOpen, setIsOpen] = useState(true);
   const pathname = usePathname();
   return (
     <Sidebar className="bg-sidebar backdrop-blur-sm border-r">
@@ -26,9 +25,11 @@ export function SidebarLeft() {
         </Link>
       </SidebarHeader>
       <SidebarContent className="px-3">
-        <SidebarMenu className="">
+        <SidebarMenu className="py-4">
           {muniConfig.navigation.map((item) => {
-            const href = `/docs/${item.slug === "index" ? "" : item.slug}`;
+            const [isOpen, setIsOpen] = useState(true);
+            console.log(item.slug);
+            const href = `/docs${item.slug === "index" ? "" : item.slug}`;
             const isActive = pathname === href;
             const hasChildren = item.items && item.items.length > 0;
 

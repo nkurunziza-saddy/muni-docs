@@ -63,11 +63,11 @@ export function DocsPagination() {
             className="flex items-end gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             href={`/docs/${nextPage.slug === "index" ? "" : nextPage.slug}`}
           >
-            <ChevronRight className="h-4 w-4 mb-1" />
             <div>
               <div className="text-xs">Next</div>
               <div>{nextPage.title}</div>
             </div>
+            <ChevronRight className="h-4 w-4 mb-1" />
           </Link>
         )}
       </div>

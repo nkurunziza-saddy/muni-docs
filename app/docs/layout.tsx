@@ -1,9 +1,10 @@
 import type React from "react";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { SidebarLeft } from "@/components/navigation-component/sidebar-left";
+import { SidebarLeft } from "@/components/navigation-components/sidebar-left";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { DocsPagination } from "@/components/navigation-component/docs-pagination";
-import { TableOfContents } from "@/components/navigation-component/table-of-contents";
+import { DocsPagination } from "@/components/navigation-components/docs-pagination";
+import { TableOfContents } from "@/components/navigation-components/table-of-contents";
+import { SearchComp } from "@/components/search";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <SidebarLeft />
       <SidebarInset className="flex flex-col">
         <header className="bg-background/80 backdrop-blur-md sticky top-0 flex h-16 border-b border-border/40 z-50 shrink-0 items-center gap-2 px-6">
-          <div className="flex-1" />
+          <SearchComp />
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 px-2 py-1 bg-muted/50 rounded-md">
               <span className="text-xs font-mono text-muted-foreground">v</span>

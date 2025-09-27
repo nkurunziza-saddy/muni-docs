@@ -74,7 +74,7 @@ export default async function Page({ params }: PageProps) {
 
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="prose prose-slate dark:prose-invert max-w-4xl mx-auto">
+        <div className="prose prose-neutral prose-headings:mt-8 prose-headings:font-semibold prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg">
           <Post />
         </div>
       </div>

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "api/config",
+    "title": "Untitled",
+    "content": "Configuration Complete guide to configuring your Muni documentation site. muniConfig Object The  object in your docs page controls the site navigation and metadata. Basic Structure Example Configuration Navigation Configuration Top-Level Items Top-level navigation items appear in the main sidebar: Nested Items Create hierarchical navigation with nested items: Slug Mapping Slugs map directly to MDX files in your  directory: -  →  →  -  →  →  -  →  →  Next.js Configuration MDX Setup Configure MDX processing in : Available Plugins Remark Plugins (Markdown Processing) - : GitHub Flavored Markdown support - : YAML frontmatter parsing - : Frontmatter integration with MDX Rehype Plugins (HTML Processing) - : Automatic heading IDs - : Clickable heading links Static Generation generateStaticParams Muni automatically generates static pages for all navigation items: Dynamic Params Set to  to only generate pages defined in navigation: Metadata Generation Automatic metadata generation for SEO: Advanced Configuration Custom Components Register custom components for use in MDX: Styling Customize the appearance with Tailwind CSS classes: Environment Variables No special environment variables are required for basic Muni functionality. All configuration is done through the  object and Next.js configuration files. Troubleshooting Common Configuration Issues Pages not generating? - Check that slugs in navigation match your MDX file paths - Ensure  is properly configured - Verify MDX files have correct extensions () Navigation not working? - Check the navigation structure in  - Ensure all referenced MDX files exist - Verify slug formatting (no leading/trailing slashes) Styling issues? - Ensure Tailwind CSS is properly configured - Check that prose classes are applied - Verify custom CSS is imported correctly   `",
+    "url": "/docs/api/config",
+    "tags": []
+  },
+  {
+    "id": "api/frontmatter",
+    "title": "Untitled",
+    "content": "Frontmatter Learn how to use frontmatter to add metadata to your MDX pages. What is Frontmatter? Frontmatter is YAML metadata that appears at the top of your MDX files. It allows you to specify page-specific information like titles, descriptions, and custom properties. Basic Syntax Frontmatter is written in YAML format and enclosed between triple dashes: description A brief description of the page content. date Publication or last updated date. Using Frontmatter Data In MDX Components Access frontmatter data in your MDX files: import { PageMeta } from \"@/components/page-meta\"; <PageMeta   title={frontmatter.title}   author={frontmatter.author}   date={frontmatter.publishDate} /> {frontmatter.title} By {frontmatter.author} on {frontmatter.publishDate} ---`",
+    "url": "/docs/api/frontmatter",
+    "tags": []
+  },
+  {
+    "id": "api",
+    "title": "Untitled",
+    "content": "API Reference Complete reference for Muni's configuration and API options. Overview Muni provides several configuration options and APIs to customize your documentation site. This section covers all available options and how to use them. Configuration Files next.config.mjs The main configuration file for your Muni site. muniConfig The navigation and site configuration object. Available APIs [Config](/docs/api/config) Learn about all configuration options available in Muni. [Frontmatter](/docs/api/frontmatter) Understand how to use frontmatter in your MDX files. Quick Reference Essential Configuration Basic Frontmatter Need More Help? - Check the [Guide](/docs/guide) for step-by-step instructions - Review the [Getting Started](/docs/getting-started) guide - Look at example implementations in the source code   `",
+    "url": "/docs/api",
+    "tags": []
+  },
+  {
+    "id": "getting-started",
+    "title": "Untitled",
+    "content": "Getting Started Welcome to Muni! This guide will help you get up and running quickly. Installation First, make sure you have Node.js installed on your system. Then follow these steps: Project Structure Here's how your Muni project is organized: Creating Content To create new documentation pages: 1. Add a new  file to the  directory 2. Update the navigation in  3. Your page will be automatically available at  Next Steps Now that you have Muni set up, explore these sections: - [Components Guide](/docs/guide/components) - Learn about available components - [Code Snippets](/docs/guide/code-snippets) - See how to add code examples - [API Reference](/docs/api/config) - Understand configuration options   `",
+    "url": "/docs/getting-started",
+    "tags": []
+  },
+  {
+    "id": "guide/code-block",
+    "title": "Untitled",
+    "content": "import { Button } from \"@/components/ui/button\"; Code Block [Example code block] We will create a simple example code block  :::success Info callout ::: Code group :::code-group ::: --- Testing  The following code block should include the content from . --- Line Numbers and Highlighting You can add line numbers and highlight specific lines using meta options on a code block. Diffs Show additions and deletions easily. --- Details Directive You can create collapsible sections using the  directive. :::details[Click to expand] This content is inside a collapsible details block. ::: --- Steps Directive The  directive is great for tutorials. :::steps Step 1 This is the first step. Step 2 This is the second step. ::: --- Importing components You can import and use custom components within your MDX files. <Button>Click Me</Button>",
+    "url": "/docs/guide/code-block",
+    "tags": []
+  },
+  {
+    "id": "guide/code-snippets",
+    "title": "Untitled",
+    "content": "Code Snippets Learn how to effectively include code examples in your documentation. Basic Code Blocks Use triple backticks to create code blocks: Language-Specific Highlighting Specify the language for syntax highlighting: JavaScript TypeScript React/JSX CSS Shell/Bash Inline Code Use single backticks for  within paragraphs. This is useful for mentioning variable names, function names, or short code snippets. Code with Comments Multi-file Examples When showing complex examples, you might want to show multiple files: package.json src/app/page.tsx Best Practices 1. Keep Examples Focused - Show only the relevant code - Remove unnecessary boilerplate - Focus on the concept being explained 2. Use Meaningful Examples - Choose realistic use cases - Use descriptive variable names - Include context when needed 3. Add Explanations - Explain complex logic - Point out important details - Mention common pitfalls 4. Test Your Code - Ensure all examples work - Keep examples up to date - Test with different scenarios Common Languages Here are some commonly used languages in documentation: -  or  -  or  -  or  -  -  -  or  -  -  -  or  -    `",
+    "url": "/docs/guide/code-snippets",
+    "tags": []
+  },
+  {
+    "id": "guide/components",
+    "title": "Untitled",
+    "content": "Components Learn how to use and create components in your Muni documentation. Built-in Components Muni comes with several built-in components that you can use in your MDX files. Code Blocks Use fenced code blocks for syntax highlighting: Callouts > Note: This is an important note that readers should pay attention to. > Warning: Be careful when following these instructions. Lists Unordered Lists - First item - Second item   - Nested item   - Another nested item - Third item Ordered Lists 1. First step 2. Second step 3. Third step Tables | Feature             | Description                   | Status | | ------------------- | ----------------------------- | ------ | | MDX Support         | Write docs in MDX             | ✅     | | Syntax Highlighting | Code blocks with highlighting | ✅     | | Dark Mode           | Theme switching               | ✅     | | Search              | Full-text search              | 🚧     | Custom Components You can create custom React components and use them in your MDX files. Creating a Custom Component Using Custom Components To use custom components in MDX, import them at the top of your file: Best Practices Component Organization - Keep components in the  directory - Use TypeScript for better type safety - Follow consistent naming conventions Performance - Use dynamic imports for large components - Optimize images and media - Keep bundle sizes small Accessibility - Use semantic HTML elements - Include proper ARIA labels - Ensure good color contrast - Test with screen readers   `",
+    "url": "/docs/guide/components",
+    "tags": []
+  },
+  {
+    "id": "guide",
+    "title": "Untitled",
+    "content": "Guide This comprehensive guide covers everything you need to know about using Muni effectively. What You'll Learn In this guide, you'll discover: - How to install and set up Muni - Working with components and layouts - Adding code snippets and examples - Customizing the appearance - Best practices for documentation Sections [Installation](/docs/guide/installation) Step-by-step instructions for setting up Muni in your project. [Components](/docs/guide/components) Learn about the built-in components and how to create custom ones. [Code Snippets](/docs/guide/code-snippets) Best practices for including code examples in your documentation. [Code Blocks](/docs/guide/code-block) Advanced formatting options for code blocks and syntax highlighting. Getting Help If you need assistance while following this guide, don't hesitate to: - Check the [API documentation](/docs/api) - Review the examples in each section - Look at the source code for reference implementations Let's get started with the [Installation](/docs/guide/installation) section!",
+    "url": "/docs/guide",
+    "tags": []
+  },
+  {
+    "id": "guide/installation",
+    "title": "Untitled",
+    "content": "Installation This page covers the installation process for Muni in detail. Prerequisites Before installing Muni, ensure you have: - Node.js (version 18 or higher) - pnpm (recommended) or npm/yarn - A code editor (VS Code recommended) Step-by-Step Installation 1. Create a New Project 2. Install Dependencies 3. Configure Next.js Update your : 4. Set Up Content Structure Create the content directory: 5. Start Development Your Muni documentation site should now be running at ! Troubleshooting Common Issues MDX files not loading? - Check that your  includes the MDX configuration - Ensure your content files have the  extension - Verify the file paths in your dynamic imports Styling issues? - Make sure Tailwind CSS is properly configured - Check that your global styles are imported in  Build errors? - Ensure all dependencies are installed - Check for TypeScript errors in your components - Verify that all MDX files have valid syntax   `",
+    "url": "/docs/guide/installation",
+    "tags": []
+  },
+  {
+    "id": "index",
+    "title": "Untitled",
+    "content": "Welcome to Muni Documentation Muni is a powerful documentation system built with Next.js and MDX. This documentation will guide you through everything you need to know to get started. What is Muni? Muni is designed to make creating and maintaining documentation simple and enjoyable. With support for: - MDX: Write documentation in Markdown with React components - Static Generation: Fast, SEO-friendly pages - Responsive Design: Works great on all devices - Dark Mode: Built-in theme switching - Search: Find what you need quickly Quick Start Ready to dive in? Check out our [Getting Started](/docs/getting-started) guide to begin your journey with Muni. Features 🚀 Fast Performance Built on Next.js with static generation for lightning-fast load times. 📱 Mobile First Responsive design that works beautifully on all screen sizes. 🎨 Customizable Easy to theme and customize to match your brand. 🔍 Searchable Built-in  functionality to help users find content quickly. Need Help? If you run into any issues or have questions, check out our [API documentation](/docs/api) or browse through the [Guide](/docs/guide) section.",
+    "url": "/docs/index",
+    "tags": []
+  }
+]
