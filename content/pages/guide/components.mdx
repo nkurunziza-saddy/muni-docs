@@ -12,19 +12,19 @@ Use fenced code blocks for syntax highlighting:
 
 ```javascript
 function hello() {
-console.log("Hello, Muni!");
+  console.log("Hello, Muni!");
 }
 ```
 
 ```typescript
 interface User {
-name: string;
-email: string;
+  name: string;
+  email: string;
 }
 
 const user: User = {
-name: "John Doe",
-email: "john@example.com"
+  name: "John Doe",
+  email: "john@example.com",
 };
 ```
 
@@ -68,31 +68,37 @@ You can create custom React components and use them in your MDX files.
 ```tsx
 // components/custom-alert.tsx
 interface AlertProps {
-type: 'info' | 'warning' | 'error';
-children: React.ReactNode;
+  type: "info" | "warning" | "error";
+  children: React.ReactNode;
 }
 
 export function CustomAlert({ type, children }: AlertProps) {
   const styles = {
-    info: 'bg-blue-50 border-blue-200 text-blue-800',
-    warning: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-    error: 'bg-red-50 border-red-200 text-red-800',
+    info: "bg-blue-50 border-blue-200 text-blue-800",
+    warning: "bg-yellow-50 border-yellow-200 text-yellow-800",
+    error: "bg-red-50 border-red-200 text-red-800",
   };
 
-return (
-<div className={`p-4 border rounded-md ${styles[type]}`}>
-{children}
-</div>
-);
+  return (
+    <div className={`p-4 border rounded-md ${styles[type]}`}>{children}</div>
+  );
 }
 ```
+
+<Callout type="info" title="Info Callout">
+  This is an info callout
+</Callout>
+
+:::danger
+This is a danger callout
+:::
 
 ### Using Custom Components
 
 To use custom components in MDX, import them at the top of your file:
 
 ```mdx
-import { CustomAlert } from '@/components/custom-alert'
+import { CustomAlert } from "@/components/custom-alert";
 
 # My Page
 
@@ -119,4 +125,7 @@ import { CustomAlert } from '@/components/custom-alert'
 - Include proper ARIA labels
 - Ensure good color contrast
 - Test with screen readers
+
+  ```
+
   ```

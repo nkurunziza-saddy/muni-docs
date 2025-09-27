@@ -12,13 +12,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <SidebarLeft />
       <SidebarInset className="flex flex-col">
         <header className="bg-background/80 backdrop-blur-md sticky top-0 flex h-16 border-b border-border/40 z-50 shrink-0 items-center gap-2 px-6">
-          <SearchComp />
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 px-2 py-1 bg-muted/50 rounded-md">
-              <span className="text-xs font-mono text-muted-foreground">v</span>
-              <span className="text-xs font-mono font-semibold">4.0.0</span>
+          <div className="flex justify-between gap-5 w-full">
+            <SearchComp />
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 px-2 py-1 bg-muted/50 rounded-md">
+                <span className="text-xs font-mono text-muted-foreground">
+                  v
+                </span>
+                <span className="text-xs font-mono font-semibold">4.0.0</span>
+              </div>
+              <ThemeToggle />
             </div>
-            <ThemeToggle />
           </div>
         </header>
 

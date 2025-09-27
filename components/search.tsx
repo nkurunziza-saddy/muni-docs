@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { SearchIcon, X } from "lucide-react";
+import {
+  ArrowUpDown,
+  CornerDownLeft,
+  Search,
+  SearchIcon,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,6 +20,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { type SearchResult, searchService } from "@/lib/search-service";
+import { cn } from "@/lib/utils";
 
 interface SearchProps {
   className?: string;
@@ -24,7 +31,9 @@ export function SearchComp({ className }: SearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -89,94 +98,99 @@ export function SearchComp({ className }: SearchProps) {
     );
     const parts = text.split(regex);
 
-    return parts.map((part, index) =>
-      regex.test(part) ? (
-        <mark
-          key={index}
-          className="bg-yellow-200 dark:bg-yellow-800 rounded px-1"
-        >
+    return parts.map((part, index) => {
+      const isMatch = regex.test(part);
+      regex.lastIndex = 0;
+      return isMatch ? (
+        <span key={index} className="text-warning-foreground font-medium">
           {part}
-        </mark>
+        </span>
       ) : (
         part
-      )
-    );
+      );
+    });
   };
 
   return (
-    <>
-      <Button
-        variant="outline"
-        className={`relative h-9 w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64 ${className}`}
+    <div className={cn("w-xs", className)}>
+      <button
         onClick={() => setIsOpen(true)}
+        className="group relative flex items-center w-full bg-card border border-border rounded px-4 h-11 text-left text-muted-foreground shadow-sm transition-all duration-200 hover:border-border/80 hover:shadow-md focus:border-ring focus:ring-2 focus:ring-ring/20 focus:outline-none"
       >
-        <SearchIcon className="mr-2 h-4 w-4" />
-        <span className="hidden lg:inline-flex">Search documentation...</span>
-        <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>K
+        <Search className="mr-3 h-4 w-4 text-muted-foreground group-hover:text-foreground/80" />
+        <span className="flex-1 text-sm">Search docs</span>
+        <kbd className="hidden sm:flex items-center gap-1 px-1 py-0.5 bg-muted border border-border rounded text-xs font-medium text-muted-foreground">
+          ⌘K
         </kbd>
-      </Button>
+      </button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-2xl p-0">
-          <DialogHeader className="px-4 pt-4 pb-0">
-            <DialogTitle className="sr-only">Search Documentation</DialogTitle>
-            <div className="relative">
-              <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                ref={inputRef}
-                placeholder="Search documentation..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="pl-10 pr-10 h-12 text-base border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-              />
-              {query && (
+        <DialogContent className="p-0 w-[600px]" showCloseButton={false}>
+          <DialogTitle className="sr-only">Search Documentation</DialogTitle>
+          <div className="flex items-center border-b border-border px-3">
+            <Search className="h-5 w-5 text-muted-foreground mr-3" />
+            <Input
+              ref={inputRef}
+              type="text"
+              placeholder="Search documentation..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="flex-1 py-4 px-1 text-foreground placeholder-muted-foreground bg-inherit dark:bg-inherit border-0 outline-none text-base focus-visible:border-0 focus-visible:ring-0"
+            />
+            {query && (
+              <div className="py-1">
                 <Button
-                  variant="ghost"
-                  size="sm"
-                  className="absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 p-0"
+                  size={"icon"}
                   onClick={() => setQuery("")}
+                  variant={"ghost"}
                 >
-                  <X className="h-4 w-4" />
+                  <X className="size-3.5 text-muted-foreground" />
                 </Button>
-              )}
-            </div>
-          </DialogHeader>
+              </div>
+            )}
+          </div>
 
-          <ScrollArea className="max-h-96">
+          <ScrollArea className="max-h-[500px]">
             {isLoading ? (
-              <div className="p-4 text-center text-sm text-muted-foreground">
-                Searching...
+              <div className="flex items-center justify-center py-12">
+                <div className="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full" />
+                <span className="ml-3 text-muted-foreground">Searching...</span>
               </div>
             ) : results.length > 0 ? (
-              <div className="p-2">
-                {results.map((result) => (
+              <div className="py-2">
+                {results.map((result, index) => (
                   <button
                     key={result.id}
-                    className="w-full text-left p-3 rounded-md hover:bg-accent transition-colors focus:bg-accent focus:outline-none"
+                    ref={(el) => {
+                      resultsRef.current[index] = el;
+                    }}
                     onClick={() => handleResultClick(result.url)}
+                    className={`w-full text-left px-4 py-3 transition-colors ${
+                      index === selectedIndex
+                        ? "bg-accent border-r-2 border-primary"
+                        : "hover:bg-accent/50"
+                    }`}
                   >
-                    <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        <div className="font-medium text-sm mb-1">
+                        <h3 className="font-medium text-foreground text-sm mb-1 line-clamp-1">
                           {highlightMatch(result.title, query)}
-                        </div>
-                        <div className="text-xs text-muted-foreground line-clamp-2">
+                        </h3>
+                        <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
                           {highlightMatch(
-                            result.content.slice(0, 150) +
-                              (result.content.length > 150 ? "..." : ""),
+                            result.content.slice(0, 120) +
+                              (result.content.length > 120 ? "..." : ""),
                             query
                           )}
-                        </div>
-                        <div className="flex items-center gap-2 mt-2">
-                          <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
+                        </p>
+                        <div className="flex items-center gap-2">
+                          <code className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded font-mono">
                             {result.url}
                           </code>
                           {result.category && (
-                            <Badge variant="secondary" className="text-xs">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
                               {result.category}
-                            </Badge>
+                            </span>
                           )}
                         </div>
                       </div>
@@ -185,24 +199,54 @@ export function SearchComp({ className }: SearchProps) {
                 ))}
               </div>
             ) : query.trim() ? (
-              <div className="p-4 text-center text-sm text-muted-foreground">
-                No results found for "{query}"
+              <div className="flex flex-col items-center justify-center py-12">
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-3">
+                  <Search className="h-6 w-6 text-muted-foreground" />
+                </div>
+                <p className="text-muted-foreground text-sm">
+                  No results found
+                </p>
+                <p className="text-muted-foreground/60 text-xs">
+                  Try different keywords
+                </p>
               </div>
             ) : (
-              <div className="p-4 text-center text-sm text-muted-foreground">
-                Start typing to search documentation...
+              <div className="flex flex-col items-center justify-center py-12">
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-3">
+                  <Search className="h-6 w-6 text-muted-foreground" />
+                </div>
+                <p className="text-muted-foreground text-sm">
+                  Start typing to search
+                </p>
+                <p className="text-muted-foreground/60 text-xs">
+                  Find docs, guides, and more
+                </p>
               </div>
             )}
           </ScrollArea>
 
-          <div className="border-t p-2 text-xs text-muted-foreground">
-            <div className="flex items-center justify-between">
-              <span>Use ↑↓ to navigate</span>
-              <span>Press Enter to select</span>
+          <div className="border-t border-border px-4 py-2">
+            <div className="flex items-center justify-between text-xs text-muted-foreground">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1">
+                  <ArrowUpDown className="h-3 w-3" />
+                  <span>Navigate</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <CornerDownLeft className="h-3 w-3" />
+                  <span>Select</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-1">
+                <kbd className="px-1.5 py-0.5 bg-muted border border-border rounded text-xs">
+                  ESC
+                </kbd>
+                <span>Close</span>
+              </div>
             </div>
           </div>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }
