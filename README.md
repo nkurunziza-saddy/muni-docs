@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Muni Docs
 
-## Getting Started
+Muni Docs is a simple way to document your App. It is built with Next.js and Tailwind CSS. It provides a clean and organized structure for your documentation, making it easy to maintain and update.
 
-First, run the development server:
+### Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Clean and organized structure for documentation
+- Built with Next.js and Tailwind CSS
+- Uses shadcn/ui for UI components
+- Can be used as a template for your own documentation
+- Easy to maintain and update
+- Responsive design for all devices
+- Search functionality to quickly find information
+- Dark mode support
+- SEO optimized for better visibility on search engines
+- Open source and free to use
+- Easy to deploy on Vercel or any other hosting platform
+- Supports Markdown for easy content creation
+- Customizable with your own branding and styles
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository: `git clone <repository-url>`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Open your browser and navigate to `http://localhost:3000`
+5. Start editing the documentation in the `docs` folder
+6. Customize the styles in the `styles` folder
+7. Deploy your documentation to Vercel or any other hosting platform
+8. Enjoy your new documentation site!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Contributing
 
-## Learn More
+Feel free to submit issues and pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-To learn more about Next.js, take a look at the following resources:
+### License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Acknowledgements
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Vocs](https://vocs.dev/)

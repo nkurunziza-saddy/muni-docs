@@ -34,37 +34,21 @@ class SearchService {
     if (this.initialized) return;
 
     try {
-      let searchData: SearchItem[];
-
-      if (process.env.NODE_ENV === "production") {
-        // In production, load from generated file
-        const response = await fetch("/search-data.json");
-        if (!response.ok) throw new Error("Failed to load search data");
-        searchData = await response.json();
-      } else {
-        // In development, generate on the fly
-        try {
-          const { generateSearchData } = await import(
-            "../scripts/generate-search-data"
-          );
-          generateSearchData();
-          const response = await fetch("/search-data.json");
-          if (!response.ok) throw new Error("Failed to load search data");
-          searchData = await response.json();
-        } catch (error) {
+      const response = await fetch("/search-data.json");
+      if (!response.ok) {
+        if (process.env.NODE_ENV !== "production") {
           console.warn(
-            "[v0] Could not generate search data in development:",
-            error
+            "Could not load search data. Please ensure `search-data.json` is available."
           );
-          searchData = [];
         }
+        throw new Error("Failed to load search data");
       }
 
-      // Index all documents
+      const searchData: SearchItem[] = await response.json();
+
       for (const item of searchData) {
         this.documents.set(item.id, item);
 
-        // Create searchable text combining title, content, and tags
         const searchableText = [
           item.title,
           item.content,
@@ -79,10 +63,10 @@ class SearchService {
 
       this.initialized = true;
       console.log(
-        `[v0] Search index initialized with ${searchData.length} documents`
+        `Search index initialized with ${searchData.length} documents`
       );
     } catch (error) {
-      console.error("[v0] Failed to initialize search:", error);
+      console.error("Failed to initialize search:", error);
     }
   }
 
@@ -101,7 +85,7 @@ class SearchService {
         .filter((item): item is SearchItem => item !== undefined)
         .slice(0, limit);
     } catch (error) {
-      console.error("[v0] Search error:", error);
+      console.error("Search error:", error);
       return [];
     }
   }
@@ -115,5 +99,4 @@ class SearchService {
   }
 }
 
-// Singleton instance
 export const searchService = new SearchService();

@@ -13,7 +13,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
-import { type SearchResult, searchService } from "@/lib/search";
+import { type SearchResult, searchService } from "@/lib/search-service";
 
 interface SearchProps {
   className?: string;
@@ -27,7 +27,6 @@ export function SearchComp({ className }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Handle keyboard shortcut (Cmd/Ctrl + K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -64,7 +63,7 @@ export function SearchComp({ className }: SearchProps) {
         const searchResults = await searchService.search(query, 8);
         setResults(searchResults);
       } catch (error) {
-        console.error("[v0] Search failed:", error);
+        console.error("Search failed:", error);
         setResults([]);
       } finally {
         setIsLoading(false);

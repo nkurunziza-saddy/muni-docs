@@ -32,6 +32,7 @@ import { Figcaption } from "./figcaption";
 import { Callout } from "./callout";
 import { CodeGroup } from "./code-group";
 import { Steps } from "./steps";
+import { cn } from "@/lib/utils";
 
 const mdxComponents: MDXComponents = {
   Callout,
@@ -67,6 +68,23 @@ const mdxComponents: MDXComponents = {
   th: TableHeader,
   tr: TableRow,
   ul: (props) => <List ordered={false} {...props} />,
+  Space: ({ size = "md", children, className }: any) => (
+    <div
+      className={cn(
+        "block",
+        size === "sm" && "my-2",
+        size === "md" && "my-4",
+        size === "lg" && "my-6",
+        size === "xl" && "my-8",
+        size === "2xl" && "my-12",
+        className
+      )}
+      data-component="space"
+      data-spacing={size}
+    >
+      {children}
+    </div>
+  ),
 };
 
 export function useMDXComponents(): MDXComponents {

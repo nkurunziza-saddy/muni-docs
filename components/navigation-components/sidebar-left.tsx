@@ -27,9 +27,9 @@ export function SidebarLeft() {
       <SidebarContent className="px-3">
         <SidebarMenu className="py-4">
           {muniConfig.navigation.map((item) => {
-            const [isOpen, setIsOpen] = useState(true);
             console.log(item.slug);
-            const href = `/docs${item.slug === "index" ? "" : item.slug}`;
+            const [isOpen, setIsOpen] = useState(true);
+            const href = `/docs/${item.slug === "index" ? "" : item.slug}`;
             const isActive = pathname === href;
             const hasChildren = item.items && item.items.length > 0;
 
@@ -59,19 +59,24 @@ export function SidebarLeft() {
                   {isOpen && (
                     <ul className="space-y-1">
                       {hasChildren &&
-                        item.items.map((item: any) => (
-                          <li key={item.slug}>
+                        item.items.map((subItem: any) => (
+                          <li key={subItem.slug}>
                             <Link
-                              href={href}
+                              href={`/docs/${
+                                subItem.slug === "index" ? "" : subItem.slug
+                              }`}
                               className={cn(
                                 "flex items-center text-sm  rounded-md transition-all duration-200 group",
-                                isActive
-                                  ? "text-muted-foreground/80 hover:text-foreground"
-                                  : "text-primary"
+                                pathname ===
+                                  `/docs/${
+                                    subItem.slug === "index" ? "" : subItem.slug
+                                  }`
+                                  ? "text-primary"
+                                  : "text-muted-foreground/80 hover:text-foreground/85"
                               )}
                             >
-                              <span className="flex-1">{item.title}</span>
-                              {item.hasChildren && (
+                              <span className="flex-1">{subItem.title}</span>
+                              {subItem.hasChildren && (
                                 <ChevronDown className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity" />
                               )}
                             </Link>

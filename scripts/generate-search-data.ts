@@ -50,16 +50,14 @@ function generateSearchData() {
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const { data: frontmatter, content } = matter(fileContent);
 
-      // Generate URL from file path
       const relativePath = path.relative(contentDir, filePath);
       const slug = relativePath
         .replace(/\.mdx$/, "")
         .replace(/\/index$/, "")
-        .replace(/\\/g, "/"); // Handle Windows paths
+        .replace(/\\/g, "/");
 
       const url = `/docs${slug ? `/${slug}` : ""}`;
 
-      // Clean content for search (remove MDX syntax)
       const cleanContent = content
         .replace(/^---[\s\S]*?---/, "") // Remove frontmatter
         .replace(/```[\s\S]*?```/g, "") // Remove code blocks
@@ -84,7 +82,6 @@ function generateSearchData() {
     }
   }
 
-  // Ensure public directory exists
   const publicDir = path.dirname(outputPath);
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
@@ -94,7 +91,6 @@ function generateSearchData() {
   console.log(`Generated search data for ${searchData.length} pages`);
 }
 
-// Run if called directly
 if (require.main === module) {
   generateSearchData();
 }

@@ -37,6 +37,7 @@ import { transformerTagline } from "./lib/plugins/transformers/transformer-tagli
 import { rehypeInlineShiki } from "./lib/plugins/rehype/inline-shiki";
 import { rehypeShikiDisplayNotation } from "./lib/plugins/rehype/display-shiki-notation";
 import { rehypePreLineNumbers } from "./lib/plugins/rehype/rehype-pre-line-numbers";
+import { remarkSpace } from "./lib/plugins/remark/space";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -57,6 +58,7 @@ const withMDX = createMDX({
       remarkSteps,
       remarkSubheading,
       remarkFilename,
+      remarkSpace,
       remarkStrongBlock,
       // remarkAuthors,
       // remarkDetails,
