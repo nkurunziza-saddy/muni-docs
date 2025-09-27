@@ -113,7 +113,7 @@ export function SearchComp({ className }: SearchProps) {
         )}
       >
         <Search className="mr-2 h-4 w-4" />
-        <span>Search...</span>
+        <span>Search docs</span>
         <kbd className="ml-auto hidden sm:flex items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium">
           ⌘K
         </kbd>

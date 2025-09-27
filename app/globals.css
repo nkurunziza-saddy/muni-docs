@@ -255,12 +255,23 @@
     }
   }
 
+  /* Default strong elements to be blocks with margin */
+  & strong {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* But override them to be inline when inside a paragraph */
+  & p strong {
+    display: inline;
+    margin: 0;
+  }
   /* Remove unwanted spacing from inline elements */
-  & strong,
   & em,
   & a,
   & code:not(pre code) {
-    margin: 0;
+    margin: 1rem 0;
   }
 
   /* Spacing with mixed content */

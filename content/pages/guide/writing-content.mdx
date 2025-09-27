@@ -13,19 +13,19 @@ Creating content in Muni is straightforward. All of your pages are just MDX file
 2.  **Add content:** Write your content using Markdown and MDX syntax.
 3.  **Update navigation:** Open `muni.config.ts` and add a new entry to the `navigation` array. This will make your page appear in the sidebar.
 
-    ```ts
-    // muni.config.ts
-    export const muniConfig = {
-      title: "My Documentation",
-      navigation: [
-        // ... other items
-        {
-          title: "My New Page",
-          slug: "my-new-page",
-        },
-      ],
-    };
-    ```
+```ts
+// muni.config.ts
+export const muniConfig = {
+  title: "My Documentation",
+  navigation: [
+    // ... other items
+    {
+      title: "My New Page",
+      slug: "my-new-page",
+    },
+  ],
+};
+```
 
 Your new page will now be available at `/docs/my-new-page`.
 
@@ -34,11 +34,11 @@ Your new page will now be available at `/docs/my-new-page`.
 MDX is Markdown with the power of React components. This means you can write standard Markdown, but also import and use components right in your content.
 
 ```mdx
-import { MyCustomComponent } from '@/components/my-custom-component';
+import { MyCustomComponent } from "@/components/my-custom-component";
 
 # This is a regular Markdown heading
 
-This is a paragraph of text. You can use **bold** and *italic* formatting.
+This is a paragraph of text. You can use **bold** and _italic_ formatting.
 
 <MyCustomComponent />
 ```
@@ -54,13 +54,12 @@ Frontmatter is a small block of YAML at the top of your MDX file that allows you
 title: "A Custom Page Title"
 description: "This description is used for SEO and search results."
 ---
-
 # Your content starts here
 ```
 
 ### Core Properties
 
--   `title` (string): The main title of the page. This is used for the browser tab title and at the top of the page.
--   `description` (string): A brief summary of the page's content. This is crucial for SEO and for the site's internal search.
+- `title` (string): The main title of the page. This is used for the browser tab title and at the top of the page.
+- `description` (string): A brief summary of the page's content. This is crucial for SEO and for the site's internal search.
 
 For a complete list of all available frontmatter options, see the [**Frontmatter API Reference**](/docs/api/frontmatter).
