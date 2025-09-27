@@ -25,15 +25,6 @@ html.dark .shiki span {
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-@theme inline {
-  --color-sh-bg: var(--sh-bg);
-  --color-sh-fg: var(--sh-fg);
-  --radius-sm: calc(var(--sh-radius) - 4px);
-  --radius-md: calc(var(--sh-radius) - 2px);
-  --radius-lg: var(--sh-radius);
-  --radius-xl: calc(var(--sh-radius) + 4px);
-}
-
 :root {
   --sh-bg: var(--shiki-light-bg);
   --sh-fg: var(--shiki-light);

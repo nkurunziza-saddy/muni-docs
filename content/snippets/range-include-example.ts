@@ -1,18 +1,27 @@
+//@ts-nocheck
 // [!region import]
-import { createPublicClient, http } from 'viem'
-import { mainnet } from 'viem/chains'
+import { z } from "zod";
 // [!endregion import]
 
-// [!region client]
-export const client = createPublicClient({
-  chain: mainnet,
-  transport: http(),
-})
-// [!endregion client]
+// [!region schema]
+const UserSchema = z.object({
+  name: z.string(),
+  age: z.number().int().positive(),
+});
+// [!endregion schema]
 
 // [!region usage]
-async function getBlockNumber() {
-  const blockNumber = await client.getBlockNumber()
-  console.log(blockNumber)
+function validateUser(data: unknown) {
+  const result = UserSchema.safeParse(data);
+  if (result.success) {
+    console.log("Valid user:", result.data);
+  } else {
+    console.error("Validation errors:", result.error.errors);
+  }
 }
+
+// Example usage:
+validateUser({ name: "Alice", age: 30 }); // Valid
+validateUser({ name: "Bob", age: -5 }); // Invalid
+
 // [!endregion usage]

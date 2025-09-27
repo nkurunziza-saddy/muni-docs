@@ -95,7 +95,10 @@ const withMDX = createMDX({
             transformerNotationErrorLevel({ matchAlgorithm: "v3" }),
             // Custom
             transformerNotationInclude({
-              rootDir: path.resolve(__dirname, "/"),
+              rootDir: path.resolve(
+                __dirname,
+                process.env.MUNI_DOCS_ROOT || "."
+              ),
             }),
             transformerLineNumbers(),
             transformerTitle(),

@@ -174,24 +174,7 @@ For large files, you can define specific regions to include using `// [!region n
 **Source File (`~/content/snippets/range-include-example.ts`):**
 
 ```ts
-// [!region import]
-import { createPublicClient, http } from 'viem'
-import { mainnet } from 'viem/chains'
-// [!endregion import]
-
-// [!region client]
-export const client = createPublicClient({
-  chain: mainnet,
-  transport: http(),
-})
-// [!endregion client]
-
-// [!region usage]
-async function getBlockNumber() {
-  const blockNumber = await client.getBlockNumber()
-  console.log(blockNumber)
-}
-// [!endregion usage]
+// [!include ~/content/snippets/range-include-example.ts]
 ```
 
 **MDX Usage:**
