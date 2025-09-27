@@ -13,7 +13,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeShiki from "@shikijs/rehype";
 
-// Shiki transformers (subset of what you had)
+// Shiki transformers
 import {
   transformerNotationDiff,
   transformerNotationErrorLevel,
@@ -22,6 +22,7 @@ import {
   transformerNotationWordHighlight,
   transformerRemoveNotationEscape,
 } from "@shikijs/transformers";
+
 import { transformerNotationInclude } from "./lib/plugins/transformers/transformer-include";
 import { transformerTitle } from "./lib/plugins/transformers/transformer-title";
 import path from "path";
@@ -60,9 +61,6 @@ const withMDX = createMDX({
       remarkFilename,
       remarkSpace,
       remarkStrongBlock,
-      // remarkAuthors,
-      // remarkDetails,
-      // remarkSponsors,
     ],
     rehypePlugins: [
       rehypeSlug,
@@ -97,13 +95,11 @@ const withMDX = createMDX({
             transformerNotationErrorLevel({ matchAlgorithm: "v3" }),
             // Custom
             transformerNotationInclude({
-              rootDir: path.resolve(__dirname, process.cwd()),
+              rootDir: path.resolve(__dirname, "/"),
             }),
             transformerLineNumbers(),
             transformerTitle(),
             transformerTagline(),
-            // transformerEmptyLine(),
-            // transformerSplitIdentifiers(),
           ].filter(Boolean),
         },
       ],

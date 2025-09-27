@@ -52,14 +52,12 @@ export function SearchComp({ className }: SearchProps) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Focus input when dialog opens
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isOpen]);
 
-  // Perform search
   useEffect(() => {
     const performSearch = async () => {
       if (!query.trim()) {
@@ -125,7 +123,7 @@ export function SearchComp({ className }: SearchProps) {
       </button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="p-0 w-[600px]" showCloseButton={false}>
+        <DialogContent className="p-0 w-3xl" showCloseButton={false}>
           <DialogTitle className="sr-only">Search Documentation</DialogTitle>
           <div className="flex items-center border-b border-border px-3">
             <Search className="h-5 w-5 text-muted-foreground mr-3" />

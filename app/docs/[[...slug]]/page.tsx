@@ -67,8 +67,6 @@ export default async function Page({ params }: PageProps) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug?.join("/") || "index";
 
-  console.log("Loading MDX for slug:", slug);
-
   try {
     const { default: Post } = await import(`@/content/pages/${slug}.mdx`);
 

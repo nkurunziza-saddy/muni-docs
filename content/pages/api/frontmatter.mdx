@@ -1,346 +1,49 @@
-# Frontmatter
-
-Learn how to use frontmatter to add metadata to your MDX pages.
-
-## What is Frontmatter?
-
-Frontmatter is YAML metadata that appears at the top of your MDX files. It allows you to specify page-specific information like titles, descriptions, and custom properties.
-
-## Basic Syntax
-
-Frontmatter is written in YAML format and enclosed between triple dashes:
-
-## ```yaml
-
-title: "My Page Title"
-description: "A brief description of this page"
-author: "John Doe"
-date: "2024-01-15"
-
+---
+title: "Frontmatter Reference"
+description: "A complete reference for all the standard and custom frontmatter properties you can use in your MDX files."
 ---
 
-# Your MDX content starts here
+# Frontmatter Reference
 
-````
+Frontmatter is the YAML block at the top of your MDX files, enclosed by triple dashes (`---`). It allows you to provide metadata for each page.
 
-## Supported Properties
+## Standard Properties
 
-### Standard Properties
+These are the primary properties that Muni uses to control page rendering and SEO.
 
-#### title
+### `title`
 
-The page title, used for SEO and navigation.
+-   **Type:** `string`
+-   **Required:** `true`
+-   **Description:** The main title of the page. It is displayed at the top of the page content and used in the browser tab title (`<title>`).
 
-## ```yaml
+### `description`
 
-## title: "Getting Started with Muni"
+-   **Type:** `string`
+-   **Required:** `true`
+-   **Description:** A brief summary of the page content. This is critical for SEO as it is used for the `<meta name="description">` tag, and it also powers the text snippets in the site's search results.
 
-````
+## Custom Properties
 
-#### description
+You can add any other custom properties to your frontmatter. These properties are not used by Muni out-of-the-box, but they can be accessed from your own custom components or during the build process.
 
-A brief description of the page content.
-
-## ```yaml
-
-## description: "Learn how to set up and configure Muni for your documentation needs"
-
-````
-
-#### author
-
-The author of the page.
-
-## ```yaml
-
-## author: "Jane Smith"
-
-````
-
-#### date
-
-Publication or last updated date.
-
-## ```yaml
-
-date: "2024-01-15"
-
-# or with time
-
-## date: "2024-01-15T10:30:00Z"
-
-````
-
-### Custom Properties
-
-You can add any custom properties you need:
-
-## ```yaml
-
-title: "API Reference"
-category: "reference"
-difficulty: "intermediate"
-tags: ["api", "reference", "advanced"]
-version: "1.2.0"
-
----
-
-````
-
-## Using Frontmatter Data
-
-### In MDX Components
-
-Access frontmatter data in your MDX files:
-
-## ````mdx
-
-title: "My Article"
-author: "John Doe"
-publishDate: "2024-01-15"
-
----
-
-```
-import { PageMeta } from "@/components/page-meta";
-
-<PageMeta
-  title={frontmatter.title}
-  author={frontmatter.author}
-  date={frontmatter.publishDate}
-/>
-
-# {frontmatter.title}
-
-By {frontmatter.author} on {frontmatter.publishDate}
-```
-
-````
-
-### In Page Components
-
-Access frontmatter in your page components:
-
-```typescript
-// This would require additional setup to extract frontmatter
-export async function generateMetadata({ params }) {
-// Load MDX file and extract frontmatter
-const frontmatter = await getFrontmatter(params.slug);
-
-return {
-title: frontmatter.title,
-description: frontmatter.description,
-authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
-};
-}
-```
-
-## Advanced Frontmatter
-
-### Arrays and Objects
-
-Frontmatter supports complex data structures:
-
-## ```yaml
-
-title: "Component Library"
-tags: ["react", "typescript", "components"]
-author:
-name: "Jane Smith"
-email: "jane@example.com"
-avatar: "/avatars/jane.jpg"
-related:
-
-- title: "Getting Started"
-  slug: "getting-started"
-- title: "API Reference"
-  slug: "api"
-
----
-
-```
-
-### Boolean and Number Values
-
-## ```yaml
-
-title: "Advanced Guide"
-published: true
-featured: false
-readingTime: 15
-difficulty: 3
-
----
-
-```
-
-### Dates and Timestamps
-
-## ```yaml
-
-title: "Release Notes"
-publishDate: 2024-01-15
-lastModified: 2024-01-20T14:30:00Z
-
----
-
-```
-
-## Best Practices
-
-### 1. Consistent Structure
-
-Use consistent frontmatter structure across your documentation:
-
-## ```yaml
-
-title: "Page Title"
-description: "Page description"
-category: "guide" | "reference" | "tutorial"
-difficulty: "beginner" | "intermediate" | "advanced"
-
----
-
-```
-
-### 2. Required Fields
-
-Define which frontmatter fields are required:
-
-## ```yaml
-
-# Required
-
-title: "Page Title"
-description: "Page description"
-
-# Optional
-
-author: "Author Name"
-date: "2024-01-15"
-tags: ["tag1", "tag2"]
-
----
-
-```
-
-### 3. Validation
-
-Consider validating frontmatter structure:
-
-```typescript
-interface PageFrontmatter {
-title: string;
-description: string;
-author?: string;
-date?: string;
-tags?: string[];
-category?: 'guide' | 'reference' | 'tutorial';
-}
-```
-
-## Common Patterns
-
-### Blog-style Posts
-
-## ```yaml
-
-title: "How to Build Better Documentation"
-description: "Tips and tricks for creating effective documentation"
-author: "Documentation Team"
-publishDate: "2024-01-15"
-lastModified: "2024-01-20"
-tags: ["documentation", "writing", "best-practices"]
-category: "guide"
-readingTime: 8
-featured: true
-
----
-
-```
-
-### API Documentation
-
-## ```yaml
-
-title: "User API"
-description: "Complete reference for the User API endpoints"
-category: "reference"
-version: "v1.2.0"
-endpoints:
-
-- "GET /api/users"
-- "POST /api/users"
-- "PUT /api/users/:id"
-- "DELETE /api/users/:id"
-
----
-
-```
-
-### Tutorial Pages
-
-## ```yaml
-
-title: "Building Your First Component"
-description: "Step-by-step guide to creating a React component"
-category: "tutorial"
-difficulty: "beginner"
-duration: "30 minutes"
-prerequisites: ["Basic React knowledge", "Node.js installed"]
-
----
-
-```
-
-## Troubleshooting
-
-### Common Issues
-
-**Frontmatter not parsing?**
-
-- Ensure proper YAML syntax
-- Check for correct triple-dash delimiters
-- Verify no spaces before the opening `---`
-
-**Values not accessible?**
-
-- Make sure you're using the correct property names
-- Check that the frontmatter plugin is configured
-- Verify the frontmatter is valid YAML
-
-**Special characters causing issues?**
-
-- Quote strings containing special characters
-- Use proper YAML escaping for quotes and colons
-- Be careful with multiline strings
-
-### YAML Syntax Tips
+### Example with Custom Metadata
 
 ```yaml
+---
+title: "Advanced Tutorial"
+description: "A guide to advanced component patterns."
+author: "Jane Doe"
+date: "2025-09-27"
+version: "2.1.0"
+tags: ["react", "advanced", "patterns"]
+---
 
-# Strings with special characters
+# Content starts here
+```
 
-title: "API: User Management"
-description: 'This is a "quoted" description'
+### Accessing Custom Frontmatter
 
-# Multiline strings
+While Muni doesn't use custom frontmatter directly, you can configure your project to read it. For example, you could create a custom component that reads the `author` and `date` from the page's frontmatter.
 
-description: |
-This is a multiline description
-that spans multiple lines
-and preserves line breaks.
-
-# Arrays
-
-tags: ["react", "typescript", "components"]
-
-# or
-
-tags:
-
-- react
-- typescript
-- components
-  ```
-````
+This typically requires customizing the MDX loader or creating a wrapper component that has access to the page's metadata. The frontmatter is available to the page layout component.

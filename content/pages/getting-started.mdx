@@ -1,64 +1,60 @@
+---
+title: "Getting Started"
+description: "Set up your Muni documentation site in a few simple steps."
+---
+
 # Getting Started
 
-Welcome to Muni! This guide will help you get up and running quickly.
+Welcome to Muni! This guide will walk you through setting up a new documentation project. We recommend using the official Muni template to get started.
+
+## Prerequisites
+
+Before you begin, make sure you have the following installed:
+
+- **Node.js** (version 18 or higher)
+- **pnpm** (recommended, but npm or yarn will also work)
 
 ## Installation
 
-First, make sure you have Node.js installed on your system. Then follow these steps:
+Follow these steps to get your documentation site up and running.
+
+### 1. Clone the Repository
+
+Start by cloning the Muni starter template from GitHub.
 
 ```bash
+git clone https://github.com/nkurunziza-saddy/muni-docs.git my-new-docs
+```
 
-# Clone the repository
+### 2. Navigate to Project Directory
 
-git clone https://github.com/your-username/muni-docs.git
+Change into your newly created project folder.
 
-# Navigate to the project directory
+```bash
+cd my-new-docs
+```
 
-cd muni-docs
+### 3. Install Dependencies
 
-# Install dependencies
+Install all the necessary dependencies using `pnpm`.
 
+```bash
 pnpm install
+```
 
-# Start the development server
+### 4. Run the Development Server
 
+Start the Next.js development server to see your site in action.
+
+```bash
 pnpm dev
 ```
 
-## Project Structure
-
-Here's how your Muni project is organized:
-
-```
-muni-docs/
-├── app/
-│ ├── docs/
-│ │ └── [[...slug]]/
-│ │ └── page.tsx
-│ └── layout.tsx
-├── content/
-│ └── pages/
-│ ├── index.mdx
-│ ├── getting-started.mdx
-│ └── ...
-├── components/
-│ └── docs-layout.tsx
-└── next.config.mjs
-```
-
-## Creating Content
-
-To create new documentation pages:
-
-1. Add a new `.mdx` file to the `content/pages/` directory
-2. Update the navigation in `app/docs/[[...slug]]/page.tsx`
-3. Your page will be automatically available at `/docs/your-filename`
+Your site should now be running at `http://localhost:3000`. Changes you make to the content will be automatically reflected.
 
 ## Next Steps
 
-Now that you have Muni set up, explore these sections:
+Now that your site is running, you can start creating content and customizing the project.
 
-- [Components Guide](/docs/guide/components) - Learn about available components
-- [Code Snippets](/docs/guide/code-snippets) - See how to add code examples
-- [API Reference](/docs/api/config) - Understand configuration options
-  ```
+- Learn about the project layout in the [**Project Structure**](/docs/project-structure) guide.
+- Start writing your first pages by following the [**Writing Content**](/docs/guide/writing-content) guide.

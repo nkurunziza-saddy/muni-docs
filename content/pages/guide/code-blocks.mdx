@@ -1,0 +1,198 @@
+---
+title: "Advanced Code Blocks"
+description: "Master the powerful features of Muni's code blocks, including highlighting, diffs, includes, regions, and more."
+---
+
+# Advanced Code Blocks
+
+Muni uses an advanced MDX processing pipeline to give you powerful features for displaying code. Here's a comprehensive guide to all the available features.
+
+## Basic Syntax
+
+Basic syntax highlighting is available by specifying the language after the opening code fence. You can add a file name in brackets `[]`.
+
+````mdx
+```tsx [MyComponent.tsx]
+function MyComponent() {
+  return <div>Hello, World!</div>;
+}
+```
+````
+
+**Output:**
+
+```tsx [MyComponent.tsx]
+function MyComponent() {
+  return <div>Hello, World!</div>;
+}
+```
+
+## Line and Word Annotations
+
+You can draw attention to specific parts of your code using special comment directives.
+
+### Highlighting Lines
+
+Use `[!code highlight]` to highlight a single line, or `[!code highlight:N]` to highlight the next `N` lines.
+
+````mdx
+```ts
+// [!code highlight:2]
+console.log("This line is highlighted.");
+console.log("This line is also highlighted.");
+console.log("This line is not.");
+console.log("But this one is!"); // [!code highlight]
+```
+````
+
+**Output:**
+
+```ts
+// [!code highlight:2]
+console.log("This line is highlighted.");
+console.log("This line is also highlighted.");
+console.log("This line is not.");
+console.log("But this one is!"); // [!code highlight]
+```
+
+### Focusing Lines
+
+Use `[!code focus]` to focus a specific line, which will dim the surrounding lines.
+
+````mdx
+```js
+console.log("Not focused");
+console.log("Focused"); // [!code focus]
+console.log("Not focused");
+```
+````
+
+**Output:**
+
+```js
+console.log("Not focused");
+console.log("Focused"); // [!code focus]
+console.log("Not focused");
+```
+
+### Highlighting Words
+
+Use `[!code word:TEXT]` to highlight a specific word or string on the subsequent line.
+
+````mdx
+```js
+// [!code word:Hello]
+const message = "Hello world";
+```
+````
+
+**Output:**
+
+```js
+// [!code word:Hello]
+const message = "Hello world";
+```
+
+### Error & Warning Levels
+
+Mark lines as errors or warnings with `[!code error]` and `[!code warning]`.
+
+````mdx
+```ts
+console.error("Error"); // [!code error]
+console.warn("Warning"); // [!code warning]
+```
+````
+
+**Output:**
+
+```ts
+console.error("Error"); // [!code error]
+console.warn("Warning"); // [!code warning]
+```
+
+## Diffing Lines
+
+There are two ways to show diffs.
+
+### Using the `diff` language
+
+This is useful for showing changes between two blocks of code.
+
+````mdx
+```diff
+- import { useState } from 'react';
++ import { useState, useEffect } from 'react';
+```
+````
+
+**Output:**
+
+```diff
+- import { useState } from 'react';
++ import { useState, useEffect } from 'react';
+```
+
+### Using `++` and `--` Directives
+
+This method is useful for showing changes within a language-specific block.
+
+````mdx
+```js
+console.log("old"); // [!code --]
+console.log("new"); // [!code ++]
+console.log("same");
+```
+````
+
+**Output:**
+
+```js
+console.log("old"); // [!code --]
+console.log("new"); // [!code ++]
+console.log("same");
+```
+
+## Including Code Snippets
+
+You can include code directly from source files, which keeps your documentation in sync with your project.
+
+### Including Entire Files
+
+Use the `// [!include]` directive. The `~` character is an alias for your project's root directory.
+
+````mdx
+```tsx
+// [!include ~/components/ui/button.tsx]
+```
+````
+
+### Including Regions
+
+For large files, you can define specific regions to include using `// [!region name]` and `// [!endregion name]`.
+
+**Source File (`example.ts`):**
+
+```ts
+// [!region setup]
+import { createClient } from "./client";
+const client = createClient();
+// [!endregion setup]
+
+// [!region logic]
+async function run() {
+  const data = await client.fetch();
+  return data;
+}
+// [!endregion logic]
+```
+
+**MDX Usage:**
+
+````mdx
+```ts
+// [!include ~/content/snippets/example.ts:setup]
+
+// [!include ~/content/snippets/example.ts:logic]
+```
+````

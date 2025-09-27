@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 interface TocItem {
@@ -10,10 +11,16 @@ interface TocItem {
 }
 
 export function TableOfContents() {
+  const pathname = usePathname();
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
-  console.log({ activeId });
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
   useEffect(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
     const extractHeadings = () => {
       const headings = Array.from(
         document.querySelectorAll("h2, h3, h4, h5, h6")
@@ -30,21 +37,15 @@ export function TableOfContents() {
       if (headings.length > 0) {
         const observer = new IntersectionObserver(
           (entries) => {
-            const visibleEntries = entries.filter(
-              (entry) => entry.isIntersecting
-            );
-            if (visibleEntries.length > 0) {
-              const topEntry = visibleEntries.reduce((top, entry) =>
-                entry.boundingClientRect.top < top.boundingClientRect.top
-                  ? entry
-                  : top
-              );
-              setActiveId(topEntry.target.id);
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                setActiveId(entry.target.id);
+              }
             }
           },
           {
-            rootMargin: "-20% 0% -35% 0%",
-            threshold: [0, 0.25, 0.5, 0.75, 1],
+            rootMargin: "0% 0% -80% 0%",
+            threshold: 1.0,
           }
         );
 
@@ -53,13 +54,22 @@ export function TableOfContents() {
           if (element) observer.observe(element);
         });
 
-        return () => observer.disconnect();
+        observerRef.current = observer;
       }
     };
 
-    const timer = setTimeout(extractHeadings, 100);
-    return () => clearTimeout(timer);
-  }, []);
+    setToc([]);
+    setActiveId("");
+
+    const timer = setTimeout(extractHeadings, 300);
+
+    return () => {
+      clearTimeout(timer);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [pathname]);
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
@@ -68,7 +78,7 @@ export function TableOfContents() {
         behavior: "smooth",
         block: "start",
       });
-      window.history.replaceState(null, "", `#${id}`);
+      window.history.pushState(null, "", `#${id}`);
     }
   };
 
@@ -83,24 +93,28 @@ export function TableOfContents() {
       </h4>
       <nav className="space-y-2">
         {toc.map((item) => (
-          <button
+          <a
             key={item.id}
-            onClick={() => handleClick(item.id)}
+            href={`#${item.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleClick(item.id);
+            }}
             className={cn(
               "block w-full text-left text-sm transition-colors hover:text-foreground duration-200",
-              item.level === 1 && "font-medium",
-              item.level === 2 && "pl-2",
-              item.level === 3 && "pl-4",
-              item.level === 4 && "pl-6",
-              item.level === 5 && "pl-8",
-              item.level === 6 && "pl-10",
+              {
+                "pl-2": item.level === 3,
+                "pl-4": item.level === 4,
+                "pl-6": item.level === 5,
+                "pl-8": item.level === 6,
+              },
               activeId === item.id
                 ? "text-foreground font-medium"
                 : "text-muted-foreground"
             )}
           >
             {item.text}
-          </button>
+          </a>
         ))}
       </nav>
     </div>

@@ -1,0 +1,111 @@
+---
+title: "Creating Plugins"
+description: "Learn how to extend Muni's functionality by creating your own custom Remark, Rehype, and Shiki plugins."
+---
+
+# Creating Custom Plugins
+
+Muni's MDX processing pipeline is built on a powerful and extensible plugin system. You can tap into this system to add your own custom syntax, transform code blocks, or manipulate the final HTML output.
+
+This guide will walk you through the process of creating and adding your own plugins.
+
+## Understanding Plugin Types
+
+There are three types of plugins you can create, each running at a different stage of the build process:
+
+1.  **Remark Plugins:** Operate on the Markdown Abstract Syntax Tree (AST). They are perfect for adding new Markdown syntax or transforming content before it's converted to HTML.
+2.  **Rehype Plugins:** Operate on the HTML AST after the Markdown has been converted. Use these to modify the HTML structure, add classes, or perform other post-processing tasks.
+3.  **Shiki Transformers:** Run during the syntax highlighting process for code blocks. Use these to add custom features to your code blocks, like titles, line numbers, or custom highlighting.
+
+## Tutorial: Creating a Remark Plugin
+
+Let's create a simple Remark plugin that adds a custom "spoiler" directive. We want to be able to write `:::spoiler` in our MDX and have it render as a collapsible details element.
+
+### Step 1: Create the Plugin File
+
+Create a new file for your plugin, for example, in `lib/plugins/remark/spoiler.ts`.
+
+```ts [lib/plugins/remark/spoiler.ts]
+import { visit } from "unist-util-visit";
+import type { Root } from "mdast";
+import type { ContainerDirective } from "mdast-util-directive";
+
+export function remarkSpoiler() {
+  return (tree: Root) => {
+    visit(tree, "containerDirective", (node: ContainerDirective) => {
+      if (node.name !== "spoiler") return;
+
+      // Mark this node to be transformed into a <details> element
+      const data = (node.data ??= {});
+      data.hName = "details";
+
+      // Create a <summary> element for the spoiler title
+      const summaryNode = {
+        type: "element",
+        tagName: "summary",
+        properties: {},
+        children: [{ type: "text", value: "Spoiler" }],
+      };
+
+      // Add the summary and the original content inside the <details>
+      node.children.unshift(summaryNode as any);
+    });
+  };
+}
+```
+
+### Step 2: Register the Plugin
+
+Now, add your new plugin to the `remarkPlugins` array in your `next.config.ts`.
+
+```ts [next.config.ts]
+import { remarkSpoiler } from "./lib/plugins/remark/spoiler";
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [
+      // ... other plugins
+      remarkSpoiler, // Add your plugin here
+    ],
+    // ...
+  },
+});
+```
+
+### Step 3: Use the Directive
+
+You can now use your new directive in any MDX file.
+
+```mdx
+# My Page with a Spoiler
+
+Here is some content.
+
+:::spoiler
+This is a secret message!
+:::
+```
+
+#### Output
+
+:::spoiler
+This is a secret message!
+:::
+
+This will be rendered as a native `<details>` and `<summary>` element, giving you a working spoiler component with just a few lines of code.
+
+## Creating Rehype and Shiki Plugins
+
+The process for creating Rehype and Shiki plugins is similar:
+
+- **For Rehype:** Your plugin will receive an HTML AST (`hast`). You can use `visit` to find and modify HTML elements.
+- **For Shiki:** Your transformer will receive the code string and the Shiki AST. This is more advanced and is used for fine-grained control over code block rendering.
+
+Refer to the official documentation for [Remark](https://github.com/remarkjs/remark/blob/main/doc/plugins.md), [Rehype](https://github.com/rehypejs/rehype/blob/main/doc/plugins.md), and [Shiki](https://shiki.style/guide/transformers) for more detailed API information.
+
+## Best Practices
+
+- **Do One Thing Well:** Keep your plugins focused on a single task.
+- **Use TypeScript:** The ASTs have complex types. Using TypeScript will save you a lot of time and prevent errors.
+- **Handle Errors:** If your plugin reads files or performs other I/O, make sure to handle potential errors gracefully.
+- **Follow Existing Patterns:** Look at the existing plugins in the `lib/plugins/` directory to see how they are structured and written.

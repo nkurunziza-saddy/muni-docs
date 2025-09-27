@@ -11,13 +11,22 @@ interface NavigationItem {
   items?: NavigationItem[];
 }
 
+function createDocHref(slug: string): string {
+  if (slug === "index") {
+    return "/docs";
+  }
+  const cleanSlug = slug.startsWith("/") ? slug.slice(1) : slug;
+  return `/docs/${cleanSlug}`;
+}
+
 function flattenNavigation(items: NavigationItem[]): NavigationItem[] {
   const flattened: NavigationItem[] = [];
 
   for (const item of items) {
-    flattened.push(item);
     if (item.items) {
       flattened.push(...flattenNavigation(item.items));
+    } else {
+      flattened.push(item);
     }
   }
 
@@ -26,10 +35,16 @@ function flattenNavigation(items: NavigationItem[]): NavigationItem[] {
 
 export function DocsPagination() {
   const pathname = usePathname();
-  const currentSlug = pathname.replace("/docs/", "") || "index";
+
+  const currentSlug =
+    pathname === "/docs" ? "index" : pathname.replace("/docs/", "");
 
   const allPages = flattenNavigation(muniConfig.navigation);
   const currentIndex = allPages.findIndex((page) => page.slug === currentSlug);
+
+  if (currentIndex === -1) {
+    return null;
+  }
 
   const previousPage = currentIndex > 0 ? allPages[currentIndex - 1] : null;
   const nextPage =

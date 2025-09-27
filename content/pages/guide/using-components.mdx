@@ -1,0 +1,126 @@
+---
+title: "Using Components"
+description: "Learn how to use built-in components and embed your own custom React components within your MDX content."
+---
+
+# Using Components in MDX
+
+One of the most powerful features of MDX is the ability to use React components directly in your Markdown content. Muni provides a set of useful built-in components and makes it easy to use your own.
+
+## Built-in Components
+
+Muni includes several components designed to help you create well-structured, readable documentation. These are available globally in all `.mdx` files.
+
+### Callouts
+
+Use callouts to highlight important information, warnings, or tips. They are created using the `:::` directive.
+
+```mdx
+:::info
+This is an informational message.
+:::
+
+:::danger[Danger Zone]
+This is a danger callout with a custom title.
+:::
+
+:::success
+Your operation was successful!
+:::
+```
+
+#### Output
+
+:::info
+This is an informational message.
+:::
+
+:::danger[Danger Zone]
+This is a danger callout with a custom title.
+:::
+
+:::success
+Your operation was successful!
+:::
+
+### Steps
+
+The `steps` component is perfect for creating step-by-step tutorials or guides. It automatically numbers the steps for you.
+
+```mdx
+:::steps
+
+#### Step 1: Install Dependencies
+
+Run `pnpm install` to get started.
+
+#### Step 2: Run the Server
+
+Run `pnpm dev` to see your site.
+
+#### Step 3: Build for Production
+
+Run `pnpm build` to create a production build.
+
+:::
+```
+
+#### Output
+
+:::steps
+
+#### Step 1: Install Dependencies
+
+Run `pnpm install` to get started.
+
+#### Step 2: Run the Server
+
+Run `pnpm dev` to see your site.
+
+#### Step 3: Build for Production
+
+Run `pnpm build` to create a production build.
+
+:::
+
+### Other Components
+
+Muni also provides other useful components like `Aside`, `CodeGroup`, and `CopyButton`. For a full list and their options, see the [**Built-in Components Reference**](/docs/api/built-in-components).
+
+## Using Your Own Components
+
+You can import and use any React component in your MDX files, just like you would in any other React file.
+
+### 1. Create Your Component
+
+First, create your component file. For example, a simple `Welcome.tsx` component.
+
+```tsx [components/Welcome.tsx]
+import React from "react";
+
+interface WelcomeProps {
+  name: string;
+}
+
+export function Welcome({ name }: WelcomeProps) {
+  return <h1 className="text-2xl font-bold">Hello, {name}!</h1>;
+}
+```
+
+### 2. Import and Use in MDX
+
+Now, import it at the top of your `.mdx` file and use it like any other HTML tag.
+
+```mdx
+import { Button } from "@/components/ui/button";
+
+<Button>Click Me</Button>
+```
+
+#### Output
+
+import { Button } from "@/components/ui/button";
+
+<Button>Click Me</Button>
+
+This approach allows you to create highly interactive and dynamic documentation pages, from charts and graphs to live code editors.
