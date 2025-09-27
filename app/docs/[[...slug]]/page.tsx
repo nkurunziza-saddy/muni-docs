@@ -25,6 +25,29 @@ function getAllSlugs(items: NavigationItem[]): string[] {
   return slugs;
 }
 
+function FrontmatterMeta({ frontmatter }: { frontmatter: any }) {
+  const { author, date } = frontmatter;
+
+  if (!author && !date) {
+    return null;
+  }
+
+  const displayDate = date
+    ? new Date(date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
+
+  return (
+    <div className="mt-12 pt-4 border-t text-sm text-muted-foreground space-y-1">
+      {displayDate && <p>Last updated on {displayDate}</p>}
+      {author && <p>Written by {author}</p>}
+    </div>
+  );
+}
+
 export function generateStaticParams() {
   const allSlugs = getAllSlugs(muniConfig.navigation);
 
@@ -68,17 +91,22 @@ export default async function Page({ params }: PageProps) {
   const slug = resolvedParams.slug?.join("/") || "index";
 
   try {
-    const { default: Post } = await import(`@/content/pages/${slug}.mdx`);
+    const { default: Post, frontmatter } = await import(
+      `@/content/pages/${slug}.mdx`
+    );
 
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto max-w-4xl">
         <div className="mdx-content">
           <Post />
         </div>
+
+        {muniConfig.showFrontmatterMeta !== false && (
+          <FrontmatterMeta frontmatter={frontmatter} />
+        )}
       </div>
     );
   } catch (error) {
-    console.error("Failed to load MDX file:", error);
     notFound();
   }
 }
