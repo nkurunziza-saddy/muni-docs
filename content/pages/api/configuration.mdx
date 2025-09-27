@@ -16,6 +16,8 @@ This is the primary configuration file for your site's content and navigation. I
 ```typescript
 interface MuniConfig {
   title: string;
+  version?: string;
+  headingLinks?: { title: string; href: string }[];
   navigation: NavigationItem[];
 }
 
@@ -28,25 +30,40 @@ interface NavigationItem {
 
 ### `title`
 
--   **Type:** `string`
--   **Description:** The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header.
+- **Type:** `string`
+- **Description:** The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header.
+
+### `version`
+
+- **Type:** `string` (optional)
+- **Description:** A version string for your project, which is displayed in the site header.
+
+### `headingLinks`
+
+- **Type:** `{ title: string; href: string }[]` (optional)
+- **Description:** An array of link objects to be displayed in the site header, next to the version.
 
 ### `navigation`
 
--   **Type:** `NavigationItem[]`
--   **Description:** An array of objects that defines the structure of your sidebar navigation.
+- **Type:** `NavigationItem[]`
+- **Description:** An array of objects that defines the structure of your sidebar navigation.
 
 Each `NavigationItem` has the following properties:
 
--   `title` (string): The text displayed in the navigation sidebar.
--   `slug` (string): The URL slug for the page. This must match the file path in `content/pages/` (without the `.mdx` extension). For the homepage, use `index`.
--   `items` (optional `NavigationItem[]`): An optional array of nested navigation items to create collapsible sections in the sidebar.
+- `title` (string): The text displayed in the navigation sidebar.
+- `slug` (string): The URL slug for the page. This must match the file path in `content/pages/` (without the `.mdx` extension). For the homepage, use `index`.
+- `items` (optional `NavigationItem[]`): An optional array of nested navigation items to create collapsible sections in the sidebar.
 
 ### Example Configuration
 
 ```ts [muni.config.ts]
 export const muniConfig = {
   title: "My Awesome Project",
+  version: "1.0.0",
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/your-repo" },
+    { title: "Changelog", href: "/changelog" },
+  ],
   navigation: [
     {
       title: "Introduction",
@@ -76,20 +93,20 @@ This file controls the Next.js build process, including how MDX files are handle
 
 Muni's default configuration includes plugins for:
 
--   **GFM (GitHub Flavored Markdown):** Adds support for tables, strikethroughs, etc.
--   **Frontmatter:** Parses the YAML frontmatter from your files.
--   **Code Block Titles:** Adds titles to code blocks.
--   **Callouts:** Enables `:::` directives for callouts.
--   **Steps:** Enables the `:::steps` component.
--   **Slug & Autolink Headings:** Automatically adds `id`s to headings and links them.
+- **GFM (GitHub Flavored Markdown):** Adds support for tables, strikethroughs, etc.
+- **Frontmatter:** Parses the YAML frontmatter from your files.
+- **Code Block Titles:** Adds titles to code blocks.
+- **Callouts:** Enables `:::` directives for callouts.
+- **Steps:** Enables the `:::steps` component.
+- **Slug & Autolink Headings:** Automatically adds `id`s to headings and links them.
 
 ### Customizing Plugins
 
 You can add your own Remark or Rehype plugins by modifying the `options` object in `next.config.ts`.
 
 ```ts [next.config.ts]
-import createMDX from '@next/mdx';
-import remarkToc from 'remark-toc'; // Example: adding a TOC plugin
+import createMDX from "@next/mdx";
+import remarkToc from "remark-toc"; // Example: adding a TOC plugin
 
 const withMDX = createMDX({
   options: {

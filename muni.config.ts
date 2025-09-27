@@ -1,5 +1,10 @@
 const muniConfig = {
   title: "Muni",
+  version: "1.0.0",
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/your-username/muni-docs" },
+    { title: "Changelog", href: "/changelog" },
+  ],
   navigation: [
     {
       title: "Introduction",
@@ -10,8 +15,8 @@ const muniConfig = {
       slug: "getting-started",
     },
     {
-        title: "Project Structure",
-        slug: "project-structure",
+      title: "Project Structure",
+      slug: "project-structure",
     },
     {
       title: "Guides",

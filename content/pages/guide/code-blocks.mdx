@@ -171,28 +171,49 @@ Use the `// [!include]` directive. The `~` character is an alias for your projec
 
 For large files, you can define specific regions to include using `// [!region name]` and `// [!endregion name]`.
 
-**Source File (`example.ts`):**
+**Source File (`~/content/snippets/range-include-example.ts`):**
 
 ```ts
-// [!region setup]
-import { createClient } from "./client";
-const client = createClient();
-// [!endregion setup]
+// [!region import]
+import { createPublicClient, http } from 'viem'
+import { mainnet } from 'viem/chains'
+// [!endregion import]
 
-// [!region logic]
-async function run() {
-  const data = await client.fetch();
-  return data;
+// [!region client]
+export const client = createPublicClient({
+  chain: mainnet,
+  transport: http(),
+})
+// [!endregion client]
+
+// [!region usage]
+async function getBlockNumber() {
+  const blockNumber = await client.getBlockNumber()
+  console.log(blockNumber)
 }
-// [!endregion logic]
+// [!endregion usage]
 ```
 
 **MDX Usage:**
 
+This MDX code...
+
 ````mdx
 ```ts
-// [!include ~/content/snippets/example.ts:setup]
+// [!include ~/content/snippets/range-include-example.ts:import]
+// [!include ~/content/snippets/range-include-example.ts:client]
 
-// [!include ~/content/snippets/example.ts:logic]
+// [!include ~/content/snippets/range-include-example.ts:usage]
 ```
 ````
+
+**Output:**
+
+...will render this output:
+
+```ts
+// [!include ~/content/snippets/range-include-example.ts:import]
+// [!include ~/content/snippets/range-include-example.ts:client]
+
+// [!include ~/content/snippets/range-include-example.ts:usage]
+```

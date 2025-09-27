@@ -5,6 +5,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { DocsPagination } from "@/components/navigation-components/docs-pagination";
 import { TableOfContents } from "@/components/navigation-components/table-of-contents";
 import { SearchComp } from "@/components/search";
+import muniConfig from "@/muni.config";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,11 +16,35 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex justify-between gap-5 w-full">
             <SearchComp />
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-2 py-1 bg-muted/50 rounded-md">
-                <span className="text-xs font-mono text-muted-foreground">
-                  v
-                </span>
-                <span className="text-xs font-mono font-semibold">4.0.0</span>
+              <div className="flex items-center space-x-3 px-2 py-1 bg-muted/50 rounded-md">
+                {muniConfig.version && (
+                  <span className="text-sm font-semibold">
+                    {muniConfig.version}
+                  </span>
+                )}
+
+                {muniConfig.version &&
+                  muniConfig.headingLinks &&
+                  muniConfig.headingLinks.length > 0 && (
+                    <div className="h-4 w-px bg-border/60" />
+                  )}
+
+                {muniConfig.headingLinks &&
+                  muniConfig.headingLinks.length > 0 && (
+                    <div className="flex items-center space-x-3">
+                      {muniConfig.headingLinks.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm hover:underline"
+                        >
+                          {link.title}
+                        </a>
+                      ))}
+                    </div>
+                  )}
               </div>
               <ThemeToggle />
             </div>
