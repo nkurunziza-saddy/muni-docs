@@ -19,7 +19,7 @@ export function CodeGroup({ children }: { children: ReactElement<any>[] }) {
 
   return (
     <TabsPrimitive.Root
-      className={cn("not-prose border border-input mb-6")}
+      className={cn("not-prose border border-input rounded mb-6")}
       defaultValue={tabs[0]?.tabTitle}
     >
       <TabsPrimitive.TabsList

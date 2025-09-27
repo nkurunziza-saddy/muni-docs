@@ -2,7 +2,7 @@
 
 .shiki {
   background-color: var(--shiki-light-bg);
-  @apply rounded-sm text-sm;
+  @apply text-sm;
 }
 
 .shiki,
@@ -13,28 +13,20 @@
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-html.dark .shiki {
+html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
+  .shiki {
   background-color: var(--shiki-dark-bg) !important;
 }
 
-html.dark .shiki,
-html.dark .shiki span {
+html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
+  .shiki,
+html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
+  .shiki
+  span {
   color: var(--shiki-dark) !important;
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
-}
-
-:root {
-  --sh-bg: var(--shiki-light-bg);
-  --sh-fg: var(--shiki-light);
-  --sh-radius: var(--radius-md, 0.5rem);
-}
-
-.dark {
-  --sh-bg: var(--shiki-dark-bg);
-  --sh-fg: var(--shiki-dark);
-  --sh-radius: var(--radius-md, 0.5rem);
 }
 
 .shiki.has-diff .line.diff {

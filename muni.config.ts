@@ -3,7 +3,7 @@ const muniConfig = {
   version: "1.0.0",
   showFrontmatterMeta: true,
   headingLinks: [
-    { title: "GitHub", href: "https://github.com/your-username/muni-docs" },
+    { title: "GitHub", href: "https://github.com/nkurunziza-saddy/muni-docs" },
     { title: "Changelog", href: "/changelog" },
   ],
   navigation: [
