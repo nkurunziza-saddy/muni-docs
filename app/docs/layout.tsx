@@ -4,7 +4,7 @@ import { SidebarLeft } from "@/components/navigation-components/sidebar-left";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DocsPagination } from "@/components/navigation-components/docs-pagination";
 import { TableOfContents } from "@/components/navigation-components/table-of-contents";
-import { SearchComp } from "@/components/search";
+import { SearchComp } from "@/components/search-component";
 import muniConfig from "@/muni.config";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <div className="flex items-center space-x-3 px-2 py-1 bg-muted/50 rounded-md">
                 {muniConfig.version && (
                   <span className="text-sm font-semibold">
-                    {muniConfig.version}
+                    v{muniConfig.version}
                   </span>
                 )}
 

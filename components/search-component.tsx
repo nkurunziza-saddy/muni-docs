@@ -1,13 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  ArrowUpDown,
-  CornerDownLeft,
-  Search,
-  SearchIcon,
-  X,
-} from "lucide-react";
+import { ArrowUpDown, CornerDownLeft, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -17,7 +11,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { type SearchResult, searchService } from "@/lib/search-service";
 import { cn } from "@/lib/utils";
@@ -113,9 +106,9 @@ export function SearchComp({ className }: SearchProps) {
     <div className={cn("w-auto", className)}>
       <Button
         onClick={() => setIsOpen(true)}
-        variant="outline"
+        variant="secondary"
         className={cn(
-          "h-9 w-40 justify-start rounded-md px-3 text-sm text-muted-foreground sm:w-64",
+          "h-10 w-40 justify-start rounded-md px-3 text-sm bg-muted/50 border text-muted-foreground sm:w-60",
           className
         )}
       >
@@ -127,7 +120,10 @@ export function SearchComp({ className }: SearchProps) {
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="p-0 max-w-2xl lg:max-w-3xl top-[10vh] translate-y-0" showCloseButton={false}>
+        <DialogContent
+          className="p-0 max-w-2xl lg:max-w-3xl top-[10vh] translate-y-0"
+          showCloseButton={false}
+        >
           <DialogTitle className="sr-only">Search Documentation</DialogTitle>
           <div className="flex items-center border-b border-border px-3">
             <Search className="h-5 w-5 text-muted-foreground mr-3" />
