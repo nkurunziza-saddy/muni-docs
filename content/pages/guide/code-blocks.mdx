@@ -29,6 +29,38 @@ function MyComponent() {
 }
 ```
 
+### Code Group
+````mdx
+:::code-group
+
+```js [index.js]
+console.log("Javascript is cool!");
+```
+
+
+```ts [index.ts]
+console.log("No Typescript is!");
+```
+
+:::
+````
+
+
+**Result**
+
+:::code-group
+
+```js [index.js]
+console.log("Javascript is cool!");
+```
+
+
+```ts [index.ts]
+console.log("No Typescript is!");
+```
+
+:::
+
 ## Line and Word Annotations
 
 You can draw attention to specific parts of your code using special comment directives.
@@ -202,3 +234,5 @@ This MDX code...
 
 // [!include ~/content/snippets/range-include-example.ts:usage]
 ```
+
+

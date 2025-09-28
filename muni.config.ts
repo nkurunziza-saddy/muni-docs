@@ -24,9 +24,10 @@ const muniConfig = {
       slug: "guide/index",
       items: [
         { title: "Writing Content", slug: "guide/writing-content" },
-        { title: "Advanced Code Blocks", slug: "guide/code-blocks" },
+        { title: "Code Blocks", slug: "guide/code-blocks" },
         { title: "Using Components", slug: "guide/using-components" },
         { title: "Creating Plugins", slug: "guide/creating-plugins" },
+        { title: "Styling", slug: "guide/styling" },
       ],
     },
     {
@@ -35,7 +36,7 @@ const muniConfig = {
       items: [
         { title: "Configuration", slug: "api/configuration" },
         { title: "Frontmatter", slug: "api/frontmatter" },
-        { title: "Built-in Components", slug: "api/built-in-components" },
+        { title: "Built-in components", slug: "api/built-in-components" },
       ],
     },
   ],

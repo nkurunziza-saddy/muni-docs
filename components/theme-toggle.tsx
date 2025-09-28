@@ -10,6 +10,8 @@ import {
   LeafIcon,
   MinusIcon,
   WavesIcon,
+  SnowflakeIcon,
+  CircleIcon,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -25,7 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { THEME_FAMILIES, ThemeFamily } from "./providers/theme-provider";
+import { THEME_FAMILIES } from "./providers/theme-provider";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -77,13 +79,13 @@ export function ThemeToggle() {
     {
       id: "vanilla",
       name: "Vanilla",
-      icon: PaletteIcon,
+      icon: CircleIcon,
       description: "Just monochramatic",
     },
     {
       id: "arctic",
       name: "Arctic Professional",
-      icon: PaletteIcon,
+      icon: SnowflakeIcon,
       description: "Clean blue accents",
     },
     {
@@ -149,8 +151,7 @@ export function ThemeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <PaletteIcon className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>

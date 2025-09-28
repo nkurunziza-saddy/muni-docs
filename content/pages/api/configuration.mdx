@@ -19,6 +19,7 @@ This is the primary configuration file for your site's content and navigation. I
 interface MuniConfig {
   title: string;
   version?: string;
+  showFrontmatterMeta?: boolean;
   headingLinks?: { title: string; href: string }[];
   navigation: NavigationItem[];
 }
@@ -40,6 +41,12 @@ interface NavigationItem {
 - **Type:** `string` (optional)
 - **Description:** A version string for your project, which is displayed in the site header.
 
+### `showFrontmatterMeta`
+
+- **Type:** `boolean` (optional)
+- **Default:** `false`
+- **Description:** Whether to display the author and date from the frontmatter at the bottom of each page.
+
 ### `headingLinks`
 
 - **Type:** `{ title: string; href: string }[]` (optional)
@@ -60,11 +67,12 @@ Each `NavigationItem` has the following properties:
 
 ```ts [muni.config.ts]
 export const muniConfig = {
-  title: "My Awesome Project",
+  title: "Muni",
   version: "1.0.0",
+  showFrontmatterMeta: true,
   headingLinks: [
-    { title: "GitHub", href: "https://github.com/your-repo" },
-    { title: "Changelog", href: "/changelog" },
+    { title: "GitHub", href: "https://github.com/nkurunziza-saddy/muni-docs" },
+    { title: "Twitter", href: "https://twitter.com/nk_saddy" },
   ],
   navigation: [
     {
