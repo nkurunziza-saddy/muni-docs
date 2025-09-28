@@ -78,11 +78,23 @@ export async function generateMetadata({
 
   const currentPage = findPage(muniConfig.navigation, slug);
 
+  const pageTitle = currentPage
+    ? `${currentPage.title} | ${muniConfig.title}`
+    : muniConfig.title;
+  const pageDescription = `Documentation for ${currentPage?.title || "Muni"}`;
+
   return {
-    title: currentPage
-      ? `${currentPage.title} - ${muniConfig.title}`
-      : muniConfig.title,
-    description: `Documentation for ${currentPage?.title || "Muni"}`,
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+    },
   };
 }
 

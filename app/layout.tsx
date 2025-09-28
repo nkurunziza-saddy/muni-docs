@@ -21,9 +21,28 @@ const geistMono = localFont({
   adjustFontFallback: false,
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Muni Docs",
-  description: "Documentation for Muni",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Muni Docs",
+    template: "%s | Muni Docs",
+  },
+  description: "A minimal documentation app",
+  openGraph: {
+    title: "Muni Docs",
+    description: "A minimal documentation app",
+    url: siteUrl,
+    siteName: "Muni Docs",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Muni Docs",
+    description: "A minimal documentation app",
+  },
 };
 
 export default function RootLayout({

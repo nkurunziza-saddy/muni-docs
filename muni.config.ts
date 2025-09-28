@@ -4,7 +4,7 @@ const muniConfig = {
   showFrontmatterMeta: true,
   headingLinks: [
     { title: "GitHub", href: "https://github.com/nkurunziza-saddy/muni-docs" },
-    { title: "Changelog", href: "/changelog" },
+    { title: "Twitter", href: "https://twitter.com/nk_saddy" },
   ],
   navigation: [
     {
