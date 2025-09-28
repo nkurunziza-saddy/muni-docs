@@ -24,12 +24,14 @@ const geistMono = localFont({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
+  manifest: "/site.webmanifest",
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "Muni Docs",
-    template: "%s | Muni Docs",
-  },
   description: "A minimal documentation app",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/icon-192.png",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Muni Docs",
     description: "A minimal documentation app",

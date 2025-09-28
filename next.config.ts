@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
-
 import createMDX from "@next/mdx";
+//@ts-expect-error
+import withPWA from "next-pwa";
 
 // Essential remark plugins
 import remarkGfm from "remark-gfm";
@@ -39,6 +40,13 @@ import { rehypeInlineShiki } from "./lib/plugins/rehype/inline-shiki";
 import { rehypeShikiDisplayNotation } from "./lib/plugins/rehype/display-shiki-notation";
 import { rehypePreLineNumbers } from "./lib/plugins/rehype/rehype-pre-line-numbers";
 import { remarkSpace } from "./lib/plugins/remark/space";
+
+const pwaConfig = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -122,4 +130,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default pwaConfig(withMDX(nextConfig)) as NextConfig;

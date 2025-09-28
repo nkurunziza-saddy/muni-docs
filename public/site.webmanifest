@@ -1,0 +1,35 @@
+{
+  "name": "Muni Docs",
+  "short_name": "Muni",
+  "description": "Documentation for Muni - A Next-Gen Docs Engine",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#18181b",
+  "theme_color": "#18181b",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Getting Started",
+      "short_name": "Start",
+      "description": "Learn how to set up and use Muni",
+      "url": "/docs/getting-started"
+    },
+    {
+      "name": "API Reference",
+      "short_name": "API",
+      "description": "Explore the technical API reference",
+      "url": "/docs/api"
+    }
+  ]
+}
