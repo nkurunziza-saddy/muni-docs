@@ -11,8 +11,10 @@ import muniConfig from "@/muni.config";
 import Link from "next/link";
 import React, { useState } from "react";
 import { NavSection } from "./nav-section";
+import { cn } from "@/lib/utils";
+import { ScrollArea } from "../ui/scroll-area";
 
-export function SidebarLeft() {
+export function SidebarLeft({ className }: { className?: string }) {
   const initialOpenState = muniConfig.navigation.reduce((acc, item) => {
     if (item.items && item.items.length > 0) {
       acc[item.slug] = true;
@@ -30,17 +32,22 @@ export function SidebarLeft() {
   };
 
   return (
-    <Sidebar className="bg-sidebar backdrop-blur-sm border-r">
+    <Sidebar
+      className={cn(
+        "custom-scrollbar backdrop-blur-sm border-r ml-auto",
+        className
+      )}
+    >
       <SidebarHeader className="h-16 border-b border-border/40 px-6">
         <Link href={"/"} className="my-auto font-semibold text-lg">
           {muniConfig.title ?? "Muni"}
         </Link>
       </SidebarHeader>
       <SidebarContent className="px-3">
-        <SidebarMenu className="py-4 flex flex-col gap-2.5">
-          {muniConfig.navigation.map((item) => (
+        <SidebarMenu className=" py-4 flex flex-col gap-2.5">
+          {muniConfig.navigation.map((item, i) => (
             <NavSection
-              key={item.slug}
+              key={item.slug + i.toString()}
               item={item}
               isOpen={!!openSections[item.slug]}
               onToggle={() => toggleSection(item.slug)}
