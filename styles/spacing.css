@@ -37,6 +37,10 @@
     }
   }
 
+  & > header {
+    margin-bottom: 2rem;
+  }
+
   /* Paragraph and text spacing */
   & p {
     margin-bottom: 1rem;

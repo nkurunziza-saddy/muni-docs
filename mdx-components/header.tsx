@@ -4,5 +4,10 @@ import type { DetailedHTMLProps, HTMLAttributes } from "react";
 export function Header(
   props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 ) {
-  return <header {...props} className={cn("", props.className)} />;
+  return (
+    <header
+      {...props}
+      className={cn("border-b border-b-input/85 pb-4", props.className)}
+    />
+  );
 }
