@@ -11,9 +11,12 @@ export function remarkCode() {
         (parent as ContainerDirective).name !== "steps"
       )
         return;
-      const match = node.meta?.match(/\((.*?)\)/);
+      const titleRegex = /(?:\((.*?)\))|(?:filename=\"(.*?)\")/;
+      const match = node.meta?.match(titleRegex);
+
       if (match) {
-        const title = match[1];
+        const title = match[1] || match[2];
+        if (!title) return;
         node.meta = node.meta?.replace(match[0], `title="${title}"`);
       }
     });

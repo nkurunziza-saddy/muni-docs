@@ -13,10 +13,10 @@ Muni provides a set of powerful components that are globally available in all yo
 
 Callouts are used to highlight a block of text. They are created using the `:::` container directive.
 
--   **Directive:** `:::[type]`
--   **Supported Types:** `info`, `danger`, `success`, `warning`
+- **Directive:** `:::[type]`
+- **Supported Types:** `info`, `danger`, `success`, `warning`
 
-````mdx
+```mdx
 :::info[Optional Title]
 This is an informational callout.
 :::
@@ -24,15 +24,15 @@ This is an informational callout.
 :::danger
 This is a danger callout.
 :::
-````
+```
 
 ## Steps
 
 The `steps` component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any `h4` heading within it.
 
--   **Directive:** `:::steps`
+- **Directive:** `:::steps`
 
-````mdx
+```mdx
 :::steps
 
 #### Step 1: Do this first
@@ -44,13 +44,13 @@ Content for the first step.
 Content for the second step.
 
 :::
-````
+```
 
 ## CodeGroup
 
 A component for displaying multiple code blocks in a tabbed view.
 
--   **Directive:** `:::code-group`
+- **Directive:** `:::code-group`
 
 ````mdx
 :::code-group
@@ -70,13 +70,13 @@ const message = "Hello";
 
 This component is automatically added to every code block and provides a simple way for users to copy the code to their clipboard.
 
--   **Usage:** Applied automatically. No directive needed.
+- **Usage:** Applied automatically. No directive needed.
 
 ## Aside
 
 The `Aside` component renders content in a right-hand sidebar on larger screens, useful for showing supplementary information, examples, or API details alongside the main content.
 
--   **Component:** `<Aside>`
+- **Component:** `<Aside>`
 
 ````mdx
 # Main Content Area
@@ -85,13 +85,13 @@ This is the primary content of the page. The `Aside` component will appear next 
 
 <Aside>
 
-  #### Supplementary Info
+#### Supplementary Info
 
-  This content is displayed in the right sidebar. It can contain code blocks, text, and other components.
+This content is displayed in the right sidebar. It can contain code blocks, text, and other components.
 
-  ```ts
-  const example = "Hello, Aside!";
-  ```
+```ts
+const example = "Hello, Aside!";
+```
 
 </Aside>
 ````

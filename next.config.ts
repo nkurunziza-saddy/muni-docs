@@ -32,7 +32,6 @@ import { remarkCodeGroup } from "./lib/plugins/remark/code-group";
 import { remarkCallout } from "./lib/plugins/remark/callout";
 import { remarkSteps } from "./lib/plugins/remark/steps";
 import { remarkSubheading } from "./lib/plugins/remark/subheading";
-import { remarkFilename } from "./lib/plugins/remark/filename";
 import { remarkStrongBlock } from "./lib/plugins/remark/strong-block";
 import { transformerLineNumbers } from "./lib/plugins/transformers/transformer-line-numbers";
 import { transformerTagline } from "./lib/plugins/transformers/transformer-tagline";
@@ -66,7 +65,6 @@ const withMDX = createMDX({
       remarkCallout,
       remarkSteps,
       remarkSubheading,
-      remarkFilename,
       remarkSpace,
       remarkStrongBlock,
     ],

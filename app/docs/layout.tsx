@@ -4,6 +4,7 @@ import { DocsPagination } from "@/components/navigation-components/docs-paginati
 import { TableOfContents } from "@/components/navigation-components/table-of-contents";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DocsHeader } from "@/components/navigation-components/docs-header";
+import { LLMButton } from "@/components/llm-button";
 
 export default function DocsLayout({
   children,
@@ -23,14 +24,15 @@ export default function DocsLayout({
 
         <div>
           <DocsHeader />
-          <main className="relative py-8 px-6">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-[1fr_256px]">
+          <main className="relative py-8 px-12 pt-12">
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 lg:grid-cols-[1fr_280px]">
               <div className="min-w-0">
                 {children}
                 <DocsPagination />
               </div>
               <div className="hidden lg:block">
-                <div className="sticky top-24 space-y-4">
+                <div className="sticky top-24 space-y-3">
+                  <LLMButton />
                   <TableOfContents />
                 </div>
               </div>

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useRouter } from "next/navigation";
-import { type SearchResult, searchService } from "@/lib/search-service";
+import { type SearchResult, searchService } from "@/lib/actions/search-service";
 import { cn } from "@/lib/utils";
 
 interface SearchProps {
