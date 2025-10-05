@@ -1,0 +1,56 @@
+---
+title: "Alert Dialog"
+description: "A modal dialog that interrupts the user with important content and expects a response."
+author: "Muni Team"
+date: "2025-09-28"
+---
+
+import { AlertDialogComponent } from '@/components/snippets/alert-dialog';
+
+# Alert Dialog [A modal dialog that interrupts the user with important content and expects a response.]
+
+<CodePreviewBlock>
+<AlertDialogComponent />
+
+```tsx
+// [!include ~/components/snippets/alert-dialog.tsx:usage]
+```
+
+</CodePreviewBlock>
+
+## Installation
+
+<Tabs>
+  <TabsItem value="cli" label="CLI">
+    :::code-group 
+
+    ```bash [npm] 
+    npx shadcn@latest add alert-dialog 
+    ``` 
+    ```bash [pnpm] 
+    pnpm dlx shadcn@latest add alert-dialog 
+    ``` 
+    :::
+  </TabsItem>
+  <TabsItem value="manual" label="MANUAL">
+    ```tsx 
+    // [!include ~/components/base-ui/alert-dialog.tsx] 
+    ```
+  </TabsItem>
+</Tabs>
+
+## Anatomy
+
+### Import
+
+```tsx
+// [!include ~/components/snippets/alert-dialog.tsx:import]
+```
+
+### Structure
+
+This is the basic structure of the component.
+
+```tsx
+// [!include ~/components/snippets/alert-dialog.tsx:structure]
+```

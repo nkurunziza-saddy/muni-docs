@@ -1,0 +1,55 @@
+---
+title: "Avatar"
+description: "An image element with a fallback for representing a user."
+author: "Muni Team"
+date: "2025-09-28"
+---
+
+import { AvatarComponent } from '@/components/snippets/avatar';
+
+# Avatar [An image element with a fallback for representing a user.]
+
+<CodePreviewBlock>
+<AvatarComponent />
+
+```tsx
+// [!include ~/components/snippets/avatar.tsx:usage]
+```
+
+</CodePreviewBlock>
+
+## Installation
+
+<Tabs>
+  <TabsItem value="cli" label="CLI">
+    :::code-group
+  ```bash [npm]
+  npx shadcn@latest add avatar
+  ```
+  ```bash [pnpm]
+  pnpm dlx shadcn@latest add avatar
+  ```
+:::
+  </TabsItem>
+  <TabsItem value="manual" label="MANUAL">
+    ```tsx 
+    // [!include ~/components/base-ui/avatar.tsx] 
+    ```
+  </TabsItem>
+</Tabs>
+
+## Anatomy
+
+### Import
+
+```tsx
+// [!include ~/components/snippets/avatar.tsx:import]
+```
+
+### Structure
+
+This is the basic structure of the component.
+
+```tsx
+// [!include ~/components/snippets/avatar.tsx:structure]
+```

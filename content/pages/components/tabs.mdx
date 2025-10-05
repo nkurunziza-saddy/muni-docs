@@ -1,0 +1,56 @@
+---
+title: "Tabs"
+description: "A set of layered sections of content, known as tab panels, that are displayed one at a time."
+author: "Muni Team"
+date: "2025-09-28"
+---
+
+import { TabsComponent } from "@/components/snippets/tabs";
+
+# Tabs [A set of layered sections of content, known as tab panels, that are displayed one at a time.]
+
+<CodePreviewBlock>
+<TabsComponent />
+
+```tsx
+// [!include ~/components/snippets/tabs.tsx:usage]
+```
+
+</CodePreviewBlock>
+
+## Installation
+
+<Tabs>
+  <TabsItem value="cli" label="CLI">
+    :::code-group 
+
+    ```bash [npm] 
+    npx shadcn@latest add tabs 
+    ``` 
+    ```bash [pnpm] 
+    pnpm dlx shadcn@latest add tabs 
+    ``` 
+    :::
+  </TabsItem>
+  <TabsItem value="manual" label="MANUAL">
+    ```tsx 
+    // [!include ~/components/base-ui/tabs.tsx] 
+    ```
+  </TabsItem>
+</Tabs>
+
+## Anatomy
+
+### Import
+
+```tsx
+// [!include ~/components/snippets/tabs.tsx:import]
+```
+
+### Structure
+
+This is the basic structure of the component.
+
+```tsx
+// [!include ~/components/snippets/tabs.tsx:structure]
+```

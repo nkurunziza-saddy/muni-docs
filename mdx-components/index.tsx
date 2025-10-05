@@ -34,12 +34,17 @@ import { CodeGroup } from "./code-group";
 import { CodeBlock } from "./code-block";
 import { Steps } from "./steps";
 import { cn } from "@/lib/utils";
+import { CodePreviewBlock } from "@/content/snippets/code-preview-block";
+import { Tabs, TabsItem } from "@/content/snippets/tabs";
 
 const mdxComponents: MDXComponents = {
   Callout,
   CodeGroup,
+  CodePreviewBlock,
   Steps,
   CodeBlock,
+  Tabs,
+  TabsItem,
   a: Anchor as any,
   aside: Aside,
   blockquote: Blockquote,
@@ -70,7 +75,7 @@ const mdxComponents: MDXComponents = {
   th: TableHeader,
   tr: TableRow,
   ul: (props) => <List ordered={false} {...props} />,
-  Space: ({ size = "md", children, className }: any) => (
+  Space: ({ size = "md", className }: any) => (
     <div
       className={cn(
         "block",
@@ -83,9 +88,7 @@ const mdxComponents: MDXComponents = {
       )}
       data-component="space"
       data-spacing={size}
-    >
-      {children}
-    </div>
+    />
   ),
 };
 

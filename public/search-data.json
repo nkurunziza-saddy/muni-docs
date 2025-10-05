@@ -2,14 +2,14 @@
   {
     "id": "api/built-in-components",
     "title": "Built-in Components Reference",
-    "content": "Built-in Components [The Toolbox] Muni provides a set of powerful components that are globally available in all your MDX files. These are designed to help you create rich, structured content without needing to import them. Callouts Callouts are used to highlight a block of text. They are created using the  container directive. -   Directive:  -   Supported Types: , , ,  stepsh4:::steps CodeGroup A component for displaying multiple code blocks in a tabbed view. -   Directive:  ts [TypeScript] const message: string = \"Hello\"; js [JavaScript] const message = \"Hello\"; Aside<Aside>",
+    "content": "Built-in Components [The Toolbox] Muni provides a set of powerful components that are globally available in all your MDX files. These are designed to help you create rich, structured content without needing to import them. Callouts Callouts are used to highlight a block of text. They are created using the  container directive. - Directive:  - Supported Types: , , ,  Steps The  component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any  heading within it. - Directive:  CodeGroup A component for displaying multiple code blocks in a tabbed view. - Directive:  ts [TypeScript] const message: string = \"Hello\"; js [JavaScript] const message = \"Hello\"; Aside<Aside>",
     "url": "/docs/api/built-in-components",
     "tags": []
   },
   {
     "id": "api/configuration",
     "title": "Configuration Reference",
-    "content": "Configuration [The Control Panel] Configuration for a Muni project is handled in two main places:  for site-specific settings like navigation, and  for the underlying MDX and Next.js behavior. This is the primary configuration file for your site's content and navigation. It exports a  object.  Interface - Type:  - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header. - Type:  (optional) - Description: A version string for your project, which is displayed in the site header. - Type:  (optional) - Description: An array of link objects to be displayed in the site header, next to the version. - Type:  - Description: An array of objects that defines the structure of your sidebar navigation. Each  has the following properties: -  (string): The text displayed in the navigation sidebar. -  (string): The URL slug for the page. This must match the file path in  (without the  extension). For the homepage, use . -  (optional ): An optional array of nested navigation items to create collapsible sections in the sidebar. Example Configuration This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set of Remark and Rehype plugins to add advanced features to your Markdown. Default Plugins Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethroughs, etc. - Frontmatter: Parses the YAML frontmatter from your files. - Code Block Titles: Adds titles to code blocks. - Callouts: Enables  directives for callouts. - Steps: Enables the  component. - Slug & Autolink Headings: Automatically adds s to headings and links them. Customizing Plugins You can add your own Remark or Rehype plugins by modifying the  object in .",
+    "content": "Configuration [The Control Panel] Configuration for a Muni project is handled in two main places:  for site-specific settings like navigation, and  for the underlying MDX and Next.js behavior. This is the primary configuration file for your site's content and navigation. It exports a  object.  Interface - Type:  - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header. - Type:  (optional) - Description: A version string for your project, which is displayed in the site header. - Type:  (optional) - Default:  - Description: Whether to display the author and date from the frontmatter at the bottom of each page. - Type:  (optional) - Description: An array of link objects to be displayed in the site header, next to the version. - Type:  - Description: An array of objects that defines the structure of your sidebar navigation. Each  has the following properties: -  (string): The text displayed in the navigation sidebar. -  (string): The URL slug for the page. This must match the file path in  (without the  extension). For the homepage, use . -  (optional ): An optional array of nested navigation items to create collapsible sections in the sidebar. Example Configuration This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set of Remark and Rehype plugins to add advanced features to your Markdown. Default Plugins Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethroughs, etc. - Frontmatter: Parses the YAML frontmatter from your files. - Code Block Titles: Adds titles to code blocks. - Callouts: Enables  directives for callouts. - Steps: Enables the  component. - Slug & Autolink Headings: Automatically adds s to headings and links them. Customizing Plugins You can add your own Remark or Rehype plugins by modifying the  object in .",
     "url": "/docs/api/configuration",
     "tags": []
   },
@@ -28,6 +28,216 @@
     "tags": []
   },
   {
+    "id": "components/accordion",
+    "title": "Accordion",
+    "content": "import { AccordionComponent } from '@/components/snippets/accordion'; Accordion [A vertically stacked set of interactive headings that each reveal a section of content.] <CodePreviewBlock> <AccordionComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/accordion",
+    "tags": []
+  },
+  {
+    "id": "components/alert-dialog",
+    "title": "Alert Dialog",
+    "content": "import { AlertDialogComponent } from '@/components/snippets/alert-dialog'; Alert Dialog [A modal dialog that interrupts the user with important content and expects a response.] <CodePreviewBlock> <AlertDialogComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/alert-dialog",
+    "tags": []
+  },
+  {
+    "id": "components/alert",
+    "title": "Alert",
+    "content": "import { AlertComponent } from '@/components/snippets/alert'; Alert [Displays a callout for user attention.] <CodePreviewBlock> <AlertComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/alert",
+    "tags": []
+  },
+  {
+    "id": "components/autocomplete",
+    "title": "Autocomplete",
+    "content": "import { AutocompleteComponent, AutocompleteGrouped, AutocompleteWithIndicator, AutocompleteMultiline, AutocompleteDisabled } from '@/components/snippets/autocomplete'; Autocomplete [An input field that provides suggestions as the user types.] <CodePreviewBlock> <AutocompleteComponent /> </CodePreviewBlock> Examples Grouped <CodePreviewBlock>   <AutocompleteGrouped /> </CodePreviewBlock> With Indicator <CodePreviewBlock>   <AutocompleteWithIndicator /> </CodePreviewBlock> Multiline <CodePreviewBlock>   <AutocompleteMultiline /> </CodePreviewBlock> Disabled <CodePreviewBlock>   <AutocompleteDisabled /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/autocomplete",
+    "tags": []
+  },
+  {
+    "id": "components/avatar",
+    "title": "Avatar",
+    "content": "import { AvatarComponent } from '@/components/snippets/avatar'; Avatar [An image element with a fallback for representing a user.] <CodePreviewBlock> <AvatarComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group       :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/avatar",
+    "tags": []
+  },
+  {
+    "id": "components/button",
+    "title": "Button",
+    "content": "import {   ButtonComponent,   ButtonSecondary,   ButtonOutline,   ButtonGhost,   ButtonDestructive,   ButtonSmall,   ButtonIcon,   ButtonLink,   ButtonDisabled,   ButtonWithIcon, } from \"@/components/snippets/button\"; Button [A button component with different variants.] <CodePreviewBlock> <ButtonComponent /> </CodePreviewBlock> Examples Secondary <CodePreviewBlock>   <ButtonSecondary /> </CodePreviewBlock> Outline <CodePreviewBlock>   <ButtonOutline /> </CodePreviewBlock> Ghost <CodePreviewBlock>   <ButtonGhost /> </CodePreviewBlock> Destructive <CodePreviewBlock>   <ButtonDestructive /> </CodePreviewBlock> Small <CodePreviewBlock>   <ButtonSmall /> </CodePreviewBlock> Icon <CodePreviewBlock>   <ButtonIcon /> </CodePreviewBlock> With icon <CodePreviewBlock>   <ButtonWithIcon /> </CodePreviewBlock> Link <CodePreviewBlock>   <ButtonLink /> </CodePreviewBlock> Disabled <CodePreviewBlock>   <ButtonDisabled /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/button",
+    "tags": []
+  },
+  {
+    "id": "components/card",
+    "title": "Card",
+    "content": "import { CardComponent } from \"@/components/snippets/card\"; Card [A container for content with a header, content, and footer.] <CodePreviewBlock> <CardComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/card",
+    "tags": []
+  },
+  {
+    "id": "components/checkbox",
+    "title": "Checkbox",
+    "content": "import { CheckboxComponent } from \"@/components/snippets/checkbox\"; Checkbox [A control that allows the user to select one or more options.] <CodePreviewBlock> <CheckboxComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">   :::code-group :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/checkbox",
+    "tags": []
+  },
+  {
+    "id": "components/collapsible",
+    "title": "Collapsible",
+    "content": "import { CollapsibleComponent } from '@/components/snippets/collapsible'; Collapsible [A component that can be expanded or collapsed.] <CodePreviewBlock> <CollapsibleComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/collapsible",
+    "tags": []
+  },
+  {
+    "id": "components/combobox",
+    "title": "Combobox",
+    "content": "import { ComboboxComponent, ComboboxSmall, ComboboxGrouped, ComboboxWithoutIndicator } from '@/components/snippets/combobox'; Combobox [An autocomplete component that combines a text input with a dropdown list.] <CodePreviewBlock> <ComboboxComponent /> </CodePreviewBlock> Examples Small <CodePreviewBlock>   <ComboboxSmall /> </CodePreviewBlock> Grouped <CodePreviewBlock>   <ComboboxGrouped /> </CodePreviewBlock> Without Indicator <CodePreviewBlock>   <ComboboxWithoutIndicator /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/combobox",
+    "tags": []
+  },
+  {
+    "id": "components/context-menu",
+    "title": "Context Menu",
+    "content": "import { ContextMenuComponent } from '@/components/snippets/context-menu'; Context Menu [A menu that appears upon right-clicking an element.] <CodePreviewBlock> <ContextMenuComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/context-menu",
+    "tags": []
+  },
+  {
+    "id": "components/dialog",
+    "title": "Dialog",
+    "content": "import { DialogComponent } from '@/components/snippets/dialog'; Dialog [A window overlaid on either the primary window or another dialog window.] <CodePreviewBlock> <DialogComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/dialog",
+    "tags": []
+  },
+  {
+    "id": "components/dropdown",
+    "title": "Dropdown Menu",
+    "content": "import { DropdownComponent } from \"@/components/snippets/dropdown\"; Dropdown Menu [A menu that appears when a user clicks a trigger element.] <CodePreviewBlock> <DropdownComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/dropdown",
+    "tags": []
+  },
+  {
+    "id": "components/form",
+    "title": "Form",
+    "content": "import { FormComponent } from \"@/components/snippets/base-ui-form\"; Form [A component for building forms with validation.] <CodePreviewBlock> <FormComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group               :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import",
+    "url": "/docs/components/form",
+    "tags": []
+  },
+  {
+    "id": "components",
+    "title": "Components",
+    "content": "Components This section provides a detailed look at all the UI components available in this documentation. Each component page includes a live preview, installation instructions, and usage examples. <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">   <a href=\"/docs/components/accordion\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Accordion</h3>     <p class=\"text-sm text-muted-foreground\">A vertically stacked set of interactive headings that each reveal a section of content.</p>   </a>   <a href=\"/docs/components/alert\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Alert</h3>     <p class=\"text-sm text-muted-foreground\">Displays a callout for user attention.</p>   </a>   <a href=\"/docs/components/alert-dialog\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Alert Dialog</h3>     <p class=\"text-sm text-muted-foreground\">A modal dialog that interrupts the user with important content and expects a response.</p>   </a>   <a href=\"/docs/components/autocomplete\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Autocomplete</h3>     <p class=\"text-sm text-muted-foreground\">An input field that provides suggestions as the user types.</p>   </a>   <a href=\"/docs/components/avatar\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Avatar</h3>     <p class=\"text-sm text-muted-foreground\">An image element with a fallback for representing a user.</p>   </a>   <a href=\"/docs/components/button\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Button</h3>     <p class=\"text-sm text-muted-foreground\">A button component with different variants.</p>   </a>   <a href=\"/docs/components/card\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Card</h3>     <p class=\"text-sm text-muted-foreground\">A container for content with a header, content, and footer.</p>   </a>   <a href=\"/docs/components/checkbox\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Checkbox</h3>     <p class=\"text-sm text-muted-foreground\">A control that allows the user to select one or more options.</p>   </a>   <a href=\"/docs/components/collapsible\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Collapsible</h3>     <p class=\"text-sm text-muted-foreground\">A component that can be expanded or collapsed.</p>   </a>   <a href=\"/docs/components/combobox\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Combobox</h3>     <p class=\"text-sm text-muted-foreground\">An autocomplete component that combines a text input with a dropdown list.</p>   </a>   <a href=\"/docs/components/context-menu\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Context Menu</h3>     <p class=\"text-sm text-muted-foreground\">A menu that appears upon right-clicking an element.</p>   </a>   <a href=\"/docs/components/dialog\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Dialog</h3>     <p class=\"text-sm text-muted-foreground\">A window overlaid on either the primary window or another dialog window.</p>   </a>   <a href=\"/docs/components/dropdown\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Dropdown Menu</h3>     <p class=\"text-sm text-muted-foreground\">A menu that appears when a user clicks a trigger element.</p>   </a>   <a href=\"/docs/components/form\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Form</h3>     <p class=\"text-sm text-muted-foreground\">A component for building forms with validation.</p>   </a>   <a href=\"/docs/components/popover\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Popover</h3>     <p class=\"text-sm text-muted-foreground\">A pop-up that appears when a user clicks an element.</p>   </a>   <a href=\"/docs/components/preview-card\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Preview Card</h3>     <p class=\"text-sm text-muted-foreground\">A card that shows a preview on hover.</p>   </a>   <a href=\"/docs/components/progress\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Progress</h3>     <p class=\"text-sm text-muted-foreground\">A component to display progress of a task.</p>   </a>   <a href=\"/docs/components/radio-group\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Radio Group</h3>     <p class=\"text-sm text-muted-foreground\">A set of checkable buttons, where only one can be selected at a time.</p>   </a>   <a href=\"/docs/components/scroll-area\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Scroll Area</h3>     <p class=\"text-sm text-muted-foreground\">A scrollable area with a custom scrollbar.</p>   </a>   <a href=\"/docs/components/select\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Select</h3>     <p class=\"text-sm text-muted-foreground\">A control that allows users to select a value from a list.</p>   </a>   <a href=\"/docs/components/separator\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Separator</h3>     <p class=\"text-sm text-muted-foreground\">A visual separator between elements.</p>   </a>   <a href=\"/docs/components/slider\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Slider</h3>     <p class=\"text-sm text-muted-foreground\">A control that allows users to select a value from a range.</p>   </a>   <a href=\"/docs/components/switch\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Switch</h3>     <p class=\"text-sm text-muted-foreground\">A control that can be toggled on or off.</p>   </a>   <a href=\"/docs/components/tabs\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Tabs</h3>     <p class=\"text-sm text-muted-foreground\">A set of layered sections of content, known as tab panels, that are displayed one at a time.</p>   </a>   <a href=\"/docs/components/textarea\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Textarea</h3>     <p class=\"text-sm text-muted-foreground\">A multi-line text input control.</p>   </a>   <a href=\"/docs/components/toast\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Toast</h3>     <p class=\"text-sm text-muted-foreground\">A non-interactive, auto-expiring notification.</p>   </a>   <a href=\"/docs/components/toggle\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Toggle</h3>     <p class=\"text-sm text-muted-foreground\">A two-state button that can be either on or off.</p>   </a>   <a href=\"/docs/components/toolbar\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Toolbar</h3>     <p class=\"text-sm text-muted-foreground\">A container for grouping a set of controls.</p>   </a>   <a href=\"/docs/components/tooltip\" className=\"border p-4 rounded-lg hover:bg-accent\">     <h3 class=\"font-semibold text-lg mb-2\">Tooltip</h3>     <p class=\"text-sm text-muted-foreground\">A small pop-up that displays information when a user hovers over an element.</p>   </a> </div>",
+    "url": "/docs/components",
+    "tags": []
+  },
+  {
+    "id": "components/popover",
+    "title": "Popover",
+    "content": "import { PopoverComponent } from \"@/components/snippets/popover\"; Popover [A pop-up that appears when a user clicks an element.] <CodePreviewBlock> <PopoverComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/popover",
+    "tags": []
+  },
+  {
+    "id": "components/preview-card",
+    "title": "Preview Card",
+    "content": "import { PreviewCardComponent } from \"@/components/snippets/preview-card\"; Preview Card [A card that shows a preview on hover.] <CodePreviewBlock> <PreviewCardComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/preview-card",
+    "tags": []
+  },
+  {
+    "id": "components/progress",
+    "title": "Progress",
+    "content": "import { ProgressComponent } from \"@/components/snippets/progress\"; Progress [A component to display progress of a task.] <CodePreviewBlock> <ProgressComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/progress",
+    "tags": []
+  },
+  {
+    "id": "components/radio-group",
+    "title": "Radio Group",
+    "content": "import { RadioGroupComponent } from \"@/components/snippets/radio-group\"; Radio Group [A set of checkable buttons, where only one can be selected at a time.] <CodePreviewBlock> <RadioGroupComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/radio-group",
+    "tags": []
+  },
+  {
+    "id": "components/scroll-area",
+    "title": "Scroll Area",
+    "content": "import { ScrollAreaComponent } from \"@/components/snippets/scroll-area\"; Scroll Area [A scrollable area with a custom scrollbar.] <CodePreviewBlock> <ScrollAreaComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/scroll-area",
+    "tags": []
+  },
+  {
+    "id": "components/select",
+    "title": "Select",
+    "content": "import { SelectComponent } from '@/components/snippets/select'; Select [A control that allows users to select a value from a list.] <CodePreviewBlock> <SelectComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/select",
+    "tags": []
+  },
+  {
+    "id": "components/separator",
+    "title": "Separator",
+    "content": "import { SeparatorComponent } from '@/components/snippets/separator'; Separator [A visual separator between elements.] <CodePreviewBlock> <SeparatorComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/separator",
+    "tags": []
+  },
+  {
+    "id": "components/slider",
+    "title": "Slider",
+    "content": "import { SliderComponent } from \"@/components/snippets/slider\"; Slider [A control that allows users to select a value from a range.] <CodePreviewBlock> <SliderComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/slider",
+    "tags": []
+  },
+  {
+    "id": "components/switch",
+    "title": "Switch",
+    "content": "import { SwitchComponent } from \"@/components/snippets/switch\"; Switch [A control that can be toggled on or off.] <CodePreviewBlock> <SwitchComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/switch",
+    "tags": []
+  },
+  {
+    "id": "components/tabs",
+    "title": "Tabs",
+    "content": "import { TabsComponent } from \"@/components/snippets/tabs\"; Tabs [A set of layered sections of content, known as tab panels, that are displayed one at a time.] <CodePreviewBlock> <TabsComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/tabs",
+    "tags": []
+  },
+  {
+    "id": "components/textarea",
+    "title": "Textarea",
+    "content": "import { TextareaComponent } from \"@/components/snippets/textarea\"; Textarea [A multi-line text input control.] <CodePreviewBlock> <TextareaComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/textarea",
+    "tags": []
+  },
+  {
+    "id": "components/toast",
+    "title": "Toast",
+    "content": "import { ToastComponent } from \"@/components/snippets/toast\"; Toast [A non-interactive, auto-expiring notification.] <CodePreviewBlock> <ToastComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/toast",
+    "tags": []
+  },
+  {
+    "id": "components/toggle",
+    "title": "Toggle",
+    "content": "import { ToggleComponent } from \"@/components/snippets/toggle\"; Toggle [A two-state button that can be either on or off.] <CodePreviewBlock> <ToggleComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/toggle",
+    "tags": []
+  },
+  {
+    "id": "components/toolbar",
+    "title": "Toolbar",
+    "content": "import { ToolbarComponent } from \"@/components/snippets/toolbar\"; Toolbar [A container for grouping a set of controls.] <CodePreviewBlock> <ToolbarComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/toolbar",
+    "tags": []
+  },
+  {
+    "id": "components/tooltip",
+    "title": "Tooltip",
+    "content": "import { TooltipComponent } from \"@/components/snippets/tooltip\"; Tooltip [A small pop-up that displays information when a user hovers over an element.] <CodePreviewBlock> <TooltipComponent /> </CodePreviewBlock> Installation <Tabs>   <TabsItem value=\"cli\" label=\"CLI\">     :::code-group                  :::   </TabsItem>   <TabsItem value=\"manual\" label=\"MANUAL\">        </TabsItem> </Tabs> Anatomy Import Structure This is the basic structure of the component.",
+    "url": "/docs/components/tooltip",
+    "tags": []
+  },
+  {
     "id": "getting-started",
     "title": "Getting Started",
     "content": "Getting Started [From Zero to Hero] Welcome to Muni! This guide will walk you through setting up a new documentation project. We recommend using the official Muni template to get started. Prerequisites Before you begin, make sure you have the following installed: - Node.js (version 18 or higher) - pnpm (recommended, but npm or yarn will also work) Installation Follow these steps to get your documentation site up and running. 1. Clone the Repository Start by cloning the Muni starter template from GitHub. 2. Navigate to Project Directory Change into your newly created project folder. 3. Install Dependencies Install all the necessary dependencies using . 4. Run the Development Server Start the Next.js development server to see your site in action. Your site should now be running at . Changes you make to the content will be automatically reflected. Next Steps Now that your site is running, you can start creating content and customizing the project. - Learn about the project layout in the [Project Structure](/docs/project-structure) guide. - Start writing your first pages by following the [Writing Content](/docs/guide/writing-content) guide.",
@@ -35,44 +245,9 @@
     "tags": []
   },
   {
-    "id": "guide/code-blocks",
-    "title": "Advanced Code Blocks",
-    "content": "Advanced Code Blocks [Show Your Code] Muni uses an advanced MDX processing pipeline to give you powerful features for displaying code. Here's a comprehensive guide to all the available features. Basic Syntax Basic syntax highlighting is available by specifying the language after the opening code fence. You can add a file name in brackets . tsx [MyComponent.tsx] function MyComponent() {   return <div>Hello, World!</div>; } [!code highlight][!code highlight:N]N Output: Focusing Lines Use  to focus a specific line, which will dim the surrounding lines. js console.log(\"Not focused\"); console.log(\"Focused\"); // [!code focus] console.log(\"Not focused\"); [!code word:TEXT] Output: Error & Warning Levels Mark lines as errors or warnings with  and . ts console.error(\"Error\"); // [!code error] console.warn(\"Warning\"); // [!code warning] diff Output: Using  and  Directives This method is useful for showing changes within a language-specific block. js console.log(\"old\"); // [!code --] console.log(\"new\"); // [!code ++] console.log(\"same\"); // [!include]~ Including Regions For large files, you can define specific regions to include using  and . Source File (): MDX Usage: This MDX code... ts // [!include ~/content/snippets/range-include-example.ts:import] // [!include ~/content/snippets/range-include-example.ts:client] // [!include ~/content/snippets/range-include-example.ts:usage] ` Output: ...will render this output:",
-    "url": "/docs/guide/code-blocks",
-    "tags": []
-  },
-  {
-    "id": "guide/creating-plugins",
-    "title": "Creating Plugins",
-    "content": "Creating Custom Plugins [Extending Muni] Muni's MDX processing pipeline is built on a powerful and extensible plugin system. You can tap into this system to add your own custom syntax, transform code blocks, or manipulate the final HTML output. This guide will walk you through the process of creating and adding your own plugins. Understanding Plugin Types There are three types of plugins you can create, each running at a different stage of the build process: 1.  Remark Plugins: Operate on the Markdown Abstract Syntax Tree (AST). They are perfect for adding new Markdown syntax or transforming content before it's converted to HTML. 2.  Rehype Plugins: Operate on the HTML AST after the Markdown has been converted. Use these to modify the HTML structure, add classes, or perform other post-processing tasks. 3.  Shiki Transformers: Run during the syntax highlighting process for code blocks. Use these to add custom features to your code blocks, like titles, line numbers, or custom highlighting. Tutorial: Creating a Remark Plugin Let's create a simple Remark plugin that adds a custom \"spoiler\" directive. We want to be able to write  in our MDX and have it render as a collapsible details element. Step 1: Create the Plugin File Create a new file for your plugin, for example, in . Step 2: Register the Plugin Now, add your new plugin to the  array in your . Step 3: Use the Directive You can now use your new directive in any MDX file. Output: :::spoiler This is a secret message! ::: This will be rendered as a native  and  element, giving you a working spoiler component with just a few lines of code. Creating Rehype and Shiki Plugins The process for creating Rehype and Shiki plugins is similar: - For Rehype: Your plugin will receive an HTML AST (). You can use  to find and modify HTML elements. - For Shiki: Your transformer will receive the code string and the Shiki AST. This is more advanced and is used for fine-grained control over code block rendering. Refer to the official documentation for [Remark](https://github.com/remarkjs/remark/blob/main/doc/plugins.md), [Rehype](https://github.com/rehypejs/rehype/blob/main/doc/plugins.md), and [Shiki](https://shiki.style/guide/transformers) for more detailed API information. Best Practices - Do One Thing Well: Keep your plugins focused on a single task. - Use TypeScript: The ASTs have complex types. Using TypeScript will save you a lot of time and prevent errors. - Handle Errors: If your plugin reads files or performs other I/O, make sure to handle potential errors gracefully. - Follow Existing Patterns: Look at the existing plugins in the  directory to see how they are structured and written.",
-    "url": "/docs/guide/creating-plugins",
-    "tags": []
-  },
-  {
-    "id": "guide",
-    "title": "Guides",
-    "content": "Guides [Practical How-To's] This section provides practical guides for the most common tasks you'll encounter when building your documentation site with Muni. Whether you're creating new pages, adding complex code examples, or using custom components, these guides will walk you through the process step-by-step. Core Skills <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\"> <a href=\"/docs/guide/writing-content\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Writing Content</h3>   <p class=\"text-sm text-muted-foreground\">Learn how to create new pages, use MDX syntax, and add frontmatter to your documents.</p> </a> <a href=\"/docs/guide/code-blocks\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Advanced Code Blocks</h3>   <p class=\"text-sm text-muted-foreground\">Master the powerful features of Muni's code blocks, including titles, line highlighting, diffs, and more.</p> </a> <a href=\"/docs/guide/using-components\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Using Components</h3>   <p class=\"text-sm text-muted-foreground\">Discover how to use built-in components and embed your own custom React components within your MDX content.</p> </a> <a href=\"/docs/guide/creating-plugins\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Creating Plugins</h3>   <p class=\"text-sm text-muted-foreground\">Extend Muni's functionality by creating your own custom Remark, Rehype, and Shiki plugins.</p> </a> </div>",
-    "url": "/docs/guide",
-    "tags": []
-  },
-  {
-    "id": "guide/using-components",
-    "title": "Using Components",
-    "content": "Using Components in MDX [Interactive Content] One of the most powerful features of MDX is the ability to use React components directly in your Markdown content. Muni provides a set of useful built-in components and makes it easy to use your own. Built-in Components Muni includes several components designed to help you create well-structured, readable documentation. These are available globally in all  files. Callouts Use callouts to highlight important information, warnings, or tips. They are created using the  directive. Output: :::info This is an informational message. ::: :::danger[Danger Zone] This is a danger callout with a custom title. ::: :::success Your operation was successful! ::: Steps The  component is perfect for creating step-by-step tutorials or guides. It automatically numbers the steps for you. Output: :::steps Step 1: Install Dependencies Run  to get started. Step 2: Run the Server Run  to see your site. Step 3: Build for Production Run  to create a production build. ::: Other Components Muni also provides other useful components like , , and . For a full list and their options, see the [Built-in Components Reference](/docs/api/built-in-components). Using Your Own Components You can import and use any React component in your MDX files, just like you would in any other React file. 1. Create Your Component First, create your component file. For example, a simple  component. 2. Import and Use in MDX Now, import it at the top of your  file and use it like any other HTML tag. Output: import { Button } from \"@/components/ui/button\"; <Button>Click Me</Button> This approach allows you to create highly interactive and dynamic documentation pages, from charts and graphs to live code editors.",
-    "url": "/docs/guide/using-components",
-    "tags": []
-  },
-  {
-    "id": "guide/writing-content",
-    "title": "Writing Content",
-    "content": "Writing Content [Pages & Metadata] Creating content in Muni is straightforward. All of your pages are just MDX files located in the  directory. The file path of your MDX file determines its public URL. Creating a New Page 1.  Create a file: Add a new  file inside . For example, . 2.  Add content: Write your content using Markdown and MDX syntax. 3.  Update navigation: Open  and add a new entry to the  array. This will make your page appear in the sidebar. Your new page will now be available at . Using MDX MDX is Markdown with the power of React components. This means you can write standard Markdown, but also import and use components right in your content. To learn more about using components, see the [Using Components](/docs/guide/using-components) guide. Frontmatter Frontmatter is a small block of YAML at the top of your MDX file that allows you to add metadata to your page. It's enclosed by triple-dashed lines (). Core Properties -  (string): The main title of the page. This is used for the browser tab title and at the top of the page. -  (string): A brief summary of the page's content. This is crucial for SEO and for the site's internal search. For a complete list of all available frontmatter options, see the [Frontmatter API Reference](/docs/api/frontmatter).",
-    "url": "/docs/guide/writing-content",
-    "tags": []
-  },
-  {
     "id": "index",
     "title": "Introduction",
-    "content": "Welcome to Muni [Your Next-Gen Docs] Muni is a powerful, modern documentation engine built with Next.js, MDX, and Tailwind CSS. It's designed from the ground up to make creating beautiful, fast, and feature-rich documentation sites a seamless experience. Whether you're documenting a software project, an API, or a design system, Muni provides the tools you need in a \"batteries-included\" package that is still fully customizable. Key Features Muni comes packed with features that enhance both the authoring and reading experience. Write in MDX Go beyond standard Markdown. With [MDX](https://mdxjs.com/), you can embed custom React components directly into your documentation, creating rich, interactive content with ease. Feature-Rich Code Blocks Present code beautifully with syntax highlighting, file names, line numbers, diffs, and even include code directly from your source files. Group related snippets into a single, tabbed component. Built-in Components A suite of carefully crafted components like callouts, steps, and asides are available out-of-the-box to help you structure your content effectively. Blazing Fast Performance Built on [Next.js](https://nextjs.org), Muni sites are statically generated by default. This means your documentation loads instantly, providing a great user experience and a boost for SEO. Customizable & Themeable Leverage the full power of [Tailwind CSS](https://tailwindcss.com/) to customize the look and feel of your site. The default theme is just a starting point. Integrated Search Powerful, client-side search is built-in, allowing your users to find the information they need in an instant. Our Philosophy We believe that documentation should be a joy to write and to read. Muni aims to remove the friction from the process by providing a robust, feature-complete foundation, so you can focus on what matters most: your content. Ready to get started? Check out the [Getting Started](/docs/getting-started) guide.",
+    "content": "Welcome to base-ui base-ui is a comprehensive library of foundational UI components for React. It's designed to provide the building blocks you need to create beautiful, accessible, and consistent user interfaces with speed. Whether you're building a simple landing page or a complex web application, base-ui offers a set of unstyled, flexible components that can be easily adapted to your design system. Key Features Fully Customizable Components are delivered unstyled, giving you complete control over the look and feel. Use Tailwind CSS or any other styling solution to match your brand. Accessible Accessibility is a top priority. All components follow WAI-ARIA standards to ensure they are usable by everyone. Developer-Friendly With a simple and consistent API,  is designed to be a joy to use for developers. Comprehensive Set From basic buttons and inputs to complex components like Autocomplete and Dialogs,  provides a wide range of components to cover all your needs. Our Philosophy We believe that developers shouldn't have to reinvent the wheel for every project.  provides the robust, foundational components so you can focus on building unique features and user experiences. Ready to get started? Check out the [Components](/docs/components) section to see them in action.",
     "url": "/docs/index",
     "tags": []
   },

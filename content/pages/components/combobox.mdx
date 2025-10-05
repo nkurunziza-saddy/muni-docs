@@ -1,0 +1,91 @@
+---
+title: "Combobox"
+description: "An autocomplete component that combines a text input with a dropdown list."
+author: "Muni Team"
+date: "2025-09-28"
+---
+
+import { ComboboxComponent, ComboboxSmall, ComboboxGrouped, ComboboxWithoutIndicator } from '@/components/snippets/combobox';
+
+# Combobox [An autocomplete component that combines a text input with a dropdown list.]
+
+<CodePreviewBlock>
+<ComboboxComponent />
+
+```tsx
+// [!include ~/components/snippets/combobox.tsx:usage]
+```
+
+</CodePreviewBlock>
+
+## Examples
+
+### Small
+
+<CodePreviewBlock>
+  <ComboboxSmall />
+
+```tsx
+// [!include ~/components/snippets/combobox.tsx:small]
+```
+
+</CodePreviewBlock>
+
+### Grouped
+
+<CodePreviewBlock>
+  <ComboboxGrouped />
+
+```tsx
+// [!include ~/components/snippets/combobox.tsx:grouped]
+```
+
+</CodePreviewBlock>
+
+### Without Indicator
+
+<CodePreviewBlock>
+  <ComboboxWithoutIndicator />
+
+```tsx
+// [!include ~/components/snippets/combobox.tsx:without-indicator]
+```
+
+</CodePreviewBlock>
+
+## Installation
+
+<Tabs>
+  <TabsItem value="cli" label="CLI">
+    :::code-group 
+
+    ```bash [npm] 
+    npx shadcn@latest add combobox 
+    ``` 
+    ```bash [pnpm] 
+    pnpm dlx shadcn@latest add combobox 
+    ``` 
+    :::
+  </TabsItem>
+  <TabsItem value="manual" label="MANUAL">
+    ```tsx 
+    // [!include ~/components/base-ui/combobox.tsx] 
+    ```
+  </TabsItem>
+</Tabs>
+
+## Anatomy
+
+### Import
+
+```tsx
+// [!include ~/components/snippets/combobox.tsx:import]
+```
+
+### Structure
+
+This is the basic structure of the component.
+
+```tsx
+// [!include ~/components/snippets/combobox.tsx:structure]
+```

@@ -1,0 +1,56 @@
+---
+title: "Context Menu"
+description: "A menu that appears upon right-clicking an element."
+author: "Muni Team"
+date: "2025-09-28"
+---
+
+import { ContextMenuComponent } from '@/components/snippets/context-menu';
+
+# Context Menu [A menu that appears upon right-clicking an element.]
+
+<CodePreviewBlock>
+<ContextMenuComponent />
+
+```tsx
+// [!include ~/components/snippets/context-menu.tsx:usage]
+```
+
+</CodePreviewBlock>
+
+## Installation
+
+<Tabs>
+  <TabsItem value="cli" label="CLI">
+    :::code-group 
+
+    ```bash [npm] 
+    npx shadcn@latest add context-menu 
+    ``` 
+    ```bash [pnpm] 
+    pnpm dlx shadcn@latest add context-menu 
+    ``` 
+    :::
+  </TabsItem>
+  <TabsItem value="manual" label="MANUAL">
+    ```tsx 
+    // [!include ~/components/base-ui/context-menu.tsx] 
+    ```
+  </TabsItem>
+</Tabs>
+
+## Anatomy
+
+### Import
+
+```tsx
+// [!include ~/components/snippets/context-menu.tsx:import]
+```
+
+### Structure
+
+This is the basic structure of the component.
+
+```tsx
+// [!include ~/components/snippets/context-menu.tsx:structure]
+```
