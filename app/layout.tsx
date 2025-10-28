@@ -62,7 +62,8 @@ export default function RootLayout({
       <body className={` antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
+          themes={["light", "dark", "mono", "mono-dark"]}
           storageKey="muni-docs-theme"
           enableSystem
           disableTransitionOnChange

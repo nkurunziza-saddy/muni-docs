@@ -1,59 +1,412 @@
 ---
 title: "Project Structure"
-description: "Understand the layout of a Muni project, including key files and directories."
+description: "Complete overview of Muni's project structure and file organization"
 author: "Muni Team"
-date: "2025-09-27"
+date: "2024-01-15"
 ---
 
-# Project Structure [The Lay of the Land]
+# Project Structure
 
-Understanding the file and directory structure of a Muni project is key to customizing your site and knowing where to add new content. Here is a high-level overview of the most important parts of the project.
+Understanding the Muni project structure and conventions.
+
+## Directory Overview
 
 ```
 muni-docs/
-├── app/
-│   └── docs/                 # Core documentation pages layout
-├── components/
-│   ├── muni-components/      # Built-in components for MDX
-│   └── ui/                   # Core UI components (buttons, dialogs, etc.)
-├── content/
-│   └── pages/                # Your documentation MDX files live here
-├── lib/
-│   ├── hooks/                # Custom React hooks
-│   └── plugins/              # Remark and Rehype plugins for MDX processing
-├── mdx-components/
-│   └── index.tsx             # Maps MDX elements to React components
-├── public/                   # Static assets (images, fonts, etc.)
-├── muni.config.ts            # Main configuration file for site navigation
-└── next.config.ts            # Next.js and MDX configuration
+├── app/                          # Next.js App Router
+│   ├── (others)/                # Other pages (landing, etc.)
+│   ├── docs/                    # Documentation pages
+│   │   ├── [[...slug]]/         # Dynamic route for all docs
+│   │   └── layout.tsx           # Docs layout wrapper
+│   ├── fonts/                   # Custom fonts
+│   ├── layout.tsx               # Root layout
+│   ├── robots.ts                # SEO robots.txt
+│   └── sitemap.ts               # SEO sitemap
+├── components/                   # React components
+│   ├── ui/                      # Base UI components (shadcn/ui)
+│   ├── navigation-components/   # Navigation-specific components
+│   ├── muni-components/         # Custom Muni components
+│   └── providers/               # Context providers
+├── content/                     # MDX content
+│   ├── pages/                   # Documentation pages
+│   └── snippets/                # Reusable code snippets
+├── lib/                         # Utility functions
+├── mdx-components/              # MDX component overrides
+├── public/                      # Static assets
+├── scripts/                     # Build and utility scripts
+├── styles/                      # CSS files
+│   ├── globals.css              # Global styles
+│   ├── color-themes.css         # Theme definitions
+│   ├── shiki-theme.css          # Code syntax highlighting
+│   └── spacing.css              # Spacing utilities
+├── muni.config.ts               # Main configuration
+├── next.config.ts               # Next.js configuration
+├── tailwind.config.js           # Tailwind CSS configuration
+└── package.json                 # Dependencies and scripts
 ```
 
-## Key Directories
-
-### `content/pages/`
-This is where you'll spend most of your time. All of your documentation pages, written in MDX (`.mdx`), live in this directory. The file structure here maps directly to the URL structure of your site.
-
-### `app/docs/`
-The core Next.js App Router structure for the documentation pages. The layout file `app/docs/layout.tsx` is a great place to customize the overall page structure, like the sidebar and header.
-
-### `components/`
-This directory contains all the React components. It's split into two main subdirectories:
-- `muni-components/`: Contains components that are intended to be used directly in your MDX files (e.g., `<Steps>`, `<CopyButton>`).
-- `ui/`: Contains the low-level UI building blocks, like buttons, dialogs, and inputs, powered by `shadcn/ui`.
-
-### `lib/`
-Contains the business logic of the application. This includes custom hooks, search logic, and the powerful Remark and Rehype plugins that process your Markdown and add features like code block titles and callouts.
-
-### `mdx-components/`
-This directory is responsible for mapping standard Markdown elements (like `h1`, `p`, `code`) to custom React components. This is how the default styling is applied to your content. You can edit the files here to change how your content is rendered.
-
-### `public/`
-For all static assets. Any file in this directory can be referenced directly by its URL (e.g., `/file.svg`).
-
-## Key Files
+## Core Files
 
 ### `muni.config.ts`
-This is the heart of your site's configuration. Here, you define the structure of your sidebar navigation, set the site title, version number, and configure links that appear in the main header.
+
+The main configuration file for your documentation:
+
+```typescript
+export interface MuniConfig {
+  title: string;
+  version?: string;
+  defaultTheme?: Theme;
+  showFrontmatterMeta?: boolean;
+  headingLinks?: HeadingLink[];
+  navigation: NavigationItem[];
+  githubRepo?: string;
+}
+```
+
+### `app/layout.tsx`
+
+Root layout that wraps all pages:
+
+```typescript
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### `app/docs/layout.tsx`
+
+Documentation-specific layout with sidebar and navigation:
+
+```typescript
+export default function DocsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <SidebarProvider>
+      <div className="grid md:grid-cols-[15rem_1fr]">
+        <SidebarLeft />
+        <main>
+          <DocsHeader />
+          {children}
+          <TableOfContents />
+        </main>
+      </div>
+    </SidebarProvider>
+  );
+}
+```
+
+## Component Organization
+
+### UI Components (`components/ui/`)
+
+Base components built with shadcn/ui:
+
+- `button.tsx` - Button component
+- `input.tsx` - Input field
+- `dialog.tsx` - Modal dialogs
+- `dropdown-menu.tsx` - Dropdown menus
+- `sidebar.tsx` - Sidebar component
+- `tooltip.tsx` - Tooltips
+- `alert.tsx` - Alert messages
+- `badge.tsx` - Badge component
+
+### Navigation Components (`components/navigation-components/`)
+
+Documentation-specific navigation:
+
+- `sidebar-left.tsx` - Left sidebar navigation
+- `docs-header.tsx` - Header with search and theme toggle
+- `docs-pagination.tsx` - Previous/Next page navigation
+- `table-of-contents.tsx` - Auto-generated TOC
+- `nav-section.tsx` - Navigation section component
+
+### Custom Components (`components/muni-components/`)
+
+Muni-specific components:
+
+- `copy-button.tsx` - Code copy functionality
+- `step.tsx` - Step component for tutorials
+- `steps.tsx` - Steps container
+
+## Content Structure
+
+### Documentation Pages (`content/pages/`)
+
+All documentation content as MDX files:
+
+```
+content/pages/
+├── index.mdx                    # Homepage
+├── getting-started.mdx          # Getting started guide
+├── configuration.mdx            # Configuration reference
+├── themes.mdx                   # Theme documentation
+├── markdown.mdx                 # Markdown features
+├── deployment.mdx               # Deployment guide
+└── project-structure.mdx        # This file
+```
+
+### Page Structure
+
+Each page follows this structure:
+
+```yaml
+---
+title: "Page Title"
+description: "Page description"
+author: "Author Name"
+date: "2024-01-01"
+---
+```
+
+```markdown
+# Page Title
+
+Page content in Markdown/MDX...
+```
+
+## Styling System
+
+### Global Styles (`styles/globals.css`)
+
+```css
+@layer base {
+  body {
+    @apply bg-background text-foreground font-theme text-sm;
+    line-height: 1.6;
+  }
+
+  /* Typography scale */
+  h1 {
+    @apply text-2xl font-semibold leading-tight;
+  }
+  h2 {
+    @apply text-xl font-medium leading-tight;
+  }
+  /* ... more typography */
+}
+```
+
+### Theme System (`styles/color-themes.css`)
+
+Three minimal themes:
+
+```css
+/* Minimal (Light) */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0.002 0);
+  /* ... theme variables */
+}
+
+/* Minimal Dark */
+.dark {
+  --background: oklch(0.05 0.001 0);
+  --foreground: oklch(0.95 0.001 0);
+  /* ... theme variables */
+}
+
+/* Mono */
+.mono {
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.15 0.004 285.82);
+  --font: var(--font-geist-mono);
+  /* ... theme variables */
+}
+```
+
+## Configuration Files
 
 ### `next.config.ts`
-This file configures Next.js itself. For Muni, its primary role is to set up the MDX loader and register all the Remark and Rehype plugins that give your Markdown superpowers.
+
+Next.js configuration with MDX support:
+
+```typescript
+const nextConfig: NextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // MDX configuration
+  // PWA configuration
+  // Other Next.js options
+};
+```
+
+### `tailwind.config.js`
+
+Tailwind CSS configuration:
+
+```javascript
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./content/**/*.{md,mdx}",
+  ],
+  theme: {
+    extend: {
+      // Custom theme extensions
+    },
+  },
+  plugins: [
+    // Tailwind plugins
+  ],
+};
+```
+
+## Build System
+
+### Scripts (`package.json`)
+
+```json
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "pnpm run generate-search && next build",
+    "start": "next start",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "generate-search": "tsx scripts/generate-search-data.ts"
+  }
+}
+```
+
+### Search Generation (`scripts/generate-search-data.ts`)
+
+Generates search index for documentation:
+
+```typescript
+// Generates search data for the search functionality
+// Runs during build process
+```
+
+## File Naming Conventions
+
+### Pages
+
+- Use kebab-case for file names: `getting-started.mdx`
+- Use `index.mdx` for section homepages
+- Use `[[...slug]]` for dynamic routes
+
+### Components
+
+- Use PascalCase for component files: `SidebarLeft.tsx`
+- Use kebab-case for directories: `navigation-components/`
+- Use descriptive names: `table-of-contents.tsx`
+
+### Styles
+
+- Use kebab-case: `color-themes.css`
+- Group related styles: `globals.css`, `spacing.css`
+- Use CSS custom properties for theming
+
+## Import Conventions
+
+### Absolute Imports
+
+Use absolute imports with `@/` prefix:
+
+```typescript
+import { Button } from "@/components/ui/button";
+import muniConfig from "@/muni.config";
+import { cn } from "@/lib/utils";
+```
+
+### Relative Imports
+
+Use relative imports for closely related files:
+
+```typescript
+import { NavSection } from "./nav-section";
+import { DocsHeader } from "../docs-header";
+```
+
+## Best Practices
+
+### Component Organization
+
+1. **Single responsibility**: Each component should have one clear purpose
+2. **Composition over inheritance**: Build complex components from simple ones
+3. **Props interface**: Define clear TypeScript interfaces for props
+4. **Default exports**: Use default exports for main components
+
+### File Structure
+
+1. **Group by feature**: Keep related files together
+2. **Consistent naming**: Use consistent naming conventions
+3. **Clear hierarchy**: Organize files in a logical hierarchy
+4. **Minimal nesting**: Avoid deep directory structures
+
+### Code Style
+
+1. **TypeScript**: Use TypeScript for type safety
+2. **ESLint/Prettier**: Use consistent code formatting
+3. **Comments**: Add comments for complex logic
+4. **Documentation**: Document public APIs
+
+### Performance
+
+1. **Code splitting**: Use dynamic imports for large components
+2. **Image optimization**: Use Next.js Image component
+3. **Bundle analysis**: Regularly analyze bundle size
+4. **Static generation**: Prefer static generation over SSR
+
+## Adding New Features
+
+### New Page
+
+1. Create MDX file in `content/pages/`
+2. Add to navigation in `muni.config.ts`
+3. Test the page locally
+
+### New Component
+
+1. Create component file in appropriate directory
+2. Export from component file
+3. Import and use in pages/components
+4. Add TypeScript types if needed
+
+### New Theme
+
+1. Add theme class to `color-themes.css`
+2. Update theme types in `muni.config.ts`
+3. Add theme option to theme toggle
+4. Test theme across all pages
+
+## Troubleshooting
+
+### Common Issues
+
+**Build errors**
+
+- Check TypeScript types
+- Verify import paths
+- Check for missing dependencies
+
+**Styling issues**
+
+- Verify Tailwind classes
+- Check CSS custom properties
+- Ensure proper theme classes
+
+**Navigation issues**
+
+- Check slug format in config
+- Verify file paths
+- Test internal links
+
+**Performance issues**
+
+- Analyze bundle size
+- Check for large images
+- Optimize imports

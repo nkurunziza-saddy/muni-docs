@@ -55,7 +55,7 @@ export function DocsPagination() {
   }
 
   return (
-    <div className="flex items-center justify-between mt-12 pt-6 border-t ">
+    <div className="flex items-center justify-between pt-6 ">
       <div className="">
         {previousPage && (
           <Link

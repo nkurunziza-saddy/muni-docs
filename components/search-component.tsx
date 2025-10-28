@@ -4,12 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowUpDown, CornerDownLeft, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useRouter } from "next/navigation";
 import { type SearchResult, searchService } from "@/lib/actions/search-service";
@@ -106,17 +101,13 @@ export function SearchComp({ className }: SearchProps) {
     <div className={cn("w-auto", className)}>
       <Button
         onClick={() => setIsOpen(true)}
-        variant="secondary"
+        variant="outline"
         className={cn(
-          "h-10 w-40 justify-start rounded-md px-3 text-sm bg-muted/50 border text-muted-foreground sm:w-60",
+          "w-32 justify-start rounded-md px-3 text-xs border border-dashed text-muted-foreground sm:w-60",
           className
         )}
       >
-        <Search className="mr-2 h-4 w-4" />
         <span>Search docs</span>
-        <kbd className="ml-auto hidden sm:flex items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium">
-          ⌘K
-        </kbd>
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -158,6 +149,7 @@ export function SearchComp({ className }: SearchProps) {
               <div className="py-2">
                 {results.map((result, index) => (
                   <button
+                    type="button"
                     key={result.id}
                     ref={(el) => {
                       resultsRef.current[index] = el;

@@ -1,0 +1,88 @@
+h1 {
+  @apply text-2xl font-semibold leading-tight;
+}
+
+h2 {
+  @apply text-xl font-medium leading-tight;
+}
+
+h3 {
+  @apply text-lg font-medium leading-tight;
+}
+
+h4 {
+  @apply text-base font-medium leading-tight;
+}
+
+h5 {
+  @apply text-sm font-medium leading-tight;
+}
+
+h6 {
+  @apply text-xs font-medium leading-tight;
+}
+
+p {
+  @apply text-sm leading-relaxed;
+}
+
+.prose {
+  @apply text-sm leading-relaxed;
+}
+
+.prose > * + * {
+  @apply mt-6;
+}
+
+.prose h1 {
+  @apply text-2xl font-semibold mb-6 mt-12 first:mt-0 pb-4 border-b border-border;
+}
+
+.prose h2 {
+  @apply text-xl font-medium mb-4 mt-10 first:mt-0 pb-3 border-b border-border;
+}
+
+.prose h3 {
+  @apply text-lg font-medium mb-3 mt-8 first:mt-0;
+}
+
+.prose h4 {
+  @apply text-base font-medium mb-2 mt-6 first:mt-0;
+}
+
+.prose p {
+  @apply text-sm leading-relaxed mb-4;
+}
+
+.prose ul,
+.prose ol {
+  @apply text-sm leading-relaxed mb-4 pl-4;
+}
+
+.prose li {
+  @apply mb-1;
+}
+
+.prose code {
+  @apply text-xs font-mono border border-border px-1.5 py-0.5 rounded bg-muted;
+}
+
+.prose pre {
+  @apply text-xs font-mono border border-border rounded-lg p-4 bg-muted my-6 overflow-x-auto;
+}
+
+.prose blockquote {
+  @apply border-l-2 border-primary pl-6 py-2 my-6 rounded-r italic text-muted-foreground;
+}
+
+.prose table {
+  @apply border border-border rounded-lg overflow-hidden my-6;
+}
+
+.prose th {
+  @apply border-b border-border bg-muted px-4 py-2 text-left font-medium;
+}
+
+.prose td {
+  @apply border-b border-border px-4 py-2 last:border-b-0;
+}

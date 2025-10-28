@@ -1,0 +1,235 @@
+---
+title: "Configuration"
+description: "Complete reference for configuring Muni through muni.config.ts"
+author: "Muni Team"
+date: "2024-01-15"
+---
+
+# Configuration
+
+Muni is configured through the `muni.config.ts` file. This file contains all the settings for your documentation site.
+
+## Basic Configuration
+
+```typescript
+const muniConfig: MuniConfig = {
+  title: "Your Documentation",
+  version: "1.0.0",
+  defaultTheme: "minimal",
+  showFrontmatterMeta: true,
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/your-org/your-repo" },
+  ],
+  navigation: [
+    { title: "Introduction", slug: "index" },
+    { title: "Getting Started", slug: "getting-started" },
+  ],
+  githubRepo: "https://github.com/your-org/your-repo",
+};
+```
+
+## Configuration Options
+
+### `title` (required)
+
+The title of your documentation site.
+
+```typescript
+title: "My Documentation";
+```
+
+### `version` (optional)
+
+The version of your documentation. Displayed in the header.
+
+```typescript
+version: "1.0.0";
+```
+
+### `defaultTheme` (optional)
+
+The default theme for your site. Options: `"minimal"`, `"minimal-dark"`, `"mono"`.
+
+```typescript
+defaultTheme: "minimal";
+```
+
+### `showFrontmatterMeta` (optional)
+
+Whether to show frontmatter metadata (author, date) at the bottom of pages.
+
+```typescript
+showFrontmatterMeta: true;
+```
+
+### `headingLinks` (optional)
+
+Links displayed in the header next to the version.
+
+```typescript
+headingLinks: [
+  { title: "GitHub", href: "https://github.com/your-org/your-repo" },
+  { title: "Twitter", href: "https://twitter.com/your-handle" },
+  { title: "Discord", href: "https://discord.gg/your-server" },
+];
+```
+
+### `navigation` (required)
+
+The navigation structure for your documentation.
+
+```typescript
+navigation: [
+  { title: "Introduction", slug: "index" },
+  { title: "Getting Started", slug: "getting-started" },
+  {
+    title: "API Reference",
+    slug: "api/index",
+    items: [
+      { title: "Authentication", slug: "api/auth" },
+      { title: "Users", slug: "api/users" },
+    ],
+  },
+];
+```
+
+### `githubRepo` (optional)
+
+The GitHub repository URL. Used for "Edit on GitHub" links.
+
+```typescript
+githubRepo: "https://github.com/your-org/your-repo";
+```
+
+## Navigation Structure
+
+The navigation supports nested items for organizing your documentation:
+
+```typescript
+navigation: [
+  // Simple page
+  { title: "Home", slug: "index" },
+
+  // Page with children
+  {
+    title: "Guides",
+    slug: "guides/index",
+    items: [
+      { title: "Installation", slug: "guides/installation" },
+      { title: "Configuration", slug: "guides/configuration" },
+      { title: "Deployment", slug: "guides/deployment" },
+    ],
+  },
+
+  // Deep nesting
+  {
+    title: "API",
+    slug: "api/index",
+    items: [
+      {
+        title: "Authentication",
+        slug: "api/auth",
+        items: [
+          { title: "Login", slug: "api/auth/login" },
+          { title: "Logout", slug: "api/auth/logout" },
+        ],
+      },
+    ],
+  },
+];
+```
+
+## TypeScript Types
+
+Muni exports TypeScript types for configuration:
+
+```typescript
+import { MuniConfig, NavigationItem, HeadingLink, Theme } from "./muni.config";
+
+// Use the types in your code
+const config: MuniConfig = {
+  // ... your configuration
+};
+```
+
+## Environment Variables
+
+You can use environment variables in your configuration:
+
+```typescript
+const muniConfig: MuniConfig = {
+  title: process.env.NEXT_PUBLIC_SITE_TITLE || "Muni Docs",
+  githubRepo: process.env.NEXT_PUBLIC_GITHUB_REPO,
+  // ... other options
+};
+```
+
+## Dynamic Configuration
+
+For more complex setups, you can generate configuration dynamically:
+
+```typescript
+// Generate navigation from file system
+const generateNavigation = () => {
+  // Your logic here
+  return [
+    { title: "Home", slug: "index" },
+    // ... more items
+  ];
+};
+
+const muniConfig: MuniConfig = {
+  title: "My Docs",
+  navigation: generateNavigation(),
+  // ... other options
+};
+```
+
+## Validation
+
+Muni validates your configuration at build time. Common errors:
+
+- Missing required fields
+- Invalid theme names
+- Broken navigation links
+- Invalid URL formats
+
+Check the build output for validation errors.
+
+## Best Practices
+
+1. **Keep it simple**: Don't over-complicate your navigation structure
+2. **Use consistent naming**: Keep slug names short and descriptive
+3. **Group related content**: Use nested navigation for organization
+4. **Test your links**: Make sure all navigation links work
+5. **Version your docs**: Use the version field to track changes
+
+## Example Configuration
+
+Here's a complete example configuration:
+
+```typescript
+const muniConfig: MuniConfig = {
+  title: "Muni Documentation",
+  version: "2.0.0",
+  defaultTheme: "minimal",
+  showFrontmatterMeta: true,
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/nkurunziza-saddy/muni-docs" },
+    {
+      title: "Issues",
+      href: "https://github.com/nkurunziza-saddy/muni-docs/issues",
+    },
+  ],
+  navigation: [
+    { title: "Introduction", slug: "index" },
+    { title: "Getting Started", slug: "getting-started" },
+    { title: "Configuration", slug: "configuration" },
+    { title: "Themes", slug: "themes" },
+    { title: "Markdown", slug: "markdown" },
+    { title: "Deployment", slug: "deployment" },
+    { title: "Project Structure", slug: "project-structure" },
+  ],
+  githubRepo: "https://github.com/nkurunziza-saddy/muni-docs",
+};
+```

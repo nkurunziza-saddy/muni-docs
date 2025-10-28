@@ -7,9 +7,7 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
 function createDocHref(slug: string): string {
-  if (slug === "index") {
-    return "/docs";
-  }
+  if (slug === "index") return "/docs";
   const cleanSlug = slug.startsWith("/") ? slug.slice(1) : slug;
   return `/docs/${cleanSlug}`;
 }
@@ -30,13 +28,13 @@ function NavLink({ item }: { item: NavItem }) {
       <Link
         href={href}
         className={cn(
-          "flex items-center text-sm rounded-md transition-all duration-200 group",
+          "block text-xs py-2 px-3 rounded border",
           isActive
-            ? "text-primary"
-            : "text-muted-foreground/80 hover:text-foreground/85"
+            ? "border-border bg-muted text-foreground font-medium"
+            : "border-transparent hover:border-border hover:bg-muted/50 text-muted-foreground"
         )}
       >
-        <span className="flex-1">{item.title}</span>
+        {item.title}
       </Link>
     </li>
   );
@@ -51,19 +49,22 @@ export function NavSection({
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const pathname = usePathname();
   const hasChildren = item.items && item.items.length > 0;
 
   if (!hasChildren) {
-    const pathname = usePathname();
     const href = createDocHref(item.slug);
     const isActive = pathname === href;
+
     return (
-      <SidebarMenuItem className="px-3">
+      <SidebarMenuItem>
         <Link
           href={href}
           className={cn(
-            "text-sm tracking-wider",
-            isActive ? "font-semibold text-foreground" : "text-foreground/90"
+            "block text-sm py-2 px-3 rounded border",
+            isActive
+              ? "border-border bg-muted text-foreground font-medium"
+              : "border-transparent hover:border-border hover:bg-muted/50"
           )}
         >
           {item.title}
@@ -73,26 +74,23 @@ export function NavSection({
   }
 
   return (
-    <SidebarMenuItem className="border-b first:border-t first:pt-1.5 last:border-0 pb-3">
-      <div className="px-3 space-y-3">
-        <div className="w-full flex justify-between gap-4">
-          <h3 className="text-sm text-foreground/90 tracking-wider">
-            {item.title}
-          </h3>
-          <button
-            onClick={onToggle}
-            className="cursor-pointer border-none outline-0 py-0 my-0"
-          >
-            {isOpen ? (
-              <ChevronDown className="size-4" />
-            ) : (
-              <ChevronRight className="size-4" />
-            )}
-          </button>
-        </div>
+    <SidebarMenuItem className="border-b border-border pb-4 mb-4 last:border-0 last:pb-0 last:mb-0">
+      <div className="space-y-2">
+        <button
+          type="button"
+          onClick={onToggle}
+          className="flex items-center justify-between w-full text-sm font-medium py-2 px-3 rounded hover:bg-muted/50"
+        >
+          <span className="uppercase tracking-wide">{item.title}</span>
+          {isOpen ? (
+            <ChevronDown className="h-3 w-3" />
+          ) : (
+            <ChevronRight className="h-3 w-3" />
+          )}
+        </button>
 
         {isOpen && (
-          <ul className="space-y-1">
+          <ul className="space-y-1 pl-3 border-l border-border">
             {item.items?.map((subItem) => (
               <NavLink key={subItem.slug} item={subItem} />
             ))}

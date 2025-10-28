@@ -1,30 +1,107 @@
 ---
-title: "Introduction"
-description: "base-ui is a collection of beautifully designed, accessible, and customizable React components."
+title: "Muni"
+description: "A minimal, fast documentation template built with Next.js and Tailwind CSS"
+author: "Muni Team"
+date: "2024-01-15"
 ---
 
-# Welcome to base-ui
+# Muni
 
-**base-ui** is a comprehensive library of foundational UI components for React. It's designed to provide the building blocks you need to create beautiful, accessible, and consistent user interfaces with speed.
+A minimal, fast documentation template built with Next.js and Tailwind CSS.
 
-Whether you're building a simple landing page or a complex web application, base-ui offers a set of unstyled, flexible components that can be easily adapted to your design system.
+## Philosophy
 
-## Key Features
+Muni is designed around the principle of **less is more**. Every component, every line of code, every design decision is made with simplicity and performance in mind.
 
-### Fully Customizable
-Components are delivered unstyled, giving you complete control over the look and feel. Use Tailwind CSS or any other styling solution to match your brand.
+### Key Principles
 
-### Accessible
-Accessibility is a top priority. All components follow WAI-ARIA standards to ensure they are usable by everyone.
+- **Minimal**: Clean, uncluttered interface with generous whitespace
+- **Fast**: Optimized for speed with static generation and minimal JavaScript
+- **Customizable**: Simple configuration through `muni.config.ts`
+- **Professional**: Small, tight typography and spacing for a modern look
+- **Static**: No animations or shifting layouts - everything feels stable
 
-### Developer-Friendly
-With a simple and consistent API, `base-ui` is designed to be a joy to use for developers.
+## Features
 
-### Comprehensive Set
-From basic buttons and inputs to complex components like Autocomplete and Dialogs, `base-ui` provides a wide range of components to cover all your needs.
+- **3 Clean Themes**: Minimal, Minimal Dark, and Mono
+- **Fixed-Width Content**: Consistent, centered layout that doesn't shift
+- **Small Typography**: Professional 11-13px base text with tight spacing
+- **MDX Support**: Write documentation in Markdown with React components
+- **Search**: Built-in search functionality
+- **Table of Contents**: Auto-generated from headings
+- **Mobile Responsive**: Clean sidebar on mobile devices
+- **SEO Optimized**: Proper meta tags and structured data
 
-## Our Philosophy
+## Quick Start
 
-We believe that developers shouldn't have to reinvent the wheel for every project. `base-ui` provides the robust, foundational components so you can focus on building unique features and user experiences.
+1. **Clone the repository**
 
-Ready to get started? Check out the [**Components**](/docs/components) section to see them in action.
+   ```bash
+   git clone https://github.com/nkurunziza-saddy/muni-docs
+   cd muni-docs
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Start development server**
+
+   ```bash
+   pnpm dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+## Configuration
+
+Muni is highly customizable through the `muni.config.ts` file:
+
+```typescript
+const muniConfig: MuniConfig = {
+  title: "Your Docs",
+  version: "1.0.0",
+  defaultTheme: "minimal",
+  showFrontmatterMeta: true,
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/your-org/your-repo" },
+  ],
+  navigation: [
+    { title: "Introduction", slug: "index" },
+    { title: "Getting Started", slug: "getting-started" },
+  ],
+  githubRepo: "https://github.com/your-org/your-repo",
+};
+```
+
+## Themes
+
+Muni comes with three carefully crafted themes:
+
+- **Minimal**: Clean white background with subtle grays
+- **Minimal Dark**: Deep blacks with minimal contrast
+- **Mono**: Monospace typography for technical documentation
+
+## Writing Content
+
+Create new documentation pages in the `content/pages/` directory as `.mdx` files. Use standard Markdown syntax with support for React components.
+
+## Deployment
+
+Deploy to Vercel, Netlify, or any static hosting platform:
+
+```bash
+pnpm build
+pnpm start
+```
+
+## License
+
+MIT License - feel free to use this template for your own projects.
+
+---
+
+_Built with Next.js, Tailwind CSS, and a focus on simplicity._

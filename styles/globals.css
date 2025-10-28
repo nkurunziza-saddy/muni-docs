@@ -3,19 +3,44 @@
 @import "./color-themes.css";
 @import "./shiki-theme.css";
 @import "./spacing.css";
+@import "./typography.css";
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-theme;
+    @apply bg-background text-foreground font-theme text-sm;
     font-display: swap;
     overflow-x: hidden;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/40 rounded-md;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/60;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    @apply bg-muted-foreground/80;
   }
 }
 
@@ -40,4 +65,22 @@
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .container {
+    @apply mx-auto w-full max-w-7xl;
+  }
+
+  .cpx {
+    @apply px-4 lg:px-6;
+  }
 }

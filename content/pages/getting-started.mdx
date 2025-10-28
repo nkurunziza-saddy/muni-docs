@@ -1,62 +1,207 @@
 ---
 title: "Getting Started"
-description: "Set up your Muni documentation site in a few simple steps."
+description: "Complete guide to setting up Muni and creating your first documentation page"
 author: "Muni Team"
-date: "2025-09-27"
+date: "2024-01-15"
 ---
 
-# Getting Started [From Zero to Hero]
+# Getting Started
 
-Welcome to Muni! This guide will walk you through setting up a new documentation project. We recommend using the official Muni template to get started.
+This guide will help you set up Muni and create your first documentation page.
 
 ## Prerequisites
 
-Before you begin, make sure you have the following installed:
-
-- **Node.js** (version 18 or higher)
-- **pnpm** (recommended, but npm or yarn will also work)
+- Node.js 18+
+- pnpm (recommended) or npm
 
 ## Installation
 
-Follow these steps to get your documentation site up and running.
+1. **Clone the template**
 
-### 1. Clone the Repository
+   ```bash
+   git clone https://github.com/nkurunziza-saddy/muni-docs
+   cd muni-docs
+   ```
 
-Start by cloning the Muni starter template from GitHub.
+2. **Install dependencies**
 
-```bash
-git clone https://github.com/nkurunziza-saddy/muni-docs.git my-new-docs
+   ```bash
+   pnpm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   pnpm dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+## Project Structure
+
+```
+muni-docs/
+├── app/                    # Next.js app directory
+│   ├── docs/              # Documentation pages
+│   └── layout.tsx         # Root layout
+├── components/            # React components
+│   ├── ui/               # Base UI components
+│   └── navigation-components/ # Navigation components
+├── content/              # MDX content
+│   └── pages/           # Documentation pages
+├── styles/              # CSS files
+│   ├── globals.css      # Global styles
+│   └── color-themes.css # Theme definitions
+├── muni.config.ts       # Configuration file
+└── package.json
 ```
 
-### 2. Navigate to Project Directory
+## Configuration
 
-Change into your newly created project folder.
+Edit `muni.config.ts` to customize your documentation:
 
-```bash
-cd my-new-docs
+```typescript
+const muniConfig: MuniConfig = {
+  title: "Your Documentation",
+  version: "1.0.0",
+  defaultTheme: "minimal",
+  showFrontmatterMeta: true,
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/your-org/your-repo" },
+  ],
+  navigation: [
+    { title: "Introduction", slug: "index" },
+    { title: "Getting Started", slug: "getting-started" },
+  ],
+  githubRepo: "https://github.com/your-org/your-repo",
+};
 ```
 
-### 3. Install Dependencies
+## Creating Pages
 
-Install all the necessary dependencies using `pnpm`.
+1. **Create a new MDX file** in `content/pages/`
 
-```bash
-pnpm install
+   ```bash
+   touch content/pages/my-page.mdx
+   ```
+
+2. **Add frontmatter** (optional)
+
+   ```yaml
+   ---
+   title: "My Page"
+   description: "A description of my page"
+   author: "Your Name"
+   date: "2024-01-01"
+   ---
+   ```
+
+3. **Write your content** using Markdown
+
+   ```markdown
+   # My Page
+
+   This is my documentation page.
+   ```
+
+4. **Add to navigation** in `muni.config.ts`
+   ```typescript
+   navigation: [{ title: "My Page", slug: "my-page" }];
+   ```
+
+## Writing Content
+
+### Basic Markdown
+
+Muni supports standard Markdown syntax:
+
+```markdown
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+**Bold text**
+_Italic text_
+
+- List item 1
+- List item 2
+
+1. Numbered item 1
+2. Numbered item 2
+
+[Link text](https://example.com)
 ```
 
-### 4. Run the Development Server
+### Code Blocks
 
-Start the Next.js development server to see your site in action.
+Use triple backticks for code blocks:
 
-```bash
-pnpm dev
+````markdown
+```javascript
+function hello() {
+  console.log("Hello, world!");
+}
+```
+````
+
+### Custom Components
+
+You can use React components in your MDX files:
+
+```jsx
+<Button>Click me</Button>
 ```
 
-Your site should now be running at `http://localhost:3000`. Changes you make to the content will be automatically reflected.
+## Themes
+
+Muni comes with three themes:
+
+- **minimal**: Clean white background
+- **minimal-dark**: Dark theme
+- **mono**: Monospace typography
+
+Change the theme in `muni.config.ts`:
+
+```typescript
+defaultTheme: "minimal-dark";
+```
+
+## Building for Production
+
+1. **Build the project**
+
+   ```bash
+   pnpm build
+   ```
+
+2. **Start the production server**
+   ```bash
+   pnpm start
+   ```
+
+## Deployment
+
+### Vercel
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+### Netlify
+
+1. Build the project: `pnpm build`
+2. Deploy the `out` directory to Netlify
+
+### Other Platforms
+
+Any static hosting platform that supports Next.js will work.
 
 ## Next Steps
 
-Now that your site is running, you can start creating content and customizing the project.
-
-- Learn about the project layout in the [**Project Structure**](/docs/project-structure) guide.
-- Start writing your first pages by following the [**Writing Content**](/docs/guide/writing-content) guide.
+- Learn about [Configuration](/configuration)
+- Explore [Themes](/themes)
+- Read about [Markdown Features](/markdown)
+- See [Deployment Options](/deployment)

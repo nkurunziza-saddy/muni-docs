@@ -105,14 +105,17 @@ export default async function Page({ params }: PageProps) {
   try {
     const { default: Post, frontmatter } = await import(
       `@/content/pages/${slug}.mdx`
-    );
+    ).catch(() => {
+      console.error(`Failed to import ${slug}.mdx`);
+      throw new Error(`Failed to load page: ${slug}`);
+    });
 
     return (
       <div className="container mx-auto max-w-4xl">
         <div className="mdx-content">
           <Post />
         </div>
-        <div className="mt-12 pt-4 border-t flex justify-between direction-reverse">
+        <div className="mt-12 pt-4 pb-6 border-t flex justify-between direction-reverse">
           {muniConfig.showFrontmatterMeta !== false && (
             <FrontmatterMeta frontmatter={frontmatter} />
           )}
@@ -124,6 +127,7 @@ export default async function Page({ params }: PageProps) {
             className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
           >
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="14"
               height="14"

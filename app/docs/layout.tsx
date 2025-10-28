@@ -1,10 +1,10 @@
 import type React from "react";
-import { SidebarLeft } from "@/components/navigation-components/sidebar-left";
 import { DocsPagination } from "@/components/navigation-components/docs-pagination";
-import { TableOfContents } from "@/components/navigation-components/table-of-contents";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { TableOfContents } from "@/components/navigation-components/tocs";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { DocsSidebar } from "@/components/navigation-components/docs-sidebar";
 import { DocsHeader } from "@/components/navigation-components/docs-header";
-import { LLMButton } from "@/components/llm-button";
+import { MobileTableOfContents } from "@/components/navigation-components/mobile-tocs";
 
 export default function DocsLayout({
   children,
@@ -13,32 +13,27 @@ export default function DocsLayout({
 }) {
   return (
     <SidebarProvider>
-      <div className="grid md:grid-cols-[18rem_1fr]">
-        <aside className="hidden bg-sidebar backdrop-blur-sm md:block h-screen sticky top-0">
-          <div className="flex justify-end h-full">
-            <div className="w-64 bg-sidebar backdrop-blur-sm border-r">
-              <SidebarLeft />
-            </div>
-          </div>
-        </aside>
+      <div className="min-h-screen bg-background flex w-full">
+        <DocsSidebar />
 
-        <div>
+        <SidebarInset className="flex flex-col">
           <DocsHeader />
-          <main className="relative py-8 px-12 pt-12">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 lg:grid-cols-[1fr_280px]">
-              <div className="min-w-0">
-                {children}
+
+          <div className="flex flex-1">
+            <main className="flex-1 px-6 py-6 md:px-8 md:py-8 lg:px-12">
+              <div className="xl:hidden mb-6">
+                <MobileTableOfContents />
+              </div>
+
+              <div className="">{children}</div>
+              <div className="border-t border-border pt-6">
                 <DocsPagination />
               </div>
-              <div className="hidden lg:block">
-                <div className="sticky top-24 space-y-3">
-                  <LLMButton />
-                  <TableOfContents />
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
+            </main>
+
+            <TableOfContents />
+          </div>
+        </SidebarInset>
       </div>
     </SidebarProvider>
   );

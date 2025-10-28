@@ -1,6 +1,30 @@
-const muniConfig = {
+export type Theme = "minimal" | "minimal-dark" | "mono";
+
+export interface NavigationItem {
+  title: string;
+  slug: string;
+  items?: NavigationItem[];
+}
+
+export interface HeadingLink {
+  title: string;
+  href: string;
+}
+
+export interface MuniConfig {
+  title: string;
+  version?: string;
+  defaultTheme?: Theme;
+  showFrontmatterMeta?: boolean;
+  headingLinks?: HeadingLink[];
+  navigation: NavigationItem[];
+  githubRepo?: string;
+}
+
+const muniConfig: MuniConfig = {
   title: "Muni",
   version: "1.0.0",
+  defaultTheme: "minimal",
   showFrontmatterMeta: true,
   headingLinks: [
     { title: "GitHub", href: "https://github.com/nkurunziza-saddy/muni-docs" },
@@ -16,41 +40,27 @@ const muniConfig = {
       slug: "getting-started",
     },
     {
-      title: "Components",
-      slug: "components/index",
-      items: [
-        { title: "Accordion", slug: "components/accordion" },
-        { title: "Alert", slug: "components/alert" },
-        { title: "Alert Dialog", slug: "components/alert-dialog" },
-        { title: "Autocomplete", slug: "components/autocomplete" },
-        { title: "Avatar", slug: "components/avatar" },
-        { title: "Button", slug: "components/button" },
-        { title: "Card", slug: "components/card" },
-        { title: "Checkbox", slug: "components/checkbox" },
-        { title: "Collapsible", slug: "components/collapsible" },
-        { title: "Combobox", slug: "components/combobox" },
-        { title: "Context Menu", slug: "components/context-menu" },
-        { title: "Dialog", slug: "components/dialog" },
-        { title: "Dropdown Menu", slug: "components/dropdown" },
-        { title: "Form", slug: "components/form" },
-        { title: "Popover", slug: "components/popover" },
-        { title: "Preview Card", slug: "components/preview-card" },
-        { title: "Progress", slug: "components/progress" },
-        { title: "Radio Group", slug: "components/radio-group" },
-        { title: "Scroll Area", slug: "components/scroll-area" },
-        { title: "Select", slug: "components/select" },
-        { title: "Separator", slug: "components/separator" },
-        { title: "Slider", slug: "components/slider" },
-        { title: "Switch", slug: "components/switch" },
-        { title: "Tabs", slug: "components/tabs" },
-        { title: "Textarea", slug: "components/textarea" },
-        { title: "Toast", slug: "components/toast" },
-        { title: "Toggle", slug: "components/toggle" },
-        { title: "Toolbar", slug: "components/toolbar" },
-        { title: "Tooltip", slug: "components/tooltip" },
-      ],
+      title: "Configuration",
+      slug: "configuration",
+    },
+    {
+      title: "Themes",
+      slug: "themes",
+    },
+    {
+      title: "Markdown",
+      slug: "markdown",
+    },
+    {
+      title: "Deployment",
+      slug: "deployment",
+    },
+    {
+      title: "Project Structure",
+      slug: "project-structure",
     },
   ],
+  githubRepo: "https://github.com/nkurunziza-saddy/muni-docs",
 };
 
 export default muniConfig;

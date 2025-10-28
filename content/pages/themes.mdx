@@ -1,0 +1,257 @@
+---
+title: "Themes"
+description: "Learn about Muni's three minimal themes and how to customize them"
+author: "Muni Team"
+date: "2024-01-15"
+---
+
+# Themes
+
+Muni comes with three carefully crafted themes designed for minimal, professional documentation.
+
+## Available Themes
+
+### Minimal (Light)
+
+The default theme with a clean white background and subtle grays.
+
+- **Background**: Pure white
+- **Text**: Dark gray with minimal contrast
+- **Accents**: Subtle gray borders and highlights
+- **Typography**: Sans-serif (Geist Sans)
+
+Perfect for general documentation and clean, modern looks.
+
+### Minimal Dark
+
+A dark theme with deep blacks and minimal contrast.
+
+- **Background**: Deep black
+- **Text**: Light gray with high contrast
+- **Accents**: Subtle borders and highlights
+- **Typography**: Sans-serif (Geist Sans)
+
+Ideal for dark mode users and technical documentation.
+
+### Mono
+
+A monospace theme inspired by terminal interfaces.
+
+- **Background**: Light gray
+- **Text**: Dark gray with monospace font
+- **Accents**: Clean borders and minimal styling
+- **Typography**: Monospace (Geist Mono)
+
+Perfect for technical documentation, code references, and developer-focused content.
+
+## Setting the Theme
+
+### Default Theme
+
+Set the default theme in `muni.config.ts`:
+
+```typescript
+const muniConfig: MuniConfig = {
+  title: "My Docs",
+  defaultTheme: "minimal", // or "minimal-dark" or "mono"
+  // ... other options
+};
+```
+
+### Theme Toggle
+
+Users can switch themes using the theme toggle in the header. The toggle cycles through:
+
+1. Minimal (Light)
+2. Minimal Dark
+3. Mono
+4. System (follows OS preference)
+
+## Theme Customization
+
+### CSS Variables
+
+Each theme defines CSS variables that you can override:
+
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0.002 0);
+  --primary: oklch(0.15 0.002 0);
+  --muted: oklch(0.96 0.001 0);
+  --border: oklch(0.9 0.001 0);
+  /* ... more variables */
+}
+```
+
+### Custom Theme
+
+To create a custom theme:
+
+1. **Add theme class** to `color-themes.css`:
+
+```css
+.my-theme {
+  --radius: 0.5rem;
+  --background: oklch(0.98 0.01 120);
+  --foreground: oklch(0.15 0.02 120);
+  --primary: oklch(0.4 0.15 120);
+  --muted: oklch(0.95 0.01 120);
+  --border: oklch(0.9 0.01 120);
+  /* ... define all variables */
+}
+```
+
+2. **Update theme toggle** to include your theme:
+
+```typescript
+const themes = [
+  { id: "minimal", name: "Minimal", icon: CircleIcon },
+  { id: "minimal-dark", name: "Minimal Dark", icon: MoonIcon },
+  { id: "mono", name: "Mono", icon: TerminalIcon },
+  { id: "my-theme", name: "My Theme", icon: MyIcon },
+];
+```
+
+3. **Update TypeScript types**:
+
+```typescript
+export type Theme = "minimal" | "minimal-dark" | "mono" | "my-theme";
+```
+
+## Design Principles
+
+All Muni themes follow these design principles:
+
+### Minimalism
+
+- Clean, uncluttered interfaces
+- Generous whitespace
+- Subtle colors and borders
+- No unnecessary visual elements
+
+### Typography
+
+- Small, readable text (11-13px base)
+- Tight line heights for professional look
+- Consistent font weights
+- Proper hierarchy
+
+### Spacing
+
+- Consistent spacing scale
+- Tight padding and margins
+- Generous whitespace between sections
+- No excessive padding
+
+### Colors
+
+- High contrast for readability
+- Subtle accent colors
+- Consistent color relationships
+- Accessible color combinations
+
+## Theme Variables
+
+### Core Colors
+
+```css
+--background: /* Main background color */
+--foreground: /* Main text color */
+--card: /* Card background color */
+--card-foreground: /* Card text color */
+--popover: /* Popover background */
+--popover-foreground: /* Popover text */
+```
+
+### Semantic Colors
+
+```css
+--primary: /* Primary brand color */
+--primary-foreground: /* Text on primary */
+--secondary: /* Secondary background */
+--secondary-foreground: /* Text on secondary */
+--muted: /* Muted background */
+--muted-foreground: /* Muted text */
+--accent: /* Accent background */
+--accent-foreground: /* Text on accent */
+```
+
+### Status Colors
+
+```css
+--destructive: /* Error/danger color */
+--destructive-foreground: /* Text on destructive */
+--success: /* Success color */
+--success-foreground: /* Text on success */
+--warning: /* Warning color */
+--warning-foreground: /* Text on warning */
+```
+
+### UI Colors
+
+```css
+--border: /* Border color */
+--input: /* Input border color */
+--ring: /* Focus ring color */
+```
+
+### Sidebar Colors
+
+```css
+--sidebar: /* Sidebar background */
+--sidebar-foreground: /* Sidebar text */
+--sidebar-primary: /* Sidebar primary */
+--sidebar-primary-foreground: /* Text on sidebar primary */
+--sidebar-accent: /* Sidebar accent */
+--sidebar-accent-foreground: /* Text on sidebar accent */
+--sidebar-border: /* Sidebar border */
+--sidebar-ring: /* Sidebar focus ring */
+```
+
+## Best Practices
+
+1. **Test all themes**: Ensure your content looks good in all themes
+2. **Use semantic colors**: Use `--primary` instead of hardcoded colors
+3. **Maintain contrast**: Ensure text is readable in all themes
+4. **Keep it minimal**: Don't over-customize - embrace the minimal aesthetic
+5. **Test accessibility**: Ensure color combinations meet accessibility standards
+
+## Examples
+
+### Minimal Theme
+
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0.002 0);
+  --primary: oklch(0.15 0.002 0);
+  --muted: oklch(0.96 0.001 0);
+  --border: oklch(0.9 0.001 0);
+}
+```
+
+### Minimal Dark Theme
+
+```css
+.dark {
+  --background: oklch(0.05 0.001 0);
+  --foreground: oklch(0.95 0.001 0);
+  --primary: oklch(0.9 0.001 0);
+  --muted: oklch(0.12 0.001 0);
+  --border: oklch(0.2 0.001 0);
+}
+```
+
+### Mono Theme
+
+```css
+.mono {
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.15 0.004 285.82);
+  --primary: oklch(0.35 0.11 285.82);
+  --muted: oklch(0.94 0.008 285.82);
+  --border: oklch(0.88 0.008 285.82);
+  --font: var(--font-geist-mono);
+}
+```
