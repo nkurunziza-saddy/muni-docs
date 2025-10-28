@@ -34,8 +34,8 @@ import { CodeGroup } from "./code-group";
 import { CodeBlock } from "./code-block";
 import { Steps } from "./steps";
 import { cn } from "@/lib/utils";
-import { CodePreviewBlock } from "@/content/snippets/code-preview-block";
-import { Tabs, TabsItem } from "@/content/snippets/tabs";
+import { CodePreviewBlock } from "@/mdx-components/code-preview-block";
+import { Tabs, TabsItem } from "@/mdx-components/tabs";
 
 const mdxComponents: MDXComponents = {
   Callout,
