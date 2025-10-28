@@ -15,7 +15,7 @@ export function Code(
         "font-mono text-sm",
         isInCodeBlock
           ? ""
-          : "bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-medium",
+          : "bg-muted relative rounded px-[0.3rem] py-[0.2rem]",
         props.className
       )}
     >

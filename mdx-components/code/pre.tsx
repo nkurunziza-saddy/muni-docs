@@ -51,7 +51,7 @@ export function Pre({
       return (
         <CodeBlock
           className={cn(
-            isTabContent ? "" : "border border-input/80 rounded mb-6"
+            isTabContent ? "" : "border rounded-md overflow-hidden border-input"
           )}
         >
           {props["data-title"] && !isTabContent && (
@@ -59,7 +59,7 @@ export function Pre({
               {props["data-title"]}
             </CodeTitle>
           )}
-          {children}
+          <div className="shiki">{children}</div>
         </CodeBlock>
       );
     }
@@ -69,16 +69,14 @@ export function Pre({
   return (
     <IsInCodeBlockContext.Provider value={true}>
       {wrap(
-        <div className="relative group">
-          <pre
-            ref={ref}
-            {...props}
-            className={cn(className, "p-2 overflow-auto custom-scrollbar")}
-          >
-            <CopyButton copied={copied} copy={copy} />
-            {children_}
-          </pre>
-        </div>
+        <pre
+          ref={ref}
+          {...props}
+          className={cn(className, "overflow-auto custom-scrollbar")}
+        >
+          <CopyButton copied={copied} copy={copy} />
+          {children_}
+        </pre>
       )}
     </IsInCodeBlockContext.Provider>
   );

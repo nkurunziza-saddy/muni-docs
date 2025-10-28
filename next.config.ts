@@ -28,17 +28,12 @@ import { transformerNotationInclude } from "./lib/plugins/transformers/transform
 import { transformerTitle } from "./lib/plugins/transformers/transformer-title";
 import path from "path";
 import { remarkCode } from "./lib/plugins/remark/code";
-import { remarkCodeGroup } from "./lib/plugins/remark/code-group";
-import { remarkCallout } from "./lib/plugins/remark/callout";
-import { remarkSteps } from "./lib/plugins/remark/steps";
 import { remarkSubheading } from "./lib/plugins/remark/subheading";
-import { remarkStrongBlock } from "./lib/plugins/remark/strong-block";
 import { transformerLineNumbers } from "./lib/plugins/transformers/transformer-line-numbers";
 import { transformerTagline } from "./lib/plugins/transformers/transformer-tagline";
 import { rehypeInlineShiki } from "./lib/plugins/rehype/inline-shiki";
 import { rehypeShikiDisplayNotation } from "./lib/plugins/rehype/display-shiki-notation";
 import { rehypePreLineNumbers } from "./lib/plugins/rehype/rehype-pre-line-numbers";
-import { remarkSpace } from "./lib/plugins/remark/space";
 
 const pwaConfig = withPWA({
   dest: "public",
@@ -61,12 +56,7 @@ const withMDX = createMDX({
       remarkMdxFrontmatter,
       // Custom
       remarkCode,
-      remarkCodeGroup,
-      remarkCallout,
-      remarkSteps,
       remarkSubheading,
-      remarkSpace,
-      remarkStrongBlock,
     ],
     rehypePlugins: [
       rehypeSlug,

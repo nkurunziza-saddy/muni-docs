@@ -4,6 +4,7 @@
 @import "./shiki-theme.css";
 @import "./spacing.css";
 @import "./typography.css";
+@import "./mdx-components.css";
 
 @layer base {
   * {

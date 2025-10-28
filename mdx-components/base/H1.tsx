@@ -1,8 +1,8 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Heading } from "./heading";
 import { cn } from "@/lib/utils";
+import { Heading } from "../heading";
 
-export function H5(
+export function H1(
   props: DetailedHTMLProps<
     HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
@@ -12,10 +12,10 @@ export function H5(
     <Heading
       {...props}
       className={cn(
-        "scroll-m-20 text-lg font-medium tracking-tight",
+        "scroll-m-20 text-4xl font-extrabold tracking-tight text-balance ",
         props.className
       )}
-      level={5}
+      level={1}
     />
   );
 }

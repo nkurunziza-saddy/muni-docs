@@ -1,0 +1,344 @@
+---
+title: "Components Showcase"
+description: "Comprehensive showcase of all MDX components"
+---
+
+# Components Showcase
+
+This page demonstrates all the available MDX components in the Muni documentation system.
+
+## Callouts and Info Boxes
+
+### Callout Component
+
+<Callout type="info">
+  This is an info callout with some important information.
+</Callout>
+
+<Callout type="warning" title="Important">
+  This is a warning callout with a custom title.
+</Callout>
+
+<Callout type="success">
+  This is a success callout indicating something worked correctly.
+</Callout>
+
+<Callout type="danger">
+  This is a danger callout for critical information.
+</Callout>
+
+<Callout type="tip">This is a tip callout with helpful advice.</Callout>
+
+### InfoBox Component
+
+<InfoBox type="info">This is an InfoBox component (alias for Callout).</InfoBox>
+
+<InfoBox type="warning" title="API Rate Limit">
+  The API rate limit is 1000 requests per hour per API key.
+</InfoBox>
+
+## Code Components
+
+### Code Groups
+
+<CodeGroup>
+```typescript title="types.ts"
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+type UserRole = 'admin' | 'user' | 'guest';
+
+const createUser = (userData: Omit<User, 'id'>): User => {
+return {
+id: Math.random(),
+...userData
+};
+};
+
+````
+
+```javascript title="utils.js"
+const user = {
+  id: 1,
+  name: "John Doe",
+  email: "john@example.com"
+};
+
+function formatUserName(user) {
+  return `${user.name} (${user.email})`;
+}
+
+export { user, formatUserName };
+````
+
+```python title="models.py"
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class User:
+    id: int
+    name: str
+    email: str
+    role: Optional[str] = None
+
+    def __str__(self):
+        return f"User({self.name}, {self.email})"
+```
+
+</CodeGroup>
+
+### Code Preview Blocks
+
+<CodePreviewBlock>
+  <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white">
+    <h3 className="text-xl font-bold mb-2">Gradient Card</h3>
+    <p className="text-blue-100">
+      This is a preview of a gradient card component.
+    </p>
+    <button className="mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors">
+      Click me
+    </button>
+  </div>
+  ```jsx
+  <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white">
+    <h3 className="text-xl font-bold mb-2">Gradient Card</h3>
+    <p className="text-blue-100">
+      This is a preview of a gradient card component.
+    </p>
+    <button className="mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors">
+      Click me
+    </button>
+  </div>
+  ```
+</CodePreviewBlock>
+
+### Individual Code Blocks
+
+```typescript title="api-client.ts"
+interface ApiResponse<T> {
+  data: T;
+  status: number;
+  message: string;
+}
+
+class ApiClient {
+  private baseUrl: string;
+
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
+
+  async get<T>(endpoint: string): Promise<ApiResponse<T>> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`);
+    return response.json();
+  }
+}
+```
+
+## Interactive Components
+
+### Tabs
+
+<Tabs>
+  <TabsItem value="Overview">
+    ## Overview
+    
+    This is the overview tab with some basic information about the project.
+    
+    - **Feature 1**: Description of the first feature
+    - **Feature 2**: Description of the second feature
+    - **Feature 3**: Description of the third feature
+    
+    > This is a blockquote in the overview tab.
+  </TabsItem>
+  
+  <TabsItem value="Installation">
+    ## Installation
+    
+    Install the package using your preferred package manager:
+    
+    ```bash
+    # Using npm
+    npm install @muni-docs/components
+    
+    # Using yarn
+    yarn add @muni-docs/components
+    
+    # Using pnpm
+    pnpm add @muni-docs/components
+    ```
+    
+    Then import the components you need:
+    
+    ```typescript
+    import { Callout, CodeGroup, Tabs } from '@muni-docs/components';
+    ```
+  </TabsItem>
+  
+  <TabsItem value="Configuration">
+    ## Configuration
+    
+    Configure the components by passing props:
+    
+    ```typescript
+    interface ComponentConfig {
+      theme: 'light' | 'dark';
+      size: 'sm' | 'md' | 'lg';
+      variant: 'default' | 'outline' | 'ghost';
+    }
+    
+    const config: ComponentConfig = {
+      theme: 'light',
+      size: 'md',
+      variant: 'default'
+    };
+    ```
+    
+    ### Environment Variables
+    
+    Set these environment variables in your `.env.local`:
+    
+    - `NEXT_PUBLIC_THEME`: The default theme
+    - `NEXT_PUBLIC_API_URL`: The API base URL
+  </TabsItem>
+</Tabs>
+
+## Layout Components
+
+### Steps
+
+<Steps>
+  <Step>
+    ## Step 1: Project Setup
+    
+    Create a new Next.js project and install the required dependencies.
+    
+    ```bash
+    npx create-next-app@latest my-project
+    cd my-project
+    npm install @muni-docs/components
+    ```
+  </Step>
+  
+  <Step>
+    ## Step 2: Configuration
+    
+    Set up your configuration file and environment variables.
+    
+    Create a `muni.config.ts` file in your project root:
+    
+    ```typescript
+    export default {
+      title: "My Documentation",
+      description: "Documentation for my project",
+      theme: "minimal"
+    };
+    ```
+  </Step>
+  
+  <Step>
+    ## Step 3: Create Content
+    
+    Start creating your documentation content using MDX files.
+    
+    Place your content files in the `content/pages/` directory and they will be automatically processed.
+  </Step>
+</Steps>
+
+### Details and Summary
+
+<Details>
+  <Summary>Click to expand for more information</Summary>
+  
+  This is additional information that can be expanded or collapsed. It's useful for:
+  
+  - Hiding detailed technical information
+  - Creating FAQ sections
+  - Providing optional context
+  
+  ```typescript
+  // Example code in details
+  const expanded = true;
+  if (expanded) {
+    console.log("This content is now visible!");
+  }
+  ```
+</Details>
+
+## Typography and Text
+
+### Headings
+
+The documentation system supports all standard heading levels with proper styling and anchor links.
+
+### Inline Code
+
+Use `inline code` for short code snippets, function names, or technical terms.
+
+### Code Blocks
+
+Use triple backticks for code blocks with syntax highlighting:
+
+```bash
+# This is a bash command
+echo "Hello, World!"
+```
+
+```json
+{
+  "name": "muni-docs",
+  "version": "1.0.0",
+  "description": "A minimal documentation template"
+}
+```
+
+### Lists
+
+- **Unordered lists** work great for bullet points
+- They support **bold text** and `inline code`
+- And can be nested:
+  - Like this nested item
+  - And this one too
+
+1. **Ordered lists** are perfect for step-by-step instructions
+2. They maintain proper numbering
+3. And can also be nested:
+   1. First nested item
+   2. Second nested item
+
+### Blockquotes
+
+> This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full callout component styling.
+
+### Tables
+
+| Component | Type        | Description                     |
+| --------- | ----------- | ------------------------------- |
+| Callout   | Layout      | Alert-style callouts with icons |
+| CodeGroup | Interactive | Tabbed code blocks              |
+| Tabs      | Interactive | General-purpose tabs            |
+| Steps     | Layout      | Step-by-step instructions       |
+| InfoBox   | Layout      | Alias for Callout component     |
+
+## Best Practices
+
+1. **Use semantic components** - Choose the right component for your content
+2. **Keep code blocks focused** - Don't make them too long
+3. **Use descriptive titles** - Help users understand what they're looking at
+4. **Test interactivity** - Make sure tabs and other interactive elements work
+5. **Maintain consistency** - Use similar patterns throughout your documentation
+
+## Conclusion
+
+This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to be:
+
+- **Accessible** - Proper ARIA attributes and keyboard navigation
+- **Customizable** - Flexible props and styling options
+- **Consistent** - Unified design language across all components
+- **Performant** - Optimized for fast loading and smooth interactions
+
+Use these components to create rich, interactive documentation that your users will love!

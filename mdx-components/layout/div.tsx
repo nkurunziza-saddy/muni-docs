@@ -1,7 +1,7 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { Subtitle } from "./subtitle";
-import { CodeGroup } from "./code-group";
+import { Subtitle } from "../subtitle";
+import { CodeGroup } from "../interactive/code-group";
 import { Steps } from "./steps";
 
 export function Div(

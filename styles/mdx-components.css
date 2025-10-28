@@ -1,0 +1,271 @@
+/* MDX Component CSS Variables and Styles */
+
+:root {
+  /* MDX Component Spacing */
+  --mdx-space-sm: 0.5rem;
+  --mdx-space-md: 1rem;
+  --mdx-space-lg: 1.5rem;
+  --mdx-space-xl: 2rem;
+  --mdx-space-2xl: 3rem;
+
+  /* MDX Component Colors */
+  --mdx-callout-note-bg: hsl(var(--muted));
+  --mdx-callout-note-border: hsl(var(--border));
+  --mdx-callout-info-bg: hsl(var(--primary) / 0.1);
+  --mdx-callout-info-border: hsl(var(--primary));
+  --mdx-callout-warning-bg: hsl(var(--warning) / 0.1);
+  --mdx-callout-warning-border: hsl(var(--warning));
+  --mdx-callout-danger-bg: hsl(var(--destructive) / 0.1);
+  --mdx-callout-danger-border: hsl(var(--destructive));
+  --mdx-callout-success-bg: hsl(var(--success) / 0.1);
+  --mdx-callout-success-border: hsl(var(--success));
+
+  /* Code Block Variables */
+  --mdx-code-bg: hsl(var(--muted));
+  --mdx-code-border: hsl(var(--border));
+  --mdx-code-radius: 0.5rem;
+  --mdx-code-padding: 1rem;
+
+  /* Tab Variables */
+  --mdx-tab-bg: hsl(var(--muted) / 0.4);
+  --mdx-tab-border: hsl(var(--border));
+  --mdx-tab-radius: 0.5rem;
+  --mdx-tab-padding: 0.5rem 1rem;
+  --mdx-tab-active-border: hsl(var(--primary));
+  --mdx-tab-active-color: hsl(var(--primary));
+}
+
+/* Dark mode overrides */
+.dark {
+  --mdx-callout-note-bg: hsl(var(--muted) / 0.3);
+  --mdx-callout-info-bg: hsl(var(--primary) / 0.15);
+  --mdx-callout-warning-bg: hsl(var(--warning) / 0.15);
+  --mdx-callout-danger-bg: hsl(var(--destructive) / 0.15);
+  --mdx-callout-success-bg: hsl(var(--success) / 0.15);
+  --mdx-tab-bg: hsl(var(--muted) / 0.2);
+}
+
+/* MDX Component Base Styles */
+.mdx-content {
+  /* Ensure proper spacing and typography */
+  line-height: 1.7;
+  color: hsl(var(--foreground));
+}
+
+.mdx-content h1,
+.mdx-content h2,
+.mdx-content h3,
+.mdx-content h4,
+.mdx-content h5,
+.mdx-content h6 {
+  scroll-margin-top: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.mdx-content h1:first-child,
+.mdx-content h2:first-child,
+.mdx-content h3:first-child,
+.mdx-content h4:first-child,
+.mdx-content h5:first-child,
+.mdx-content h6:first-child {
+  margin-top: 0;
+}
+
+.mdx-content p {
+  margin-bottom: var(--mdx-space-md);
+}
+
+.mdx-content ul,
+.mdx-content ol {
+  margin-bottom: var(--mdx-space-md);
+  padding-left: 1.5rem;
+}
+
+.mdx-content li {
+  margin-bottom: 0.25rem;
+}
+
+.mdx-content blockquote {
+  border-left: 4px solid hsl(var(--border));
+  padding-left: var(--mdx-space-md);
+  margin: var(--mdx-space-lg) 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+.mdx-content code {
+  background: hsl(var(--muted));
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+    "Liberation Mono", Menlo, monospace;
+}
+
+.mdx-content pre {
+  /* background: var(--mdx-code-bg); */
+  border: 1px solid var(--mdx-code-border);
+  border-radius: 0;
+  padding: var(--mdx-code-padding);
+  overflow-x: auto;
+  margin: 0;
+}
+
+.mdx-content pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875rem;
+}
+
+/* Callout Styles */
+.mdx-callout {
+  border-radius: var(--mdx-code-radius);
+  padding: var(--mdx-space-md);
+  margin: var(--mdx-space-lg) 0;
+  border-left: 4px solid;
+}
+
+.mdx-callout--note {
+  background: var(--mdx-callout-note-bg);
+  border-color: var(--mdx-callout-note-border);
+}
+
+.mdx-callout--info {
+  background: var(--mdx-callout-info-bg);
+  border-color: var(--mdx-callout-info-border);
+}
+
+.mdx-callout--warning {
+  background: var(--mdx-callout-warning-bg);
+  border-color: var(--mdx-callout-warning-border);
+}
+
+.mdx-callout--danger {
+  background: var(--mdx-callout-danger-bg);
+  border-color: var(--mdx-callout-danger-border);
+}
+
+.mdx-callout--success {
+  background: var(--mdx-callout-success-bg);
+  border-color: var(--mdx-callout-success-border);
+}
+
+/* Tab Styles */
+.mdx-tabs {
+  border: 1px solid var(--mdx-code-border);
+  border-radius: var(--mdx-code-radius);
+  margin: var(--mdx-space-lg) 0;
+  overflow: hidden;
+}
+
+.mdx-tabs-list {
+  background: var(--mdx-tab-bg);
+  border-bottom: 1px solid var(--mdx-code-border);
+  display: flex;
+  padding: 0 var(--mdx-space-sm);
+}
+
+.mdx-tabs-trigger {
+  padding: var(--mdx-tab-padding);
+  border-bottom: 2px solid transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.mdx-tabs-trigger:hover {
+  color: hsl(var(--foreground));
+}
+
+.mdx-tabs-trigger[data-state="active"] {
+  border-bottom-color: var(--mdx-tab-active-border);
+  color: var(--mdx-tab-active-color);
+}
+
+.mdx-tabs-trigger:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+.mdx-tabs-content {
+  padding: var(--mdx-space-md);
+}
+
+/* Code Group Styles */
+.mdx-code-group {
+  border: 1px solid var(--mdx-code-border);
+  border-radius: var(--mdx-code-radius);
+  margin: var(--mdx-space-lg) 0;
+  overflow: hidden;
+}
+
+/* Steps Styles */
+.mdx-steps {
+  margin: var(--mdx-space-lg) 0;
+}
+
+.mdx-step {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: var(--mdx-space-lg);
+}
+
+.mdx-step::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.mdx-steps {
+  counter-reset: step-counter;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mdx-content {
+    font-size: 0.875rem;
+  }
+
+  .mdx-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .mdx-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .mdx-content h3 {
+    font-size: 1.125rem;
+  }
+
+  .mdx-tabs-list {
+    flex-wrap: wrap;
+  }
+
+  .mdx-tabs-trigger {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+}

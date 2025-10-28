@@ -4,5 +4,5 @@ import type { DetailedHTMLProps, HTMLAttributes } from "react";
 export function CodeBlock(
   props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 ) {
-  return <div {...props} className={cn("not-prose", props.className)} />;
+  return <div {...props} className={cn("not-prose ", props.className)} />;
 }

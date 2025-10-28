@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import { Footnotes } from "./footnotes";
+import { Footnotes } from "../footnotes";
 
 export function Section(
   props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>

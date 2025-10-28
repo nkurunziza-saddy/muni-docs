@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import type { ReactNode, ReactElement } from "react";
 
 type TabsItemProps = {
-  label: string;
   value: string;
   children: ReactNode;
 };
@@ -21,12 +20,12 @@ export function Tabs({
 
   return (
     <TabsPrimitive.Root
-      className={cn("not-prose w-full mb-6")}
+      className={cn("not-prose w-full mb-6 border border-input rounded-lg")}
       defaultValue={defaultValue}
     >
       <TabsPrimitive.List
         className={cn(
-          "bg-background backdrop-blur-3xl mb-2 border-b flex px-2"
+          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg"
         )}
       >
         {children.map((child) => {
@@ -36,10 +35,10 @@ export function Tabs({
               key={c.props.value}
               value={c.props.value}
               className={cn(
-                "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-2 py-1.5 transition-colors hover:text-foreground data-[state=active]:border-foreground data-[state=active]:text-foreground"
+                "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
               )}
             >
-              {c.props.label}
+              {c.props.value}
             </TabsPrimitive.Trigger>
           );
         })}
@@ -51,7 +50,10 @@ export function Tabs({
           <TabsPrimitive.Content
             key={c.props.value}
             value={c.props.value}
-            className="p-0 mt-2"
+            className="p-6 focus:outline-none"
+            role="tabpanel"
+            aria-labelledby={`tab-${c.props.value}`}
+            tabIndex={0}
           >
             {c.props.children}
           </TabsPrimitive.Content>
@@ -62,5 +64,5 @@ export function Tabs({
 }
 
 export function TabsItem({ children }: TabsItemProps) {
-  return <>{children}</>;
+  return <div className="prose max-w-none">{children}</div>;
 }
