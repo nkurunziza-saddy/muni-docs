@@ -2,85 +2,2536 @@
   {
     "id": "api/built-in-components",
     "title": "Built-in Components Reference",
-    "content": "Built-in Components [The Toolbox] Muni provides a set of powerful components that are globally available in all your MDX files. These are designed to help you create rich, structured content without needing to import them. Callouts Callouts are used to highlight a block of text. They are created using the  container directive. - Directive:  - Supported Types: , , ,  Steps The  component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any  heading within it. - Directive:  CodeGroup A component for displaying multiple code blocks in a tabbed view. - Directive:  ts [TypeScript] const message: string = \"Hello\"; js [JavaScript] const message = \"Hello\"; Aside<Aside>",
+    "content": "Built-in Components [The Toolbox] Muni provides a set of powerful components that are globally available in all your MDX files. These are designed to help you create rich, structured content without needing to import them. Callouts Callouts are used to highlight a block of text. They are created using the container directive. - Directive: - Supported Types: , , , Steps The component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any heading within it. - Directive: CodeGroup A component for displaying multiple code blocks in a tabbed view. - Directive: ts [TypeScript] const message: string = \"Hello\"; js [JavaScript] const message = \"Hello\"; Aside<Aside>",
     "url": "/docs/api/built-in-components",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "api/built-in-components/callouts",
+    "title": "Callouts",
+    "content": "Callouts are used to highlight a block of text. They are created using the container directive. - Directive: - Supported",
+    "url": "/docs/api/built-in-components#callouts",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/built-in-components/steps",
+    "title": "Steps",
+    "content": "The component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any heading wi",
+    "url": "/docs/api/built-in-components#steps",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/built-in-components/step-1-do-this-first",
+    "title": "Step 1: Do this first",
+    "content": "Content for the first step.",
+    "url": "/docs/api/built-in-components#step-1-do-this-first",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h4"
+  },
+  {
+    "id": "api/built-in-components/step-2-do-this-next",
+    "title": "Step 2: Do this next",
+    "content": "Content for the second step. ::: `",
+    "url": "/docs/api/built-in-components#step-2-do-this-next",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h4"
+  },
+  {
+    "id": "api/built-in-components/codegroup",
+    "title": "CodeGroup",
+    "content": "A component for displaying multiple code blocks in a tabbed view. - Directive: ts [TypeScript] const message: string = \"",
+    "url": "/docs/api/built-in-components#codegroup",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/built-in-components/copybutton",
+    "title": "CopyButton",
+    "content": "This component is automatically added to every code block and provides a simple way for users to copy the code to their ",
+    "url": "/docs/api/built-in-components#copybutton",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/built-in-components/aside",
+    "title": "Aside",
+    "content": "The component renders content in a right-hand sidebar on larger screens, useful for showing supplementary information, e",
+    "url": "/docs/api/built-in-components#aside",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/built-in-components/supplementary-info",
+    "title": "Supplementary Info",
+    "content": "This content is displayed in the right sidebar. It can contain code blocks, text, and other components. </Aside>",
+    "url": "/docs/api/built-in-components#supplementary-info",
+    "tags": [],
+    "parentPage": "Built-in Components Reference",
+    "sectionType": "h4"
   },
   {
     "id": "api/configuration",
     "title": "Configuration Reference",
-    "content": "Configuration [The Control Panel] Configuration for a Muni project is handled in two main places:  for site-specific settings like navigation, and  for the underlying MDX and Next.js behavior. This is the primary configuration file for your site's content and navigation. It exports a  object.  Interface - Type:  - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header. - Type:  (optional) - Description: A version string for your project, which is displayed in the site header. - Type:  (optional) - Default:  - Description: Whether to display the author and date from the frontmatter at the bottom of each page. - Type:  (optional) - Description: An array of link objects to be displayed in the site header, next to the version. - Type:  - Description: An array of objects that defines the structure of your sidebar navigation. Each  has the following properties: -  (string): The text displayed in the navigation sidebar. -  (string): The URL slug for the page. This must match the file path in  (without the  extension). For the homepage, use . -  (optional ): An optional array of nested navigation items to create collapsible sections in the sidebar. Example Configuration This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set of Remark and Rehype plugins to add advanced features to your Markdown. Default Plugins Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethroughs, etc. - Frontmatter: Parses the YAML frontmatter from your files. - Code Block Titles: Adds titles to code blocks. - Callouts: Enables  directives for callouts. - Steps: Enables the  component. - Slug & Autolink Headings: Automatically adds s to headings and links them. Customizing Plugins You can add your own Remark or Rehype plugins by modifying the  object in .",
+    "content": "Configuration [The Control Panel] Configuration for a Muni project is handled in two main places: for site-specific settings like navigation, and for the underlying MDX and Next.js behavior. This is the primary configuration file for your site's content and navigation. It exports a object. Interface - Type: - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header. - Type: (optional) - Description: A version string for your project, which is displayed in the site header. - Type: (optional) - Default: - Description: Whether to display the author and date from the frontmatter at the bottom of each page. - Type: (optional) - Description: An array of link objects to be displayed in the site header, next to the version. - Type: - Description: An array of objects that defines the structure of your sidebar navigation. Each has the following properties: - (string): The text displayed in the navigation sidebar. - (string): The URL slug for the page. This must match the file path in (without the extension). For the homepage, use . - (optional ): An optional array of nested navigation items to create collapsible sections in the sidebar. Example Configuration This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set of Remark and Rehype plugins to add advanced features to your Markdown. Default Plugins Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethroughs, etc. - Frontmatter: Parses the YAML frontmatter from your files. - Code Block Titles: Adds titles to code blocks. - Callouts: Enables directives for callouts. - Steps: Enables the component. - Slug & Autolink Headings: Automatically adds s to headings and links them. Customizing Plugins You can add your own Remark or Rehype plugins by modifying the object in .",
     "url": "/docs/api/configuration",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "api/configuration/municonfigts",
+    "title": "`muni.config.ts`",
+    "content": "This is the primary configuration file for your site's content and navigation. It exports a object.",
+    "url": "/docs/api/configuration#municonfigts",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/configuration/municonfig-interface",
+    "title": "`MuniConfig` Interface",
+    "content": "",
+    "url": "/docs/api/configuration#municonfig-interface",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/title",
+    "title": "`title`",
+    "content": "- Type: - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be use",
+    "url": "/docs/api/configuration#title",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/version",
+    "title": "`version`",
+    "content": "- Type: (optional) - Description: A version string for your project, which is displayed in the site header.",
+    "url": "/docs/api/configuration#version",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/showfrontmattermeta",
+    "title": "`showFrontmatterMeta`",
+    "content": "- Type: (optional) - Default: - Description: Whether to display the author and date from the frontmatter at the bottom o",
+    "url": "/docs/api/configuration#showfrontmattermeta",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/headinglinks",
+    "title": "`headingLinks`",
+    "content": "- Type: (optional) - Description: An array of link objects to be displayed in the site header, next to the version.",
+    "url": "/docs/api/configuration#headinglinks",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/navigation",
+    "title": "`navigation`",
+    "content": "- Type: - Description: An array of objects that defines the structure of your sidebar navigation. Each has the following",
+    "url": "/docs/api/configuration#navigation",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/example-configuration",
+    "title": "Example Configuration",
+    "content": "",
+    "url": "/docs/api/configuration#example-configuration",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/nextconfigts",
+    "title": "`next.config.ts`",
+    "content": "This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set ",
+    "url": "/docs/api/configuration#nextconfigts",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/configuration/default-plugins",
+    "title": "Default Plugins",
+    "content": "Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethro",
+    "url": "/docs/api/configuration#default-plugins",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/configuration/customizing-plugins",
+    "title": "Customizing Plugins",
+    "content": "You can add your own Remark or Rehype plugins by modifying the object in .",
+    "url": "/docs/api/configuration#customizing-plugins",
+    "tags": [],
+    "parentPage": "Configuration Reference",
+    "sectionType": "h3"
   },
   {
     "id": "api/frontmatter",
     "title": "Frontmatter Reference",
-    "content": "Frontmatter Reference [Page Metadata] Frontmatter is the YAML block at the top of your MDX files, enclosed by triple dashes (). It allows you to provide metadata for each page. Standard Properties These are the primary properties that Muni uses to control page rendering and SEO. -   Type:  -   Required:  -   Description: The main title of the page. It is displayed at the top of the page content and used in the browser tab title (). -   Type:  -   Required:  -   Description: A brief summary of the page content. This is critical for SEO as it is used for the  tag, and it also powers the text snippets in the site's search results. Custom Properties You can add any other custom properties to your frontmatter. These properties are not used by Muni out-of-the-box, but they can be accessed from your own custom components or during the build process. Example with Custom Metadata Accessing Custom Frontmatter While Muni doesn't use custom frontmatter directly, you can configure your project to read it. For example, you could create a custom component that reads the  and  from the page's frontmatter. This typically requires customizing the MDX loader or creating a wrapper component that has access to the page's metadata. The frontmatter is available to the page layout component.",
+    "content": "Frontmatter Reference [Page Metadata] Frontmatter is the YAML block at the top of your MDX files, enclosed by triple dashes (). It allows you to provide metadata for each page. Standard Properties These are the primary properties that Muni uses to control page rendering and SEO. - Type: - Required: - Description: The main title of the page. It is displayed at the top of the page content and used in the browser tab title (). - Type: - Required: - Description: A brief summary of the page content. This is critical for SEO as it is used for the tag, and it also powers the text snippets in the site's search results. Custom Properties You can add any other custom properties to your frontmatter. These properties are not used by Muni out-of-the-box, but they can be accessed from your own custom components or during the build process. Example with Custom Metadata Accessing Custom Frontmatter While Muni doesn't use custom frontmatter directly, you can configure your project to read it. For example, you could create a custom component that reads the and from the page's frontmatter. This typically requires customizing the MDX loader or creating a wrapper component that has access to the page's metadata. The frontmatter is available to the page layout component.",
     "url": "/docs/api/frontmatter",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "api/frontmatter/standard-properties",
+    "title": "Standard Properties",
+    "content": "These are the primary properties that Muni uses to control page rendering and SEO.",
+    "url": "/docs/api/frontmatter#standard-properties",
+    "tags": [],
+    "parentPage": "Frontmatter Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/frontmatter/title",
+    "title": "`title`",
+    "content": "- Type: - Required: - Description: The main title of the page. It is displayed at the top of the page content and used i",
+    "url": "/docs/api/frontmatter#title",
+    "tags": [],
+    "parentPage": "Frontmatter Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/frontmatter/description",
+    "title": "`description`",
+    "content": "- Type: - Required: - Description: A brief summary of the page content. This is critical for SEO as it is used for the t",
+    "url": "/docs/api/frontmatter#description",
+    "tags": [],
+    "parentPage": "Frontmatter Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/frontmatter/custom-properties",
+    "title": "Custom Properties",
+    "content": "You can add any other custom properties to your frontmatter. These properties are not used by Muni out-of-the-box, but t",
+    "url": "/docs/api/frontmatter#custom-properties",
+    "tags": [],
+    "parentPage": "Frontmatter Reference",
+    "sectionType": "h2"
+  },
+  {
+    "id": "api/frontmatter/example-with-custom-metadata",
+    "title": "Example with Custom Metadata",
+    "content": "",
+    "url": "/docs/api/frontmatter#example-with-custom-metadata",
+    "tags": [],
+    "parentPage": "Frontmatter Reference",
+    "sectionType": "h3"
+  },
+  {
+    "id": "api/frontmatter/accessing-custom-frontmatter",
+    "title": "Accessing Custom Frontmatter",
+    "content": "While Muni doesn't use custom frontmatter directly, you can configure your project to read it. For example, you could cr",
+    "url": "/docs/api/frontmatter#accessing-custom-frontmatter",
+    "tags": [],
+    "parentPage": "Frontmatter Reference",
+    "sectionType": "h3"
   },
   {
     "id": "api",
     "title": "API Reference",
-    "content": "API Reference [Technical Details] This section provides a detailed technical reference for the key APIs and configuration surfaces in Muni. Use these guides to understand all the available options for customizing and extending your documentation site. Reference Documents <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\"> <a href=\"/docs/api/configuration\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Configuration</h3>   <p class=\"text-sm text-muted-foreground\">Explore all the options available in the  and  files.</p> </a> <a href=\"/docs/api/frontmatter\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Frontmatter</h3>   <p class=\"text-sm text-muted-foreground\">A complete reference for all the standard and custom frontmatter properties you can use in your MDX files.</p> </a> <a href=\"/docs/api/built-in-components\" className=\"border p-4 rounded-lg hover:bg-accent\">   <h3 class=\"font-semibold text-lg mb-2\">Built-in Components</h3>   <p class=\"text-sm text-muted-foreground\">A detailed look at the props and usage of all the globally available components like  and .</p> </a> </div>",
+    "content": "API Reference [Technical Details] This section provides a detailed technical reference for the key APIs and configuration surfaces in Muni. Use these guides to understand all the available options for customizing and extending your documentation site. Reference Documents <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\"> <a href=\"/docs/api/configuration\" className=\"border p-4 rounded-lg hover:bg-accent\"> <h3 class=\"font-semibold text-lg mb-2\">Configuration</h3> <p class=\"text-sm text-muted-foreground\">Explore all the options available in the and files.</p> </a> <a href=\"/docs/api/frontmatter\" className=\"border p-4 rounded-lg hover:bg-accent\"> <h3 class=\"font-semibold text-lg mb-2\">Frontmatter</h3> <p class=\"text-sm text-muted-foreground\">A complete reference for all the standard and custom frontmatter properties you can use in your MDX files.</p> </a> <a href=\"/docs/api/built-in-components\" className=\"border p-4 rounded-lg hover:bg-accent\"> <h3 class=\"font-semibold text-lg mb-2\">Built-in Components</h3> <p class=\"text-sm text-muted-foreground\">A detailed look at the props and usage of all the globally available components like and .</p> </a> </div>",
     "url": "/docs/api",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "api/reference-documents",
+    "title": "Reference Documents",
+    "content": "<div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\"> <a href=\"/docs/api/configuration\" className=\"border p-4 rounded-",
+    "url": "/docs/api#reference-documents",
+    "tags": [],
+    "parentPage": "API Reference",
+    "sectionType": "h2"
   },
   {
     "id": "components-showcase",
     "title": "Components Showcase",
-    "content": "Components Showcase This page demonstrates all the available MDX components in the Muni documentation system. Callouts and Info Boxes Callout Component <Callout type=\"info\">   This is an info callout with some important information. </Callout> <Callout type=\"warning\" title=\"Important\">   This is a warning callout with a custom title. </Callout> <Callout type=\"success\">   This is a success callout indicating something worked correctly. </Callout> <Callout type=\"danger\">   This is a danger callout for critical information. </Callout> <Callout type=\"tip\">This is a tip callout with helpful advice.</Callout> InfoBox Component <InfoBox type=\"info\">This is an InfoBox component (alias for Callout).</InfoBox> <InfoBox type=\"warning\" title=\"API Rate Limit\">   The API rate limit is 1000 requests per hour per API key. </InfoBox> Code Components Code Groups <CodeGroup> </CodeGroup> Code Preview Blocks <CodePreviewBlock>   <div className=\"p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white\">     <h3 className=\"text-xl font-bold mb-2\">Gradient Card</h3>     <p className=\"text-blue-100\">       This is a preview of a gradient card component.     </p>     <button className=\"mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors\">       Click me     </button>   </div>    </CodePreviewBlock> Individual Code Blocks Interactive Components Tabs <Tabs>   <TabsItem value=\"Overview\">     Overview          This is the overview tab with some basic information about the project.          - Feature 1: Description of the first feature     - Feature 2: Description of the second feature     - Feature 3: Description of the third feature          > This is a blockquote in the overview tab.   </TabsItem>      <TabsItem value=\"Installation\">     Installation          Install the package using your preferred package manager:                    Then import the components you need:             </TabsItem>      <TabsItem value=\"Configuration\">     Configuration          Configure the components by passing props:                    Environment Variables          Set these environment variables in your :          - : The default theme     - : The API base URL   </TabsItem> </Tabs> Layout Components Steps <Steps>   <Step>     Step 1: Project Setup          Create a new Next.js project and install the required dependencies.             </Step>      <Step>     Step 2: Configuration          Set up your configuration file and environment variables.          Create a  file in your project root:             </Step>      <Step>     Step 3: Create Content          Start creating your documentation content using MDX files.          Place your content files in the  directory and they will be automatically processed.   </Step> </Steps> Details and Summary <Details>   <Summary>Click to expand for more information</Summary>      This is additional information that can be expanded or collapsed. It's useful for:      - Hiding detailed technical information   - Creating FAQ sections   - Providing optional context       </Details> Typography and Text Headings The documentation system supports all standard heading levels with proper styling and anchor links. Inline Code Use  for short code snippets, function names, or technical terms. Code Blocks Use triple backticks for code blocks with syntax highlighting: Lists - Unordered lists work great for bullet points - They support bold text and  - And can be nested:   - Like this nested item   - And this one too 1. Ordered lists are perfect for step-by-step instructions 2. They maintain proper numbering 3. And can also be nested:    1. First nested item    2. Second nested item Blockquotes > This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full callout component styling. Tables | Component | Type        | Description                     | | --------- | ----------- | ------------------------------- | | Callout   | Layout      | Alert-style callouts with icons | | CodeGroup | Interactive | Tabbed code blocks              | | Tabs      | Interactive | General-purpose tabs            | | Steps     | Layout      | Step-by-step instructions       | | InfoBox   | Layout      | Alias for Callout component     | Best Practices 1. Use semantic components - Choose the right component for your content 2. Keep code blocks focused - Don't make them too long 3. Use descriptive titles - Help users understand what they're looking at 4. Test interactivity - Make sure tabs and other interactive elements work 5. Maintain consistency - Use similar patterns throughout your documentation Conclusion This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to be: - Accessible - Proper ARIA attributes and keyboard navigation - Customizable - Flexible props and styling options - Consistent - Unified design language across all components - Performant - Optimized for fast loading and smooth interactions Use these components to create rich, interactive documentation that your users will love!",
+    "content": "Components Showcase This page demonstrates all the available MDX components in the Muni documentation system. Callouts and Info Boxes Callout Component <Callout type=\"info\"> This is an info callout with some important information. </Callout> <Callout type=\"warning\" title=\"Important\"> This is a warning callout with a custom title. </Callout> <Callout type=\"success\"> This is a success callout indicating something worked correctly. </Callout> <Callout type=\"danger\"> This is a danger callout for critical information. </Callout> <Callout type=\"tip\">This is a tip callout with helpful advice.</Callout> InfoBox Component <InfoBox type=\"info\">This is an InfoBox component (alias for Callout).</InfoBox> <InfoBox type=\"warning\" title=\"API Rate Limit\"> The API rate limit is 1000 requests per hour per API key. </InfoBox> Code Components Code Groups <CodeGroup> </CodeGroup> Code Preview Blocks <CodePreviewBlock> <div className=\"p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white\"> <h3 className=\"text-xl font-bold mb-2\">Gradient Card</h3> <p className=\"text-blue-100\"> This is a preview of a gradient card component. </p> <button className=\"mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors\"> Click me </button> </div> </CodePreviewBlock> Individual Code Blocks Interactive Components Tabs <Tabs> <TabsItem value=\"Overview\"> ## Overview This is the overview tab with some basic information about the project. - Feature 1: Description of the first feature - Feature 2: Description of the second feature - Feature 3: Description of the third feature > This is a blockquote in the overview tab. </TabsItem> <TabsItem value=\"Installation\"> ## Installation Install the package using your preferred package manager: Then import the components you need: </TabsItem> <TabsItem value=\"Configuration\"> ## Configuration Configure the components by passing props: ### Environment Variables Set these environment variables in your : - : The default theme - : The API base URL </TabsItem> </Tabs> Layout Components Steps <Steps> <Step> ## Step 1: Project Setup Create a new Next.js project and install the required dependencies. </Step> <Step> ## Step 2: Configuration Set up your configuration file and environment variables. Create a file in your project root: </Step> <Step> ## Step 3: Create Content Start creating your documentation content using MDX files. Place your content files in the directory and they will be automatically processed. </Step> </Steps> Details and Summary <Details> <Summary>Click to expand for more information</Summary> This is additional information that can be expanded or collapsed. It's useful for: - Hiding detailed technical information - Creating FAQ sections - Providing optional context </Details> Typography and Text Headings The documentation system supports all standard heading levels with proper styling and anchor links. Inline Code Use for short code snippets, function names, or technical terms. Code Blocks Use triple backticks for code blocks with syntax highlighting: Lists - Unordered lists work great for bullet points - They support bold text and - And can be nested: - Like this nested item - And this one too 1. Ordered lists are perfect for step-by-step instructions 2. They maintain proper numbering 3. And can also be nested: 1. First nested item 2. Second nested item Blockquotes > This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full callout component styling. Tables | Component | Type | Description | | --------- | ----------- | ------------------------------- | | Callout | Layout | Alert-style callouts with icons | | CodeGroup | Interactive | Tabbed code blocks | | Tabs | Interactive | General-purpose tabs | | Steps | Layout | Step-by-step instructions | | InfoBox | Layout | Alias for Callout component | Best Practices 1. Use semantic components - Choose the right component for your content 2. Keep code blocks focused - Don't make them too long 3. Use descriptive titles - Help users understand what they're looking at 4. Test interactivity - Make sure tabs and other interactive elements work 5. Maintain consistency - Use similar patterns throughout your documentation Conclusion This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to be: - Accessible - Proper ARIA attributes and keyboard navigation - Customizable - Flexible props and styling options - Consistent - Unified design language across all components - Performant - Optimized for fast loading and smooth interactions Use these components to create rich, interactive documentation that your users will love!",
     "url": "/docs/components-showcase",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "components-showcase/callouts-and-info-boxes",
+    "title": "Callouts and Info Boxes",
+    "content": "",
+    "url": "/docs/components-showcase#callouts-and-info-boxes",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
+  },
+  {
+    "id": "components-showcase/callout-component",
+    "title": "Callout Component",
+    "content": "<Callout type=\"info\"> This is an info callout with some important information. </Callout> <Callout type=\"warning\" title=",
+    "url": "/docs/components-showcase#callout-component",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/infobox-component",
+    "title": "InfoBox Component",
+    "content": "<InfoBox type=\"info\">This is an InfoBox component (alias for Callout).</InfoBox> <InfoBox type=\"warning\" title=\"API Rate",
+    "url": "/docs/components-showcase#infobox-component",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/code-components",
+    "title": "Code Components",
+    "content": "",
+    "url": "/docs/components-showcase#code-components",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
+  },
+  {
+    "id": "components-showcase/code-groups",
+    "title": "Code Groups",
+    "content": "<CodeGroup> </CodeGroup>",
+    "url": "/docs/components-showcase#code-groups",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/code-preview-blocks",
+    "title": "Code Preview Blocks",
+    "content": "<CodePreviewBlock> <div className=\"p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white\"> <h3 classNam",
+    "url": "/docs/components-showcase#code-preview-blocks",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/individual-code-blocks",
+    "title": "Individual Code Blocks",
+    "content": "",
+    "url": "/docs/components-showcase#individual-code-blocks",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/interactive-components",
+    "title": "Interactive Components",
+    "content": "",
+    "url": "/docs/components-showcase#interactive-components",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
+  },
+  {
+    "id": "components-showcase/tabs",
+    "title": "Tabs",
+    "content": "<Tabs> <TabsItem value=\"Overview\"> ## Overview This is the overview tab with some basic information about the project. -",
+    "url": "/docs/components-showcase#tabs",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/layout-components",
+    "title": "Layout Components",
+    "content": "",
+    "url": "/docs/components-showcase#layout-components",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
+  },
+  {
+    "id": "components-showcase/steps",
+    "title": "Steps",
+    "content": "<Steps> <Step> ## Step 1: Project Setup Create a new Next.js project and install the required dependencies. </Step> <Ste",
+    "url": "/docs/components-showcase#steps",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/details-and-summary",
+    "title": "Details and Summary",
+    "content": "<Details> <Summary>Click to expand for more information</Summary> This is additional information that can be expanded or",
+    "url": "/docs/components-showcase#details-and-summary",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/typography-and-text",
+    "title": "Typography and Text",
+    "content": "",
+    "url": "/docs/components-showcase#typography-and-text",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
+  },
+  {
+    "id": "components-showcase/headings",
+    "title": "Headings",
+    "content": "The documentation system supports all standard heading levels with proper styling and anchor links.",
+    "url": "/docs/components-showcase#headings",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/inline-code",
+    "title": "Inline Code",
+    "content": "Use for short code snippets, function names, or technical terms.",
+    "url": "/docs/components-showcase#inline-code",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/code-blocks",
+    "title": "Code Blocks",
+    "content": "Use triple backticks for code blocks with syntax highlighting:",
+    "url": "/docs/components-showcase#code-blocks",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/lists",
+    "title": "Lists",
+    "content": "- Unordered lists work great for bullet points - They support bold text and - And can be nested: - Like this nested item",
+    "url": "/docs/components-showcase#lists",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/blockquotes",
+    "title": "Blockquotes",
+    "content": "> This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full ",
+    "url": "/docs/components-showcase#blockquotes",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/tables",
+    "title": "Tables",
+    "content": "| Component | Type | Description | | --------- | ----------- | ------------------------------- | | Callout | Layout | Al",
+    "url": "/docs/components-showcase#tables",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h3"
+  },
+  {
+    "id": "components-showcase/best-practices",
+    "title": "Best Practices",
+    "content": "1. Use semantic components - Choose the right component for your content 2. Keep code blocks focused - Don't make them t",
+    "url": "/docs/components-showcase#best-practices",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
+  },
+  {
+    "id": "components-showcase/conclusion",
+    "title": "Conclusion",
+    "content": "This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to ",
+    "url": "/docs/components-showcase#conclusion",
+    "tags": [],
+    "parentPage": "Components Showcase",
+    "sectionType": "h2"
   },
   {
     "id": "configuration",
     "title": "Configuration",
-    "content": "Configuration Muni is configured through the  file. This file contains all the settings for your documentation site. Basic Configuration Configuration Options  (required) The title of your documentation site.  (optional) The version of your documentation. Displayed in the header.  (optional) The default theme for your site. Options: , , .  (optional) Whether to show frontmatter metadata (author, date) at the bottom of pages.  (optional) Links displayed in the header next to the version.  (required) The navigation structure for your documentation.  (optional) The GitHub repository URL. Used for \"Edit on GitHub\" links. Navigation Structure The navigation supports nested items for organizing your documentation: TypeScript Types Muni exports TypeScript types for configuration: Environment Variables You can use environment variables in your configuration: Dynamic Configuration For more complex setups, you can generate configuration dynamically: Validation Muni validates your configuration at build time. Common errors: - Missing required fields - Invalid theme names - Broken navigation links - Invalid URL formats Check the build output for validation errors. Best Practices 1. Keep it simple: Don't over-complicate your navigation structure 2. Use consistent naming: Keep slug names short and descriptive 3. Group related content: Use nested navigation for organization 4. Test your links: Make sure all navigation links work 5. Version your docs: Use the version field to track changes Advanced Configuration Patterns Multi-Environment Configuration Dynamic Navigation Generation Feature Flags Type-Safe Configuration Example Configuration Here's a complete example configuration:",
+    "content": "Configuration Muni is configured through the file. This file contains all the settings for your documentation site. Basic Configuration Configuration Options (required) The title of your documentation site. (optional) The version of your documentation. Displayed in the header. (optional) The default theme for your site. Options: , , . (optional) Whether to show frontmatter metadata (author, date) at the bottom of pages. (optional) Links displayed in the header next to the version. (required) The navigation structure for your documentation. (optional) The GitHub repository URL. Used for \"Edit on GitHub\" links. Navigation Structure The navigation supports nested items for organizing your documentation: TypeScript Types Muni exports TypeScript types for configuration: Environment Variables You can use environment variables in your configuration: Dynamic Configuration For more complex setups, you can generate configuration dynamically: Validation Muni validates your configuration at build time. Common errors: - Missing required fields - Invalid theme names - Broken navigation links - Invalid URL formats Check the build output for validation errors. Best Practices 1. Keep it simple: Don't over-complicate your navigation structure 2. Use consistent naming: Keep slug names short and descriptive 3. Group related content: Use nested navigation for organization 4. Test your links: Make sure all navigation links work 5. Version your docs: Use the version field to track changes Advanced Configuration Patterns Multi-Environment Configuration Dynamic Navigation Generation Feature Flags Type-Safe Configuration Example Configuration Here's a complete example configuration:",
     "url": "/docs/configuration",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "configuration/basic-configuration",
+    "title": "Basic Configuration",
+    "content": "",
+    "url": "/docs/configuration#basic-configuration",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/configuration-options",
+    "title": "Configuration Options",
+    "content": "",
+    "url": "/docs/configuration#configuration-options",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/title-required",
+    "title": "`title` (required)",
+    "content": "The title of your documentation site.",
+    "url": "/docs/configuration#title-required",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/version-optional",
+    "title": "`version` (optional)",
+    "content": "The version of your documentation. Displayed in the header.",
+    "url": "/docs/configuration#version-optional",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/defaulttheme-optional",
+    "title": "`defaultTheme` (optional)",
+    "content": "The default theme for your site. Options: , , .",
+    "url": "/docs/configuration#defaulttheme-optional",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/showfrontmattermeta-optional",
+    "title": "`showFrontmatterMeta` (optional)",
+    "content": "Whether to show frontmatter metadata (author, date) at the bottom of pages.",
+    "url": "/docs/configuration#showfrontmattermeta-optional",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/headinglinks-optional",
+    "title": "`headingLinks` (optional)",
+    "content": "Links displayed in the header next to the version.",
+    "url": "/docs/configuration#headinglinks-optional",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/navigation-required",
+    "title": "`navigation` (required)",
+    "content": "The navigation structure for your documentation.",
+    "url": "/docs/configuration#navigation-required",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/githubrepo-optional",
+    "title": "`githubRepo` (optional)",
+    "content": "The GitHub repository URL. Used for \"Edit on GitHub\" links.",
+    "url": "/docs/configuration#githubrepo-optional",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/navigation-structure",
+    "title": "Navigation Structure",
+    "content": "The navigation supports nested items for organizing your documentation:",
+    "url": "/docs/configuration#navigation-structure",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/typescript-types",
+    "title": "TypeScript Types",
+    "content": "Muni exports TypeScript types for configuration:",
+    "url": "/docs/configuration#typescript-types",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/environment-variables",
+    "title": "Environment Variables",
+    "content": "You can use environment variables in your configuration:",
+    "url": "/docs/configuration#environment-variables",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/dynamic-configuration",
+    "title": "Dynamic Configuration",
+    "content": "For more complex setups, you can generate configuration dynamically:",
+    "url": "/docs/configuration#dynamic-configuration",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/validation",
+    "title": "Validation",
+    "content": "Muni validates your configuration at build time. Common errors: - Missing required fields - Invalid theme names - Broken",
+    "url": "/docs/configuration#validation",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/best-practices",
+    "title": "Best Practices",
+    "content": "1. Keep it simple: Don't over-complicate your navigation structure 2. Use consistent naming: Keep slug names short and d",
+    "url": "/docs/configuration#best-practices",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/advanced-configuration-patterns",
+    "title": "Advanced Configuration Patterns",
+    "content": "",
+    "url": "/docs/configuration#advanced-configuration-patterns",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
+  },
+  {
+    "id": "configuration/multi-environment-configuration",
+    "title": "Multi-Environment Configuration",
+    "content": "",
+    "url": "/docs/configuration#multi-environment-configuration",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/dynamic-navigation-generation",
+    "title": "Dynamic Navigation Generation",
+    "content": "",
+    "url": "/docs/configuration#dynamic-navigation-generation",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/feature-flags",
+    "title": "Feature Flags",
+    "content": "",
+    "url": "/docs/configuration#feature-flags",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/type-safe-configuration",
+    "title": "Type-Safe Configuration",
+    "content": "",
+    "url": "/docs/configuration#type-safe-configuration",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h3"
+  },
+  {
+    "id": "configuration/example-configuration",
+    "title": "Example Configuration",
+    "content": "Here's a complete example configuration:",
+    "url": "/docs/configuration#example-configuration",
+    "tags": [],
+    "parentPage": "Configuration",
+    "sectionType": "h2"
   },
   {
     "id": "deployment",
     "title": "Deployment",
-    "content": "Deployment Deploy your Muni documentation to any static hosting platform. Build for Production First, build your documentation for production: This will: - Generate static HTML files - Optimize images and assets - Create a production-ready build in the  directory Deployment Platforms Vercel (Recommended) Vercel is the easiest way to deploy Next.js applications with zero configuration: 1. Connect your repository    - Push your code to GitHub    - Go to [vercel.com](https://vercel.com)    - Click \"New Project\"    - Import your repository 2. Configure build settings    - Framework: Next.js (auto-detected)    - Build Command:     - Output Directory:     - Node.js Version: 18.x or 20.x 3. Environment Variables     4. Deploy    - Vercel will automatically deploy on every push    - Your site will be available at     - Custom domains supported with automatic SSL Docker Deployment Deploy using Docker for consistent environments: 1. Create Dockerfile     2. Create .dockerignore     3. Build and run     Kubernetes Deployment Deploy to Kubernetes for scalable, production-ready hosting: 1. Create deployment.yaml     2. Create service.yaml     3. Deploy     Netlify Deploy to Netlify using the Next.js plugin: 1. Build settings     2. Deploy    - Connect your repository to Netlify    - Deploy automatically on every push GitHub Pages Deploy to GitHub Pages using GitHub Actions: 1. Create workflow file     2. Enable GitHub Pages    - Go to repository Settings > Pages    - Source: GitHub Actions    - Your site will be available at  Other Platforms Muni works with any static hosting platform: - AWS S3 + CloudFront - Cloudflare Pages - Firebase Hosting - Surge.sh - Render Environment Variables Set environment variables for production: Vercel Netlify GitHub Actions Custom Domain Vercel 1. Go to Project Settings > Domains 2. Add your custom domain 3. Update DNS records as instructed Netlify 1. Go to Site Settings > Domain Management 2. Add custom domain 3. Configure DNS settings GitHub Pages 1. Add  file to your repository:     2. Configure DNS to point to GitHub Pages Performance Optimization Image Optimization Use Next.js Image component for optimized images: Static Generation All pages are statically generated for optimal performance: Bundle Analysis Analyze your bundle size: Monitoring Analytics Add analytics to track usage: Error Monitoring Add error monitoring with Sentry: Security Content Security Policy Add CSP headers for security: HTTPS Ensure your site uses HTTPS: - Vercel: Automatic HTTPS - Netlify: Automatic HTTPS - GitHub Pages: Automatic HTTPS Troubleshooting Build Errors Common build errors and solutions: Module not found TypeScript errors Memory issues Deployment Issues 404 errors - Check if all pages are properly exported - Verify file paths and routing Styling issues - Ensure Tailwind CSS is properly configured - Check if all CSS files are included Performance issues - Use Next.js Image component - Optimize images and assets - Enable compression 2025 Best Practices Performance Optimization 1. Core Web Vitals: Ensure good LCP, FID, and CLS scores 2. Image Optimization: Use Next.js Image component with WebP/AVIF 3. Bundle Analysis: Regularly analyze and optimize bundle size 4. CDN Usage: Use global CDN for static assets 5. Caching Strategy: Implement proper caching headers 6. Code Splitting: Leverage Next.js automatic code splitting Security 1. HTTPS Everywhere: Force HTTPS redirects 2. Security Headers: Implement CSP, HSTS, and other security headers 3. Dependency Scanning: Regular security audits with  4. Environment Variables: Never commit secrets to version control 5. Access Control: Implement proper authentication if needed 6. Regular Updates: Keep all dependencies updated Monitoring & Analytics 1. Error Tracking: Use Sentry or similar for error monitoring 2. Performance Monitoring: Track Core Web Vitals 3. Uptime Monitoring: Set up uptime checks 4. Analytics: Implement privacy-friendly analytics 5. Logging: Centralized logging for debugging CI/CD Pipeline Environment Management Best Practices 1. Test locally first: Always test your build locally before deploying 2. Use environment variables: Don't hardcode sensitive information 3. Optimize images: Use appropriate formats and sizes 4. Monitor performance: Set up analytics and error monitoring 5. Keep dependencies updated: Regularly update packages for security 6. Use HTTPS: Always use HTTPS in production 7. Set up redirects: Handle old URLs and broken links 8. Backup your content: Keep your content in version control 9. Implement proper caching: Use appropriate cache headers 10. Monitor Core Web Vitals: Ensure good user experience metrics Example Deployments Vercel Netlify Manual Upload Continuous Deployment Set up automatic deployments: GitHub Actions",
+    "content": "Deployment Deploy your Muni documentation to any static hosting platform. Build for Production First, build your documentation for production: This will: - Generate static HTML files - Optimize images and assets - Create a production-ready build in the directory Deployment Platforms Vercel (Recommended) Vercel is the easiest way to deploy Next.js applications with zero configuration: 1. Connect your repository - Push your code to GitHub - Go to vercel.com - Click \"New Project\" - Import your repository 2. Configure build settings - Framework: Next.js (auto-detected) - Build Command: - Output Directory: - Node.js Version: 18.x or 20.x 3. Environment Variables 4. Deploy - Vercel will automatically deploy on every push - Your site will be available at - Custom domains supported with automatic SSL Docker Deployment Deploy using Docker for consistent environments: 1. Create Dockerfile 2. Create .dockerignore 3. Build and run Kubernetes Deployment Deploy to Kubernetes for scalable, production-ready hosting: 1. Create deployment.yaml 2. Create service.yaml 3. Deploy Netlify Deploy to Netlify using the Next.js plugin: 1. Build settings 2. Deploy - Connect your repository to Netlify - Deploy automatically on every push GitHub Pages Deploy to GitHub Pages using GitHub Actions: 1. Create workflow file 2. Enable GitHub Pages - Go to repository Settings > Pages - Source: GitHub Actions - Your site will be available at Other Platforms Muni works with any static hosting platform: - AWS S3 + CloudFront - Cloudflare Pages - Firebase Hosting - Surge.sh - Render Environment Variables Set environment variables for production: Vercel Netlify GitHub Actions Custom Domain Vercel 1. Go to Project Settings > Domains 2. Add your custom domain 3. Update DNS records as instructed Netlify 1. Go to Site Settings > Domain Management 2. Add custom domain 3. Configure DNS settings GitHub Pages 1. Add file to your repository: 2. Configure DNS to point to GitHub Pages Performance Optimization Image Optimization Use Next.js Image component for optimized images: Static Generation All pages are statically generated for optimal performance: Bundle Analysis Analyze your bundle size: Monitoring Analytics Add analytics to track usage: Error Monitoring Add error monitoring with Sentry: Security Content Security Policy Add CSP headers for security: HTTPS Ensure your site uses HTTPS: - Vercel: Automatic HTTPS - Netlify: Automatic HTTPS - GitHub Pages: Automatic HTTPS Troubleshooting Build Errors Common build errors and solutions: Module not found TypeScript errors Memory issues Deployment Issues 404 errors - Check if all pages are properly exported - Verify file paths and routing Styling issues - Ensure Tailwind CSS is properly configured - Check if all CSS files are included Performance issues - Use Next.js Image component - Optimize images and assets - Enable compression 2025 Best Practices Performance Optimization 1. Core Web Vitals: Ensure good LCP, FID, and CLS scores 2. Image Optimization: Use Next.js Image component with WebP/AVIF 3. Bundle Analysis: Regularly analyze and optimize bundle size 4. CDN Usage: Use global CDN for static assets 5. Caching Strategy: Implement proper caching headers 6. Code Splitting: Leverage Next.js automatic code splitting Security 1. HTTPS Everywhere: Force HTTPS redirects 2. Security Headers: Implement CSP, HSTS, and other security headers 3. Dependency Scanning: Regular security audits with 4. Environment Variables: Never commit secrets to version control 5. Access Control: Implement proper authentication if needed 6. Regular Updates: Keep all dependencies updated Monitoring & Analytics 1. Error Tracking: Use Sentry or similar for error monitoring 2. Performance Monitoring: Track Core Web Vitals 3. Uptime Monitoring: Set up uptime checks 4. Analytics: Implement privacy-friendly analytics 5. Logging: Centralized logging for debugging CI/CD Pipeline Environment Management Best Practices 1. Test locally first: Always test your build locally before deploying 2. Use environment variables: Don't hardcode sensitive information 3. Optimize images: Use appropriate formats and sizes 4. Monitor performance: Set up analytics and error monitoring 5. Keep dependencies updated: Regularly update packages for security 6. Use HTTPS: Always use HTTPS in production 7. Set up redirects: Handle old URLs and broken links 8. Backup your content: Keep your content in version control 9. Implement proper caching: Use appropriate cache headers 10. Monitor Core Web Vitals: Ensure good user experience metrics Example Deployments Vercel Netlify Manual Upload Continuous Deployment Set up automatic deployments: GitHub Actions",
     "url": "/docs/deployment",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "deployment/build-for-production",
+    "title": "Build for Production",
+    "content": "First, build your documentation for production: This will: - Generate static HTML files - Optimize images and assets - C",
+    "url": "/docs/deployment#build-for-production",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/deployment-platforms",
+    "title": "Deployment Platforms",
+    "content": "",
+    "url": "/docs/deployment#deployment-platforms",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/vercel-recommended",
+    "title": "Vercel (Recommended)",
+    "content": "Vercel is the easiest way to deploy Next.js applications with zero configuration: 1. Connect your repository - Push your",
+    "url": "/docs/deployment#vercel-recommended",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/docker-deployment",
+    "title": "Docker Deployment",
+    "content": "Deploy using Docker for consistent environments: 1. Create Dockerfile 2. Create .dockerignore 3. Build and run",
+    "url": "/docs/deployment#docker-deployment",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/kubernetes-deployment",
+    "title": "Kubernetes Deployment",
+    "content": "Deploy to Kubernetes for scalable, production-ready hosting: 1. Create deployment.yaml 2. Create service.yaml 3. Deploy",
+    "url": "/docs/deployment#kubernetes-deployment",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/netlify",
+    "title": "Netlify",
+    "content": "Deploy to Netlify using the Next.js plugin: 1. Build settings 2. Deploy - Connect your repository to Netlify - Deploy au",
+    "url": "/docs/deployment#netlify",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/github-pages",
+    "title": "GitHub Pages",
+    "content": "Deploy to GitHub Pages using GitHub Actions: 1. Create workflow file 2. Enable GitHub Pages - Go to repository Settings ",
+    "url": "/docs/deployment#github-pages",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/other-platforms",
+    "title": "Other Platforms",
+    "content": "Muni works with any static hosting platform: - AWS S3 + CloudFront - Cloudflare Pages - Firebase Hosting - Surge.sh - Re",
+    "url": "/docs/deployment#other-platforms",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/environment-variables",
+    "title": "Environment Variables",
+    "content": "Set environment variables for production:",
+    "url": "/docs/deployment#environment-variables",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/vercel",
+    "title": "Vercel",
+    "content": "",
+    "url": "/docs/deployment#vercel",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/netlify",
+    "title": "Netlify",
+    "content": "",
+    "url": "/docs/deployment#netlify",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/github-actions",
+    "title": "GitHub Actions",
+    "content": "",
+    "url": "/docs/deployment#github-actions",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/custom-domain",
+    "title": "Custom Domain",
+    "content": "",
+    "url": "/docs/deployment#custom-domain",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/vercel",
+    "title": "Vercel",
+    "content": "1. Go to Project Settings > Domains 2. Add your custom domain 3. Update DNS records as instructed",
+    "url": "/docs/deployment#vercel",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/netlify",
+    "title": "Netlify",
+    "content": "1. Go to Site Settings > Domain Management 2. Add custom domain 3. Configure DNS settings",
+    "url": "/docs/deployment#netlify",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/github-pages",
+    "title": "GitHub Pages",
+    "content": "1. Add file to your repository: 2. Configure DNS to point to GitHub Pages",
+    "url": "/docs/deployment#github-pages",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/performance-optimization",
+    "title": "Performance Optimization",
+    "content": "",
+    "url": "/docs/deployment#performance-optimization",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/image-optimization",
+    "title": "Image Optimization",
+    "content": "Use Next.js Image component for optimized images:",
+    "url": "/docs/deployment#image-optimization",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/static-generation",
+    "title": "Static Generation",
+    "content": "All pages are statically generated for optimal performance:",
+    "url": "/docs/deployment#static-generation",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/bundle-analysis",
+    "title": "Bundle Analysis",
+    "content": "Analyze your bundle size:",
+    "url": "/docs/deployment#bundle-analysis",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/monitoring",
+    "title": "Monitoring",
+    "content": "",
+    "url": "/docs/deployment#monitoring",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/analytics",
+    "title": "Analytics",
+    "content": "Add analytics to track usage:",
+    "url": "/docs/deployment#analytics",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/error-monitoring",
+    "title": "Error Monitoring",
+    "content": "Add error monitoring with Sentry:",
+    "url": "/docs/deployment#error-monitoring",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/security",
+    "title": "Security",
+    "content": "",
+    "url": "/docs/deployment#security",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/content-security-policy",
+    "title": "Content Security Policy",
+    "content": "Add CSP headers for security:",
+    "url": "/docs/deployment#content-security-policy",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/https",
+    "title": "HTTPS",
+    "content": "Ensure your site uses HTTPS: - Vercel: Automatic HTTPS - Netlify: Automatic HTTPS - GitHub Pages: Automatic HTTPS",
+    "url": "/docs/deployment#https",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/troubleshooting",
+    "title": "Troubleshooting",
+    "content": "",
+    "url": "/docs/deployment#troubleshooting",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/build-errors",
+    "title": "Build Errors",
+    "content": "Common build errors and solutions: Module not found TypeScript errors Memory issues",
+    "url": "/docs/deployment#build-errors",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/deployment-issues",
+    "title": "Deployment Issues",
+    "content": "404 errors - Check if all pages are properly exported - Verify file paths and routing Styling issues - Ensure Tailwind C",
+    "url": "/docs/deployment#deployment-issues",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/2025-best-practices",
+    "title": "2025 Best Practices",
+    "content": "",
+    "url": "/docs/deployment#2025-best-practices",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/performance-optimization",
+    "title": "Performance Optimization",
+    "content": "1. Core Web Vitals: Ensure good LCP, FID, and CLS scores 2. Image Optimization: Use Next.js Image component with WebP/AV",
+    "url": "/docs/deployment#performance-optimization",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/security",
+    "title": "Security",
+    "content": "1. HTTPS Everywhere: Force HTTPS redirects 2. Security Headers: Implement CSP, HSTS, and other security headers 3. Depen",
+    "url": "/docs/deployment#security",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/monitoring-analytics",
+    "title": "Monitoring & Analytics",
+    "content": "1. Error Tracking: Use Sentry or similar for error monitoring 2. Performance Monitoring: Track Core Web Vitals 3. Uptime",
+    "url": "/docs/deployment#monitoring-analytics",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/cicd-pipeline",
+    "title": "CI/CD Pipeline",
+    "content": "",
+    "url": "/docs/deployment#cicd-pipeline",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/environment-management",
+    "title": "Environment Management",
+    "content": "",
+    "url": "/docs/deployment#environment-management",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/best-practices",
+    "title": "Best Practices",
+    "content": "1. Test locally first: Always test your build locally before deploying 2. Use environment variables: Don't hardcode sens",
+    "url": "/docs/deployment#best-practices",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/example-deployments",
+    "title": "Example Deployments",
+    "content": "",
+    "url": "/docs/deployment#example-deployments",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/vercel",
+    "title": "Vercel",
+    "content": "",
+    "url": "/docs/deployment#vercel",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/netlify",
+    "title": "Netlify",
+    "content": "",
+    "url": "/docs/deployment#netlify",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/manual-upload",
+    "title": "Manual Upload",
+    "content": "",
+    "url": "/docs/deployment#manual-upload",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
+  },
+  {
+    "id": "deployment/continuous-deployment",
+    "title": "Continuous Deployment",
+    "content": "Set up automatic deployments:",
+    "url": "/docs/deployment#continuous-deployment",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h2"
+  },
+  {
+    "id": "deployment/github-actions",
+    "title": "GitHub Actions",
+    "content": "",
+    "url": "/docs/deployment#github-actions",
+    "tags": [],
+    "parentPage": "Deployment",
+    "sectionType": "h3"
   },
   {
     "id": "getting-started",
     "title": "Getting Started",
-    "content": "Getting Started This guide will help you set up Muni and create your first documentation page. Prerequisites - Node.js 18+ - pnpm (recommended) or npm Installation 1. Clone the template     2. Install dependencies     3. Start the development server     4. Open your browser    Navigate to  Project Structure Configuration Edit  to customize your documentation: Creating Pages 1. Create a new MDX file in      2. Add frontmatter (optional)     3. Write your content using Markdown     4. Add to navigation in      Writing Content Basic Markdown Muni supports standard Markdown syntax: Code Blocks Use triple backticks for code blocks: javascript function hello() {   console.log(\"Hello, world!\"); } muni.config.tspnpm buildoutmuni.config.tspnpm run generate-searchpublic/search-data.jsonpnpm devpnpm build && pnpm start` 4. Deploy to your hosting platform Next Steps - Learn about [Configuration](/configuration) - Explore [Themes](/themes) - Read about [Markdown Features](/markdown) - See [Deployment Options](/deployment)",
+    "content": "Getting Started This guide will help you set up Muni and create your first documentation page. Prerequisites - Node.js 18+ - pnpm (recommended) or npm Installation 1. Clone the template 2. Install dependencies 3. Start the development server 4. Open your browser Navigate to Project Structure Configuration Edit to customize your documentation: Creating Pages 1. Create a new MDX file in 2. Add frontmatter (optional) 3. Write your content using Markdown 4. Add to navigation in Writing Content Basic Markdown Muni supports standard Markdown syntax: Code Blocks Use triple backticks for code blocks: javascript function hello() { console.log(\"Hello, world!\"); } muni.config.tspnpm buildoutmuni.config.tspnpm run generate-searchpublic/search-data.jsonpnpm devpnpm build && pnpm start` 4. Deploy to your hosting platform Next Steps - Learn about Configuration - Explore Themes - Read about Markdown Features - See Deployment Options",
     "url": "/docs/getting-started",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "getting-started/prerequisites",
+    "title": "Prerequisites",
+    "content": "- Node.js 18+ - pnpm (recommended) or npm",
+    "url": "/docs/getting-started#prerequisites",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/installation",
+    "title": "Installation",
+    "content": "1. Clone the template 2. Install dependencies 3. Start the development server 4. Open your browser Navigate to",
+    "url": "/docs/getting-started#installation",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/project-structure",
+    "title": "Project Structure",
+    "content": "",
+    "url": "/docs/getting-started#project-structure",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/configuration",
+    "title": "Configuration",
+    "content": "Edit to customize your documentation:",
+    "url": "/docs/getting-started#configuration",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/creating-pages",
+    "title": "Creating Pages",
+    "content": "1. Create a new MDX file in 2. Add frontmatter (optional) 3. Write your content using Markdown 4. Add to navigation in",
+    "url": "/docs/getting-started#creating-pages",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/writing-content",
+    "title": "Writing Content",
+    "content": "",
+    "url": "/docs/getting-started#writing-content",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/basic-markdown",
+    "title": "Basic Markdown",
+    "content": "Muni supports standard Markdown syntax: `markdown Heading 1",
+    "url": "/docs/getting-started#basic-markdown",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/heading-2",
+    "title": "Heading 2",
+    "content": "",
+    "url": "/docs/getting-started#heading-2",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/heading-3",
+    "title": "Heading 3",
+    "content": "Bold text _Italic text_ - List item 1 - List item 2 1. Numbered item 1 2. Numbered item 2 Link text `",
+    "url": "/docs/getting-started#heading-3",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/code-blocks",
+    "title": "Code Blocks",
+    "content": "Use triple backticks for code blocks: javascript function hello() { console.log(\"Hello, world!\"); } `",
+    "url": "/docs/getting-started#code-blocks",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/custom-components",
+    "title": "Custom Components",
+    "content": "You can use React components in your MDX files:",
+    "url": "/docs/getting-started#custom-components",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/themes",
+    "title": "Themes",
+    "content": "Muni comes with three themes: - minimal: Clean white background - minimal-dark: Dark theme - mono: Monospace typography ",
+    "url": "/docs/getting-started#themes",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/building-for-production",
+    "title": "Building for Production",
+    "content": "1. Build the project 2. Start the production server",
+    "url": "/docs/getting-started#building-for-production",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/deployment",
+    "title": "Deployment",
+    "content": "",
+    "url": "/docs/getting-started#deployment",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/vercel",
+    "title": "Vercel",
+    "content": "1. Push your code to GitHub 2. Connect your repository to Vercel 3. Deploy automatically",
+    "url": "/docs/getting-started#vercel",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/netlify",
+    "title": "Netlify",
+    "content": "1. Build the project: 2. Deploy the directory to Netlify",
+    "url": "/docs/getting-started#netlify",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/other-platforms",
+    "title": "Other Platforms",
+    "content": "Any static hosting platform that supports Next.js will work.",
+    "url": "/docs/getting-started#other-platforms",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/troubleshooting",
+    "title": "Troubleshooting",
+    "content": "",
+    "url": "/docs/getting-started#troubleshooting",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
+  },
+  {
+    "id": "getting-started/common-issues",
+    "title": "Common Issues",
+    "content": "Build fails with MDX errors Theme not applying correctly - Check that your has a valid theme name - Ensure CSS files are",
+    "url": "/docs/getting-started#common-issues",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/performance-tips",
+    "title": "Performance Tips",
+    "content": "1. Optimize images: Use Next.js Image component 2. Minimize bundle size: Remove unused dependencies 3. Enable compressio",
+    "url": "/docs/getting-started#performance-tips",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/development-workflow",
+    "title": "Development Workflow",
+    "content": "1. Make changes to content or components 2. Test locally with 3. Build and test with 4. Deploy to your hosting platform",
+    "url": "/docs/getting-started#development-workflow",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h3"
+  },
+  {
+    "id": "getting-started/next-steps",
+    "title": "Next Steps",
+    "content": "- Learn about Configuration - Explore Themes - Read about Markdown Features - See Deployment Options",
+    "url": "/docs/getting-started#next-steps",
+    "tags": [],
+    "parentPage": "Getting Started",
+    "sectionType": "h2"
   },
   {
     "id": "index",
     "title": "Muni",
-    "content": "Muni A production-ready, minimal documentation template built with Next.js 15, Tailwind CSS 4, and TypeScript. Perfect for technical documentation, API references, and developer-focused content. Why Choose Muni? Muni is designed for developers who value simplicity, performance, and maintainability. Unlike bloated documentation frameworks, Muni focuses on what matters most: clear content presentation and fast loading times. Core Philosophy Less is more - Every design decision prioritizes clarity and performance over flashy features. Muni embraces the principle that great documentation doesn't need to be complex. Key Principles - Minimal: Clean, uncluttered interface with generous whitespace - Fast: Optimized for speed with static generation and minimal JavaScript - Customizable: Simple configuration through  - Professional: Small, tight typography and spacing for a modern look - Static: No animations or shifting layouts - everything feels stable - Accessible: Built with accessibility in mind from the ground up - Type-Safe: Full TypeScript support for better developer experience Features Core Features - 3 Clean Themes: Minimal, Minimal Dark, and Mono with easy customization - Fixed-Width Content: Consistent, centered layout that doesn't shift - Small Typography: Professional 11-13px base text with tight spacing - MDX Support: Write documentation in Markdown with React components - Built-in Search: Fast, client-side search with FlexSearch - Auto-Generated TOC: Table of contents automatically generated from headings - Mobile Responsive: Clean sidebar and navigation on all devices - SEO Optimized: Proper meta tags, structured data, and sitemap Developer Experience - TypeScript: Full type safety throughout the codebase - Hot Reload: Instant updates during development - Linting: Built-in code formatting with Biome - Component Library: Pre-built components for common documentation patterns - Custom Directives: Support for custom MDX directives - Code Highlighting: Syntax highlighting with Shiki - Copy Code: One-click code copying functionality Performance - Static Generation: All pages pre-rendered for maximum speed - Image Optimization: Automatic image optimization with Next.js - Bundle Splitting: Automatic code splitting for optimal loading - CDN Ready: Optimized for global content delivery - Core Web Vitals: Optimized for Google's performance metrics Quick Start 1. Clone the repository     2. Install dependencies     3. Start development server     4. Open your browser    Navigate to  Configuration Muni is highly customizable through the  file: Themes Muni comes with three carefully crafted themes: - Minimal: Clean white background with subtle grays - Minimal Dark: Deep blacks with minimal contrast - Mono: Monospace typography for technical documentation Writing Content Create new documentation pages in the  directory as  files. Use standard Markdown syntax with support for React components. Deployment Deploy to Vercel, Netlify, or any static hosting platform: Tech Stack Frontend - Next.js 15 - React framework with App Router and static generation - Tailwind CSS 4 - Utility-first CSS framework with modern features - TypeScript - Type safety and better developer experience - React 19 - Latest React with concurrent features Content & Styling - MDX - Markdown with React components for rich content - Shiki - Syntax highlighting with 200+ language support - Lucide React - Beautiful, customizable icon library - FlexSearch - Fast, client-side search engine Development Tools - Biome - Fast linter and formatter - pnpm - Fast, disk space efficient package manager - ESLint - Code quality and consistency - Prettier - Code formatting Deployment - Vercel - Optimized for Next.js deployment - Docker - Container support for any platform - GitHub Actions - CI/CD pipeline ready License MIT License - feel free to use this template for your own projects. --- _Built with Next.js, Tailwind CSS, and a focus on simplicity._",
+    "content": "Muni A production-ready, minimal documentation template built with Next.js 15, Tailwind CSS 4, and TypeScript. Perfect for technical documentation, API references, and developer-focused content. Why Choose Muni? Muni is designed for developers who value simplicity, performance, and maintainability. Unlike bloated documentation frameworks, Muni focuses on what matters most: clear content presentation and fast loading times. Core Philosophy Less is more - Every design decision prioritizes clarity and performance over flashy features. Muni embraces the principle that great documentation doesn't need to be complex. Key Principles - Minimal: Clean, uncluttered interface with generous whitespace - Fast: Optimized for speed with static generation and minimal JavaScript - Customizable: Simple configuration through - Professional: Small, tight typography and spacing for a modern look - Static: No animations or shifting layouts - everything feels stable - Accessible: Built with accessibility in mind from the ground up - Type-Safe: Full TypeScript support for better developer experience Features Core Features - 3 Clean Themes: Minimal, Minimal Dark, and Mono with easy customization - Fixed-Width Content: Consistent, centered layout that doesn't shift - Small Typography: Professional 11-13px base text with tight spacing - MDX Support: Write documentation in Markdown with React components - Built-in Search: Fast, client-side search with FlexSearch - Auto-Generated TOC: Table of contents automatically generated from headings - Mobile Responsive: Clean sidebar and navigation on all devices - SEO Optimized: Proper meta tags, structured data, and sitemap Developer Experience - TypeScript: Full type safety throughout the codebase - Hot Reload: Instant updates during development - Linting: Built-in code formatting with Biome - Component Library: Pre-built components for common documentation patterns - Custom Directives: Support for custom MDX directives - Code Highlighting: Syntax highlighting with Shiki - Copy Code: One-click code copying functionality Performance - Static Generation: All pages pre-rendered for maximum speed - Image Optimization: Automatic image optimization with Next.js - Bundle Splitting: Automatic code splitting for optimal loading - CDN Ready: Optimized for global content delivery - Core Web Vitals: Optimized for Google's performance metrics Quick Start 1. Clone the repository 2. Install dependencies 3. Start development server 4. Open your browser Navigate to Configuration Muni is highly customizable through the file: Themes Muni comes with three carefully crafted themes: - Minimal: Clean white background with subtle grays - Minimal Dark: Deep blacks with minimal contrast - Mono: Monospace typography for technical documentation Writing Content Create new documentation pages in the directory as files. Use standard Markdown syntax with support for React components. Deployment Deploy to Vercel, Netlify, or any static hosting platform: Tech Stack Frontend - Next.js 15 - React framework with App Router and static generation - Tailwind CSS 4 - Utility-first CSS framework with modern features - TypeScript - Type safety and better developer experience - React 19 - Latest React with concurrent features Content & Styling - MDX - Markdown with React components for rich content - Shiki - Syntax highlighting with 200+ language support - Lucide React - Beautiful, customizable icon library - FlexSearch - Fast, client-side search engine Development Tools - Biome - Fast linter and formatter - pnpm - Fast, disk space efficient package manager - ESLint - Code quality and consistency - Prettier - Code formatting Deployment - Vercel - Optimized for Next.js deployment - Docker - Container support for any platform - GitHub Actions - CI/CD pipeline ready License MIT License - feel free to use this template for your own projects. --- _Built with Next.js, Tailwind CSS, and a focus on simplicity._",
     "url": "/docs/index",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "index/why-choose-muni",
+    "title": "Why Choose Muni?",
+    "content": "Muni is designed for developers who value simplicity, performance, and maintainability. Unlike bloated documentation fra",
+    "url": "/docs/index#why-choose-muni",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/core-philosophy",
+    "title": "Core Philosophy",
+    "content": "Less is more - Every design decision prioritizes clarity and performance over flashy features. Muni embraces the princip",
+    "url": "/docs/index#core-philosophy",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/key-principles",
+    "title": "Key Principles",
+    "content": "- Minimal: Clean, uncluttered interface with generous whitespace - Fast: Optimized for speed with static generation and ",
+    "url": "/docs/index#key-principles",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/features",
+    "title": "Features",
+    "content": "",
+    "url": "/docs/index#features",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/core-features",
+    "title": "Core Features",
+    "content": "- 3 Clean Themes: Minimal, Minimal Dark, and Mono with easy customization - Fixed-Width Content: Consistent, centered la",
+    "url": "/docs/index#core-features",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/developer-experience",
+    "title": "Developer Experience",
+    "content": "- TypeScript: Full type safety throughout the codebase - Hot Reload: Instant updates during development - Linting: Built",
+    "url": "/docs/index#developer-experience",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/performance",
+    "title": "Performance",
+    "content": "- Static Generation: All pages pre-rendered for maximum speed - Image Optimization: Automatic image optimization with Ne",
+    "url": "/docs/index#performance",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/quick-start",
+    "title": "Quick Start",
+    "content": "1. Clone the repository 2. Install dependencies 3. Start development server 4. Open your browser Navigate to",
+    "url": "/docs/index#quick-start",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/configuration",
+    "title": "Configuration",
+    "content": "Muni is highly customizable through the file:",
+    "url": "/docs/index#configuration",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/themes",
+    "title": "Themes",
+    "content": "Muni comes with three carefully crafted themes: - Minimal: Clean white background with subtle grays - Minimal Dark: Deep",
+    "url": "/docs/index#themes",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/writing-content",
+    "title": "Writing Content",
+    "content": "Create new documentation pages in the directory as files. Use standard Markdown syntax with support for React components",
+    "url": "/docs/index#writing-content",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/deployment",
+    "title": "Deployment",
+    "content": "Deploy to Vercel, Netlify, or any static hosting platform:",
+    "url": "/docs/index#deployment",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/tech-stack",
+    "title": "Tech Stack",
+    "content": "",
+    "url": "/docs/index#tech-stack",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
+  },
+  {
+    "id": "index/frontend",
+    "title": "Frontend",
+    "content": "- Next.js 15 - React framework with App Router and static generation - Tailwind CSS 4 - Utility-first CSS framework with",
+    "url": "/docs/index#frontend",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/content-styling",
+    "title": "Content & Styling",
+    "content": "- MDX - Markdown with React components for rich content - Shiki - Syntax highlighting with 200+ language support - Lucid",
+    "url": "/docs/index#content-styling",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/development-tools",
+    "title": "Development Tools",
+    "content": "- Biome - Fast linter and formatter - pnpm - Fast, disk space efficient package manager - ESLint - Code quality and cons",
+    "url": "/docs/index#development-tools",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/deployment",
+    "title": "Deployment",
+    "content": "- Vercel - Optimized for Next.js deployment - Docker - Container support for any platform - GitHub Actions - CI/CD pipel",
+    "url": "/docs/index#deployment",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h3"
+  },
+  {
+    "id": "index/license",
+    "title": "License",
+    "content": "MIT License - feel free to use this template for your own projects. --- _Built with Next.js, Tailwind CSS, and a focus o",
+    "url": "/docs/index#license",
+    "tags": [],
+    "parentPage": "Muni",
+    "sectionType": "h2"
   },
   {
     "id": "markdown",
     "title": "Markdown Features",
-    "content": "Markdown Features Muni supports standard Markdown syntax with additional features for rich documentation. Basic Markdown Headings Text Formatting Lists Links and Images Code Blocks javascript function hello() {   console.log(\"Hello, world!\"); } python def hello():     print(\"Hello, world!\") titledescriptionauthordatetags Supported Languages - JavaScript/TypeScript - Python - Java - C/C++ - Go - Rust - HTML/CSS - JSON - YAML - And many more... Custom Styling Inline Styles Use Tailwind CSS classes for styling: CSS Classes You can also use custom CSS classes: Advanced Features Math Equations Use KaTeX for mathematical expressions: Diagrams Create diagrams using Mermaid: mermaid graph TD     A[Start] --> B{Decision}     B -->|Yes| C[Action 1]     B -->|No| D[Action 2]     C --> E[End]     D --> E textCode in cells~~text~~text$E = mc^2$target=\"_blank\" Endpoints GET /users Retrieve a list of users. Parameters: -  (optional): Number of users to return (default: 10) -  (optional): Number of users to skip (default: 0) Response: <InfoBox type=\"info\">   The API rate limit is 1000 requests per hour per API key. </InfoBox> `",
+    "content": "Markdown Features Muni supports standard Markdown syntax with additional features for rich documentation. Basic Markdown Headings Text Formatting Lists Links and Images Code Blocks javascript function hello() { console.log(\"Hello, world!\"); } python def hello(): print(\"Hello, world!\") titledescriptionauthordatetags Supported Languages - JavaScript/TypeScript - Python - Java - C/C++ - Go - Rust - HTML/CSS - JSON - YAML - And many more... Custom Styling Inline Styles Use Tailwind CSS classes for styling: CSS Classes You can also use custom CSS classes: Advanced Features Math Equations Use KaTeX for mathematical expressions: Diagrams Create diagrams using Mermaid: mermaid graph TD A[Start] --> B{Decision} B -->|Yes| C[Action 1] B -->|No| D[Action 2] C --> E[End] D --> E textCode in cells~~text~~text$E = mc^2$target=\"_blank\" Endpoints GET /users Retrieve a list of users. Parameters: - (optional): Number of users to return (default: 10) - (optional): Number of users to skip (default: 0) Response: <InfoBox type=\"info\"> The API rate limit is 1000 requests per hour per API key. </InfoBox> `",
     "url": "/docs/markdown",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "markdown/basic-markdown",
+    "title": "Basic Markdown",
+    "content": "",
+    "url": "/docs/markdown#basic-markdown",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/headings",
+    "title": "Headings",
+    "content": "`markdown Heading 1",
+    "url": "/docs/markdown#headings",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/heading-2",
+    "title": "Heading 2",
+    "content": "",
+    "url": "/docs/markdown#heading-2",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/heading-3",
+    "title": "Heading 3",
+    "content": "",
+    "url": "/docs/markdown#heading-3",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/heading-4",
+    "title": "Heading 4",
+    "content": "Heading 5 Heading 6 `",
+    "url": "/docs/markdown#heading-4",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h4"
+  },
+  {
+    "id": "markdown/text-formatting",
+    "title": "Text Formatting",
+    "content": "",
+    "url": "/docs/markdown#text-formatting",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/lists",
+    "title": "Lists",
+    "content": "",
+    "url": "/docs/markdown#lists",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/links-and-images",
+    "title": "Links and Images",
+    "content": "",
+    "url": "/docs/markdown#links-and-images",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/code-blocks",
+    "title": "Code Blocks",
+    "content": "javascript function hello() { console.log(\"Hello, world!\"); } python def hello(): print(\"Hello, world!\") `",
+    "url": "/docs/markdown#code-blocks",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/blockquotes",
+    "title": "Blockquotes",
+    "content": "",
+    "url": "/docs/markdown#blockquotes",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/tables",
+    "title": "Tables",
+    "content": "",
+    "url": "/docs/markdown#tables",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/mdx-features",
+    "title": "MDX Features",
+    "content": "Muni uses MDX, which allows you to use React components in your Markdown.",
+    "url": "/docs/markdown#mdx-features",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/react-components",
+    "title": "React Components",
+    "content": "",
+    "url": "/docs/markdown#react-components",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/custom-components",
+    "title": "Custom Components",
+    "content": "You can create custom components for your documentation: Then use it in your MDX:",
+    "url": "/docs/markdown#custom-components",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/frontmatter",
+    "title": "Frontmatter",
+    "content": "Add metadata to your pages using YAML frontmatter:",
+    "url": "/docs/markdown#frontmatter",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/available-frontmatter-fields",
+    "title": "Available Frontmatter Fields",
+    "content": "- : Page title (used in navigation) - : Meta description for SEO - : Author name (shown in footer) - : Publication date ",
+    "url": "/docs/markdown#available-frontmatter-fields",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/syntax-highlighting",
+    "title": "Syntax Highlighting",
+    "content": "Code blocks are automatically syntax highlighted using Shiki: javascript // JavaScript with syntax highlighting function",
+    "url": "/docs/markdown#syntax-highlighting",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/supported-languages",
+    "title": "Supported Languages",
+    "content": "- JavaScript/TypeScript - Python - Java - C/C++ - Go - Rust - HTML/CSS - JSON - YAML - And many more...",
+    "url": "/docs/markdown#supported-languages",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/custom-styling",
+    "title": "Custom Styling",
+    "content": "",
+    "url": "/docs/markdown#custom-styling",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/inline-styles",
+    "title": "Inline Styles",
+    "content": "Use Tailwind CSS classes for styling:",
+    "url": "/docs/markdown#inline-styles",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/css-classes",
+    "title": "CSS Classes",
+    "content": "You can also use custom CSS classes:",
+    "url": "/docs/markdown#css-classes",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/advanced-features",
+    "title": "Advanced Features",
+    "content": "",
+    "url": "/docs/markdown#advanced-features",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/math-equations",
+    "title": "Math Equations",
+    "content": "Use KaTeX for mathematical expressions:",
+    "url": "/docs/markdown#math-equations",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/diagrams",
+    "title": "Diagrams",
+    "content": "Create diagrams using Mermaid: mermaid graph TD A[Start] --> B{Decision} B -->|Yes| C[Action 1] B -->|No| D[Action 2] C ",
+    "url": "/docs/markdown#diagrams",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/callouts",
+    "title": "Callouts",
+    "content": "Use custom callout components:",
+    "url": "/docs/markdown#callouts",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/advanced-markdown-features",
+    "title": "Advanced Markdown Features",
+    "content": "",
+    "url": "/docs/markdown#advanced-markdown-features",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/custom-directives",
+    "title": "Custom Directives",
+    "content": "Muni supports custom MDX directives for enhanced functionality:",
+    "url": "/docs/markdown#custom-directives",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/code-folding",
+    "title": "Code Folding",
+    "content": "typescript function complexFunction() { // Complex implementation here return result; }",
+    "url": "/docs/markdown#code-folding",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/inline-components",
+    "title": "Inline Components",
+    "content": "<CodeGroup> </CodeGroup>",
+    "url": "/docs/markdown#inline-components",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/advanced-tables",
+    "title": "Advanced Tables",
+    "content": "| Feature | Support | Notes | |---------|---------|-------| | Bold headers | ✅ | Use | | | ✅ | Use backticks | | Links |",
+    "url": "/docs/markdown#advanced-tables",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/mathematical-expressions",
+    "title": "Mathematical Expressions",
+    "content": "Inline math: Block math:",
+    "url": "/docs/markdown#mathematical-expressions",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/diagrams-with-mermaid",
+    "title": "Diagrams with Mermaid",
+    "content": "",
+    "url": "/docs/markdown#diagrams-with-mermaid",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/best-practices",
+    "title": "Best Practices",
+    "content": "",
+    "url": "/docs/markdown#best-practices",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/writing-style",
+    "title": "Writing Style",
+    "content": "1. Use clear headings: Structure your content with descriptive headings 2. Keep paragraphs short: Break up long text int",
+    "url": "/docs/markdown#writing-style",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/code-examples",
+    "title": "Code Examples",
+    "content": "1. Use syntax highlighting: Always specify the language for code blocks 2. Include context: Explain what the code does 3",
+    "url": "/docs/markdown#code-examples",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/images",
+    "title": "Images",
+    "content": "1. Optimize images: Use appropriate formats and sizes 2. Add alt text: Always include descriptive alt text 3. Use consis",
+    "url": "/docs/markdown#images",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/links",
+    "title": "Links",
+    "content": "1. Use descriptive text: Don't use \"click here\" or \"read more\" 2. Check your links: Make sure all links work 3. Use rela",
+    "url": "/docs/markdown#links",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/content-organization",
+    "title": "Content Organization",
+    "content": "1. Start with an outline: Plan your content structure first 2. Use consistent formatting: Apply the same style throughou",
+    "url": "/docs/markdown#content-organization",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/accessibility",
+    "title": "Accessibility",
+    "content": "1. Use semantic HTML: Let MDX generate proper HTML structure 2. Add alt text: Include descriptive alt text for images 3.",
+    "url": "/docs/markdown#accessibility",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/examples",
+    "title": "Examples",
+    "content": "",
+    "url": "/docs/markdown#examples",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/complete-page-example",
+    "title": "Complete Page Example",
+    "content": "markdown API Reference Our API provides a simple interface for managing resources.",
+    "url": "/docs/markdown#complete-page-example",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/authentication",
+    "title": "Authentication",
+    "content": "All API requests require authentication using an API key:",
+    "url": "/docs/markdown#authentication",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/endpoints",
+    "title": "Endpoints",
+    "content": "",
+    "url": "/docs/markdown#endpoints",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h2"
+  },
+  {
+    "id": "markdown/get-users",
+    "title": "GET /users",
+    "content": "Retrieve a list of users. Parameters: - (optional): Number of users to return (default: 10) - (optional): Number of user",
+    "url": "/docs/markdown#get-users",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
   },
   {
     "id": "project-structure",
     "title": "Project Structure",
-    "content": "Project Structure Understanding the Muni project structure and conventions. Directory Overview Core Files The main configuration file for your documentation: Root layout that wraps all pages: Documentation-specific layout with sidebar and navigation: Component Organization UI Components () Base components built with shadcn/ui: -  - Button component -  - Input field -  - Modal dialogs -  - Dropdown menus -  - Sidebar component -  - Tooltips -  - Alert messages -  - Badge component Navigation Components () Documentation-specific navigation: -  - Left sidebar navigation -  - Header with search and theme toggle -  - Previous/Next page navigation -  - Auto-generated TOC -  - Navigation section component Custom Components () Muni-specific components: -  - Code copy functionality -  - Step component for tutorials -  - Steps container Content Structure Documentation Pages () All documentation content as MDX files: Page Structure Each page follows this structure: Styling System Global Styles () Theme System () Three minimal themes: Configuration Files Next.js configuration with MDX support: Tailwind CSS configuration: Build System Scripts () Search Generation () Generates search index for documentation: File Naming Conventions Pages - Use kebab-case for file names:  - Use  for section homepages - Use  for dynamic routes Components - Use PascalCase for component files:  - Use kebab-case for directories:  - Use descriptive names:  Styles - Use kebab-case:  - Group related styles: ,  - Use CSS custom properties for theming Import Conventions Absolute Imports Use absolute imports with  prefix: Relative Imports Use relative imports for closely related files: Development Workflow Getting Started 1. Clone and install     2. Start development server     3. Open browser    Navigate to  Development Process 1. Create new content    - Add MDX files to     - Update navigation in     - Test locally with  2. Modify components    - Edit components in  or     - Test changes in browser    - Ensure TypeScript types are correct 3. Update styles    - Modify CSS files in     - Test in all themes    - Ensure responsive design works 4. Build and test     File Organization Guidelines 1. Components: Group by functionality    -  - Base UI components    -  - Navigation specific    -  - Muni specific 2. Content: Organize by topic    - Use descriptive filenames    - Group related content in subdirectories    - Use  for section homepages 3. Styles: Separate concerns    -  - Global styles    -  - Theme definitions    -  - Component styles Git Workflow 1. Feature branches     2. Pull requests    - Create PR for review    - Ensure all checks pass    - Merge to main after approval 3. Releases     Testing Strategy 1. Manual testing    - Test all pages in all themes    - Verify responsive design    - Check accessibility 2. Build testing     3. Linting     Best Practices Component Organization 1. Single responsibility: Each component should have one clear purpose 2. Composition over inheritance: Build complex components from simple ones 3. Props interface: Define clear TypeScript interfaces for props 4. Default exports: Use default exports for main components File Structure 1. Group by feature: Keep related files together 2. Consistent naming: Use consistent naming conventions 3. Clear hierarchy: Organize files in a logical hierarchy 4. Minimal nesting: Avoid deep directory structures Code Style 1. TypeScript: Use TypeScript for type safety 2. ESLint/Prettier: Use consistent code formatting 3. Comments: Add comments for complex logic 4. Documentation: Document public APIs Performance 1. Code splitting: Use dynamic imports for large components 2. Image optimization: Use Next.js Image component 3. Bundle analysis: Regularly analyze bundle size 4. Static generation: Prefer static generation over SSR Adding New Features New Page 1. Create MDX file in  2. Add to navigation in  3. Test the page locally New Component 1. Create component file in appropriate directory 2. Export from component file 3. Import and use in pages/components 4. Add TypeScript types if needed New Theme 1. Add theme class to  2. Update theme types in  3. Add theme option to theme toggle 4. Test theme across all pages Troubleshooting Common Issues Build errors - Check TypeScript types - Verify import paths - Check for missing dependencies Styling issues - Verify Tailwind classes - Check CSS custom properties - Ensure proper theme classes Navigation issues - Check slug format in config - Verify file paths - Test internal links Performance issues - Analyze bundle size - Check for large images - Optimize imports",
+    "content": "Project Structure Understanding the Muni project structure and conventions. Directory Overview Core Files The main configuration file for your documentation: Root layout that wraps all pages: Documentation-specific layout with sidebar and navigation: Component Organization UI Components () Base components built with shadcn/ui: - - Button component - - Input field - - Modal dialogs - - Dropdown menus - - Sidebar component - - Tooltips - - Alert messages - - Badge component Navigation Components () Documentation-specific navigation: - - Left sidebar navigation - - Header with search and theme toggle - - Previous/Next page navigation - - Auto-generated TOC - - Navigation section component Custom Components () Muni-specific components: - - Code copy functionality - - Step component for tutorials - - Steps container Content Structure Documentation Pages () All documentation content as MDX files: Page Structure Each page follows this structure: Styling System Global Styles () Theme System () Three minimal themes: Configuration Files Next.js configuration with MDX support: Tailwind CSS configuration: Build System Scripts () Search Generation () Generates search index for documentation: File Naming Conventions Pages - Use kebab-case for file names: - Use for section homepages - Use for dynamic routes Components - Use PascalCase for component files: - Use kebab-case for directories: - Use descriptive names: Styles - Use kebab-case: - Group related styles: , - Use CSS custom properties for theming Import Conventions Absolute Imports Use absolute imports with prefix: Relative Imports Use relative imports for closely related files: Development Workflow Getting Started 1. Clone and install 2. Start development server 3. Open browser Navigate to Development Process 1. Create new content - Add MDX files to - Update navigation in - Test locally with 2. Modify components - Edit components in or - Test changes in browser - Ensure TypeScript types are correct 3. Update styles - Modify CSS files in - Test in all themes - Ensure responsive design works 4. Build and test File Organization Guidelines 1. Components: Group by functionality - - Base UI components - - Navigation specific - - Muni specific 2. Content: Organize by topic - Use descriptive filenames - Group related content in subdirectories - Use for section homepages 3. Styles: Separate concerns - - Global styles - - Theme definitions - - Component styles Git Workflow 1. Feature branches 2. Pull requests - Create PR for review - Ensure all checks pass - Merge to main after approval 3. Releases Testing Strategy 1. Manual testing - Test all pages in all themes - Verify responsive design - Check accessibility 2. Build testing 3. Linting Best Practices Component Organization 1. Single responsibility: Each component should have one clear purpose 2. Composition over inheritance: Build complex components from simple ones 3. Props interface: Define clear TypeScript interfaces for props 4. Default exports: Use default exports for main components File Structure 1. Group by feature: Keep related files together 2. Consistent naming: Use consistent naming conventions 3. Clear hierarchy: Organize files in a logical hierarchy 4. Minimal nesting: Avoid deep directory structures Code Style 1. TypeScript: Use TypeScript for type safety 2. ESLint/Prettier: Use consistent code formatting 3. Comments: Add comments for complex logic 4. Documentation: Document public APIs Performance 1. Code splitting: Use dynamic imports for large components 2. Image optimization: Use Next.js Image component 3. Bundle analysis: Regularly analyze bundle size 4. Static generation: Prefer static generation over SSR Adding New Features New Page 1. Create MDX file in 2. Add to navigation in 3. Test the page locally New Component 1. Create component file in appropriate directory 2. Export from component file 3. Import and use in pages/components 4. Add TypeScript types if needed New Theme 1. Add theme class to 2. Update theme types in 3. Add theme option to theme toggle 4. Test theme across all pages Troubleshooting Common Issues Build errors - Check TypeScript types - Verify import paths - Check for missing dependencies Styling issues - Verify Tailwind classes - Check CSS custom properties - Ensure proper theme classes Navigation issues - Check slug format in config - Verify file paths - Test internal links Performance issues - Analyze bundle size - Check for large images - Optimize imports",
     "url": "/docs/project-structure",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "project-structure/directory-overview",
+    "title": "Directory Overview",
+    "content": "",
+    "url": "/docs/project-structure#directory-overview",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/core-files",
+    "title": "Core Files",
+    "content": "",
+    "url": "/docs/project-structure#core-files",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/municonfigts",
+    "title": "`muni.config.ts`",
+    "content": "The main configuration file for your documentation:",
+    "url": "/docs/project-structure#municonfigts",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/applayouttsx",
+    "title": "`app/layout.tsx`",
+    "content": "Root layout that wraps all pages:",
+    "url": "/docs/project-structure#applayouttsx",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/appdocslayouttsx",
+    "title": "`app/docs/layout.tsx`",
+    "content": "Documentation-specific layout with sidebar and navigation:",
+    "url": "/docs/project-structure#appdocslayouttsx",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/component-organization",
+    "title": "Component Organization",
+    "content": "",
+    "url": "/docs/project-structure#component-organization",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/ui-components-componentsui",
+    "title": "UI Components (`components/ui/`)",
+    "content": "Base components built with shadcn/ui: - - Button component - - Input field - - Modal dialogs - - Dropdown menus - - Side",
+    "url": "/docs/project-structure#ui-components-componentsui",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/navigation-components-componentsnavigation-components",
+    "title": "Navigation Components (`components/navigation-components/`)",
+    "content": "Documentation-specific navigation: - - Left sidebar navigation - - Header with search and theme toggle - - Previous/Next",
+    "url": "/docs/project-structure#navigation-components-componentsnavigation-components",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/custom-components-componentsmuni-components",
+    "title": "Custom Components (`components/muni-components/`)",
+    "content": "Muni-specific components: - - Code copy functionality - - Step component for tutorials - - Steps container",
+    "url": "/docs/project-structure#custom-components-componentsmuni-components",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/content-structure",
+    "title": "Content Structure",
+    "content": "",
+    "url": "/docs/project-structure#content-structure",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/documentation-pages-contentpages",
+    "title": "Documentation Pages (`content/pages/`)",
+    "content": "All documentation content as MDX files:",
+    "url": "/docs/project-structure#documentation-pages-contentpages",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/page-structure",
+    "title": "Page Structure",
+    "content": "Each page follows this structure:",
+    "url": "/docs/project-structure#page-structure",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/styling-system",
+    "title": "Styling System",
+    "content": "",
+    "url": "/docs/project-structure#styling-system",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/global-styles-stylesglobalscss",
+    "title": "Global Styles (`styles/globals.css`)",
+    "content": "",
+    "url": "/docs/project-structure#global-styles-stylesglobalscss",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/theme-system-stylescolor-themescss",
+    "title": "Theme System (`styles/color-themes.css`)",
+    "content": "Three minimal themes:",
+    "url": "/docs/project-structure#theme-system-stylescolor-themescss",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/configuration-files",
+    "title": "Configuration Files",
+    "content": "",
+    "url": "/docs/project-structure#configuration-files",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/nextconfigts",
+    "title": "`next.config.ts`",
+    "content": "Next.js configuration with MDX support:",
+    "url": "/docs/project-structure#nextconfigts",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/tailwindconfigjs",
+    "title": "`tailwind.config.js`",
+    "content": "Tailwind CSS configuration:",
+    "url": "/docs/project-structure#tailwindconfigjs",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/build-system",
+    "title": "Build System",
+    "content": "",
+    "url": "/docs/project-structure#build-system",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/scripts-packagejson",
+    "title": "Scripts (`package.json`)",
+    "content": "",
+    "url": "/docs/project-structure#scripts-packagejson",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/search-generation-scriptsgenerate-search-datats",
+    "title": "Search Generation (`scripts/generate-search-data.ts`)",
+    "content": "Generates search index for documentation:",
+    "url": "/docs/project-structure#search-generation-scriptsgenerate-search-datats",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/file-naming-conventions",
+    "title": "File Naming Conventions",
+    "content": "",
+    "url": "/docs/project-structure#file-naming-conventions",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/pages",
+    "title": "Pages",
+    "content": "- Use kebab-case for file names: - Use for section homepages - Use for dynamic routes",
+    "url": "/docs/project-structure#pages",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/components",
+    "title": "Components",
+    "content": "- Use PascalCase for component files: - Use kebab-case for directories: - Use descriptive names:",
+    "url": "/docs/project-structure#components",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/styles",
+    "title": "Styles",
+    "content": "- Use kebab-case: - Group related styles: , - Use CSS custom properties for theming",
+    "url": "/docs/project-structure#styles",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/import-conventions",
+    "title": "Import Conventions",
+    "content": "",
+    "url": "/docs/project-structure#import-conventions",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/absolute-imports",
+    "title": "Absolute Imports",
+    "content": "Use absolute imports with prefix:",
+    "url": "/docs/project-structure#absolute-imports",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/relative-imports",
+    "title": "Relative Imports",
+    "content": "Use relative imports for closely related files:",
+    "url": "/docs/project-structure#relative-imports",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/development-workflow",
+    "title": "Development Workflow",
+    "content": "",
+    "url": "/docs/project-structure#development-workflow",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/getting-started",
+    "title": "Getting Started",
+    "content": "1. Clone and install 2. Start development server 3. Open browser Navigate to",
+    "url": "/docs/project-structure#getting-started",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/development-process",
+    "title": "Development Process",
+    "content": "1. Create new content - Add MDX files to - Update navigation in - Test locally with 2. Modify components - Edit componen",
+    "url": "/docs/project-structure#development-process",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/file-organization-guidelines",
+    "title": "File Organization Guidelines",
+    "content": "1. Components: Group by functionality - - Base UI components - - Navigation specific - - Muni specific 2. Content: Organ",
+    "url": "/docs/project-structure#file-organization-guidelines",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/git-workflow",
+    "title": "Git Workflow",
+    "content": "1. Feature branches 2. Pull requests - Create PR for review - Ensure all checks pass - Merge to main after approval 3. R",
+    "url": "/docs/project-structure#git-workflow",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/testing-strategy",
+    "title": "Testing Strategy",
+    "content": "1. Manual testing - Test all pages in all themes - Verify responsive design - Check accessibility 2. Build testing 3. Li",
+    "url": "/docs/project-structure#testing-strategy",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/best-practices",
+    "title": "Best Practices",
+    "content": "",
+    "url": "/docs/project-structure#best-practices",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/component-organization",
+    "title": "Component Organization",
+    "content": "1. Single responsibility: Each component should have one clear purpose 2. Composition over inheritance: Build complex co",
+    "url": "/docs/project-structure#component-organization",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/file-structure",
+    "title": "File Structure",
+    "content": "1. Group by feature: Keep related files together 2. Consistent naming: Use consistent naming conventions 3. Clear hierar",
+    "url": "/docs/project-structure#file-structure",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/code-style",
+    "title": "Code Style",
+    "content": "1. TypeScript: Use TypeScript for type safety 2. ESLint/Prettier: Use consistent code formatting 3. Comments: Add commen",
+    "url": "/docs/project-structure#code-style",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/performance",
+    "title": "Performance",
+    "content": "1. Code splitting: Use dynamic imports for large components 2. Image optimization: Use Next.js Image component 3. Bundle",
+    "url": "/docs/project-structure#performance",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/adding-new-features",
+    "title": "Adding New Features",
+    "content": "",
+    "url": "/docs/project-structure#adding-new-features",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/new-page",
+    "title": "New Page",
+    "content": "1. Create MDX file in 2. Add to navigation in 3. Test the page locally",
+    "url": "/docs/project-structure#new-page",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/new-component",
+    "title": "New Component",
+    "content": "1. Create component file in appropriate directory 2. Export from component file 3. Import and use in pages/components 4.",
+    "url": "/docs/project-structure#new-component",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/new-theme",
+    "title": "New Theme",
+    "content": "1. Add theme class to 2. Update theme types in 3. Add theme option to theme toggle 4. Test theme across all pages",
+    "url": "/docs/project-structure#new-theme",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
+  },
+  {
+    "id": "project-structure/troubleshooting",
+    "title": "Troubleshooting",
+    "content": "",
+    "url": "/docs/project-structure#troubleshooting",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h2"
+  },
+  {
+    "id": "project-structure/common-issues",
+    "title": "Common Issues",
+    "content": "Build errors - Check TypeScript types - Verify import paths - Check for missing dependencies Styling issues - Verify Tai",
+    "url": "/docs/project-structure#common-issues",
+    "tags": [],
+    "parentPage": "Project Structure",
+    "sectionType": "h3"
   },
   {
     "id": "themes",
     "title": "Themes",
-    "content": "Themes Muni comes with three carefully crafted themes designed for minimal, professional documentation. Available Themes Minimal (Light) The default theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with minimal contrast - Accents: Subtle gray borders and highlights - Typography: Sans-serif (Geist Sans) Perfect for general documentation and clean, modern looks. Minimal Dark A dark theme with deep blacks and minimal contrast. - Background: Deep black - Text: Light gray with high contrast - Accents: Subtle borders and highlights - Typography: Sans-serif (Geist Sans) Ideal for dark mode users and technical documentation. Mono A monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font - Accents: Clean borders and minimal styling - Typography: Monospace (Geist Mono) Perfect for technical documentation, code references, and developer-focused content. Setting the Theme Default Theme Set the default theme in : Theme Toggle Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Minimal (Light) 2. Minimal Dark 3. Mono 4. System (follows OS preference) Theme Customization CSS Variables Each theme defines CSS variables that you can override: Custom Theme To create a custom theme: 1. Add theme class to : 2. Update theme toggle to include your theme: 3. Update TypeScript types: Design Principles All Muni themes follow these design principles: Minimalism - Clean, uncluttered interfaces - Generous whitespace - Subtle colors and borders - No unnecessary visual elements Typography - Small, readable text (11-13px base) - Tight line heights for professional look - Consistent font weights - Proper hierarchy Spacing - Consistent spacing scale - Tight padding and margins - Generous whitespace between sections - No excessive padding Colors - High contrast for readability - Subtle accent colors - Consistent color relationships - Accessible color combinations Theme Variables Core Colors Semantic Colors Status Colors UI Colors Sidebar Colors Practical Customization Examples Creating a Brand Theme Create a custom theme that matches your brand colors: Dark Mode with Custom Colors High Contrast Theme Theme Switching Implementation Update your theme toggle component: CSS Custom Properties Reference Complete list of available CSS custom properties: Best Practices 1. Test all themes: Ensure your content looks good in all themes 2. Use semantic colors: Use  instead of hardcoded colors 3. Maintain contrast: Ensure text is readable in all themes 4. Keep it minimal: Don't over-customize - embrace the minimal aesthetic 5. Test accessibility: Ensure color combinations meet accessibility standards 6. Use OKLCH colors: Better color interpolation and consistency 7. Test in different lighting: Check themes in various lighting conditions 8. Consider color blindness: Ensure themes work for colorblind users 9. Document your themes: Keep a reference of your custom themes 10. Version your themes: Track changes to your theme definitions Examples Minimal Theme Minimal Dark Theme Mono Theme",
+    "content": "Themes Muni comes with three carefully crafted themes designed for minimal, professional documentation. Available Themes Minimal (Light) The default theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with minimal contrast - Accents: Subtle gray borders and highlights - Typography: Sans-serif (Geist Sans) Perfect for general documentation and clean, modern looks. Minimal Dark A dark theme with deep blacks and minimal contrast. - Background: Deep black - Text: Light gray with high contrast - Accents: Subtle borders and highlights - Typography: Sans-serif (Geist Sans) Ideal for dark mode users and technical documentation. Mono A monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font - Accents: Clean borders and minimal styling - Typography: Monospace (Geist Mono) Perfect for technical documentation, code references, and developer-focused content. Setting the Theme Default Theme Set the default theme in : Theme Toggle Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Minimal (Light) 2. Minimal Dark 3. Mono 4. System (follows OS preference) Theme Customization CSS Variables Each theme defines CSS variables that you can override: Custom Theme To create a custom theme: 1. Add theme class to : 2. Update theme toggle to include your theme: 3. Update TypeScript types: Design Principles All Muni themes follow these design principles: Minimalism - Clean, uncluttered interfaces - Generous whitespace - Subtle colors and borders - No unnecessary visual elements Typography - Small, readable text (11-13px base) - Tight line heights for professional look - Consistent font weights - Proper hierarchy Spacing - Consistent spacing scale - Tight padding and margins - Generous whitespace between sections - No excessive padding Colors - High contrast for readability - Subtle accent colors - Consistent color relationships - Accessible color combinations Theme Variables Core Colors Semantic Colors Status Colors UI Colors Sidebar Colors Practical Customization Examples Creating a Brand Theme Create a custom theme that matches your brand colors: Dark Mode with Custom Colors High Contrast Theme Theme Switching Implementation Update your theme toggle component: CSS Custom Properties Reference Complete list of available CSS custom properties: Best Practices 1. Test all themes: Ensure your content looks good in all themes 2. Use semantic colors: Use instead of hardcoded colors 3. Maintain contrast: Ensure text is readable in all themes 4. Keep it minimal: Don't over-customize - embrace the minimal aesthetic 5. Test accessibility: Ensure color combinations meet accessibility standards 6. Use OKLCH colors: Better color interpolation and consistency 7. Test in different lighting: Check themes in various lighting conditions 8. Consider color blindness: Ensure themes work for colorblind users 9. Document your themes: Keep a reference of your custom themes 10. Version your themes: Track changes to your theme definitions Examples Minimal Theme Minimal Dark Theme Mono Theme",
     "url": "/docs/themes",
-    "tags": []
+    "tags": [],
+    "sectionType": "page"
+  },
+  {
+    "id": "themes/available-themes",
+    "title": "Available Themes",
+    "content": "",
+    "url": "/docs/themes#available-themes",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/minimal-light",
+    "title": "Minimal (Light)",
+    "content": "The default theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with minima",
+    "url": "/docs/themes#minimal-light",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/minimal-dark",
+    "title": "Minimal Dark",
+    "content": "A dark theme with deep blacks and minimal contrast. - Background: Deep black - Text: Light gray with high contrast - Acc",
+    "url": "/docs/themes#minimal-dark",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/mono",
+    "title": "Mono",
+    "content": "A monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font - Acce",
+    "url": "/docs/themes#mono",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/setting-the-theme",
+    "title": "Setting the Theme",
+    "content": "",
+    "url": "/docs/themes#setting-the-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/default-theme",
+    "title": "Default Theme",
+    "content": "Set the default theme in :",
+    "url": "/docs/themes#default-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/theme-toggle",
+    "title": "Theme Toggle",
+    "content": "Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Minimal (Light) 2. Minimal D",
+    "url": "/docs/themes#theme-toggle",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/theme-customization",
+    "title": "Theme Customization",
+    "content": "",
+    "url": "/docs/themes#theme-customization",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/css-variables",
+    "title": "CSS Variables",
+    "content": "Each theme defines CSS variables that you can override:",
+    "url": "/docs/themes#css-variables",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/custom-theme",
+    "title": "Custom Theme",
+    "content": "To create a custom theme: 1. Add theme class to : 2. Update theme toggle to include your theme: 3. Update TypeScript typ",
+    "url": "/docs/themes#custom-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/design-principles",
+    "title": "Design Principles",
+    "content": "All Muni themes follow these design principles:",
+    "url": "/docs/themes#design-principles",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/minimalism",
+    "title": "Minimalism",
+    "content": "- Clean, uncluttered interfaces - Generous whitespace - Subtle colors and borders - No unnecessary visual elements",
+    "url": "/docs/themes#minimalism",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/typography",
+    "title": "Typography",
+    "content": "- Small, readable text (11-13px base) - Tight line heights for professional look - Consistent font weights - Proper hier",
+    "url": "/docs/themes#typography",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/spacing",
+    "title": "Spacing",
+    "content": "- Consistent spacing scale - Tight padding and margins - Generous whitespace between sections - No excessive padding",
+    "url": "/docs/themes#spacing",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/colors",
+    "title": "Colors",
+    "content": "- High contrast for readability - Subtle accent colors - Consistent color relationships - Accessible color combinations",
+    "url": "/docs/themes#colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/theme-variables",
+    "title": "Theme Variables",
+    "content": "",
+    "url": "/docs/themes#theme-variables",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/core-colors",
+    "title": "Core Colors",
+    "content": "",
+    "url": "/docs/themes#core-colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/semantic-colors",
+    "title": "Semantic Colors",
+    "content": "",
+    "url": "/docs/themes#semantic-colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/status-colors",
+    "title": "Status Colors",
+    "content": "",
+    "url": "/docs/themes#status-colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/ui-colors",
+    "title": "UI Colors",
+    "content": "",
+    "url": "/docs/themes#ui-colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/sidebar-colors",
+    "title": "Sidebar Colors",
+    "content": "",
+    "url": "/docs/themes#sidebar-colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/practical-customization-examples",
+    "title": "Practical Customization Examples",
+    "content": "",
+    "url": "/docs/themes#practical-customization-examples",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/creating-a-brand-theme",
+    "title": "Creating a Brand Theme",
+    "content": "Create a custom theme that matches your brand colors:",
+    "url": "/docs/themes#creating-a-brand-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/dark-mode-with-custom-colors",
+    "title": "Dark Mode with Custom Colors",
+    "content": "",
+    "url": "/docs/themes#dark-mode-with-custom-colors",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/high-contrast-theme",
+    "title": "High Contrast Theme",
+    "content": "",
+    "url": "/docs/themes#high-contrast-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/theme-switching-implementation",
+    "title": "Theme Switching Implementation",
+    "content": "Update your theme toggle component:",
+    "url": "/docs/themes#theme-switching-implementation",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/css-custom-properties-reference",
+    "title": "CSS Custom Properties Reference",
+    "content": "Complete list of available CSS custom properties:",
+    "url": "/docs/themes#css-custom-properties-reference",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/best-practices",
+    "title": "Best Practices",
+    "content": "1. Test all themes: Ensure your content looks good in all themes 2. Use semantic colors: Use instead of hardcoded colors",
+    "url": "/docs/themes#best-practices",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/examples",
+    "title": "Examples",
+    "content": "",
+    "url": "/docs/themes#examples",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h2"
+  },
+  {
+    "id": "themes/minimal-theme",
+    "title": "Minimal Theme",
+    "content": "",
+    "url": "/docs/themes#minimal-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/minimal-dark-theme",
+    "title": "Minimal Dark Theme",
+    "content": "",
+    "url": "/docs/themes#minimal-dark-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/mono-theme",
+    "title": "Mono Theme",
+    "content": "",
+    "url": "/docs/themes#mono-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
   }
 ]

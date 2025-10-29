@@ -7,6 +7,8 @@ export interface SearchItem {
   url: string;
   category?: string;
   tags?: string[];
+  parentPage?: string;
+  sectionType?: 'page' | 'h2' | 'h3' | 'h4';
 }
 
 export interface SearchResult extends SearchItem {
