@@ -1,14 +1,8 @@
 "use client";
 
-import * as React from "react";
-import {
-  MoonIcon,
-  SunIcon,
-  MonitorIcon,
-  CircleIcon,
-  TerminalIcon,
-} from "lucide-react";
+import { MonitorIcon, MoonIcon, SunIcon, TerminalIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import {

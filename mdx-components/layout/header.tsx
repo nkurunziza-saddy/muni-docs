@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
 export function Header(
-  props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+  props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
 ) {
   return (
     <header

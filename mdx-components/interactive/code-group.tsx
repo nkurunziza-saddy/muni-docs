@@ -1,10 +1,10 @@
 "use client";
 
-import type { ReactElement } from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import type { ReactElement } from "react";
+import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
 import { cn } from "@/lib/utils";
 import * as PreComponent from "../code/pre";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
 
 export interface CodeGroupProps {
   children: ReactElement<{ "data-title"?: string; children?: ReactElement }>[];
@@ -38,14 +38,14 @@ export function CodeGroup({
     <TabsPrimitive.Root
       className={cn(
         "not-prose border border-input rounded-lg mb-6 overflow-hidden",
-        className
+        className,
       )}
       defaultValue={tabs[0]?.tabTitle}
       orientation="horizontal"
     >
       <TabsPrimitive.TabsList
         className={cn(
-          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg"
+          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg",
         )}
         aria-label={ariaLabel}
         role="tablist"
@@ -55,7 +55,7 @@ export function CodeGroup({
             key={tabTitle + i.toString()}
             value={tabTitle ?? ""}
             className={cn(
-              "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
+              "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none",
             )}
             aria-selected={i === 0}
             tabIndex={i === 0 ? 0 : -1}
@@ -67,7 +67,7 @@ export function CodeGroup({
 
       {tabs.map(({ tabTitle, props }, i) => {
         const isShiki = String((props as any)?.className ?? "").includes(
-          "shiki"
+          "shiki",
         );
 
         return (

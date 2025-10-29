@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { ClipboardCheck, ClipboardCopy } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function CopyButton({
   copy,

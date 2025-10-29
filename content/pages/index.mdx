@@ -7,11 +7,15 @@ date: "2024-01-15"
 
 # Muni
 
-A minimal, fast documentation template built with Next.js and Tailwind CSS.
+A production-ready, minimal documentation template built with Next.js 15, Tailwind CSS 4, and TypeScript. Perfect for technical documentation, API references, and developer-focused content.
 
-## Philosophy
+## Why Choose Muni?
 
-Muni is designed around the principle of **less is more**. Every component, every line of code, every design decision is made with simplicity and performance in mind.
+Muni is designed for developers who value **simplicity, performance, and maintainability**. Unlike bloated documentation frameworks, Muni focuses on what matters most: clear content presentation and fast loading times.
+
+### Core Philosophy
+
+**Less is more** - Every design decision prioritizes clarity and performance over flashy features. Muni embraces the principle that great documentation doesn't need to be complex.
 
 ### Key Principles
 
@@ -20,17 +24,36 @@ Muni is designed around the principle of **less is more**. Every component, ever
 - **Customizable**: Simple configuration through `muni.config.ts`
 - **Professional**: Small, tight typography and spacing for a modern look
 - **Static**: No animations or shifting layouts - everything feels stable
+- **Accessible**: Built with accessibility in mind from the ground up
+- **Type-Safe**: Full TypeScript support for better developer experience
 
 ## Features
 
-- **3 Clean Themes**: Minimal, Minimal Dark, and Mono
+### Core Features
+- **3 Clean Themes**: Minimal, Minimal Dark, and Mono with easy customization
 - **Fixed-Width Content**: Consistent, centered layout that doesn't shift
 - **Small Typography**: Professional 11-13px base text with tight spacing
 - **MDX Support**: Write documentation in Markdown with React components
-- **Search**: Built-in search functionality
-- **Table of Contents**: Auto-generated from headings
-- **Mobile Responsive**: Clean sidebar on mobile devices
-- **SEO Optimized**: Proper meta tags and structured data
+- **Built-in Search**: Fast, client-side search with FlexSearch
+- **Auto-Generated TOC**: Table of contents automatically generated from headings
+- **Mobile Responsive**: Clean sidebar and navigation on all devices
+- **SEO Optimized**: Proper meta tags, structured data, and sitemap
+
+### Developer Experience
+- **TypeScript**: Full type safety throughout the codebase
+- **Hot Reload**: Instant updates during development
+- **Linting**: Built-in code formatting with Biome
+- **Component Library**: Pre-built components for common documentation patterns
+- **Custom Directives**: Support for custom MDX directives
+- **Code Highlighting**: Syntax highlighting with Shiki
+- **Copy Code**: One-click code copying functionality
+
+### Performance
+- **Static Generation**: All pages pre-rendered for maximum speed
+- **Image Optimization**: Automatic image optimization with Next.js
+- **Bundle Splitting**: Automatic code splitting for optimal loading
+- **CDN Ready**: Optimized for global content delivery
+- **Core Web Vitals**: Optimized for Google's performance metrics
 
 ## Quick Start
 
@@ -97,6 +120,31 @@ Deploy to Vercel, Netlify, or any static hosting platform:
 pnpm build
 pnpm start
 ```
+
+## Tech Stack
+
+### Frontend
+- **Next.js 15** - React framework with App Router and static generation
+- **Tailwind CSS 4** - Utility-first CSS framework with modern features
+- **TypeScript** - Type safety and better developer experience
+- **React 19** - Latest React with concurrent features
+
+### Content & Styling
+- **MDX** - Markdown with React components for rich content
+- **Shiki** - Syntax highlighting with 200+ language support
+- **Lucide React** - Beautiful, customizable icon library
+- **FlexSearch** - Fast, client-side search engine
+
+### Development Tools
+- **Biome** - Fast linter and formatter
+- **pnpm** - Fast, disk space efficient package manager
+- **ESLint** - Code quality and consistency
+- **Prettier** - Code formatting
+
+### Deployment
+- **Vercel** - Optimized for Next.js deployment
+- **Docker** - Container support for any platform
+- **GitHub Actions** - CI/CD pipeline ready
 
 ## License
 

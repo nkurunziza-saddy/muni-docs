@@ -13,16 +13,12 @@
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
-  .shiki {
+html:is(.dark, .mono-dark) .shiki {
   background-color: var(--shiki-dark-bg) !important;
 }
 
-html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
-  .shiki,
-html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
-  .shiki
-  span {
+html:is(.dark, .mono-dark) .shiki,
+html:is(.dark, .mono-dark) .shiki span {
   color: var(--shiki-dark) !important;
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
@@ -103,8 +99,7 @@ html:is(.dark, .arctic-dark, .mono-dark, .sage-dark, .slate-dark, .ocean-dark)
 
 @media (prefers-reduced-motion: reduce) {
   .shiki,
-  .shiki .line,
-  .shiki .highlighted-word {
+  .shiki .highlighted-word .shiki .line {
     transition: none;
   }
 

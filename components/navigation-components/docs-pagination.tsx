@@ -1,8 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import muniConfig from "@/muni.config";
 
 interface NavigationItem {
@@ -11,7 +11,7 @@ interface NavigationItem {
   items?: NavigationItem[];
 }
 
-function createDocHref(slug: string): string {
+function _createDocHref(slug: string): string {
   if (slug === "index") {
     return "/docs";
   }

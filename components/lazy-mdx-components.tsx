@@ -1,25 +1,25 @@
 "use client";
 
-import { lazy, Suspense, memo } from "react";
+import { lazy, memo, Suspense } from "react";
 import { cn } from "@/lib/utils";
 
 // Lazy load heavy components
 const CodePreviewBlock = lazy(() =>
   import("@/mdx-components/interactive/code-preview-block").then((module) => ({
     default: module.CodePreviewBlock,
-  }))
+  })),
 );
 
 const CodeGroup = lazy(() =>
   import("@/mdx-components/interactive/code-group").then((module) => ({
     default: module.CodeGroup,
-  }))
+  })),
 );
 
 const Steps = lazy(() =>
   import("@/mdx-components/layout/steps").then((module) => ({
     default: module.Steps,
-  }))
+  })),
 );
 
 // Loading component

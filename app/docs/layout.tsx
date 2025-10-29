@@ -1,10 +1,10 @@
 import type React from "react";
+import { DocsHeader } from "@/components/navigation-components/docs-header";
 import { DocsPagination } from "@/components/navigation-components/docs-pagination";
+import { DocsSidebar } from "@/components/navigation-components/docs-sidebar";
+import { MobileTableOfContents } from "@/components/navigation-components/mobile-tocs";
 import { TableOfContents } from "@/components/navigation-components/tocs";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { DocsSidebar } from "@/components/navigation-components/docs-sidebar";
-import { DocsHeader } from "@/components/navigation-components/docs-header";
-import { MobileTableOfContents } from "@/components/navigation-components/mobile-tocs";
 
 export default function DocsLayout({
   children,

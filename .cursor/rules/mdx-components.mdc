@@ -1,0 +1,41 @@
+---
+globs: mdx-components/**/*.tsx,content/**/*.mdx
+---
+
+# MDX Components and Content Guidelines
+
+## Component Structure
+
+- All MDX components should be in `mdx-components/` directory
+- Organize by category: `base/`, `code/`, `interactive/`, `layout/`
+- Export components from category `index.ts` files
+- Register all components in [mdx-components/index.tsx](mdc:mdx-components/index.tsx)
+
+## Component Patterns
+
+- Use `"use client"` directive for interactive components
+- Wrap complex components with `MDXErrorBoundary` for error handling
+- Use `IsInCodeBlockContext.Provider` for code-related components
+- Implement proper TypeScript interfaces for all props
+
+## MDX Content Guidelines
+
+- Use proper frontmatter with required fields: `title`, `description`
+- Follow consistent heading hierarchy (H1 for page title, H2 for sections)
+- Use code blocks with language specification: ````typescript`
+- Prefer semantic HTML elements over generic divs
+- Use Tailwind CSS classes for styling
+
+## Code Block Patterns
+
+- Use `CodeGroup` for multiple code examples with tabs
+- Use `CodePreviewBlock` for live preview + code combinations
+- Always specify language for syntax highlighting
+- Use `title` attribute for code block titles
+
+## Content Organization
+
+- Keep content files in `content/pages/` directory
+- Use kebab-case for filenames
+- Group related content in subdirectories
+- Update navigation in [muni.config.ts](mdc:muni.config.ts) when adding pages

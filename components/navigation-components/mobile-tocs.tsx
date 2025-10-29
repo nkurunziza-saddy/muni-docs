@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { useTableOfContents } from "@/lib/hooks/use-table-of-contents";
+import { cn } from "@/lib/utils";
 
 export function MobileTableOfContents() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +53,7 @@ export function MobileTableOfContents() {
                     "text-sm transition-colors block py-1.5 border-l-2 pl-3 rounded-none",
                     activeId === item.id
                       ? "border-primary text-primary font-medium"
-                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                   )}
                 >
                   {item.text}

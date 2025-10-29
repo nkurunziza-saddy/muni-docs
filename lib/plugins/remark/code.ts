@@ -1,6 +1,6 @@
-import type { Root, Code } from "mdast";
-import { visit } from "unist-util-visit";
+import type { Code, Root } from "mdast";
 import type { ContainerDirective } from "mdast-util-directive";
+import { visit } from "unist-util-visit";
 
 export function remarkCode() {
   return (tree: Root) => {
@@ -11,7 +11,7 @@ export function remarkCode() {
         (parent as ContainerDirective).name !== "steps"
       )
         return;
-      const titleRegex = /(?:\((.*?)\))|(?:filename=\"(.*?)\")/;
+      const titleRegex = /(?:\((.*?)\))|(?:filename="(.*?)")/;
       const match = node.meta?.match(titleRegex);
 
       if (match) {

@@ -1,0 +1,40 @@
+---
+description: Search functionality and content indexing
+---
+
+# Search Functionality
+
+## Search Implementation
+
+- Uses FlexSearch for client-side search
+- Search service in [lib/actions/search-service.ts](mdc:lib/actions/search-service.ts)
+- Search data generation in [scripts/generate-search-data.ts](mdc:scripts/generate-search-data.ts)
+- Search component in [components/search-component.tsx](mdc:components/search-component.tsx)
+
+## Content Indexing
+
+- Automatically indexes all MDX files in `content/pages/`
+- Extracts title, content, and metadata from frontmatter
+- Cleans content by removing code blocks and formatting
+- Generates search data during build process
+
+## Search Features
+
+- Real-time search with debouncing
+- Highlights search terms in results
+- Keyboard navigation support
+- Mobile-responsive search interface
+
+## Configuration
+
+- Search data stored in `public/search-data.json`
+- Index configuration in FlexSearch options
+- Search result limits and scoring
+- Error handling for missing search data
+
+## Performance
+
+- Lazy load search functionality
+- Client-side only (no server requests)
+- Optimized search index size
+- Fast search results with minimal JavaScript

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
 export function Heading({
   level,
@@ -14,7 +14,7 @@ export function Heading({
       id={props.id}
       className={cn(
         "relative items-center font-semibold text-foreground gap-[0.25em] leading-[1.5em]",
-        props.className
+        props.className,
       )}
     >
       {props.children}

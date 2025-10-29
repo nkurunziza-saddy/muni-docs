@@ -1,10 +1,10 @@
 "use client";
 
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { SidebarMenuItem } from "../ui/sidebar";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { SidebarMenuItem } from "../ui/sidebar";
 
 function createDocHref(slug: string): string {
   if (slug === "index") return "/docs";
@@ -31,7 +31,7 @@ function NavLink({ item }: { item: NavItem }) {
           "block text-xs py-2 px-3 rounded border",
           isActive
             ? "border-border bg-muted text-foreground font-medium"
-            : "border-transparent hover:border-border hover:bg-muted/50 text-muted-foreground"
+            : "border-transparent hover:border-border hover:bg-muted/50 text-muted-foreground",
         )}
       >
         {item.title}
@@ -64,7 +64,7 @@ export function NavSection({
             "block text-sm py-2 px-3 rounded border",
             isActive
               ? "border-border bg-muted text-foreground font-medium"
-              : "border-transparent hover:border-border hover:bg-muted/50"
+              : "border-transparent hover:border-border hover:bg-muted/50",
           )}
         >
           {item.title}

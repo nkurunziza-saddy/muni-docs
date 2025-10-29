@@ -1,5 +1,5 @@
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import muniConfig from "@/muni.config";
 
 interface PageProps {
@@ -64,7 +64,7 @@ export async function generateMetadata({
 
   const findPage = (
     items: NavigationItem[],
-    targetSlug: string
+    targetSlug: string,
   ): NavigationItem | null => {
     for (const item of items) {
       if (item.slug === targetSlug) return item;
@@ -147,7 +147,7 @@ export default async function Page({ params }: PageProps) {
         </div>
       </div>
     );
-  } catch (error) {
+  } catch (_error) {
     notFound();
   }
 }

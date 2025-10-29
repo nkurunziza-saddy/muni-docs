@@ -23,9 +23,9 @@ export function validateFrontmatter(data: unknown): Frontmatter {
     return frontmatterSchema.parse(data);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.error("Frontmatter validation failed:", error.errors);
+      console.error("Frontmatter validation failed:", error.issues);
       throw new Error(
-        `Invalid frontmatter: ${error.errors.map((e) => e.message).join(", ")}`
+        `Invalid frontmatter: ${error.issues.map((e) => e.message).join(", ")}`
       );
     }
     throw error;

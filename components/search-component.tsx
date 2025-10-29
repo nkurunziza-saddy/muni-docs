@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import { ArrowUpDown, CornerDownLeft, Search, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { type SearchResult, searchService } from "@/lib/actions/search-service";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ export function SearchComp({ className }: SearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, _setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const router = useRouter();
@@ -80,7 +80,7 @@ export function SearchComp({ className }: SearchProps) {
 
     const regex = new RegExp(
       `(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
-      "gi"
+      "gi",
     );
     const parts = text.split(regex);
 
@@ -104,7 +104,7 @@ export function SearchComp({ className }: SearchProps) {
         variant="outline"
         className={cn(
           "w-32 justify-start rounded-md px-3 text-xs border border-dashed text-muted-foreground sm:w-60",
-          className
+          className,
         )}
       >
         <span>Search docs</span>
@@ -170,7 +170,7 @@ export function SearchComp({ className }: SearchProps) {
                           {highlightMatch(
                             result.content.slice(0, 120) +
                               (result.content.length > 120 ? "..." : ""),
-                            query
+                            query,
                           )}
                         </p>
                         <div className="flex items-center gap-2">

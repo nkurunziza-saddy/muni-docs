@@ -204,6 +204,129 @@ Check the build output for validation errors.
 4. **Test your links**: Make sure all navigation links work
 5. **Version your docs**: Use the version field to track changes
 
+## Advanced Configuration Patterns
+
+### Multi-Environment Configuration
+
+```typescript
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV === 'production';
+
+const muniConfig: MuniConfig = {
+  title: process.env.NEXT_PUBLIC_SITE_TITLE || "Muni Documentation",
+  version: process.env.NEXT_PUBLIC_VERSION || "1.0.0",
+  defaultTheme: (process.env.NEXT_PUBLIC_DEFAULT_THEME as Theme) || "minimal",
+  showFrontmatterMeta: isDevelopment,
+  headingLinks: [
+    { title: "GitHub", href: process.env.NEXT_PUBLIC_GITHUB_URL || "#" },
+    ...(isDevelopment ? [{ title: "Dev Tools", href: "/dev-tools" }] : []),
+  ],
+  navigation: generateNavigation(),
+  githubRepo: process.env.NEXT_PUBLIC_GITHUB_REPO,
+};
+```
+
+### Dynamic Navigation Generation
+
+```typescript
+import fs from 'fs';
+import path from 'path';
+
+function generateNavigation(): NavigationItem[] {
+  const contentDir = path.join(process.cwd(), 'content/pages');
+  const navigation: NavigationItem[] = [];
+  
+  function scanDirectory(dir: string, baseSlug = ''): void {
+    const items = fs.readdirSync(dir);
+    
+    for (const item of items) {
+      const fullPath = path.join(dir, item);
+      const stat = fs.statSync(fullPath);
+      
+      if (stat.isDirectory()) {
+        const slug = baseSlug ? `${baseSlug}/${item}` : item;
+        const indexPath = path.join(fullPath, 'index.mdx');
+        
+        if (fs.existsSync(indexPath)) {
+          const { data } = matter(fs.readFileSync(indexPath, 'utf-8'));
+          navigation.push({
+            title: data.title || item,
+            slug,
+            items: scanDirectory(fullPath, slug)
+          });
+        }
+      } else if (item.endsWith('.mdx') && item !== 'index.mdx') {
+        const slug = baseSlug ? `${baseSlug}/${item.replace('.mdx', '')}` : item.replace('.mdx', '');
+        const { data } = matter(fs.readFileSync(fullPath, 'utf-8'));
+        
+        navigation.push({
+          title: data.title || item.replace('.mdx', ''),
+          slug
+        });
+      }
+    }
+  }
+  
+  scanDirectory(contentDir);
+  return navigation;
+}
+```
+
+### Feature Flags
+
+```typescript
+const muniConfig: MuniConfig = {
+  title: "My Documentation",
+  version: "1.0.0",
+  defaultTheme: "minimal",
+  showFrontmatterMeta: process.env.NEXT_PUBLIC_SHOW_META === 'true',
+  headingLinks: [
+    { title: "GitHub", href: "https://github.com/your-org/repo" },
+    ...(process.env.NEXT_PUBLIC_ENABLE_DISCORD === 'true' ? 
+      [{ title: "Discord", href: "https://discord.gg/your-server" }] : []),
+  ],
+  navigation: [
+    { title: "Introduction", slug: "index" },
+    { title: "Getting Started", slug: "getting-started" },
+    ...(process.env.NEXT_PUBLIC_ENABLE_API_DOCS === 'true' ? 
+      [{ title: "API Reference", slug: "api" }] : []),
+  ],
+  githubRepo: process.env.NEXT_PUBLIC_GITHUB_REPO,
+};
+```
+
+### Type-Safe Configuration
+
+```typescript
+import { z } from 'zod';
+
+const ConfigSchema = z.object({
+  title: z.string().min(1),
+  version: z.string().optional(),
+  defaultTheme: z.enum(['minimal', 'minimal-dark', 'mono']).optional(),
+  showFrontmatterMeta: z.boolean().optional(),
+  headingLinks: z.array(z.object({
+    title: z.string(),
+    href: z.string().url()
+  })).optional(),
+  navigation: z.array(z.lazy(() => NavigationItemSchema)),
+  githubRepo: z.string().url().optional(),
+});
+
+const NavigationItemSchema = z.object({
+  title: z.string(),
+  slug: z.string(),
+  items: z.array(z.lazy(() => NavigationItemSchema)).optional(),
+});
+
+type MuniConfig = z.infer<typeof ConfigSchema>;
+
+const muniConfig: MuniConfig = ConfigSchema.parse({
+  title: "My Documentation",
+  // ... rest of config
+});
+```
+
 ## Example Configuration
 
 Here's a complete example configuration:

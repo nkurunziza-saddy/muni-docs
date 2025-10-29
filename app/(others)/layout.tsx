@@ -1,6 +1,6 @@
 import { PageFooter } from "@/components/navigation-components/page-footer";
 import { PageHeader } from "@/components/navigation-components/page-header";
-import { BorderSeparator } from "@/components/ui/sheard";
+import { BorderSeparator } from "@/components/ui/shared";
 import { cn } from "@/lib/utils";
 
 export default function OthersLayout({

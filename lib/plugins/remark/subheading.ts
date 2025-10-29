@@ -14,7 +14,7 @@ export function remarkSubheading() {
         const subheadingChild = node.children.find(
           (child: any) =>
             typeof child.value === "string" &&
-            child.value.match(subheadingRegex)
+            child.value.match(subheadingRegex),
         ) as any | undefined;
         const match = subheadingChild?.value?.match(subheadingRegex);
         const subheading = match?.[1];
@@ -36,7 +36,7 @@ export function remarkSubheading() {
           ].filter(Boolean),
         } as any;
         parent?.children.splice(index, 0, header);
-      }
+      },
     );
   };
 }

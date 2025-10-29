@@ -274,6 +274,94 @@ Use custom callout components:
 </Callout>
 ```
 
+## Advanced Markdown Features
+
+### Custom Directives
+
+Muni supports custom MDX directives for enhanced functionality:
+
+```markdown
+::info{title="Important Note"}
+This is an important note using a custom directive.
+::
+
+::warning
+This is a warning without a title.
+::
+
+::tip{title="Pro Tip"}
+Use custom directives for better content organization.
+::
+```
+
+### Code Folding
+
+```markdown
+:::details{title="Show Code"}
+```typescript
+function complexFunction() {
+  // Complex implementation here
+  return result;
+}
+```
+:::
+```
+
+### Inline Components
+
+```jsx
+<Callout type="info" title="Live Example">
+  This callout is rendered as a React component.
+</Callout>
+```
+
+<CodeGroup>
+  ```typescript title="TypeScript"
+  interface User {
+    name: string;
+    email: string;
+  }
+  ```
+  
+  ```javascript title="JavaScript"
+  const user = {
+    name: "John",
+    email: "john@example.com"
+  };
+  ```
+</CodeGroup>
+
+### Advanced Tables
+
+| Feature | Support | Notes |
+|---------|---------|-------|
+| **Bold headers** | ✅ | Use `**text**` |
+| `Code in cells` | ✅ | Use backticks |
+| [Links](https://example.com) | ✅ | Standard markdown |
+| ~~Strikethrough~~ | ✅ | Use `~~text~~` |
+| *Italic* | ✅ | Use `*text*` |
+
+### Mathematical Expressions
+
+Inline math: `$E = mc^2$`
+
+Block math:
+
+```math
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+```
+
+### Diagrams with Mermaid
+
+```mermaid
+graph TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Action 1]
+    B -->|No| D[Action 2]
+    C --> E[End]
+    D --> E
+```
+
 ## Best Practices
 
 ### Writing Style
@@ -283,6 +371,9 @@ Use custom callout components:
 3. **Use lists**: Break down complex information into bullet points
 4. **Include examples**: Show, don't just tell
 5. **Be consistent**: Use consistent formatting throughout
+6. **Use active voice**: Write in active voice for clarity
+7. **Avoid jargon**: Use simple, clear language
+8. **Include context**: Provide background information when needed
 
 ### Code Examples
 
@@ -290,6 +381,9 @@ Use custom callout components:
 2. **Include context**: Explain what the code does
 3. **Keep examples simple**: Don't overwhelm readers with complex code
 4. **Test your examples**: Make sure code examples actually work
+5. **Add comments**: Include helpful comments in code examples
+6. **Show output**: Include expected output when relevant
+7. **Use realistic data**: Use meaningful variable names and data
 
 ### Images
 
@@ -297,6 +391,9 @@ Use custom callout components:
 2. **Add alt text**: Always include descriptive alt text
 3. **Use consistent styling**: Keep image sizes and styles consistent
 4. **Consider dark mode**: Ensure images work in all themes
+5. **Use captions**: Add captions for complex images
+6. **Compress files**: Optimize file sizes for web
+7. **Use vector graphics**: Prefer SVG for diagrams and icons
 
 ### Links
 
@@ -304,6 +401,29 @@ Use custom callout components:
 2. **Check your links**: Make sure all links work
 3. **Use relative links**: For internal links, use relative paths
 4. **Open external links in new tabs**: Use `target="_blank"` for external links
+5. **Use meaningful URLs**: Create readable, SEO-friendly URLs
+6. **Avoid broken links**: Regularly check and update links
+7. **Use anchor links**: Link to specific sections when relevant
+
+### Content Organization
+
+1. **Start with an outline**: Plan your content structure first
+2. **Use consistent formatting**: Apply the same style throughout
+3. **Group related content**: Use sections and subsections effectively
+4. **Include a table of contents**: For long documents
+5. **Add cross-references**: Link to related sections
+6. **Use callouts effectively**: Highlight important information
+7. **End with next steps**: Guide readers to related content
+
+### Accessibility
+
+1. **Use semantic HTML**: Let MDX generate proper HTML structure
+2. **Add alt text**: Include descriptive alt text for images
+3. **Use proper heading hierarchy**: Don't skip heading levels
+4. **Ensure color contrast**: Make sure text is readable
+5. **Use descriptive link text**: Avoid generic phrases
+6. **Test with screen readers**: Verify accessibility
+7. **Include captions**: Add captions for videos and complex images
 
 ## Examples
 

@@ -56,10 +56,6 @@ const muniConfig: MuniConfig = {
       slug: "components-showcase",
     },
     {
-      title: "Tabs Test",
-      slug: "tabs-test",
-    },
-    {
       title: "Deployment",
       slug: "deployment",
     },

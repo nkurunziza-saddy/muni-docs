@@ -1,10 +1,10 @@
 "use client";
+import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import { useIsInCodeBlock } from "@/lib/hooks/use-in-code";
 import { cn } from "@/lib/utils";
-import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export function Code(
-  props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+  props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
 ) {
   const isInCodeBlock = useIsInCodeBlock();
   const children = filterEmptyLines(props.children);
@@ -16,7 +16,7 @@ export function Code(
         isInCodeBlock
           ? ""
           : "bg-muted relative rounded px-[0.3rem] py-[0.2rem]",
-        props.className
+        props.className,
       )}
     >
       {children}
@@ -34,7 +34,7 @@ function filterEmptyLines(nodes: React.ReactNode) {
       child.props.children.trim() === "" &&
       nodes[index + 1]?.props?.className?.includes("twoslash-tag-line")
         ? null
-        : child
+        : child,
     )
     .filter(Boolean);
 }

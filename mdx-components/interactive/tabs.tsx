@@ -1,8 +1,8 @@
 "use client";
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import type { ReactElement, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import type { ReactNode, ReactElement } from "react";
 
 type TabsItemProps = {
   value: string;
@@ -16,7 +16,7 @@ export function Tabs({
 }) {
   if (!Array.isArray(children) || !children.length) return null;
 
-  const defaultValue = children[0].props.value;
+  const defaultValue = children[0]?.props?.value;
 
   return (
     <TabsPrimitive.Root
@@ -30,6 +30,7 @@ export function Tabs({
       >
         {children.map((child) => {
           const c = child as ReactElement<TabsItemProps>;
+          if (!c?.props?.value) return null;
           return (
             <TabsPrimitive.Trigger
               key={c.props.value}
@@ -46,6 +47,7 @@ export function Tabs({
 
       {children.map((child) => {
         const c = child as ReactElement<TabsItemProps>;
+        if (!c?.props?.value) return null;
         return (
           <TabsPrimitive.Content
             key={c.props.value}

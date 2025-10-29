@@ -27,7 +27,7 @@ This will:
 
 ### Vercel (Recommended)
 
-Vercel is the easiest way to deploy Next.js applications:
+Vercel is the easiest way to deploy Next.js applications with zero configuration:
 
 1. **Connect your repository**
 
@@ -38,13 +38,160 @@ Vercel is the easiest way to deploy Next.js applications:
 
 2. **Configure build settings**
 
-   - Framework: Next.js
+   - Framework: Next.js (auto-detected)
    - Build Command: `pnpm build`
    - Output Directory: `.next`
+   - Node.js Version: 18.x or 20.x
 
-3. **Deploy**
+3. **Environment Variables**
+
+   ```bash
+   # Set in Vercel dashboard or via CLI
+   NEXT_PUBLIC_SITE_URL=https://your-domain.com
+   NEXT_PUBLIC_GITHUB_REPO=https://github.com/your-org/repo
+   NEXT_PUBLIC_VERSION=1.0.0
+   ```
+
+4. **Deploy**
    - Vercel will automatically deploy on every push
    - Your site will be available at `https://your-project.vercel.app`
+   - Custom domains supported with automatic SSL
+
+### Docker Deployment
+
+Deploy using Docker for consistent environments:
+
+1. **Create Dockerfile**
+
+   ```dockerfile
+   # Dockerfile
+   FROM node:20-alpine AS base
+   
+   # Install dependencies only when needed
+   FROM base AS deps
+   RUN apk add --no-cache libc6-compat
+   WORKDIR /app
+   
+   # Install dependencies
+   COPY package.json pnpm-lock.yaml ./
+   RUN corepack enable pnpm && pnpm install --frozen-lockfile
+   
+   # Rebuild the source code only when needed
+   FROM base AS builder
+   WORKDIR /app
+   COPY --from=deps /app/node_modules ./node_modules
+   COPY . .
+   
+   # Generate search data and build
+   RUN corepack enable pnpm && pnpm run generate-search && pnpm build
+   
+   # Production image, copy all the files and run next
+   FROM base AS runner
+   WORKDIR /app
+   
+   ENV NODE_ENV production
+   
+   RUN addgroup --system --gid 1001 nodejs
+   RUN adduser --system --uid 1001 nextjs
+   
+   COPY --from=builder /app/public ./public
+   COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+   COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+   
+   USER nextjs
+   
+   EXPOSE 3000
+   
+   ENV PORT 3000
+   ENV HOSTNAME "0.0.0.0"
+   
+   CMD ["node", "server.js"]
+   ```
+
+2. **Create .dockerignore**
+
+   ```dockerignore
+   .next
+   node_modules
+   .git
+   .gitignore
+   README.md
+   Dockerfile
+   .dockerignore
+   ```
+
+3. **Build and run**
+
+   ```bash
+   # Build the image
+   docker build -t muni-docs .
+   
+   # Run the container
+   docker run -p 3000:3000 muni-docs
+   ```
+
+### Kubernetes Deployment
+
+Deploy to Kubernetes for scalable, production-ready hosting:
+
+1. **Create deployment.yaml**
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: muni-docs
+   spec:
+     replicas: 3
+     selector:
+       matchLabels:
+         app: muni-docs
+     template:
+       metadata:
+         labels:
+           app: muni-docs
+       spec:
+         containers:
+         - name: muni-docs
+           image: muni-docs:latest
+           ports:
+           - containerPort: 3000
+           env:
+           - name: NODE_ENV
+             value: "production"
+           - name: NEXT_PUBLIC_SITE_URL
+             value: "https://docs.yourcompany.com"
+           resources:
+             requests:
+               memory: "128Mi"
+               cpu: "100m"
+             limits:
+               memory: "256Mi"
+               cpu: "200m"
+   ```
+
+2. **Create service.yaml**
+
+   ```yaml
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: muni-docs-service
+   spec:
+     selector:
+       app: muni-docs
+     ports:
+     - port: 80
+       targetPort: 3000
+     type: LoadBalancer
+   ```
+
+3. **Deploy**
+
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+   ```
 
 ### Netlify
 
@@ -325,6 +472,93 @@ NODE_OPTIONS="--max-old-space-size=4096" pnpm build
 - Optimize images and assets
 - Enable compression
 
+## 2025 Best Practices
+
+### Performance Optimization
+
+1. **Core Web Vitals**: Ensure good LCP, FID, and CLS scores
+2. **Image Optimization**: Use Next.js Image component with WebP/AVIF
+3. **Bundle Analysis**: Regularly analyze and optimize bundle size
+4. **CDN Usage**: Use global CDN for static assets
+5. **Caching Strategy**: Implement proper caching headers
+6. **Code Splitting**: Leverage Next.js automatic code splitting
+
+### Security
+
+1. **HTTPS Everywhere**: Force HTTPS redirects
+2. **Security Headers**: Implement CSP, HSTS, and other security headers
+3. **Dependency Scanning**: Regular security audits with `npm audit`
+4. **Environment Variables**: Never commit secrets to version control
+5. **Access Control**: Implement proper authentication if needed
+6. **Regular Updates**: Keep all dependencies updated
+
+### Monitoring & Analytics
+
+1. **Error Tracking**: Use Sentry or similar for error monitoring
+2. **Performance Monitoring**: Track Core Web Vitals
+3. **Uptime Monitoring**: Set up uptime checks
+4. **Analytics**: Implement privacy-friendly analytics
+5. **Logging**: Centralized logging for debugging
+
+### CI/CD Pipeline
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm build
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm build
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+```
+
+### Environment Management
+
+```bash
+# .env.local (development)
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GITHUB_REPO=https://github.com/your-org/repo
+NEXT_PUBLIC_VERSION=1.0.0-dev
+
+# .env.production (production)
+NEXT_PUBLIC_SITE_URL=https://docs.yourcompany.com
+NEXT_PUBLIC_GITHUB_REPO=https://github.com/your-org/repo
+NEXT_PUBLIC_VERSION=1.0.0
+```
+
 ## Best Practices
 
 1. **Test locally first**: Always test your build locally before deploying
@@ -335,6 +569,8 @@ NODE_OPTIONS="--max-old-space-size=4096" pnpm build
 6. **Use HTTPS**: Always use HTTPS in production
 7. **Set up redirects**: Handle old URLs and broken links
 8. **Backup your content**: Keep your content in version control
+9. **Implement proper caching**: Use appropriate cache headers
+10. **Monitor Core Web Vitals**: Ensure good user experience metrics
 
 ## Example Deployments
 

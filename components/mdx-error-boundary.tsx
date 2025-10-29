@@ -1,8 +1,8 @@
 "use client";
 
+import { TriangleAlertIcon } from "lucide-react";
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { TriangleAlertIcon } from "lucide-react";
 
 interface MDXErrorBoundaryState {
   hasError: boolean;

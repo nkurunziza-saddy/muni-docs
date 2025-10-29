@@ -1,0 +1,40 @@
+---
+globs: styles/**/*.css,components/**/*.tsx
+---
+
+# Styling and Theme System
+
+## CSS Architecture
+
+- Use CSS custom properties for theming in [styles/color-themes.css](mdc:styles/color-themes.css)
+- Global styles in [styles/globals.css](mdc:styles/globals.css)
+- Component-specific styles in [styles/mdx-components.css](mdc:styles/mdx-components.css)
+- Use Tailwind CSS 4 utility classes for component styling
+
+## Theme System
+
+- Three built-in themes: `minimal`, `minimal-dark`, `mono`
+- Use OKLCH color space for better color interpolation
+- Define all theme variables in CSS custom properties
+- Support for custom themes by adding new CSS classes
+
+## Component Styling
+
+- Use `cn()` utility from [lib/utils.ts](mdc:lib/utils.ts) for conditional classes
+- Prefer Tailwind utilities over custom CSS
+- Use semantic color variables: `--primary`, `--foreground`, `--muted`
+- Implement proper dark mode support with theme classes
+
+## Responsive Design
+
+- Mobile-first approach with Tailwind breakpoints
+- Use `useIsMobile` hook for mobile-specific logic
+- Test all components in different screen sizes
+- Ensure proper touch targets for mobile devices
+
+## Accessibility
+
+- Use proper ARIA attributes for interactive components
+- Ensure sufficient color contrast in all themes
+- Support keyboard navigation
+- Use semantic HTML elements

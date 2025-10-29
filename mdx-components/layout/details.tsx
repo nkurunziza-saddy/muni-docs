@@ -4,7 +4,7 @@ export function Details(
   props: DetailedHTMLProps<
     DetailsHTMLAttributes<HTMLDetailsElement>,
     HTMLDetailsElement
-  >
+  >,
 ) {
   return <details {...props} />;
 }

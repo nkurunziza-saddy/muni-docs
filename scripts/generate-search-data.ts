@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import matter from "gray-matter";
 
 interface SearchItem {
@@ -38,7 +38,6 @@ function generateSearchData() {
   const outputPath = path.join(process.cwd(), "public/search-data.json");
 
   if (!fs.existsSync(contentDir)) {
-    console.log("Content directory not found, skipping search data generation");
     return;
   }
 
@@ -88,7 +87,6 @@ function generateSearchData() {
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(searchData, null, 2));
-  console.log(`Generated search data for ${searchData.length} pages`);
 }
 
 if (require.main === module) {

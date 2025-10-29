@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 interface TocItem {
   id: string;
@@ -13,7 +13,7 @@ export function useTableOfContents() {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const pathname = usePathname();
+  const _pathname = usePathname();
 
   useEffect(() => {
     if (observerRef.current) {
@@ -22,13 +22,13 @@ export function useTableOfContents() {
 
     const extractHeadings = () => {
       const headings = Array.from(
-        document.querySelectorAll("h2, h3, h4, h5, h6")
+        document.querySelectorAll("h2, h3, h4, h5, h6"),
       )
         .filter((heading) => heading.id)
         .map((heading) => ({
           id: heading.id,
           text: heading.textContent || "",
-          level: Number.parseInt(heading.tagName.charAt(1)),
+          level: Number.parseInt(heading.tagName.charAt(1), 10),
         }));
 
       setToc(headings);
@@ -45,7 +45,7 @@ export function useTableOfContents() {
           {
             rootMargin: "0% 0% -80% 0%",
             threshold: 1.0,
-          }
+          },
         );
 
         headings.forEach((heading) => {
@@ -68,7 +68,7 @@ export function useTableOfContents() {
         observerRef.current.disconnect();
       }
     };
-  }, [pathname]); // This is the key - re-run when pathname changes
+  }, []); // This is the key - re-run when pathname changes
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);

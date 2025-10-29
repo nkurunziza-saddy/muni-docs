@@ -1,0 +1,45 @@
+---
+globs: app/**/*.tsx,next.config.ts
+---
+
+# Next.js 15 App Router Patterns
+
+## App Router Structure
+
+- Use `app/` directory for all routes
+- Dynamic routes with `[[...slug]]` for documentation pages
+- Layout files for shared UI components
+- Page files export default React components
+
+## Route Handling
+
+- [app/docs/[[...slug]]/page.tsx](mdc:app/docs/[[...slug]]/page.tsx) handles all documentation routes
+- Use `generateStaticParams` for static generation
+- Implement proper error boundaries and loading states
+
+## Configuration
+
+- [next.config.ts](mdc:next.config.ts) configures MDX support and PWA
+- Use `@next/mdx` for MDX processing
+- Configure page extensions for MDX files
+- Set up proper build optimizations
+
+## Performance Optimizations
+
+- All pages are statically generated
+- Use Next.js Image component for images
+- Implement proper caching strategies
+- Optimize bundle size with dynamic imports
+
+## SEO and Metadata
+
+- Generate sitemap in [app/sitemap.ts](mdc:app/sitemap.ts)
+- Configure robots.txt in [app/robots.ts](mdc:app/robots.ts)
+- Use proper meta tags and structured data
+- Implement search functionality with FlexSearch
+
+## PWA Features
+
+- Service worker configuration in [public/sw.js](mdc:public/sw.js)
+- Web app manifest for mobile installation
+- Offline support and caching strategies

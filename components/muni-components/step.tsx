@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { H2, H3, H4, H5, H6 } from "@/mdx-components/base";
 import { cn } from "@/lib/utils";
+import { H2, H3, H4, H5, H6 } from "@/mdx-components/base";
 
 export type StepProps = {
   children: ReactNode;

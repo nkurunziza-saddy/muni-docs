@@ -1,0 +1,49 @@
+---
+description: Development workflow and best practices
+---
+
+# Development Workflow and Best Practices
+
+## Getting Started
+
+1. Install dependencies: `pnpm install`
+2. Start development: `pnpm dev`
+3. Build for production: `pnpm build`
+4. Run linter: `pnpm lint`
+5. Format code: `pnpm format`
+
+## Code Quality
+
+- Use Biome for linting and formatting (configured in [biome.json](mdc:biome.json))
+- Fix TypeScript errors before committing
+- Remove unused imports and dependencies
+- Use meaningful commit messages
+
+## Content Management
+
+- Add new pages to `content/pages/` directory
+- Update navigation in [muni.config.ts](mdc:muni.config.ts)
+- Use proper frontmatter for all content
+- Test content in all themes before publishing
+
+## Component Development
+
+- Create components in appropriate directories
+- Export from category index files
+- Register in [mdx-components/index.tsx](mdc:mdx-components/index.tsx)
+- Add error boundaries for complex components
+- Test components in isolation
+
+## Performance
+
+- Use static generation for all pages
+- Optimize images with Next.js Image component
+- Minimize JavaScript bundle size
+- Test Core Web Vitals
+
+## Deployment
+
+- Build must pass: `pnpm build`
+- Test production build: `pnpm start`
+- Deploy to Vercel, Netlify, or other platforms
+- Configure environment variables for production

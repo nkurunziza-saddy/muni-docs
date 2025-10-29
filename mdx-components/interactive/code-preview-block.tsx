@@ -1,9 +1,9 @@
 "use client";
 
-import type { ReactElement } from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { cn } from "@/lib/utils";
+import type { ReactElement } from "react";
 import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
+import { cn } from "@/lib/utils";
 import { Pre } from "../code/pre";
 
 export interface CodePreviewBlockProps {
@@ -33,14 +33,14 @@ export function CodePreviewBlock({
     <TabsPrimitive.Root
       className={cn(
         "not-prose border w-full flex-1 border-input rounded-lg mb-6 overflow-hidden",
-        className
+        className,
       )}
       defaultValue="preview"
       orientation="horizontal"
     >
       <TabsPrimitive.TabsList
         className={cn(
-          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg"
+          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg",
         )}
         aria-label={ariaLabel}
         role="tablist"
@@ -48,7 +48,7 @@ export function CodePreviewBlock({
         <TabsPrimitive.TabsTrigger
           value="preview"
           className={cn(
-            "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none "
+            "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none ",
           )}
           aria-selected={true}
           tabIndex={0}
@@ -58,7 +58,7 @@ export function CodePreviewBlock({
         <TabsPrimitive.TabsTrigger
           value="code"
           className={cn(
-            "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none "
+            "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none ",
           )}
           aria-selected={false}
           tabIndex={-1}

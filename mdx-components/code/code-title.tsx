@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { File, Terminal } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function CodeTitle({
   children,
@@ -17,7 +17,7 @@ export function CodeTitle({
       className={cn(
         "text-sm not-prose bg-muted/40 backdrop-blur-3xl",
         "flex items-center gap-1.5 px-1 md:px-2 py-2 text-sm font-medium group-[.code-group]:hidden border-b border-input",
-        className
+        className,
       )}
     >
       {language === "bash" ? (

@@ -1,7 +1,7 @@
 import {
+  CheckCircle2Icon,
   InfoIcon,
   LightbulbIcon,
-  CheckCircle2Icon,
   TriangleAlertIcon,
 } from "lucide-react";
 import type { ReactNode } from "react";

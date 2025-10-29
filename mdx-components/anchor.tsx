@@ -1,10 +1,9 @@
 "use client";
-import type { ReactNode } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-
-import { Autolink } from "./autolink";
+import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Autolink } from "./autolink";
 
 type AnchorProps = {
   children: ReactNode;
@@ -16,7 +15,7 @@ export function Anchor({ children, href, className }: AnchorProps) {
   const pathname = usePathname();
   const classes = cn(
     "font-medium text-primary underline-offset-4 hover:underline",
-    className
+    className,
   );
 
   const isAutolinkIcon =

@@ -1,0 +1,36 @@
+---
+globs: *.ts,*.tsx
+---
+
+# TypeScript Patterns and Conventions
+
+## Component Patterns
+
+- Use `DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>` for HTML element props
+- Prefer `ReactElement` over `ReactNode` when working with specific element types
+- Use `useCallback` for functions used in dependency arrays to prevent re-renders
+- Always define proper TypeScript interfaces for component props
+
+## Import Conventions
+
+- Use absolute imports with `@/` prefix for internal modules
+- Import types with `type` keyword: `import type { SomeType } from "module"`
+- Use `node:` prefix for Node.js built-ins: `import fs from "node:fs"`
+
+## Error Handling
+
+- Use Zod for schema validation with proper error handling
+- Access Zod error details via `error.issues` (not `error.errors`)
+- Provide meaningful error messages with context
+
+## React Hooks
+
+- Wrap functions in `useCallback` when used as dependencies
+- Use `useMemo` for expensive computations
+- Prefer `useRef` for DOM references over direct DOM manipulation
+
+## Code Style
+
+- Use trailing commas in objects and arrays
+- Prefer template literals over string concatenation
+- Use optional chaining (`?.`) and nullish coalescing (`??`) operators

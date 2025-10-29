@@ -1,4 +1,4 @@
-import FlexSearch, { Index } from "flexsearch";
+import FlexSearch, { type Index } from "flexsearch";
 
 export interface SearchItem {
   id: string;
@@ -23,10 +23,6 @@ class SearchService {
       tokenize: "forward",
       cache: 100,
       resolution: 9,
-      //todo: find out why these don't exist
-      //   optimize: true,
-      //   worker: false,
-      //   async: false,
     });
   }
 
@@ -62,9 +58,6 @@ class SearchService {
       }
 
       this.initialized = true;
-      console.log(
-        `Search index initialized with ${searchData.length} documents`
-      );
     } catch (error) {
       console.error("Failed to initialize search:", error);
     }

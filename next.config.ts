@@ -1,19 +1,6 @@
-import type { NextConfig } from "next";
+import path from "node:path";
 import createMDX from "@next/mdx";
-//@ts-expect-error
-import withPWA from "next-pwa";
-
-// Essential remark plugins
-import remarkGfm from "remark-gfm";
-import remarkDirective from "remark-directive";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkMdxFrontmatter from "remark-mdx-frontmatter";
-
-// Essential rehype plugins
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeShiki from "@shikijs/rehype";
-
 // Shiki transformers
 import {
   transformerNotationDiff,
@@ -23,17 +10,27 @@ import {
   transformerNotationWordHighlight,
   transformerRemoveNotationEscape,
 } from "@shikijs/transformers";
+import type { NextConfig } from "next";
+//@ts-expect-error
+import withPWA from "next-pwa";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-import { transformerNotationInclude } from "./lib/plugins/transformers/transformer-include";
-import { transformerTitle } from "./lib/plugins/transformers/transformer-title";
-import path from "path";
+// Essential rehype plugins
+import rehypeSlug from "rehype-slug";
+import remarkDirective from "remark-directive";
+import remarkFrontmatter from "remark-frontmatter";
+// Essential remark plugins
+import remarkGfm from "remark-gfm";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import { rehypeShikiDisplayNotation } from "./lib/plugins/rehype/display-shiki-notation";
+import { rehypeInlineShiki } from "./lib/plugins/rehype/inline-shiki";
+import { rehypePreLineNumbers } from "./lib/plugins/rehype/rehype-pre-line-numbers";
 import { remarkCode } from "./lib/plugins/remark/code";
 import { remarkSubheading } from "./lib/plugins/remark/subheading";
+import { transformerNotationInclude } from "./lib/plugins/transformers/transformer-include";
 import { transformerLineNumbers } from "./lib/plugins/transformers/transformer-line-numbers";
 import { transformerTagline } from "./lib/plugins/transformers/transformer-tagline";
-import { rehypeInlineShiki } from "./lib/plugins/rehype/inline-shiki";
-import { rehypeShikiDisplayNotation } from "./lib/plugins/rehype/display-shiki-notation";
-import { rehypePreLineNumbers } from "./lib/plugins/rehype/rehype-pre-line-numbers";
+import { transformerTitle } from "./lib/plugins/transformers/transformer-title";
 
 const pwaConfig = withPWA({
   dest: "public",
@@ -93,7 +90,7 @@ const withMDX = createMDX({
             transformerNotationInclude({
               rootDir: path.resolve(
                 __dirname,
-                process.env.MUNI_DOCS_ROOT || "."
+                process.env.MUNI_DOCS_ROOT || ".",
               ),
             }),
             transformerLineNumbers(),

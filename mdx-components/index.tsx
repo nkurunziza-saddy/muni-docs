@@ -1,18 +1,16 @@
 import type { MDXComponents } from "mdx/types";
-
+import { MDXErrorBoundary } from "@/components/mdx-error-boundary";
+import { Step } from "@/components/muni-components/step";
+import { cn } from "@/lib/utils";
+import { Anchor } from "./anchor";
 // Base components
 import * as Base from "./base";
+// Code components
+import * as Code from "./code";
 // Interactive components
 import * as Interactive from "./interactive";
 // Layout components
 import * as Layout from "./layout";
-// Code components
-import * as Code from "./code";
-
-import { Anchor } from "./anchor";
-import { cn } from "@/lib/utils";
-import { MDXErrorBoundary } from "@/components/mdx-error-boundary";
-import { Step } from "@/components/muni-components/step";
 
 const mdxComponents: MDXComponents = {
   // Layout components
@@ -113,7 +111,7 @@ const mdxComponents: MDXComponents = {
         size === "lg" && "my-6",
         size === "xl" && "my-8",
         size === "2xl" && "my-12",
-        className
+        className,
       )}
       data-component="space"
       data-spacing={size}

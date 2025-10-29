@@ -331,6 +331,107 @@ import { NavSection } from "./nav-section";
 import { DocsHeader } from "../docs-header";
 ```
 
+## Development Workflow
+
+### Getting Started
+
+1. **Clone and install**
+   ```bash
+   git clone https://github.com/your-org/muni-docs
+   cd muni-docs
+   pnpm install
+   ```
+
+2. **Start development server**
+   ```bash
+   pnpm dev
+   ```
+
+3. **Open browser**
+   Navigate to `http://localhost:3000`
+
+### Development Process
+
+1. **Create new content**
+   - Add MDX files to `content/pages/`
+   - Update navigation in `muni.config.ts`
+   - Test locally with `pnpm dev`
+
+2. **Modify components**
+   - Edit components in `components/` or `mdx-components/`
+   - Test changes in browser
+   - Ensure TypeScript types are correct
+
+3. **Update styles**
+   - Modify CSS files in `styles/`
+   - Test in all themes
+   - Ensure responsive design works
+
+4. **Build and test**
+   ```bash
+   pnpm build
+   pnpm start
+   ```
+
+### File Organization Guidelines
+
+1. **Components**: Group by functionality
+   - `ui/` - Base UI components
+   - `navigation-components/` - Navigation specific
+   - `muni-components/` - Muni specific
+
+2. **Content**: Organize by topic
+   - Use descriptive filenames
+   - Group related content in subdirectories
+   - Use `index.mdx` for section homepages
+
+3. **Styles**: Separate concerns
+   - `globals.css` - Global styles
+   - `color-themes.css` - Theme definitions
+   - `mdx-components.css` - Component styles
+
+### Git Workflow
+
+1. **Feature branches**
+   ```bash
+   git checkout -b feature/new-component
+   # Make changes
+   git add .
+   git commit -m "Add new component"
+   git push origin feature/new-component
+   ```
+
+2. **Pull requests**
+   - Create PR for review
+   - Ensure all checks pass
+   - Merge to main after approval
+
+3. **Releases**
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+### Testing Strategy
+
+1. **Manual testing**
+   - Test all pages in all themes
+   - Verify responsive design
+   - Check accessibility
+
+2. **Build testing**
+   ```bash
+   pnpm build
+   pnpm start
+   # Test production build
+   ```
+
+3. **Linting**
+   ```bash
+   pnpm lint
+   pnpm format
+   ```
+
 ## Best Practices
 
 ### Component Organization

@@ -1,18 +1,18 @@
 "use client";
 import {
-  useMemo,
   type DetailedHTMLProps,
   type HTMLAttributes,
   type ReactElement,
   type ReactNode,
+  useCallback,
+  useMemo,
 } from "react";
-
+import { CopyButton } from "@/components/muni-components/copy-button";
+import { useCopyCode } from "@/lib/hooks/use-copy-code";
+import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
+import { cn } from "@/lib/utils";
 import { CodeBlock } from "./code-block";
 import { CodeTitle } from "./code-title";
-import { useCopyCode } from "@/lib/hooks/use-copy-code";
-import { cn } from "@/lib/utils";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
-import { CopyButton } from "@/components/muni-components/copy-button";
 
 export function Pre({
   children,
@@ -26,24 +26,28 @@ export function Pre({
 }) {
   const { copied, copy, ref } = useCopyCode();
 
-  function recurseChildren(children: ReactElement<any>): ReactNode {
-    if (!children) return children;
-    if (typeof children !== "object") return children;
-    if ("props" in children)
-      return {
-        ...children,
-        props: {
-          ...children.props,
-          children: Array.isArray(children.props.children)
-            ? children.props.children.map(recurseChildren)
-            : recurseChildren(children.props.children),
-        },
-      };
-    return children;
-  }
+  const recurseChildren = useCallback(
+    (children: ReactElement<any>): ReactNode => {
+      if (!children) return children;
+      if (typeof children !== "object") return children;
+      if ("props" in children)
+        return {
+          ...children,
+          props: {
+            ...children.props,
+            children: Array.isArray(children.props.children)
+              ? children.props.children.map(recurseChildren)
+              : recurseChildren(children.props.children),
+          },
+        };
+      return children;
+    },
+    []
+  );
+
   const children_ = useMemo(
     () => recurseChildren(children as ReactElement),
-    [children]
+    [children, recurseChildren]
   );
 
   const wrap = (children: React.ReactNode) => {

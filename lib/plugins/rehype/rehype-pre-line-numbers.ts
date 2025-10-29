@@ -6,7 +6,7 @@ export const rehypePreLineNumbers = () => (tree: any) => {
 
     const codeChild = (node as any).children?.find(
       (child: any) =>
-        child.tagName === "code" && !!child.properties?.["data-line-numbers"]
+        child.tagName === "code" && !!child.properties?.["data-line-numbers"],
     );
     if (!codeChild) return;
 

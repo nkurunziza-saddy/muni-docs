@@ -199,6 +199,47 @@ defaultTheme: "minimal-dark";
 
 Any static hosting platform that supports Next.js will work.
 
+## Troubleshooting
+
+### Common Issues
+
+**Build fails with MDX errors**
+```bash
+# Clear cache and reinstall
+rm -rf .next node_modules
+pnpm install
+pnpm build
+```
+
+**Theme not applying correctly**
+- Check that your `muni.config.ts` has a valid theme name
+- Ensure CSS files are properly imported
+- Clear browser cache
+
+**Search not working**
+- Run `pnpm run generate-search` to regenerate search data
+- Check that `public/search-data.json` exists
+- Verify content files have proper frontmatter
+
+**Styling issues**
+- Ensure Tailwind CSS is properly configured
+- Check for conflicting CSS rules
+- Verify all required CSS files are imported
+
+### Performance Tips
+
+1. **Optimize images**: Use Next.js Image component
+2. **Minimize bundle size**: Remove unused dependencies
+3. **Enable compression**: Configure your hosting platform
+4. **Use static generation**: All pages are pre-rendered for speed
+
+### Development Workflow
+
+1. **Make changes** to content or components
+2. **Test locally** with `pnpm dev`
+3. **Build and test** with `pnpm build && pnpm start`
+4. **Deploy** to your hosting platform
+
 ## Next Steps
 
 - Learn about [Configuration](/configuration)

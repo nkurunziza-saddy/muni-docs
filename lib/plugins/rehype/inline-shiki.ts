@@ -1,5 +1,5 @@
 import type { RehypeShikiCoreOptions } from "@shikijs/rehype/core";
-import type { Root, Element } from "hast";
+import type { Element, Root } from "hast";
 import { getSingletonHighlighter, type LanguageInput } from "shiki";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
@@ -11,7 +11,7 @@ export type RehypeInlineShikiOptions = RehypeShikiCoreOptions & {
 };
 
 export const rehypeInlineShiki: Plugin<[RehypeInlineShikiOptions], Root> = (
-  options = {} as any
+  options = {} as any,
 ) => {
   const highlighterPromise = getSingletonHighlighter();
 
@@ -22,11 +22,11 @@ export const rehypeInlineShiki: Plugin<[RehypeInlineShikiOptions], Root> = (
       "themes" in options ? Object.values(options.themes) : [options.theme]
     ).filter(Boolean);
     await Promise.all(
-      themes.map((theme) => highlighter.loadTheme(theme as any))
+      themes.map((theme) => highlighter.loadTheme(theme as any)),
     );
     if (options.langs) {
       await Promise.all(
-        options.langs.map((lang) => highlighter.loadLanguage(lang as any))
+        options.langs.map((lang) => highlighter.loadLanguage(lang as any)),
       );
     }
 

@@ -209,6 +209,222 @@ All Muni themes follow these design principles:
 --sidebar-ring: /* Sidebar focus ring */
 ```
 
+## Practical Customization Examples
+
+### Creating a Brand Theme
+
+Create a custom theme that matches your brand colors:
+
+```css
+/* styles/color-themes.css */
+.brand-theme {
+  --radius: 0.5rem;
+  --background: oklch(0.98 0.01 240);
+  --foreground: oklch(0.15 0.02 240);
+  --primary: oklch(0.45 0.15 240);
+  --primary-foreground: oklch(0.98 0.01 240);
+  --muted: oklch(0.94 0.01 240);
+  --muted-foreground: oklch(0.45 0.02 240);
+  --border: oklch(0.88 0.01 240);
+  --input: oklch(0.88 0.01 240);
+  --ring: oklch(0.45 0.15 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 240);
+  --secondary: oklch(0.94 0.01 240);
+  --secondary-foreground: oklch(0.15 0.02 240);
+  --accent: oklch(0.94 0.01 240);
+  --accent-foreground: oklch(0.15 0.02 240);
+  --destructive: oklch(0.55 0.2 15);
+  --destructive-foreground: oklch(0.98 0.01 240);
+  --success: oklch(0.55 0.2 140);
+  --success-foreground: oklch(0.98 0.01 240);
+  --warning: oklch(0.7 0.15 60);
+  --warning-foreground: oklch(0.15 0.02 240);
+  --sidebar: oklch(0.96 0.01 240);
+  --sidebar-foreground: oklch(0.15 0.02 240);
+  --sidebar-primary: oklch(0.45 0.15 240);
+  --sidebar-primary-foreground: oklch(0.98 0.01 240);
+  --sidebar-accent: oklch(0.94 0.01 240);
+  --sidebar-accent-foreground: oklch(0.15 0.02 240);
+  --sidebar-border: oklch(0.88 0.01 240);
+  --sidebar-ring: oklch(0.45 0.15 240);
+}
+```
+
+### Dark Mode with Custom Colors
+
+```css
+.brand-dark {
+  --background: oklch(0.05 0.01 240);
+  --foreground: oklch(0.95 0.01 240);
+  --primary: oklch(0.7 0.15 240);
+  --primary-foreground: oklch(0.05 0.01 240);
+  --muted: oklch(0.12 0.01 240);
+  --muted-foreground: oklch(0.7 0.01 240);
+  --border: oklch(0.2 0.01 240);
+  --input: oklch(0.2 0.01 240);
+  --ring: oklch(0.7 0.15 240);
+  --card: oklch(0.08 0.01 240);
+  --card-foreground: oklch(0.95 0.01 240);
+  --popover: oklch(0.08 0.01 240);
+  --popover-foreground: oklch(0.95 0.01 240);
+  --secondary: oklch(0.12 0.01 240);
+  --secondary-foreground: oklch(0.95 0.01 240);
+  --accent: oklch(0.12 0.01 240);
+  --accent-foreground: oklch(0.95 0.01 240);
+  --destructive: oklch(0.6 0.2 15);
+  --destructive-foreground: oklch(0.95 0.01 240);
+  --success: oklch(0.6 0.2 140);
+  --success-foreground: oklch(0.95 0.01 240);
+  --warning: oklch(0.75 0.15 60);
+  --warning-foreground: oklch(0.05 0.01 240);
+  --sidebar: oklch(0.08 0.01 240);
+  --sidebar-foreground: oklch(0.95 0.01 240);
+  --sidebar-primary: oklch(0.7 0.15 240);
+  --sidebar-primary-foreground: oklch(0.05 0.01 240);
+  --sidebar-accent: oklch(0.12 0.01 240);
+  --sidebar-accent-foreground: oklch(0.95 0.01 240);
+  --sidebar-border: oklch(0.2 0.01 240);
+  --sidebar-ring: oklch(0.7 0.15 240);
+}
+```
+
+### High Contrast Theme
+
+```css
+.high-contrast {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.9 0 0);
+  --muted-foreground: oklch(0.2 0 0);
+  --border: oklch(0 0 0);
+  --input: oklch(0 0 0);
+  --ring: oklch(0 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --secondary: oklch(0.9 0 0);
+  --secondary-foreground: oklch(0 0 0);
+  --accent: oklch(0.9 0 0);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.5 0.2 0);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0 0.5 0);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.8 0.5 0);
+  --warning-foreground: oklch(0 0 0);
+  --sidebar: oklch(0.95 0 0);
+  --sidebar-foreground: oklch(0 0 0);
+  --sidebar-primary: oklch(0 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.9 0 0);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0 0 0);
+  --sidebar-ring: oklch(0 0 0);
+}
+```
+
+### Theme Switching Implementation
+
+Update your theme toggle component:
+
+```typescript
+// components/theme-toggle.tsx
+const themes = [
+  { id: "minimal", name: "Minimal", icon: CircleIcon },
+  { id: "minimal-dark", name: "Minimal Dark", icon: MoonIcon },
+  { id: "mono", name: "Mono", icon: TerminalIcon },
+  { id: "brand", name: "Brand", icon: PaletteIcon },
+  { id: "high-contrast", name: "High Contrast", icon: ContrastIcon },
+];
+
+export function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <SunIcon className="h-4 w-4 rotate-0 scale-100 transition-all" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        {themes.map((themeOption) => (
+          <DropdownMenuItem
+            key={themeOption.id}
+            onClick={() => setTheme(themeOption.id)}
+            className={theme === themeOption.id ? "bg-accent" : ""}
+          >
+            <themeOption.icon className="mr-2 h-4 w-4" />
+            {themeOption.name}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+
+### CSS Custom Properties Reference
+
+Complete list of available CSS custom properties:
+
+```css
+/* Core Colors */
+--background: /* Main background color */
+--foreground: /* Main text color */
+--card: /* Card background color */
+--card-foreground: /* Card text color */
+--popover: /* Popover background */
+--popover-foreground: /* Popover text */
+
+/* Semantic Colors */
+--primary: /* Primary brand color */
+--primary-foreground: /* Text on primary */
+--secondary: /* Secondary background */
+--secondary-foreground: /* Text on secondary */
+--muted: /* Muted background */
+--muted-foreground: /* Muted text */
+--accent: /* Accent background */
+--accent-foreground: /* Text on accent */
+
+/* Status Colors */
+--destructive: /* Error/danger color */
+--destructive-foreground: /* Text on destructive */
+--success: /* Success color */
+--success-foreground: /* Text on success */
+--warning: /* Warning color */
+--warning-foreground: /* Text on warning */
+
+/* UI Colors */
+--border: /* Border color */
+--input: /* Input border color */
+--ring: /* Focus ring color */
+
+/* Sidebar Colors */
+--sidebar: /* Sidebar background */
+--sidebar-foreground: /* Sidebar text */
+--sidebar-primary: /* Sidebar primary */
+--sidebar-primary-foreground: /* Text on sidebar primary */
+--sidebar-accent: /* Sidebar accent */
+--sidebar-accent-foreground: /* Text on sidebar accent */
+--sidebar-border: /* Sidebar border */
+--sidebar-ring: /* Sidebar focus ring */
+
+/* Typography */
+--font: /* Custom font family */
+--font-mono: /* Monospace font family */
+
+/* Spacing */
+--radius: /* Border radius */
+```
+
 ## Best Practices
 
 1. **Test all themes**: Ensure your content looks good in all themes
@@ -216,6 +432,11 @@ All Muni themes follow these design principles:
 3. **Maintain contrast**: Ensure text is readable in all themes
 4. **Keep it minimal**: Don't over-customize - embrace the minimal aesthetic
 5. **Test accessibility**: Ensure color combinations meet accessibility standards
+6. **Use OKLCH colors**: Better color interpolation and consistency
+7. **Test in different lighting**: Check themes in various lighting conditions
+8. **Consider color blindness**: Ensure themes work for colorblind users
+9. **Document your themes**: Keep a reference of your custom themes
+10. **Version your themes**: Track changes to your theme definitions
 
 ## Examples
 

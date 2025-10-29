@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Step } from "@/components/muni-components/step";
 import { Steps as Steps_ } from "@/components/muni-components/steps";
 

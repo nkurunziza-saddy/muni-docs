@@ -1,6 +1,6 @@
+import Link from "next/link";
 import type { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 export function Autolink(
   props: Omit<
@@ -9,7 +9,7 @@ export function Autolink(
       HTMLAnchorElement
     >,
     "ref"
-  >
+  >,
 ) {
   if (!props.href) return null;
 

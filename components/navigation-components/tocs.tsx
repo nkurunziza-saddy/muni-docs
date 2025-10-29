@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useTableOfContents } from "@/lib/hooks/use-table-of-contents";
+import { cn } from "@/lib/utils";
 
 export function TableOfContents() {
   const { toc, activeId, handleClick } = useTableOfContents();
@@ -37,7 +37,7 @@ export function TableOfContents() {
                     "text-xs transition-colors block py-1 border-l-2 pl-3 rounded-none",
                     activeId === item.id
                       ? "border-primary text-primary font-medium"
-                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                   )}
                 >
                   <span className="line-clamp-1 text-ellipsis overflow-hidden">

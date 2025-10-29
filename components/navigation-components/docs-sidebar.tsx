@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -8,15 +9,17 @@ import {
 } from "@/components/ui/sidebar";
 import muniConfig from "@/muni.config";
 import { NavSection } from "./nav-section";
-import { useState } from "react";
 
 export function DocsSidebar() {
-  const initialOpenState = muniConfig.navigation.reduce((acc, item) => {
-    if (item.items && item.items.length > 0) {
-      acc[item.slug] = true;
-    }
-    return acc;
-  }, {} as Record<string, boolean>);
+  const initialOpenState = muniConfig.navigation.reduce(
+    (acc, item) => {
+      if (item.items && item.items.length > 0) {
+        acc[item.slug] = true;
+      }
+      return acc;
+    },
+    {} as Record<string, boolean>,
+  );
 
   const [openSections, setOpenSections] = useState(initialOpenState);
 

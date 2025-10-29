@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import muniConfig from "@/muni.config";
 
 interface NavigationItem {
