@@ -110,6 +110,7 @@ function generateSearchData() {
           text,
           position,
         });
+        match = headingRegex.exec(content);
       }
 
       // Create section-level search items
