@@ -50,6 +50,10 @@
   /* Ensure proper spacing and typography */
   line-height: 1.7;
   color: hsl(var(--foreground));
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .mdx-content h1,
@@ -101,9 +105,8 @@
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
-  font-family:
-    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+    "Liberation Mono", Menlo, monospace;
 }
 
 .mdx-content pre {
@@ -242,6 +245,30 @@
   counter-reset: step-counter;
 }
 
+/* Table and wide content handling */
+.mdx-content table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.mdx-content table thead,
+.mdx-content table tbody,
+.mdx-content table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.mdx-content table th,
+.mdx-content table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .mdx-content {
@@ -268,5 +295,12 @@
     flex: 1;
     min-width: 0;
     text-align: center;
+  }
+
+  /* Ensure tables are scrollable on mobile */
+  .mdx-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

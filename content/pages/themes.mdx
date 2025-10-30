@@ -7,13 +7,13 @@ date: "2024-01-15"
 
 # Themes
 
-Muni comes with three carefully crafted themes designed for minimal, professional documentation.
+Muni comes with four carefully crafted themes designed for minimal, professional documentation.
 
 ## Available Themes
 
-### Minimal (Light)
+### Light
 
-The default theme with a clean white background and subtle grays.
+The default light theme with a clean white background and subtle grays.
 
 - **Background**: Pure white
 - **Text**: Dark gray with minimal contrast
@@ -22,7 +22,7 @@ The default theme with a clean white background and subtle grays.
 
 Perfect for general documentation and clean, modern looks.
 
-### Minimal Dark
+### Dark
 
 A dark theme with deep blacks and minimal contrast.
 
@@ -35,7 +35,7 @@ Ideal for dark mode users and technical documentation.
 
 ### Mono
 
-A monospace theme inspired by terminal interfaces.
+A light monospace theme inspired by terminal interfaces.
 
 - **Background**: Light gray
 - **Text**: Dark gray with monospace font
@@ -43,6 +43,17 @@ A monospace theme inspired by terminal interfaces.
 - **Typography**: Monospace (Geist Mono)
 
 Perfect for technical documentation, code references, and developer-focused content.
+
+### Mono Dark
+
+A dark monospace theme for terminal enthusiasts.
+
+- **Background**: Dark gray
+- **Text**: Light gray with monospace font
+- **Accents**: Clean borders and minimal styling
+- **Typography**: Monospace (Geist Mono)
+
+Perfect for developers who prefer dark terminals and code-focused documentation.
 
 ## Setting the Theme
 
@@ -53,7 +64,7 @@ Set the default theme in `muni.config.ts`:
 ```typescript
 const muniConfig: MuniConfig = {
   title: "My Docs",
-  defaultTheme: "minimal", // or "minimal-dark" or "mono"
+  defaultTheme: "dark", // or "light", "mono", or "mono-dark"
   // ... other options
 };
 ```
@@ -62,10 +73,11 @@ const muniConfig: MuniConfig = {
 
 Users can switch themes using the theme toggle in the header. The toggle cycles through:
 
-1. Minimal (Light)
-2. Minimal Dark
+1. Light
+2. Dark
 3. Mono
-4. System (follows OS preference)
+4. Mono Dark
+5. System (follows OS preference)
 
 ## Theme Customization
 
@@ -106,9 +118,10 @@ To create a custom theme:
 
 ```typescript
 const themes = [
-  { id: "minimal", name: "Minimal", icon: CircleIcon },
-  { id: "minimal-dark", name: "Minimal Dark", icon: MoonIcon },
+  { id: "light", name: "Light", icon: SunIcon },
+  { id: "dark", name: "Dark", icon: MoonIcon },
   { id: "mono", name: "Mono", icon: TerminalIcon },
+  { id: "mono-dark", name: "Mono Dark", icon: TerminalIcon },
   { id: "my-theme", name: "My Theme", icon: MyIcon },
 ];
 ```
@@ -116,7 +129,7 @@ const themes = [
 3. **Update TypeScript types**:
 
 ```typescript
-export type Theme = "minimal" | "minimal-dark" | "mono" | "my-theme";
+export type Theme = "light" | "dark" | "mono" | "mono-dark" | "my-theme";
 ```
 
 ## Design Principles
@@ -336,9 +349,10 @@ Update your theme toggle component:
 ```typescript
 // components/theme-toggle.tsx
 const themes = [
-  { id: "minimal", name: "Minimal", icon: CircleIcon },
-  { id: "minimal-dark", name: "Minimal Dark", icon: MoonIcon },
+  { id: "light", name: "Light", icon: SunIcon },
+  { id: "dark", name: "Dark", icon: MoonIcon },
   { id: "mono", name: "Mono", icon: TerminalIcon },
+  { id: "mono-dark", name: "Mono Dark", icon: TerminalIcon },
   { id: "brand", name: "Brand", icon: PaletteIcon },
   { id: "high-contrast", name: "High Contrast", icon: ContrastIcon },
 ];
@@ -440,7 +454,7 @@ Complete list of available CSS custom properties:
 
 ## Examples
 
-### Minimal Theme
+### Light Theme
 
 ```css
 :root {
@@ -452,7 +466,7 @@ Complete list of available CSS custom properties:
 }
 ```
 
-### Minimal Dark Theme
+### Dark Theme
 
 ```css
 .dark {
@@ -473,6 +487,19 @@ Complete list of available CSS custom properties:
   --primary: oklch(0.35 0.11 285.82);
   --muted: oklch(0.94 0.008 285.82);
   --border: oklch(0.88 0.008 285.82);
+  --font: var(--font-geist-mono);
+}
+```
+
+### Mono Dark Theme
+
+```css
+.mono-dark {
+  --background: oklch(0.08 0.004 285.82);
+  --foreground: oklch(0.92 0.008 285.82);
+  --primary: oklch(0.6 0.12 285.82);
+  --muted: oklch(0.16 0.008 285.82);
+  --border: oklch(0.2 0.008 285.82);
   --font: var(--font-geist-mono);
 }
 ```

@@ -13,19 +13,19 @@ export default function DocsLayout({
 }) {
   return (
     <SidebarProvider>
-      <div className="min-h-screen bg-background flex w-full">
+      <div className="min-h-screen bg-background flex w-full overflow-x-hidden">
         <DocsSidebar />
 
-        <SidebarInset className="flex flex-col">
+        <SidebarInset className="flex flex-col min-w-0">
           <DocsHeader />
 
-          <div className="flex flex-1">
-            <main className="flex-1 px-6 py-6 md:px-8 md:py-8 lg:px-12">
+          <div className="flex flex-1 min-w-0">
+            <main className="flex-1 px-4 py-4 md:px-8 md:py-8 lg:px-12 min-w-0 overflow-x-hidden">
               <div className="xl:hidden mb-6">
                 <MobileTableOfContents />
               </div>
 
-              <div className="">{children}</div>
+              <div className="w-full min-w-0 overflow-x-hidden">{children}</div>
               <div className="border-t border-border pt-6">
                 <DocsPagination />
               </div>
