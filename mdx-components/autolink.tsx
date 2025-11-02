@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 
 export function Autolink(
   props: Omit<

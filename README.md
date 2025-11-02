@@ -1,155 +1,373 @@
-# Muni
+# nkurunziza-docs
 
-A minimal, fast documentation template built with Next.js and Tailwind CSS.
-
-## Philosophy
-
-Muni is designed around the principle of **less is more**. Every component, every line of code, every design decision is made with simplicity and performance in mind.
-
-### Key Principles
-
-- **Minimal**: Clean, uncluttered interface with generous whitespace
-- **Fast**: Optimized for speed with static generation and minimal JavaScript
-- **Customizable**: Simple configuration through `muni.config.ts`
-- **Professional**: Small, tight typography and spacing for a modern look
-- **Static**: No animations or shifting layouts - everything feels stable
+A powerful, customizable documentation framework for Next.js 15+ with MDX support, built-in search, and beautiful UI components.
 
 ## Features
 
-- **3 Clean Themes**: Minimal, Minimal Dark, and Mono
-- **Fixed-Width Content**: Consistent, centered layout that doesn't shift
-- **Small Typography**: Professional 11-13px base text with tight spacing
-- **MDX Support**: Write documentation in Markdown with React components
-- **Search**: Built-in search functionality
-- **Table of Contents**: Auto-generated from headings
-- **Mobile Responsive**: Clean sidebar on mobile devices
-- **SEO Optimized**: Proper meta tags and structured data
+- 🚀 **Next.js 15+ Ready** - Built for the App Router with React Server Components
+- 📝 **MDX Support** - Write your docs in MDX with frontmatter
+- 🎨 **Multiple Themes** - light, dark, mono, mono-dark themes out of the box
+- 🔍 **Built-in Search** - Generate searchable content indexes
+- 🧩 **UI Components** - Beautiful, accessible components powered by Radix UI
+- ⚡ **CLI Tool** - Quick setup and search generation commands
+- 🎯 **TypeScript** - Full type safety and IntelliSense support
+- 📦 **Zero Config** - Works with sensible defaults, customize when needed
+
+## Installation
+
+```bash
+npm install nkurunziza-docs
+# or
+pnpm add nkurunziza-docs
+# or
+yarn add nkurunziza-docs
+```
+
+### Peer Dependencies
+
+Make sure you have these installed:
+
+```bash
+npm install react@19 react-dom@19 next@15 next-themes@0.4 @mdx-js/react@3
+```
 
 ## Quick Start
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/nkurunziza-saddy/muni-docs
-   cd muni-docs
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   pnpm install
-   ```
-
-3. **Start development server**
-
-   ```bash
-   pnpm dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
-
-## Configuration
-
-Muni is highly customizable through the `muni.config.ts` file:
-
-```typescript
-const muniConfig: MuniConfig = {
-  title: "Your Docs",
-  version: "1.0.0",
-  defaultTheme: "minimal",
-  showFrontmatterMeta: true,
-  headingLinks: [
-    { title: "GitHub", href: "https://github.com/your-org/your-repo" },
-  ],
-  navigation: [
-    { title: "Introduction", slug: "index" },
-    { title: "Getting Started", slug: "getting-started" },
-  ],
-  githubRepo: "https://github.com/your-org/your-repo",
-};
-```
-
-## Themes
-
-Muni comes with three carefully crafted themes:
-
-- **Minimal**: Clean white background with subtle grays
-- **Minimal Dark**: Deep blacks with minimal contrast
-- **Mono**: Monospace typography for technical documentation
-
-## Writing Content
-
-Create new documentation pages in the `content/pages/` directory as `.mdx` files. Use standard Markdown syntax with support for React components.
-
-## Deployment
-
-Deploy to Vercel, Netlify, or any static hosting platform:
+### 1. Initialize Your Project
 
 ```bash
-pnpm build
-pnpm start
+npx nkurunziza-docs init
 ```
 
-## Design System
+This command will:
 
-Muni follows a strict minimal design system:
+- Create `content/pages/` directory
+- Generate `app/docs/[[...slug]]/page.tsx` route
+- Create `muni.config.ts` with defaults
+- Add a sample `content/pages/index.mdx` file
 
-- **Typography**: 11-13px base text with tight line heights
-- **Spacing**: Consistent, tight spacing throughout
-- **Colors**: Subtle, high-contrast color palettes
-- **Components**: Small, clean UI components
-- **Layout**: Fixed-width, centered content
+### 2. Configure Next.js for MDX
 
-## Project Structure
+Update your `next.config.ts`:
 
+```typescript
+import { getNextMDXConfig } from "nkurunziza-docs";
+import createMDX from "@next/mdx";
+
+const withMDX = createMDX(getNextMDXConfig());
+
+const nextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // your other config...
+};
+
+export default withMDX(nextConfig);
 ```
-muni-docs/
-├── app/                    # Next.js app directory
-├── components/            # React components
-├── content/              # MDX content
-├── styles/              # CSS files
-├── muni.config.ts       # Configuration
-└── package.json
+
+### 3. Configure MDX Components
+
+Create `mdx-components.tsx` in your project root:
+
+```tsx
+"use client";
+
+import type { MDXComponents } from "mdx/types";
+import { useMDXComponents as getDocsMDXComponents } from "nkurunziza-docs/client";
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...getDocsMDXComponents(components),
+    ...components,
+  };
+}
 ```
 
-## Documentation
+### 4. Import Styles
 
-- [Getting Started](/getting-started) - Installation and setup
-- [Configuration](/configuration) - Complete config reference
-- [Themes](/themes) - Theme system and customization
-- [Markdown](/markdown) - MDX features and syntax
-- [Deployment](/deployment) - Deploy to various platforms
-- [Project Structure](/project-structure) - File organization
+In your root layout (`app/layout.tsx`):
 
-## Tech Stack
+```tsx
+import "nkurunziza-docs/styles/mdx-components.css";
+```
 
-- **Next.js 15** - React framework with App Router
-- **Tailwind CSS 4** - Utility-first CSS framework
-- **TypeScript** - Type safety and better DX
-- **MDX** - Markdown with React components
-- **Shiki** - Syntax highlighting
-- **Lucide React** - Icon library
+### 5. Create Your Config
 
-## Contributing
+Edit `muni.config.ts`:
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+```typescript
+import type { MuniConfig } from "nkurunziza-docs";
+
+const config: MuniConfig = {
+  title: "My Documentation",
+  version: "1.0.0",
+  defaultTheme: "light", // "light" | "dark" | "mono" | "mono-dark"
+  showFrontmatterMeta: true,
+  navigation: [
+    {
+      title: "Getting Started",
+      slug: "index",
+    },
+    {
+      title: "Guides",
+      slug: "guides",
+      items: [
+        { title: "Installation", slug: "guides/installation" },
+        { title: "Configuration", slug: "guides/configuration" },
+      ],
+    },
+  ],
+  githubRepo: "https://github.com/username/repo",
+};
+
+export default config;
+```
+
+### 6. Write Your Docs
+
+Create MDX files in `content/pages/`:
+
+```mdx
+---
+title: "Getting Started"
+description: "Learn how to get started"
+author: "Your Name"
+date: "2024-10-31"
+---
+
+# Getting Started
+
+Welcome to the documentation!
+
+## Features
+
+This framework includes:
+
+- MDX support
+- Syntax highlighting
+- And much more!
+```
+
+### 7. Generate Search Data
+
+```bash
+npx nkurunziza-docs generate-search
+```
+
+### 8. Run Your Dev Server
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:3000/docs` to see your documentation!
+
+## CLI Commands
+
+### `npx nkurunziza-docs init`
+
+Initialize the docs framework in your Next.js project.
+
+### `npx nkurunziza-docs generate-search`
+
+Generate search data from your MDX files.
+
+**Options:**
+
+- `-c, --content-dir <path>` - Content directory (default: "content/pages")
+- `-o, --output <path>` - Output path (default: "public/search-data.json")
+- `-b, --base-url <path>` - Base URL for docs (default: "/docs")
+
+Example:
+
+```bash
+npx nkurunziza-docs generate-search -c docs/content -o public/search.json -b /documentation
+```
+
+## API Reference
+
+### Components
+
+#### `DocsPage`
+
+The main docs page component that renders MDX content.
+
+```tsx
+import {
+  DocsPage,
+  generateDocsStaticParams,
+  generateDocsMetadata,
+} from "nkurunziza-docs/components";
+
+export const generateStaticParams = generateDocsStaticParams;
+export const generateMetadata = generateDocsMetadata;
+
+export default DocsPage;
+```
+
+#### UI Components
+
+All components are exported from the main package:
+
+```tsx
+import {
+  Button,
+  Alert,
+  Badge,
+  Tabs,
+  Steps,
+  Step,
+  // ... and more
+} from "nkurunziza-docs";
+```
+
+### Configuration
+
+#### `loadMuniConfig()`
+
+Load the muni.config.ts from the consumer's project.
+
+```typescript
+import { loadMuniConfig } from "nkurunziza-docs";
+
+const config = loadMuniConfig();
+```
+
+#### `getDefaultConfig()`
+
+Get the default configuration object.
+
+```typescript
+import { getDefaultConfig } from "nkurunziza-docs";
+
+const defaults = getDefaultConfig();
+```
+
+### Navigation
+
+#### `buildNavigationTree(config)`
+
+Build a navigation tree from the config.
+
+```typescript
+import { buildNavigationTree } from "nkurunziza-docs";
+
+const tree = buildNavigationTree(config);
+```
+
+#### `getPrevNextLinks(slug, config)`
+
+Get previous and next navigation links for a page.
+
+```typescript
+import { getPrevNextLinks } from "nkurunziza-docs";
+
+const { prev, next } = getPrevNextLinks("guides/installation", config);
+```
+
+### Content Loading
+
+#### `getDocsContent(slug, contentDir?)`
+
+Get raw MDX content for a slug.
+
+```typescript
+import { getDocsContent } from "nkurunziza-docs";
+
+const content = await getDocsContent("guides/installation");
+```
+
+#### `getAllDocsPaths(contentDir?)`
+
+Get all document paths from the content directory.
+
+```typescript
+import { getAllDocsPaths } from "nkurunziza-docs";
+
+const paths = getAllDocsPaths();
+// ["index", "guides/installation", "guides/configuration"]
+```
+
+### Search
+
+#### `generateSearchData(options)`
+
+Programmatically generate search data.
+
+```typescript
+import { generateSearchData } from "nkurunziza-docs";
+
+generateSearchData({
+  contentDir: "content/pages",
+  outputPath: "public/search-data.json",
+  baseUrl: "/docs",
+});
+```
+
+## Advanced Usage
+
+### Custom Docs Page
+
+You can customize the docs page component:
+
+```tsx
+import {
+  loadMuniConfig,
+  generateDocsStaticParams,
+  generateDocsMetadata,
+  DocsPage,
+} from "nkurunziza-docs/components";
+
+const config = loadMuniConfig();
+
+export const generateStaticParams = () => generateDocsStaticParams(config);
+export const generateMetadata = ({ params }: any) =>
+  generateDocsMetadata({ params, config });
+
+export default async function CustomDocsPage({ params }: any) {
+  // Your custom implementation
+  // Or use the default DocsPage component
+  return <DocsPage params={params} />;
+}
+```
+
+### Using Components in Your MDX
+
+Components are automatically available in MDX files:
+
+```mdx
+# My Page
+
+<Alert variant="info">This is an informational alert!</Alert>
+
+<Steps>
+  <Step title="Step 1">First, do this...</Step>
+  <Step title="Step 2">Then, do that...</Step>
+</Steps>
+```
+
+## TypeScript Types
+
+All types are exported:
+
+```typescript
+import type {
+  MuniConfig,
+  NavigationItem,
+  Theme,
+  SearchItem,
+  SearchGeneratorOptions,
+  PrevNextLinks,
+} from "nkurunziza-docs";
+```
 
 ## License
 
-MIT License - feel free to use this template for your own projects.
+MIT
 
-## Acknowledgments
+## Contributing
 
-- [Next.js](https://nextjs.org/) - The React framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [shadcn/ui](https://ui.shadcn.com/) - UI component library
-- [Vocs](https://vocs.dev/) - Inspiration for the design
+Contributions are welcome! Please open an issue or submit a pull request.
 
----
+## Support
 
-_Built with Next.js, Tailwind CSS, and a focus on simplicity._
+For issues and questions, please open an issue on GitHub.

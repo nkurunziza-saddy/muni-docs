@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false
+  },
+  "include": ["src/**/*", "lib/**/*", "components/ui/**/*", "components/muni-components/**/*", "mdx-components/**/*"],
+  "exclude": ["node_modules", "app", "next.config.ts"]
+}
+

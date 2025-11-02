@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Step } from "@/components/muni-components/step";
-import { Steps as Steps_ } from "@/components/muni-components/steps";
+import { Step } from "../../components/muni-components/step";
+import { Steps as Steps_ } from "../../components/muni-components/steps";
 
 export function Steps({ children }: { children: ReactNode }) {
   if (!Array.isArray(children)) return null;

@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { cn } from "@/lib/utils";
+import { Alert, AlertDescription, AlertTitle } from "../../components/ui/alert";
+import { cn } from "../../lib/utils";
 
 const alertConfig = {
   note: {

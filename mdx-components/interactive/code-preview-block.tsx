@@ -2,8 +2,8 @@
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement } from "react";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
-import { cn } from "@/lib/utils";
+import { IsInCodeBlockContext } from "../../lib/hooks/use-in-code";
+import { cn } from "../../lib/utils";
 import { Pre } from "../code/pre";
 
 export interface CodePreviewBlockProps {

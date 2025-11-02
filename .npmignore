@@ -1,0 +1,35 @@
+# Source files
+src/
+app/
+components/
+lib/
+mdx-components/
+styles/
+scripts/
+types/
+content/
+public/
+
+# Config files (keep for dev)
+*.config.ts
+*.config.mjs
+biome.json
+components.json
+
+# Development files
+.git/
+.cursor/
+.next/
+node_modules/
+pnpm-lock.yaml
+
+# Build artifacts (keep dist/)
+*.log
+.DS_Store
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+

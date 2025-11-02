@@ -7,10 +7,10 @@ import {
   useCallback,
   useMemo,
 } from "react";
-import { CopyButton } from "@/components/muni-components/copy-button";
-import { useCopyCode } from "@/lib/hooks/use-copy-code";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
-import { cn } from "@/lib/utils";
+import { CopyButton } from "../../components/muni-components/copy-button";
+import { useCopyCode } from "../../lib/hooks/use-copy-code";
+import { IsInCodeBlockContext } from "../../lib/hooks/use-in-code";
+import { cn } from "../../lib/utils";
 import { CodeBlock } from "./code-block";
 import { CodeTitle } from "./code-title";
 

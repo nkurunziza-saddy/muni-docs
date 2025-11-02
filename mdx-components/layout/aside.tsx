@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { Callout, type CalloutProps } from "./callout";
 
 type AsideProps = DetailedHTMLProps<

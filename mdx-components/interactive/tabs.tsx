@@ -2,7 +2,7 @@
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement, ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 type TabsItemProps = {
   value: string;

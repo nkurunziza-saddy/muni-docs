@@ -1,7 +1,7 @@
 "use client";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import { useIsInCodeBlock } from "@/lib/hooks/use-in-code";
-import { cn } from "@/lib/utils";
+import { useIsInCodeBlock } from "../../lib/hooks/use-in-code";
+import { cn } from "../../lib/utils";
 
 export function Code(
   props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>

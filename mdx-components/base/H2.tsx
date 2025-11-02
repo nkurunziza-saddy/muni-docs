@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { Heading } from "../heading";
 
 export function H2(
