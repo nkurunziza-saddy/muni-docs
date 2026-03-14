@@ -1,6 +1,6 @@
 "use client";
 
-import { TriangleAlertIcon } from "lucide-react";
+import { RiErrorWarningLine } from "@remixicon/react";
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
@@ -28,7 +28,7 @@ export class MDXErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("MDX Error Boundary caught an error:", error, errorInfo);
+    console.error("mdx error boundary caught an error:", error, errorInfo);
   }
 
   reset = () => {
@@ -41,7 +41,7 @@ export class MDXErrorBoundary extends React.Component<
         const FallbackComponent = this.props.fallback;
         return (
           <FallbackComponent
-            error={this.state.error || new Error("Unknown error")}
+            error={this.state.error || new Error("unknown error")}
             reset={this.reset}
           />
         );
@@ -49,14 +49,14 @@ export class MDXErrorBoundary extends React.Component<
 
       return (
         <Alert variant="destructive" className="my-4">
-          <TriangleAlertIcon />
-          <AlertTitle>Content Error</AlertTitle>
+          <RiErrorWarningLine />
+          <AlertTitle>content error</AlertTitle>
           <AlertDescription>
-            There was an error rendering this content.
+            there was an error rendering this content.
             {process.env.NODE_ENV === "development" && this.state.error && (
               <details className="mt-2">
                 <summary className="cursor-pointer font-medium">
-                  Error Details
+                  error details
                 </summary>
                 <pre className="mt-2 text-xs overflow-auto">
                   {this.state.error.message}
@@ -72,7 +72,7 @@ export class MDXErrorBoundary extends React.Component<
   }
 }
 
-// Hook version for functional components
+// hook version for functional components
 export function useMDXErrorBoundary() {
   const [error, setError] = React.useState<Error | null>(null);
 

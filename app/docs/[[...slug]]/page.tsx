@@ -46,12 +46,12 @@ function FrontmatterMeta({
         })
       : null;
 
-  const authorText = author && typeof author === "string" ? author : null;
+  const authorText = author && typeof author === "string" ? author.toLowerCase() : null;
 
   return (
-    <div className="text-sm text-muted-foreground space-y-1">
-      {displayDate && <p>Last updated on {displayDate}</p>}
-      {authorText && <p>Written by {authorText}</p>}
+    <div className="text-[11px] text-muted-foreground space-y-1 uppercase tracking-widest opacity-70">
+      {displayDate && <p>last updated on {displayDate.toLowerCase()}</p>}
+      {authorText && <p>written by {authorText}</p>}
     </div>
   );
 }

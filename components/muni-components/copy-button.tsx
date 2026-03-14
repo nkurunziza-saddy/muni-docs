@@ -1,4 +1,4 @@
-import { ClipboardCheck, ClipboardCopy } from "lucide-react";
+import { RiCheckLine, RiFileCopyLine } from "@remixicon/react";
 import { Button } from "@/components/ui/button";
 
 export function CopyButton({
@@ -11,17 +11,18 @@ export function CopyButton({
   return (
     <Button
       variant="ghost"
-      size="sm"
+      size="icon-xs"
       data-copied={copied}
       onClick={copy}
       type="button"
-      className="absolute top-1 right-2 opacity-0 group-hover:opacity-100 duration-200 transition-opacity h-8 w-8 p-0"
+      className="absolute top-1 end-1 opacity-0 group-hover:opacity-100 transition-opacity"
     >
       {copied ? (
-        <ClipboardCheck className="h-4 w-4 text-success-foreground " />
+        <RiCheckLine className="text-success-foreground" />
       ) : (
-        <ClipboardCopy className="h-4 w-4 text-muted-foreground" />
+        <RiFileCopyLine className="text-muted-foreground" />
       )}
+      <span className="sr-only">copy code</span>
     </Button>
   );
 }

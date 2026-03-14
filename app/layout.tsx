@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "../styles/globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Geist } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist",
-  display: "swap",
-  preload: true,
-  fallback: ["system-ui", "arial"],
-  adjustFontFallback: false,
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  display: "swap",
-  preload: true,
-  fallback: ["monospace"],
-  adjustFontFallback: false,
-});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -57,7 +43,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden`}
+      className={cn("font-sans", geist.variable)}
     >
       <body className={` antialiased`}>
         <ThemeProvider
@@ -68,7 +54,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

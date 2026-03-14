@@ -1,4 +1,4 @@
-import { File, Terminal } from "lucide-react";
+import { RiCommandLine, RiFile3Line } from "@remixicon/react";
 import { cn } from "@/lib/utils";
 
 export function CodeTitle({
@@ -15,17 +15,17 @@ export function CodeTitle({
     <div
       {...props}
       className={cn(
-        "text-sm not-prose bg-muted/40 backdrop-blur-3xl",
-        "flex items-center gap-1.5 px-1 md:px-2 py-2 text-sm font-medium group-[.code-group]:hidden border-b border-input",
+        "not-prose bg-muted/40 backdrop-blur-3xl",
+        "flex items-center gap-1.5 px-1 md:px-2 py-2 text-xs font-medium group-[.code-group]:hidden border-b border-input",
         className,
       )}
     >
       {language === "bash" ? (
-        <Terminal size={14} />
+        <RiCommandLine className="size-3.5" />
       ) : children.match(/\.(.*)$/) ? (
-        <File size={14} />
+        <RiFile3Line className="size-3.5" />
       ) : null}
-      {children}
+      {children.toLowerCase()}
     </div>
   );
 }

@@ -32,8 +32,8 @@ export function DocsSidebar() {
   return (
     <Sidebar className="border-r-0">
       <SidebarHeader className="sticky py-0 top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex h-16 items-center md:px-6 lg:px-8">
-          {muniConfig.title ?? "Muni"}
+        <div className="flex h-16 items-center px-4 md:px-6 lg:px-8 font-bold text-sm uppercase tracking-widest">
+          {muniConfig.title?.toLowerCase() ?? "muni"}
         </div>
       </SidebarHeader>
       <SidebarContent className="px-4 py-6">

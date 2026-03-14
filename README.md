@@ -129,7 +129,7 @@ muni-docs/
 - **TypeScript** - Type safety and better DX
 - **MDX** - Markdown with React components
 - **Shiki** - Syntax highlighting
-- **Lucide React** - Icon library
+- **Remixicon** - Icon library
 
 ## Contributing
 

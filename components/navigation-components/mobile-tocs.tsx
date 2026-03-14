@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, X } from "lucide-react";
+import { RiArrowDownSLine, RiCloseLine } from "@remixicon/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTableOfContents } from "@/lib/hooks/use-table-of-contents";
@@ -16,39 +16,38 @@ export function MobileTableOfContents() {
 
   return (
     <div className="relative">
-      {/* Trigger Button */}
+      {/* trigger button */}
       <Button
         onClick={() => setIsOpen(true)}
         variant="outline"
-        className="w-full justify-between border border-dashed text-muted-foreground min-w-0"
+        className="w-full justify-between border-dashed text-muted-foreground min-w-0 h-9"
       >
-        <span className="text-sm font-semibold truncate">On This Page</span>
-        <ChevronDown
+        <span className="text-xs font-semibold truncate uppercase tracking-widest opacity-70">on this page</span>
+        <RiArrowDownSLine
           className={cn(
-            "h-4 w-4 flex-shrink-0 transition-transform",
+            "transition-transform duration-200",
             isOpen && "rotate-180"
           )}
         />
       </Button>
 
-      {/* Dropdown positioned directly below trigger */}
+      {/* dropdown positioned directly below trigger */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-background border border-border rounded-md shadow-lg animate-in slide-in-from-top-2 duration-200">
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-            <h3 className="text-sm font-semibold">On This Page</h3>
+        <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-background border border-border shadow-lg animate-in slide-in-from-top-2 duration-200">
+          {/* header */}
+          <div className="flex items-center justify-between px-4 py-2 border-b border-border">
+            <h3 className="text-xs font-semibold uppercase tracking-widest opacity-70">on this page</h3>
             <Button
               variant="ghost"
-              size="icon"
+              size="icon-xs"
               onClick={() => setIsOpen(false)}
-              className="size-8"
             >
-              <X className="h-4 w-4" />
-              <span className="sr-only">Close</span>
+              <RiCloseLine />
+              <span className="sr-only">close</span>
             </Button>
           </div>
 
-          {/* Navigation */}
+          {/* navigation */}
           <nav className="px-4 py-2 max-h-[60vh] overflow-y-auto">
             <ul className="space-y-1">
               {toc.map((item) => (
@@ -64,13 +63,13 @@ export function MobileTableOfContents() {
                     href={`#${item.id}`}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "text-sm transition-colors block py-2 px-2 rounded-md",
+                      "text-xs transition-colors block py-2 px-2 border border-transparent",
                       activeId === item.id
-                        ? "bg-primary/10 text-primary font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                        ? "bg-muted border-border text-foreground font-medium"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     )}
                   >
-                    {item.text}
+                    {item.text.toLowerCase()}
                   </a>
                 </li>
               ))}
@@ -79,13 +78,13 @@ export function MobileTableOfContents() {
         </div>
       )}
 
-      {/* Backdrop for mobile */}
+      {/* backdrop for mobile */}
       {isOpen && (
         <button
           type="button"
           className="fixed inset-0 z-40 md:hidden"
           onClick={() => setIsOpen(false)}
-          aria-label="Close table of contents"
+          aria-label="close table of contents"
         />
       )}
     </div>

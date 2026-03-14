@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { RiMenuLine } from "@remixicon/react";
 import muniConfig from "@/muni.config";
 import { SearchComp } from "../search-component";
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -12,6 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "../theme-toggle";
 import { useIsMobile } from "@/lib/hooks/use-mobile";
 
@@ -27,7 +28,7 @@ export function DocsHeader() {
             <SearchComp />
           </div>
 
-          {/* Desktop Header Links */}
+          {/* desktop header links */}
           <div className="hidden md:flex items-center gap-2">
             {muniConfig.version && (
               <span className="text-sm font-semibold">
@@ -38,7 +39,7 @@ export function DocsHeader() {
             {muniConfig.version &&
               muniConfig.headingLinks &&
               muniConfig.headingLinks.length > 0 && (
-                <div className="h-4 w-px bg-border/60" />
+                <Separator orientation="vertical" className="h-4" />
               )}
 
             {muniConfig.headingLinks && muniConfig.headingLinks.length > 0 && (
@@ -59,23 +60,23 @@ export function DocsHeader() {
             )}
           </div>
 
-          {/* Mobile Header Links Drawer */}
+          {/* mobile header links drawer */}
           {isMobile && (
             <Drawer>
               <DrawerTrigger asChild>
                 <Button variant="ghost" size="icon" className="size-11">
-                  <Menu className="h-4 w-4" />
-                  <span className="sr-only">Open menu</span>
+                  <RiMenuLine />
+                  <span className="sr-only">open menu</span>
                 </Button>
               </DrawerTrigger>
               <DrawerContent>
                 <DrawerHeader>
-                  <DrawerTitle>Menu</DrawerTitle>
+                  <DrawerTitle>menu</DrawerTitle>
                 </DrawerHeader>
                 <div className="px-4 pb-4 space-y-4">
                   {muniConfig.version && (
                     <div className="text-sm font-semibold">
-                      Version {muniConfig.version}
+                      version {muniConfig.version}
                     </div>
                   )}
 
@@ -83,7 +84,7 @@ export function DocsHeader() {
                     muniConfig.headingLinks.length > 0 && (
                       <div className="space-y-2">
                         <div className="text-sm font-medium text-muted-foreground">
-                          Links
+                          links
                         </div>
                         {muniConfig.headingLinks.map((link) => (
                           <a
@@ -101,7 +102,7 @@ export function DocsHeader() {
 
                   <div className="space-y-2">
                     <div className="text-sm font-medium text-muted-foreground">
-                      Theme
+                      theme
                     </div>
                     <ThemeToggle />
                   </div>

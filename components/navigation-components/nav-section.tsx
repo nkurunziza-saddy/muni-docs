@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { RiArrowDownSLine, RiArrowRightSLine } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -28,13 +28,13 @@ function NavLink({ item }: { item: NavItem }) {
       <Link
         href={href}
         className={cn(
-          "block text-xs py-2 px-3 rounded border",
+          "block text-xs py-2 px-3 border",
           isActive
             ? "border-border bg-muted text-foreground font-medium"
             : "border-transparent hover:border-border hover:bg-muted/50 text-muted-foreground",
         )}
       >
-        {item.title}
+        {item.title.toLowerCase()}
       </Link>
     </li>
   );
@@ -61,13 +61,13 @@ export function NavSection({
         <Link
           href={href}
           className={cn(
-            "block text-sm py-2 px-3 rounded border",
+            "block text-sm py-2 px-3 border",
             isActive
               ? "border-border bg-muted text-foreground font-medium"
               : "border-transparent hover:border-border hover:bg-muted/50",
           )}
         >
-          {item.title}
+          {item.title.toLowerCase()}
         </Link>
       </SidebarMenuItem>
     );
@@ -79,18 +79,18 @@ export function NavSection({
         <button
           type="button"
           onClick={onToggle}
-          className="flex items-center justify-between w-full text-sm font-medium py-2 px-3 rounded hover:bg-muted/50"
+          className="flex items-center justify-between w-full text-xs font-medium py-2 px-3 hover:bg-muted/50 transition-colors"
         >
-          <span className="uppercase tracking-wide">{item.title}</span>
+          <span className="uppercase tracking-widest opacity-70">{item.title.toLowerCase()}</span>
           {isOpen ? (
-            <ChevronDown className="h-3 w-3" />
+            <RiArrowDownSLine className="size-3.5" />
           ) : (
-            <ChevronRight className="h-3 w-3" />
+            <RiArrowRightSLine className="size-3.5" />
           )}
         </button>
 
         {isOpen && (
-          <ul className="space-y-1 pl-3 border-l border-border">
+          <ul className="space-y-1 pl-3 border-l border-border/50">
             {item.items?.map((subItem) => (
               <NavLink key={subItem.slug} item={subItem} />
             ))}

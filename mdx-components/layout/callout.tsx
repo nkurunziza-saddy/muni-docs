@@ -1,9 +1,9 @@
 import {
-  CheckCircle2Icon,
-  InfoIcon,
-  LightbulbIcon,
-  TriangleAlertIcon,
-} from "lucide-react";
+  RiCheckboxCircleLine,
+  RiInformationLine,
+  RiLightbulbLine,
+  RiErrorWarningLine,
+} from "@remixicon/react";
 import type { ReactNode } from "react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -12,33 +12,33 @@ import { cn } from "@/lib/utils";
 const alertConfig = {
   note: {
     variant: "note",
-    icon: InfoIcon,
-    title: "Note",
+    icon: RiInformationLine,
+    title: "note",
   },
   info: {
     variant: "info",
-    icon: InfoIcon,
-    title: "Info",
+    icon: RiInformationLine,
+    title: "info",
   },
   warning: {
     variant: "warning",
-    icon: TriangleAlertIcon,
-    title: "Warning",
+    icon: RiErrorWarningLine,
+    title: "warning",
   },
   danger: {
     variant: "destructive",
-    icon: TriangleAlertIcon,
-    title: "Danger",
+    icon: RiErrorWarningLine,
+    title: "danger",
   },
   tip: {
     variant: "tip",
-    icon: LightbulbIcon,
-    title: "Tip",
+    icon: RiLightbulbLine,
+    title: "tip",
   },
   success: {
     variant: "success",
-    icon: CheckCircle2Icon,
-    title: "Success",
+    icon: RiCheckboxCircleLine,
+    title: "success",
   },
 } as const;
 
@@ -54,9 +54,9 @@ export function Callout({ children, type, title, className }: CalloutProps) {
   const Icon = config.icon;
 
   return (
-    <Alert variant={config.variant} className={cn("not-prose", className)}>
+    <Alert variant={config.variant} className={cn("not-prose my-4", className)}>
       <Icon />
-      <AlertTitle>{title ?? config.title}</AlertTitle>
+      <AlertTitle>{(title ?? config.title).toLowerCase()}</AlertTitle>
       <AlertDescription className="no-mdx-block">{children}</AlertDescription>
     </Alert>
   );

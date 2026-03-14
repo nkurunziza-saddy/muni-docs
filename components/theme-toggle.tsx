@@ -1,6 +1,6 @@
 "use client";
 
-import { MonitorIcon, MoonIcon, SunIcon, TerminalIcon } from "lucide-react";
+import { RiComputerLine, RiMoonLine, RiSunLine, RiTerminalLine } from "@remixicon/react";
 import { useTheme } from "next-themes";
 import * as React from "react";
 
@@ -24,18 +24,18 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" className="h-8 w-8">
-        <SunIcon className="h-4 w-4" />
-        <span className="sr-only">Toggle theme</span>
+      <Button variant="ghost" size="icon-sm">
+        <RiSunLine />
+        <span className="sr-only">toggle theme</span>
       </Button>
     );
   }
 
   const themes = [
-    { id: "light", name: "Light", icon: SunIcon },
-    { id: "dark", name: "Dark", icon: MoonIcon },
-    { id: "mono", name: "Mono", icon: TerminalIcon },
-    { id: "mono-dark", name: "Mono Dark", icon: TerminalIcon },
+    { id: "light", name: "light", icon: RiSunLine },
+    { id: "dark", name: "dark", icon: RiMoonLine },
+    { id: "mono", name: "mono", icon: RiTerminalLine },
+    { id: "mono-dark", name: "mono dark", icon: RiTerminalLine },
   ];
 
   const getCurrentTheme = () => {
@@ -52,22 +52,18 @@ export function ThemeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="h-8 w-8">
-          {currentTheme === "minimal-dark" ? (
-            <MoonIcon className="h-4 w-4" />
-          ) : currentTheme === "mono" ? (
-            <TerminalIcon className="h-4 w-4" />
-          ) : (
-            <SunIcon className="h-4 w-4" />
-          )}
-          <span className="sr-only">Toggle theme</span>
-        </Button>
+      <DropdownMenuTrigger render={<Button variant="ghost" size="icon-sm" />}>
+        {currentTheme === "minimal-dark" ? (
+          <RiMoonLine />
+        ) : currentTheme === "mono" ? (
+          <RiTerminalLine />
+        ) : (
+          <RiSunLine />
+        )}
+        <span className="sr-only">toggle theme</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
-        <DropdownMenuLabel className="text-xs font-medium">
-          Theme
-        </DropdownMenuLabel>
+        <DropdownMenuLabel>theme</DropdownMenuLabel>
         <DropdownMenuSeparator />
 
         {themes.map((themeOption) => {
@@ -78,10 +74,10 @@ export function ThemeToggle() {
             <DropdownMenuItem
               key={themeOption.id}
               onClick={() => setTheme(themeOption.id)}
-              className="text-xs justify-between"
+              className="justify-between"
             >
               <span className="flex items-center gap-2">
-                <Icon className="h-3.5 w-3.5" />
+                <Icon />
                 {themeOption.name}
               </span>
               {isActive && (
@@ -95,11 +91,11 @@ export function ThemeToggle() {
 
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className="text-xs justify-between"
+          className="justify-between"
         >
           <span className="flex items-center gap-2">
-            <MonitorIcon className="h-3.5 w-3.5" />
-            System
+            <RiComputerLine />
+            system
           </span>
           {theme === "system" && (
             <div className="h-1.5 w-1.5 bg-primary rounded-full" />

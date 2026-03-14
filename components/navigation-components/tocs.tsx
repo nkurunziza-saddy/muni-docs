@@ -13,8 +13,8 @@ export function TableOfContents() {
   return (
     <aside className="hidden xl:block no-scrollbar w-64 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto border-l border-border">
       <div className="py-6">
-        <h4 className="px-6 text-xs font-semibold uppercase tracking-wide border-b border-border mb-4 pb-3">
-          On This Page
+        <h4 className="px-6 text-[10px] font-semibold uppercase tracking-widest border-b border-border mb-4 pb-3 opacity-70">
+          on this page
         </h4>
         <nav className="px-6">
           <ul className="space-y-2">
@@ -34,14 +34,14 @@ export function TableOfContents() {
                 <a
                   href={`#${item.id}`}
                   className={cn(
-                    "text-xs transition-colors block py-1 border-l-2 pl-3 rounded-none",
+                    "text-xs transition-colors block py-1 border-l pl-3",
                     activeId === item.id
-                      ? "border-primary text-primary font-medium"
+                      ? "border-foreground text-foreground font-medium"
                       : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                   )}
                 >
                   <span className="line-clamp-1 text-ellipsis overflow-hidden">
-                    {item.text}
+                    {item.text.toLowerCase()}
                   </span>
                 </a>
               </li>

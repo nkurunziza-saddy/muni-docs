@@ -13,18 +13,18 @@ export default function OthersLayout({
       <PageHeader />
       <main
         className={cn(
-          "container relative grow",
+          "container relative grow px-4 md:px-6 lg:px-8",
           "before:-inset-y-20 before:-left-px before:absolute before:z-1 before:border-border before:border-dashed xl:before:border-l",
           "after:-inset-y-20 after:-right-px after:absolute after:z-1 after:border-border after:border-dashed xl:after:border-r"
         )}
       >
         <div className="min-h-screen">
-          <div className="cpx space-y-2 py-5">
-            <h1 className="font-bold font-heading text-4xl">
-              Muni Documentations
+          <div className="space-y-2 py-8">
+            <h1 className="font-bold text-4xl lowercase">
+              muni documentations
             </h1>
             <p className="text-muted-foreground text-sm">
-              Build your minimalistic, simple docs
+              build your minimalistic, simple docs
             </p>
           </div>
           <BorderSeparator />

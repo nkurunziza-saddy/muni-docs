@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import muniConfig from "@/muni.config";
@@ -55,34 +55,34 @@ export function DocsPagination() {
   }
 
   return (
-    <div className="flex items-center justify-between pt-6 ">
-      <div className="">
+    <div className="flex items-center justify-between pt-6">
+      <div>
         {previousPage && (
           <Link
-            className="flex items-end gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
             href={`/docs/${
               previousPage.slug === "index" ? "" : previousPage.slug
             }`}
           >
-            <ChevronLeft className="h-4 w-4 mb-1" />
-            <div>
-              <div className="text-xs">Previous</div>
-              <div>{previousPage.title}</div>
+            <RiArrowLeftSLine className="size-4" />
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-wider opacity-70">previous</span>
+              <span className="font-medium text-sm">{previousPage.title}</span>
             </div>
           </Link>
         )}
       </div>
-      <div className="">
+      <div>
         {nextPage && (
           <Link
-            className="flex items-end gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors text-end"
             href={`/docs/${nextPage.slug === "index" ? "" : nextPage.slug}`}
           >
-            <div>
-              <div className="text-xs">Next</div>
-              <div>{nextPage.title}</div>
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-wider opacity-70">next</span>
+              <span className="font-medium text-sm">{nextPage.title}</span>
             </div>
-            <ChevronRight className="h-4 w-4 mb-1" />
+            <RiArrowRightSLine className="size-4" />
           </Link>
         )}
       </div>

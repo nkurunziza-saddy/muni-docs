@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Github, MessageSquare, Sparkles } from "lucide-react";
+import { RiChat1Line, RiExternalLinkLine, RiGithubLine, RiSparkling2Line } from "@remixicon/react";
 import { useIsMobile } from "@/lib/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,39 +28,39 @@ export function PageActions({ slug, className }: PageActionsProps) {
   const githubUrl = `https://github.com/nkurunziza-saddy/muni-docs/blob/main/content/pages/${slug}.mdx`;
   const rawUrl = `https://raw.githubusercontent.com/nkurunziza-saddy/muni-docs/main/content/pages/${slug}.mdx`;
 
-  // Create a prompt for AI assistants
+  // create a prompt for ai assistants
   const pageTitle =
     slug.split("/").pop()?.replace(/-/g, " ") || "documentation page";
-  const prompt = `Please help me understand this ${pageTitle} documentation: ${rawUrl}`;
+  const prompt = `please help me understand this ${pageTitle} documentation: ${rawUrl}`;
 
   const chatGptUrl = `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`;
   const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(prompt)}`;
 
   const actions = [
     {
-      label: "Open in ChatGPT",
-      icon: MessageSquare,
+      label: "open in chatgpt",
+      icon: RiChat1Line,
       href: chatGptUrl,
-      description: "Get AI assistance with this page",
+      description: "get ai assistance with this page",
     },
     {
-      label: "Open in Claude",
-      icon: Sparkles,
+      label: "open in claude",
+      icon: RiSparkling2Line,
       href: claudeUrl,
-      description: "Get AI assistance with this page",
+      description: "get ai assistance with this page",
     },
     {
-      label: "View Markdown",
-      icon: Github,
+      label: "view markdown",
+      icon: RiGithubLine,
       href: rawUrl,
-      description: "View raw markdown source",
+      description: "view raw markdown source",
       external: true,
     },
     {
-      label: "Suggest Changes",
-      icon: ExternalLink,
+      label: "suggest changes",
+      icon: RiExternalLinkLine,
       href: githubUrl,
-      description: "Edit this page on GitHub",
+      description: "edit this page on github",
       external: true,
     },
   ];
@@ -72,15 +72,15 @@ export function PageActions({ slug, className }: PageActionsProps) {
           <Button
             variant="outline"
             size="sm"
-            className={cn("text-xs min-w-0", className)}
+            className={cn("text-xs min-w-0 border-dashed", className)}
           >
-            <ExternalLink className="h-4 w-4 mr-2 flex-shrink-0" />
-            <span className="truncate">Actions</span>
+            <RiExternalLinkLine className="me-2" />
+            <span className="truncate">actions</span>
           </Button>
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>Page Actions</DrawerTitle>
+            <DrawerTitle>page actions</DrawerTitle>
           </DrawerHeader>
           <div className="px-4 pb-4 space-y-2">
             {actions.map((action) => {
@@ -90,22 +90,21 @@ export function PageActions({ slug, className }: PageActionsProps) {
                   key={action.label}
                   variant="ghost"
                   className="w-full justify-start h-auto p-3"
-                  asChild
+                  render={
+                    <a
+                      href={action.href}
+                      target={action.external ? "_blank" : undefined}
+                      rel={action.external ? "noopener noreferrer" : undefined}
+                    />
+                  }
                 >
-                  <a
-                    href={action.href}
-                    target={action.external ? "_blank" : undefined}
-                    rel={action.external ? "noopener noreferrer" : undefined}
-                    className="flex items-start gap-3"
-                  >
-                    <Icon className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                    <div className="text-left">
-                      <div className="font-medium text-sm">{action.label}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {action.description}
-                      </div>
+                  <Icon className="mt-0.5" />
+                  <div className="text-left ms-3">
+                    <div className="font-medium text-sm">{action.label}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {action.description}
                     </div>
-                  </a>
+                  </div>
                 </Button>
               );
             })}
@@ -117,35 +116,40 @@ export function PageActions({ slug, className }: PageActionsProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="sm"
-          className={cn("text-xs min-w-0", className)}
-        >
-          <ExternalLink className="h-4 w-4 mr-2 flex-shrink-0" />
-          <span className="truncate">Actions</span>
-        </Button>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            variant="outline"
+            size="sm"
+            className={cn("text-xs min-w-0 border-dashed", className)}
+          />
+        }
+      >
+        <RiExternalLinkLine className="me-2" />
+        <span className="truncate">actions</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         {actions.map((action) => {
           const Icon = action.icon;
           return (
-            <DropdownMenuItem key={action.label} asChild>
-              <a
-                href={action.href}
-                target={action.external ? "_blank" : undefined}
-                rel={action.external ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-2"
-              >
-                <Icon className="h-4 w-4" />
-                <div className="flex-1">
-                  <div className="font-medium">{action.label}</div>
-                  <div className="text-xs text-muted-foreground">
-                    {action.description}
-                  </div>
+            <DropdownMenuItem
+              key={action.label}
+              render={
+                <a
+                  href={action.href}
+                  target={action.external ? "_blank" : undefined}
+                  rel={action.external ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-2"
+                />
+              }
+            >
+              <Icon />
+              <div className="flex-1">
+                <div className="font-medium">{action.label}</div>
+                <div className="text-xs text-muted-foreground">
+                  {action.description}
                 </div>
-              </a>
+              </div>
             </DropdownMenuItem>
           );
         })}

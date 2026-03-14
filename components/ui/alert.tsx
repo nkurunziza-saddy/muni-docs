@@ -1,40 +1,34 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import type * as React from "react";
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  [
-    "relative w-full rounded-lg border px-4 py-3 text-sm grid",
-    "grid-cols-[0_1fr] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr]",
-    "has-[>svg]:gap-x-3 gap-y-0.5 items-start",
-    "[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
-  ].join(" "),
+  "group/alert relative grid w-full gap-0.5 rounded-none border px-2.5 py-2 text-start text-xs has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pe-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default: "bg-card text-card-foreground",
         destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
-        info: "text-blue-700 bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-blue-700/90 dark:text-blue-300 *:data-[slot=alert-description]:dark:text-blue-300/90",
-        warning:
-          "text-amber-700 bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-amber-700/90 dark:text-amber-300 *:data-[slot=alert-description]:dark:text-amber-300/90",
-        success:
-          "text-emerald-700 bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-emerald-700/90 dark:text-emerald-300 *:data-[slot=alert-description]:dark:text-emerald-300/90",
-        note: "text-foreground bg-card",
-        tip: "text-sky-700 bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-sky-700/90 dark:text-sky-300 *:data-[slot=alert-description]:dark:text-sky-300/90",
+          "bg-destructive/10 text-destructive border-destructive/20 *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-destructive",
+        note: "bg-muted/50 text-foreground border-muted-foreground/20",
+        info: "bg-primary/10 text-primary border-primary/20 *:data-[slot=alert-description]:text-primary/90",
+        warning: "bg-warning/10 text-warning border-warning/20 *:data-[slot=alert-description]:text-warning/90 *:[svg]:text-warning",
+        tip: "bg-success/10 text-success border-success/20 *:data-[slot=alert-description]:text-success/90 *:[svg]:text-success",
+        success: "bg-success/10 text-success border-success/20 *:data-[slot=alert-description]:text-success/90 *:[svg]:text-success",
       },
     },
     defaultVariants: {
       variant: "default",
     },
-  },
-);
+  }
+)
 
-type AlertProps = React.ComponentProps<"div"> &
-  VariantProps<typeof alertVariants>;
-
-function Alert({ className, variant, ...props }: AlertProps) {
+function Alert({
+  className,
+  variant,
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
   return (
     <div
       data-slot="alert"
@@ -42,7 +36,7 @@ function Alert({ className, variant, ...props }: AlertProps) {
       className={cn(alertVariants({ variant }), className)}
       {...props}
     />
-  );
+  )
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
@@ -50,12 +44,12 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="alert-title"
       className={cn(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
-        className,
+        "font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+        className
       )}
       {...props}
     />
-  );
+  )
 }
 
 function AlertDescription({
@@ -66,12 +60,25 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
-        className,
+        "text-xs/relaxed text-balance text-muted-foreground md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-2",
+        className
       )}
       {...props}
     />
-  );
+  )
 }
 
-export { Alert, AlertTitle, AlertDescription };
+function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-action"
+      className={cn(
+        "absolute top-[calc(--spacing(1.25))] end-[calc(--spacing(1.25))]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Alert, AlertTitle, AlertDescription, AlertAction }
