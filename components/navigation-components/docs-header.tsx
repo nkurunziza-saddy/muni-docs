@@ -27,10 +27,13 @@ export function DocsHeader() {
           <div className="flex items-center gap-3">
             <SidebarTrigger className="md:hidden opacity-60" />
             <div className="md:hidden flex items-center mr-2">
-                <div className="relative size-4 flex items-center justify-center">
-                    <div className="absolute inset-0 border border-border/40 rotate-45" />
-                    <div className="absolute inset-0.5 border border-primary/30" />
-                    <div className="size-1 bg-primary animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.5)]" />
+                <div className="flex items-center font-mono text-primary font-bold">
+                    <span className="opacity-40 text-[10px]">[</span>
+                    <div className="relative size-1.5 mx-0.5">
+                        <div className="absolute inset-0 bg-primary/20 rotate-45" />
+                        <div className="absolute inset-0 bg-primary animate-pulse" />
+                    </div>
+                    <span className="opacity-40 text-[10px]">]</span>
                 </div>
             </div>
             {features?.search !== false && <SearchComp />}
@@ -41,15 +44,14 @@ export function DocsHeader() {
               <div className="flex items-center gap-6">
                 {headingLinks && headingLinks.length > 0 && (
                   <nav className="flex items-center gap-8">
-                    {headingLinks.map((link, i) => (
+                    {headingLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-[0.15em] opacity-50 hover:opacity-100 hover:text-primary transition-all group/link"
+                        className="flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-[0.15em] opacity-50 hover:opacity-100 hover:text-primary transition-all relative group/link"
                       >
-                        <span className="opacity-30">0{i + 1}</span>
                         <span>{link.title.toLowerCase()}</span>
                         <span className="absolute -bottom-4 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
                       </a>

@@ -1,3 +1,4 @@
+import { RiLinksLine } from "@remixicon/react";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
@@ -13,11 +14,23 @@ export function Heading({
       {...props}
       id={props.id}
       className={cn(
-        "relative items-center font-semibold text-foreground gap-[0.25em] leading-[1.5em] scroll-m-20",
+        "group flex items-center gap-3 scroll-m-32",
         props.className,
       )}
     >
-      {props.children}
+      <span className="font-mono text-[10px] font-bold text-primary opacity-0 -ml-6 transition-all group-hover:opacity-30 group-hover:ml-0 hidden md:inline">
+        {Array(level).fill('#').join('')}
+      </span>
+      <span className="flex-1">{props.children}</span>
+      {props.id && (
+        <a 
+          href={`#${props.id}`} 
+          className="opacity-0 group-hover:opacity-20 hover:!opacity-100 transition-opacity"
+          aria-label="Link to section"
+        >
+          <RiLinksLine className="size-4" />
+        </a>
+      )}
     </Component>
   );
 }

@@ -1,97 +1,94 @@
 h1 {
-  @apply text-3xl font-semibold leading-[1.1] tracking-tight text-balance;
+  @apply text-4xl font-bold tracking-[-0.03em] leading-[1.1] text-foreground mb-10 lowercase;
 }
 
 h2 {
-  @apply text-2xl font-semibold leading-[1.2] tracking-tight text-balance;
+  @apply text-2xl font-bold tracking-tight leading-tight text-foreground mt-16 mb-6 lowercase;
 }
 
 h3 {
-  @apply text-lg font-medium leading-snug tracking-tight text-balance;
-}
-
-h4 {
-  @apply text-base font-medium leading-snug tracking-tight text-balance;
-}
-
-h5 {
-  @apply text-sm font-medium leading-tight text-balance;
-}
-
-h6 {
-  @apply text-xs font-medium leading-tight text-balance;
+  @apply text-lg font-semibold tracking-tight leading-snug text-foreground mt-12 mb-4 lowercase;
 }
 
 p {
-  @apply text-sm leading-relaxed text-pretty;
+  @apply text-[15px] leading-[1.7] text-muted-foreground/90 mb-6;
 }
 
 .prose {
-  @apply text-sm leading-relaxed text-pretty;
-}
-
-.prose > * + * {
-  @apply mt-6;
+  @apply text-[15px] leading-[1.7] text-muted-foreground/90;
 }
 
 .prose h1 {
-  @apply text-3xl font-semibold mb-6 mt-12 first:mt-0 pb-4 border-b border-border/50 tracking-tight;
+  @apply text-4xl font-bold mb-12 pb-6 border-b border-border/10 tracking-[-0.03em] text-foreground lowercase;
 }
 
 .prose h2 {
-  @apply text-2xl font-semibold mb-4 mt-10 first:mt-0 pb-3 border-b border-border/50 tracking-tight;
+  @apply text-2xl font-bold mt-20 mb-6 pb-2 border-b border-border/5 tracking-tight text-foreground lowercase flex items-center gap-3;
+}
+
+.prose h2::before {
+  content: "02";
+  @apply font-mono text-[10px] font-bold text-primary opacity-30 tracking-widest;
 }
 
 .prose h3 {
-  @apply text-lg font-medium mb-3 mt-8 first:mt-0 tracking-tight;
+  @apply text-lg font-semibold mt-14 mb-4 tracking-tight text-foreground lowercase flex items-center gap-3;
 }
 
-.prose h4 {
-  @apply text-base font-medium mb-2 mt-6 first:mt-0 tracking-tight;
+.prose h3::before {
+  content: "03";
+  @apply font-mono text-[10px] font-bold text-primary opacity-20 tracking-widest;
 }
 
 .prose p {
-  @apply text-sm leading-relaxed mb-4 text-muted-foreground;
+  @apply mb-6;
 }
 
 .prose ul,
 .prose ol {
-  @apply text-sm leading-relaxed mb-4 pl-4 text-muted-foreground;
+  @apply mb-8 pl-0 list-none;
 }
 
 .prose li {
-  @apply mb-1;
+  @apply relative pl-6 mb-3 flex items-start gap-2;
 }
 
-.prose li::marker {
-  @apply text-muted-foreground/50;
+.prose ul li::before {
+  content: "—";
+  @apply absolute left-0 text-primary/40 font-mono font-bold;
+}
+
+.prose ol {
+  counter-reset: item;
+}
+
+.prose ol li::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
+  @apply absolute left-0 text-[10px] font-mono font-bold text-primary/40 mt-1;
 }
 
 .prose code {
-  @apply text-[13px] font-mono border border-border/60 px-1.5 py-0.5 rounded-sm bg-muted/30 text-foreground;
-}
-
-.prose pre {
-  @apply text-[13px] font-mono border border-border/40 rounded-xl p-4 bg-muted/20 my-6 overflow-x-auto shadow-sm;
+  @apply text-[13px] font-mono px-1.5 py-0.5 border border-border/40 bg-muted/20 text-foreground lowercase;
 }
 
 .prose blockquote {
-  @apply border-l-2 border-primary/50 pl-6 py-1 my-8 italic text-muted-foreground bg-muted/10 pr-4 rounded-r-lg;
+  @apply border-l-2 border-primary/20 pl-8 py-2 my-12 italic text-muted-foreground/80 bg-muted/5 pr-6;
 }
 
 .prose table {
-  @apply w-full text-sm border border-border/50 rounded-xl overflow-hidden my-8 border-collapse;
+  @apply w-full text-[13px] border border-border/10 my-12 border-collapse;
 }
 
 .prose th {
-  @apply border-b border-border/50 bg-muted/30 px-4 py-3 text-left font-medium text-foreground;
+  @apply border-b border-border/10 bg-muted/10 px-5 py-4 text-left font-mono font-bold text-[11px] uppercase tracking-widest text-foreground/60;
 }
 
 .prose td {
-  @apply border-b border-border/50 px-4 py-3 text-muted-foreground;
+  @apply border-b border-border/10 px-5 py-4 text-muted-foreground/80 leading-relaxed;
 }
 
-.prose tbody tr:last-child td {
-  @apply border-b-0;
+.prose hr {
+  @apply border-t border-border/10 my-20 border-dashed;
 }
 

@@ -28,12 +28,16 @@ function NavLink({ item }: { item: NavItem }) {
       <Link
         href={href}
         className={cn(
-          "block text-xs font-mono py-1.5 px-3 transition-all duration-200",
+          "flex items-center gap-2 text-xs font-mono py-1.5 px-3 transition-all duration-200 group/nav",
           isActive
-            ? "bg-foreground text-background font-bold"
-            : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+            ? "text-primary font-bold"
+            : "text-muted-foreground/60 hover:text-foreground",
         )}
       >
+        <span className={cn(
+            "text-[10px] font-bold transition-all",
+            isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/nav:opacity-30"
+        )}>&gt;</span>
         {item.title.toLowerCase()}
       </Link>
     </li>
@@ -61,12 +65,16 @@ export function NavSection({
         <Link
           href={href}
           className={cn(
-            "block text-sm font-mono py-2 px-3 transition-all duration-200",
+            "flex items-center gap-2 text-sm font-mono py-2.5 px-3 transition-all duration-200 group/nav",
             isActive
-              ? "bg-foreground text-background font-bold"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+              ? "text-primary font-bold"
+              : "text-muted-foreground/60 hover:text-foreground",
           )}
         >
+          <span className={cn(
+            "text-[10px] font-bold transition-all",
+            isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/nav:opacity-30"
+          )}>&gt;</span>
           {item.title.toLowerCase()}
         </Link>
       </SidebarMenuItem>
@@ -74,27 +82,29 @@ export function NavSection({
   }
 
   return (
-    <SidebarMenuItem className="pb-6 mb-6 border-b border-border/20 last:border-0 last:pb-0 last:mb-0">
-      <div className="space-y-1">
+    <SidebarMenuItem className="pb-8 mb-8 border-b border-border/10 last:border-0 last:pb-0 last:mb-0">
+      <div className="space-y-2">
         <button
           type="button"
           onClick={onToggle}
-          className="flex items-center justify-between w-full text-[11px] font-mono font-bold py-2 px-3 hover:bg-muted/30 transition-colors uppercase tracking-[0.2em] group/section"
+          className="flex items-center justify-between w-full text-[11px] font-mono font-bold py-2 px-3 hover:bg-muted/30 transition-all uppercase tracking-[0.25em] group/section"
         >
-          <span className="opacity-50 group-hover/section:opacity-100 group-hover/section:text-primary transition-all">{item.title.toLowerCase()}</span>
-          {isOpen ? (
-            <RiArrowDownSLine className="size-3.5 opacity-40 group-hover/section:text-primary group-hover/section:opacity-100" />
-          ) : (
-            <RiArrowRightSLine className="size-3.5 opacity-40 group-hover/section:text-primary group-hover/section:opacity-100" />
-          )}
+          <span className="opacity-40 group-hover/section:opacity-100 group-hover/section:text-primary transition-all">{item.title.toLowerCase()}</span>
+          <div className="flex items-center gap-2">
+            <div className="h-px w-4 bg-border/20 group-hover/section:w-6 group-hover/section:bg-primary/40 transition-all" />
+            {isOpen ? (
+                <RiArrowDownSLine className="size-3.5 opacity-30 group-hover/section:text-primary group-hover/section:opacity-100" />
+            ) : (
+                <RiArrowRightSLine className="size-3.5 opacity-30 group-hover/section:text-primary group-hover/section:opacity-100" />
+            )}
+          </div>
         </button>
 
         {isOpen && (
-          <div className="relative ml-3">
-            {/* vertical connection line */}
-            <div className="absolute left-0 top-0 bottom-2 w-px bg-border/20" />
+          <div className="relative ml-3 mt-1">
+            <div className="absolute left-0 top-0 bottom-3 w-px bg-border/10" />
             
-            <ul className="space-y-0.5 relative z-10">
+            <ul className="space-y-1 relative z-10">
               {item.items?.map((subItem) => (
                 <NavLink key={subItem.slug} item={subItem} />
               ))}

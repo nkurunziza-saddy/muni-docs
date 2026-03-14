@@ -1,271 +1,5 @@
 [
   {
-    "id": "api/built-in-components",
-    "title": "Built-in Components Reference",
-    "content": "Built-in Components [The Toolbox] Muni provides a set of powerful components that are globally available in all your MDX files. These are designed to help you create rich, structured content without needing to import them. Callouts Callouts are used to highlight a block of text. They are created using the container directive. - Directive: - Supported Types: , , , Steps The component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any heading within it. - Directive: CodeGroup A component for displaying multiple code blocks in a tabbed view. - Directive: ts [TypeScript] const message: string = \"Hello\"; js [JavaScript] const message = \"Hello\"; Aside<Aside>",
-    "url": "/docs/api/built-in-components",
-    "tags": [],
-    "sectionType": "page"
-  },
-  {
-    "id": "api/built-in-components/callouts",
-    "title": "Callouts",
-    "content": "Callouts are used to highlight a block of text. They are created using the container directive. - Directive: - Supported",
-    "url": "/docs/api/built-in-components#callouts",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/built-in-components/steps",
-    "title": "Steps",
-    "content": "The component creates an ordered, numbered list of steps, perfect for tutorials. It automatically numbers any heading wi",
-    "url": "/docs/api/built-in-components#steps",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/built-in-components/step-1-do-this-first",
-    "title": "Step 1: Do this first",
-    "content": "Content for the first step.",
-    "url": "/docs/api/built-in-components#step-1-do-this-first",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h4"
-  },
-  {
-    "id": "api/built-in-components/step-2-do-this-next",
-    "title": "Step 2: Do this next",
-    "content": "Content for the second step. ::: `",
-    "url": "/docs/api/built-in-components#step-2-do-this-next",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h4"
-  },
-  {
-    "id": "api/built-in-components/codegroup",
-    "title": "CodeGroup",
-    "content": "A component for displaying multiple code blocks in a tabbed view. - Directive: ts [TypeScript] const message: string = \"",
-    "url": "/docs/api/built-in-components#codegroup",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/built-in-components/copybutton",
-    "title": "CopyButton",
-    "content": "This component is automatically added to every code block and provides a simple way for users to copy the code to their ",
-    "url": "/docs/api/built-in-components#copybutton",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/built-in-components/aside",
-    "title": "Aside",
-    "content": "The component renders content in a right-hand sidebar on larger screens, useful for showing supplementary information, e",
-    "url": "/docs/api/built-in-components#aside",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/built-in-components/supplementary-info",
-    "title": "Supplementary Info",
-    "content": "This content is displayed in the right sidebar. It can contain code blocks, text, and other components. </Aside>",
-    "url": "/docs/api/built-in-components#supplementary-info",
-    "tags": [],
-    "parentPage": "Built-in Components Reference",
-    "sectionType": "h4"
-  },
-  {
-    "id": "api/configuration",
-    "title": "Configuration Reference",
-    "content": "Configuration [The Control Panel] Configuration for a Muni project is handled in two main places: for site-specific settings like navigation, and for the underlying MDX and Next.js behavior. This is the primary configuration file for your site's content and navigation. It exports a object. Interface - Type: - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be used in your site header. - Type: (optional) - Description: A version string for your project, which is displayed in the site header. - Type: (optional) - Default: - Description: Whether to display the author and date from the frontmatter at the bottom of each page. - Type: (optional) - Description: An array of link objects to be displayed in the site header, next to the version. - Type: - Description: An array of objects that defines the structure of your sidebar navigation. Each has the following properties: - (string): The text displayed in the navigation sidebar. - (string): The URL slug for the page. This must match the file path in (without the extension). For the homepage, use . - (optional ): An optional array of nested navigation items to create collapsible sections in the sidebar. Example Configuration This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set of Remark and Rehype plugins to add advanced features to your Markdown. Default Plugins Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethroughs, etc. - Frontmatter: Parses the YAML frontmatter from your files. - Code Block Titles: Adds titles to code blocks. - Callouts: Enables directives for callouts. - Steps: Enables the component. - Slug & Autolink Headings: Automatically adds s to headings and links them. Customizing Plugins You can add your own Remark or Rehype plugins by modifying the object in .",
-    "url": "/docs/api/configuration",
-    "tags": [],
-    "sectionType": "page"
-  },
-  {
-    "id": "api/configuration/municonfigts",
-    "title": "`muni.config.ts`",
-    "content": "This is the primary configuration file for your site's content and navigation. It exports a object.",
-    "url": "/docs/api/configuration#municonfigts",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/configuration/municonfig-interface",
-    "title": "`MuniConfig` Interface",
-    "content": "",
-    "url": "/docs/api/configuration#municonfig-interface",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/title",
-    "title": "`title`",
-    "content": "- Type: - Description: The main title of your documentation site. It's used in the browser tab, metadata, and can be use",
-    "url": "/docs/api/configuration#title",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/version",
-    "title": "`version`",
-    "content": "- Type: (optional) - Description: A version string for your project, which is displayed in the site header.",
-    "url": "/docs/api/configuration#version",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/showfrontmattermeta",
-    "title": "`showFrontmatterMeta`",
-    "content": "- Type: (optional) - Default: - Description: Whether to display the author and date from the frontmatter at the bottom o",
-    "url": "/docs/api/configuration#showfrontmattermeta",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/headinglinks",
-    "title": "`headingLinks`",
-    "content": "- Type: (optional) - Description: An array of link objects to be displayed in the site header, next to the version.",
-    "url": "/docs/api/configuration#headinglinks",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/navigation",
-    "title": "`navigation`",
-    "content": "- Type: - Description: An array of objects that defines the structure of your sidebar navigation. Each has the following",
-    "url": "/docs/api/configuration#navigation",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/example-configuration",
-    "title": "Example Configuration",
-    "content": "",
-    "url": "/docs/api/configuration#example-configuration",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/nextconfigts",
-    "title": "`next.config.ts`",
-    "content": "This file controls the Next.js build process, including how MDX files are handled. Muni comes with a pre-configured set ",
-    "url": "/docs/api/configuration#nextconfigts",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/configuration/default-plugins",
-    "title": "Default Plugins",
-    "content": "Muni's default configuration includes plugins for: - GFM (GitHub Flavored Markdown): Adds support for tables, strikethro",
-    "url": "/docs/api/configuration#default-plugins",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/configuration/customizing-plugins",
-    "title": "Customizing Plugins",
-    "content": "You can add your own Remark or Rehype plugins by modifying the object in .",
-    "url": "/docs/api/configuration#customizing-plugins",
-    "tags": [],
-    "parentPage": "Configuration Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/frontmatter",
-    "title": "Frontmatter Reference",
-    "content": "Frontmatter Reference [Page Metadata] Frontmatter is the YAML block at the top of your MDX files, enclosed by triple dashes (). It allows you to provide metadata for each page. Standard Properties These are the primary properties that Muni uses to control page rendering and SEO. - Type: - Required: - Description: The main title of the page. It is displayed at the top of the page content and used in the browser tab title (). - Type: - Required: - Description: A brief summary of the page content. This is critical for SEO as it is used for the tag, and it also powers the text snippets in the site's search results. Custom Properties You can add any other custom properties to your frontmatter. These properties are not used by Muni out-of-the-box, but they can be accessed from your own custom components or during the build process. Example with Custom Metadata Accessing Custom Frontmatter While Muni doesn't use custom frontmatter directly, you can configure your project to read it. For example, you could create a custom component that reads the and from the page's frontmatter. This typically requires customizing the MDX loader or creating a wrapper component that has access to the page's metadata. The frontmatter is available to the page layout component.",
-    "url": "/docs/api/frontmatter",
-    "tags": [],
-    "sectionType": "page"
-  },
-  {
-    "id": "api/frontmatter/standard-properties",
-    "title": "Standard Properties",
-    "content": "These are the primary properties that Muni uses to control page rendering and SEO.",
-    "url": "/docs/api/frontmatter#standard-properties",
-    "tags": [],
-    "parentPage": "Frontmatter Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/frontmatter/title",
-    "title": "`title`",
-    "content": "- Type: - Required: - Description: The main title of the page. It is displayed at the top of the page content and used i",
-    "url": "/docs/api/frontmatter#title",
-    "tags": [],
-    "parentPage": "Frontmatter Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/frontmatter/description",
-    "title": "`description`",
-    "content": "- Type: - Required: - Description: A brief summary of the page content. This is critical for SEO as it is used for the t",
-    "url": "/docs/api/frontmatter#description",
-    "tags": [],
-    "parentPage": "Frontmatter Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/frontmatter/custom-properties",
-    "title": "Custom Properties",
-    "content": "You can add any other custom properties to your frontmatter. These properties are not used by Muni out-of-the-box, but t",
-    "url": "/docs/api/frontmatter#custom-properties",
-    "tags": [],
-    "parentPage": "Frontmatter Reference",
-    "sectionType": "h2"
-  },
-  {
-    "id": "api/frontmatter/example-with-custom-metadata",
-    "title": "Example with Custom Metadata",
-    "content": "",
-    "url": "/docs/api/frontmatter#example-with-custom-metadata",
-    "tags": [],
-    "parentPage": "Frontmatter Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api/frontmatter/accessing-custom-frontmatter",
-    "title": "Accessing Custom Frontmatter",
-    "content": "While Muni doesn't use custom frontmatter directly, you can configure your project to read it. For example, you could cr",
-    "url": "/docs/api/frontmatter#accessing-custom-frontmatter",
-    "tags": [],
-    "parentPage": "Frontmatter Reference",
-    "sectionType": "h3"
-  },
-  {
-    "id": "api",
-    "title": "API Reference",
-    "content": "API Reference [Technical Details] This section provides a detailed technical reference for the key APIs and configuration surfaces in Muni. Use these guides to understand all the available options for customizing and extending your documentation site. Reference Documents <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\"> <a href=\"/docs/api/configuration\" className=\"border p-4 rounded-lg hover:bg-accent\"> <h3 class=\"font-semibold text-lg mb-2\">Configuration</h3> <p class=\"text-sm text-muted-foreground\">Explore all the options available in the and files.</p> </a> <a href=\"/docs/api/frontmatter\" className=\"border p-4 rounded-lg hover:bg-accent\"> <h3 class=\"font-semibold text-lg mb-2\">Frontmatter</h3> <p class=\"text-sm text-muted-foreground\">A complete reference for all the standard and custom frontmatter properties you can use in your MDX files.</p> </a> <a href=\"/docs/api/built-in-components\" className=\"border p-4 rounded-lg hover:bg-accent\"> <h3 class=\"font-semibold text-lg mb-2\">Built-in Components</h3> <p class=\"text-sm text-muted-foreground\">A detailed look at the props and usage of all the globally available components like and .</p> </a> </div>",
-    "url": "/docs/api",
-    "tags": [],
-    "sectionType": "page"
-  },
-  {
-    "id": "api/reference-documents",
-    "title": "Reference Documents",
-    "content": "<div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\"> <a href=\"/docs/api/configuration\" className=\"border p-4 rounded-",
-    "url": "/docs/api#reference-documents",
-    "tags": [],
-    "parentPage": "API Reference",
-    "sectionType": "h2"
-  },
-  {
     "id": "components-showcase",
     "title": "Components Showcase",
     "content": "Components Showcase This page demonstrates all the available MDX components in the Muni documentation system. Callouts and Info Boxes Callout Component <Callout type=\"info\"> This is an info callout with some important information. </Callout> <Callout type=\"warning\" title=\"Important\"> This is a warning callout with a custom title. </Callout> <Callout type=\"success\"> This is a success callout indicating something worked correctly. </Callout> <Callout type=\"danger\"> This is a danger callout for critical information. </Callout> <Callout type=\"tip\">This is a tip callout with helpful advice.</Callout> InfoBox Component <InfoBox type=\"info\">This is an InfoBox component (alias for Callout).</InfoBox> <InfoBox type=\"warning\" title=\"API Rate Limit\"> The API rate limit is 1000 requests per hour per API key. </InfoBox> Code Components Code Groups <CodeGroup> </CodeGroup> Code Preview Blocks <CodePreviewBlock> <div className=\"p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white\"> <h3 className=\"text-xl font-bold mb-2\">Gradient Card</h3> <p className=\"text-blue-100\"> This is a preview of a gradient card component. </p> <button className=\"mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors\"> Click me </button> </div> </CodePreviewBlock> Individual Code Blocks Interactive Components Tabs <Tabs> <TabsItem value=\"Overview\"> ## Overview This is the overview tab with some basic information about the project. - Feature 1: Description of the first feature - Feature 2: Description of the second feature - Feature 3: Description of the third feature > This is a blockquote in the overview tab. </TabsItem> <TabsItem value=\"Installation\"> ## Installation Install the package using your preferred package manager: Then import the components you need: </TabsItem> <TabsItem value=\"Configuration\"> ## Configuration Configure the components by passing props: ### Environment Variables Set these environment variables in your : - : The default theme - : The API base URL </TabsItem> </Tabs> Layout Components Steps <Steps> <Step> ## Step 1: Project Setup Create a new Next.js project and install the required dependencies. </Step> <Step> ## Step 2: Configuration Set up your configuration file and environment variables. Create a file in your project root: </Step> <Step> ## Step 3: Create Content Start creating your documentation content using MDX files. Place your content files in the directory and they will be automatically processed. </Step> </Steps> Details and Summary <Details> <Summary>Click to expand for more information</Summary> This is additional information that can be expanded or collapsed. It's useful for: - Hiding detailed technical information - Creating FAQ sections - Providing optional context </Details> Typography and Text Headings The documentation system supports all standard heading levels with proper styling and anchor links. Inline Code Use for short code snippets, function names, or technical terms. Code Blocks Use triple backticks for code blocks with syntax highlighting: Lists - Unordered lists work great for bullet points - They support bold text and - And can be nested: - Like this nested item - And this one too 1. Ordered lists are perfect for step-by-step instructions 2. They maintain proper numbering 3. And can also be nested: 1. First nested item 2. Second nested item Blockquotes > This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full callout component styling. Tables | Component | Type | Description | | --------- | ----------- | ------------------------------- | | Callout | Layout | Alert-style callouts with icons | | CodeGroup | Interactive | Tabbed code blocks | | Tabs | Interactive | General-purpose tabs | | Steps | Layout | Step-by-step instructions | | InfoBox | Layout | Alias for Callout component | Best Practices 1. Use semantic components - Choose the right component for your content 2. Keep code blocks focused - Don't make them too long 3. Use descriptive titles - Help users understand what they're looking at 4. Test interactivity - Make sure tabs and other interactive elements work 5. Maintain consistency - Use similar patterns throughout your documentation Conclusion This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to be: - Accessible - Proper ARIA attributes and keyboard navigation - Customizable - Flexible props and styling options - Consistent - Unified design language across all components - Performant - Optimized for fast loading and smooth interactions Use these components to create rich, interactive documentation that your users will love!",
@@ -1388,7 +1122,7 @@
   {
     "id": "index/content-styling",
     "title": "Content & Styling",
-    "content": "- MDX - Markdown with React components for rich content - Shiki - Syntax highlighting with 200+ language support - Lucid",
+    "content": "- MDX - Markdown with React components for rich content - Shiki - Syntax highlighting with 200+ language support - Remix",
     "url": "/docs/index#content-styling",
     "tags": [],
     "parentPage": "Muni",
@@ -2241,7 +1975,7 @@
   {
     "id": "themes",
     "title": "Themes",
-    "content": "Themes Muni comes with three carefully crafted themes designed for minimal, professional documentation. Available Themes Minimal (Light) The default theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with minimal contrast - Accents: Subtle gray borders and highlights - Typography: Sans-serif (Geist Sans) Perfect for general documentation and clean, modern looks. Minimal Dark A dark theme with deep blacks and minimal contrast. - Background: Deep black - Text: Light gray with high contrast - Accents: Subtle borders and highlights - Typography: Sans-serif (Geist Sans) Ideal for dark mode users and technical documentation. Mono A monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font - Accents: Clean borders and minimal styling - Typography: Monospace (Geist Mono) Perfect for technical documentation, code references, and developer-focused content. Setting the Theme Default Theme Set the default theme in : Theme Toggle Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Minimal (Light) 2. Minimal Dark 3. Mono 4. System (follows OS preference) Theme Customization CSS Variables Each theme defines CSS variables that you can override: Custom Theme To create a custom theme: 1. Add theme class to : 2. Update theme toggle to include your theme: 3. Update TypeScript types: Design Principles All Muni themes follow these design principles: Minimalism - Clean, uncluttered interfaces - Generous whitespace - Subtle colors and borders - No unnecessary visual elements Typography - Small, readable text (11-13px base) - Tight line heights for professional look - Consistent font weights - Proper hierarchy Spacing - Consistent spacing scale - Tight padding and margins - Generous whitespace between sections - No excessive padding Colors - High contrast for readability - Subtle accent colors - Consistent color relationships - Accessible color combinations Theme Variables Core Colors Semantic Colors Status Colors UI Colors Sidebar Colors Practical Customization Examples Creating a Brand Theme Create a custom theme that matches your brand colors: Dark Mode with Custom Colors High Contrast Theme Theme Switching Implementation Update your theme toggle component: CSS Custom Properties Reference Complete list of available CSS custom properties: Best Practices 1. Test all themes: Ensure your content looks good in all themes 2. Use semantic colors: Use instead of hardcoded colors 3. Maintain contrast: Ensure text is readable in all themes 4. Keep it minimal: Don't over-customize - embrace the minimal aesthetic 5. Test accessibility: Ensure color combinations meet accessibility standards 6. Use OKLCH colors: Better color interpolation and consistency 7. Test in different lighting: Check themes in various lighting conditions 8. Consider color blindness: Ensure themes work for colorblind users 9. Document your themes: Keep a reference of your custom themes 10. Version your themes: Track changes to your theme definitions Examples Minimal Theme Minimal Dark Theme Mono Theme",
+    "content": "Themes Muni comes with four carefully crafted themes designed for minimal, professional documentation. Available Themes Light The default light theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with minimal contrast - Accents: Subtle gray borders and highlights - Typography: Sans-serif (Geist Sans) Perfect for general documentation and clean, modern looks. Dark A dark theme with deep blacks and minimal contrast. - Background: Deep black - Text: Light gray with high contrast - Accents: Subtle borders and highlights - Typography: Sans-serif (Geist Sans) Ideal for dark mode users and technical documentation. Mono A light monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font - Accents: Clean borders and minimal styling - Typography: Monospace (Geist Mono) Perfect for technical documentation, code references, and developer-focused content. Mono Dark A dark monospace theme for terminal enthusiasts. - Background: Dark gray - Text: Light gray with monospace font - Accents: Clean borders and minimal styling - Typography: Monospace (Geist Mono) Perfect for developers who prefer dark terminals and code-focused documentation. Setting the Theme Default Theme Set the default theme in : Theme Toggle Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Light 2. Dark 3. Mono 4. Mono Dark 5. System (follows OS preference) Theme Customization CSS Variables Each theme defines CSS variables that you can override: Custom Theme To create a custom theme: 1. Add theme class to : 2. Update theme toggle to include your theme: 3. Update TypeScript types: Design Principles All Muni themes follow these design principles: Minimalism - Clean, uncluttered interfaces - Generous whitespace - Subtle colors and borders - No unnecessary visual elements Typography - Small, readable text (11-13px base) - Tight line heights for professional look - Consistent font weights - Proper hierarchy Spacing - Consistent spacing scale - Tight padding and margins - Generous whitespace between sections - No excessive padding Colors - High contrast for readability - Subtle accent colors - Consistent color relationships - Accessible color combinations Theme Variables Core Colors Semantic Colors Status Colors UI Colors Sidebar Colors Practical Customization Examples Creating a Brand Theme Create a custom theme that matches your brand colors: Dark Mode with Custom Colors High Contrast Theme Theme Switching Implementation Update your theme toggle component: CSS Custom Properties Reference Complete list of available CSS custom properties: Best Practices 1. Test all themes: Ensure your content looks good in all themes 2. Use semantic colors: Use instead of hardcoded colors 3. Maintain contrast: Ensure text is readable in all themes 4. Keep it minimal: Don't over-customize - embrace the minimal aesthetic 5. Test accessibility: Ensure color combinations meet accessibility standards 6. Use OKLCH colors: Better color interpolation and consistency 7. Test in different lighting: Check themes in various lighting conditions 8. Consider color blindness: Ensure themes work for colorblind users 9. Document your themes: Keep a reference of your custom themes 10. Version your themes: Track changes to your theme definitions Examples Light Theme Dark Theme Mono Theme Mono Dark Theme",
     "url": "/docs/themes",
     "tags": [],
     "sectionType": "page"
@@ -2256,19 +1990,19 @@
     "sectionType": "h2"
   },
   {
-    "id": "themes/minimal-light",
-    "title": "Minimal (Light)",
-    "content": "The default theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with minima",
-    "url": "/docs/themes#minimal-light",
+    "id": "themes/light",
+    "title": "Light",
+    "content": "The default light theme with a clean white background and subtle grays. - Background: Pure white - Text: Dark gray with ",
+    "url": "/docs/themes#light",
     "tags": [],
     "parentPage": "Themes",
     "sectionType": "h3"
   },
   {
-    "id": "themes/minimal-dark",
-    "title": "Minimal Dark",
+    "id": "themes/dark",
+    "title": "Dark",
     "content": "A dark theme with deep blacks and minimal contrast. - Background: Deep black - Text: Light gray with high contrast - Acc",
-    "url": "/docs/themes#minimal-dark",
+    "url": "/docs/themes#dark",
     "tags": [],
     "parentPage": "Themes",
     "sectionType": "h3"
@@ -2276,8 +2010,17 @@
   {
     "id": "themes/mono",
     "title": "Mono",
-    "content": "A monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font - Acce",
+    "content": "A light monospace theme inspired by terminal interfaces. - Background: Light gray - Text: Dark gray with monospace font ",
     "url": "/docs/themes#mono",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/mono-dark",
+    "title": "Mono Dark",
+    "content": "A dark monospace theme for terminal enthusiasts. - Background: Dark gray - Text: Light gray with monospace font - Accent",
+    "url": "/docs/themes#mono-dark",
     "tags": [],
     "parentPage": "Themes",
     "sectionType": "h3"
@@ -2303,7 +2046,7 @@
   {
     "id": "themes/theme-toggle",
     "title": "Theme Toggle",
-    "content": "Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Minimal (Light) 2. Minimal D",
+    "content": "Users can switch themes using the theme toggle in the header. The toggle cycles through: 1. Light 2. Dark 3. Mono 4. Mon",
     "url": "/docs/themes#theme-toggle",
     "tags": [],
     "parentPage": "Themes",
@@ -2508,19 +2251,19 @@
     "sectionType": "h2"
   },
   {
-    "id": "themes/minimal-theme",
-    "title": "Minimal Theme",
+    "id": "themes/light-theme",
+    "title": "Light Theme",
     "content": "",
-    "url": "/docs/themes#minimal-theme",
+    "url": "/docs/themes#light-theme",
     "tags": [],
     "parentPage": "Themes",
     "sectionType": "h3"
   },
   {
-    "id": "themes/minimal-dark-theme",
-    "title": "Minimal Dark Theme",
+    "id": "themes/dark-theme",
+    "title": "Dark Theme",
     "content": "",
-    "url": "/docs/themes#minimal-dark-theme",
+    "url": "/docs/themes#dark-theme",
     "tags": [],
     "parentPage": "Themes",
     "sectionType": "h3"
@@ -2530,6 +2273,15 @@
     "title": "Mono Theme",
     "content": "",
     "url": "/docs/themes#mono-theme",
+    "tags": [],
+    "parentPage": "Themes",
+    "sectionType": "h3"
+  },
+  {
+    "id": "themes/mono-dark-theme",
+    "title": "Mono Dark Theme",
+    "content": "",
+    "url": "/docs/themes#mono-dark-theme",
     "tags": [],
     "parentPage": "Themes",
     "sectionType": "h3"

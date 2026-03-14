@@ -16,7 +16,6 @@ export function MobileTableOfContents() {
 
   return (
     <div className="relative">
-      {/* trigger button */}
       <Button
         onClick={() => setIsOpen(true)}
         variant="outline"
@@ -31,10 +30,8 @@ export function MobileTableOfContents() {
         />
       </Button>
 
-      {/* dropdown positioned directly below trigger */}
       {isOpen && (
         <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-background border border-border shadow-lg animate-in slide-in-from-top-2 duration-200">
-          {/* header */}
           <div className="flex items-center justify-between px-4 py-2 border-b border-border">
             <h3 className="text-xs font-mono font-semibold uppercase tracking-widest opacity-70">on this page</h3>
             <Button
@@ -47,7 +44,6 @@ export function MobileTableOfContents() {
             </Button>
           </div>
 
-          {/* navigation */}
           <nav className="px-4 py-2 max-h-[60vh] overflow-y-auto">
             <ul className="space-y-1">
               {toc.map((item) => (
@@ -82,7 +78,6 @@ export function MobileTableOfContents() {
         </div>
       )}
 
-      {/* backdrop for mobile */}
       {isOpen && (
         <button
           type="button"

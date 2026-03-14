@@ -31,19 +31,28 @@ export function DocsSidebar() {
   };
 
   return (
-    <Sidebar className="border-r-0 bg-muted/20">
-      <SidebarHeader className="sticky py-0 top-0 z-50 w-full bg-transparent">
-        <div className="flex h-14 items-center px-4 md:px-6 lg:px-8 font-mono font-bold text-[11px] uppercase tracking-[0.3em] group/logo">
-          <div className="relative size-4 mr-3 flex items-center justify-center">
-            <div className="absolute inset-0 border border-border/40 rotate-45 transition-transform group-hover/logo:rotate-90 duration-500" />
-            <div className="absolute inset-0.5 border border-primary/30 group-hover/logo:scale-110 transition-transform duration-500" />
-            <div className="size-1 bg-primary animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.5)]" />
+    <Sidebar className="border-r border-border/40 bg-background">
+      <SidebarHeader className="sticky py-0 top-0 z-50 w-full bg-background border-b border-border/5">
+        <div className="flex h-14 items-center px-6 lg:px-8 group/logo select-none">
+          <div className="flex items-center gap-2.5">
+            <div className="flex items-center font-mono text-primary font-bold">
+                <span className="opacity-40">[</span>
+                <div className="relative size-2 mx-1">
+                    <div className="absolute inset-0 bg-primary/20 rotate-45" />
+                    <div className="absolute inset-0.5 bg-primary animate-pulse" />
+                </div>
+                <span className="opacity-40">]</span>
+            </div>
+            <div className="flex flex-col">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground leading-none">
+                    {muniConfig.title?.toLowerCase() ?? "muni"}
+                </span>
+                <span className="text-[8px] font-mono opacity-30 uppercase tracking-[0.1em] mt-1">docs_engine.v1</span>
+            </div>
           </div>
-          <span className="text-foreground transition-colors group-hover/logo:text-primary">{muniConfig.title?.toLowerCase() ?? "muni"}</span>
-          <span className="ml-1 text-primary opacity-50">_</span>
         </div>
       </SidebarHeader>
-      <SidebarContent className="px-3 py-6">
+      <SidebarContent className="px-4 py-6">
         <SidebarMenu className="space-y-1.5">
           {muniConfig.navigation.map((item, i) => (
             <NavSection

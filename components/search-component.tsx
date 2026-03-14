@@ -1,6 +1,11 @@
 "use client";
 
-import { RiArrowUpDownLine, RiCornerDownLeftLine, RiSearchLine, RiCloseLine } from "@remixicon/react";
+import {
+  RiArrowUpDownLine,
+  RiCornerDownLeftLine,
+  RiSearchLine,
+  RiCloseLine,
+} from "@remixicon/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -129,7 +134,7 @@ export function SearchComp({ className }: SearchProps) {
 
     const regex = new RegExp(
       `(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
-      "gi"
+      "gi",
     );
     const parts = text.split(regex);
 
@@ -148,90 +153,112 @@ export function SearchComp({ className }: SearchProps) {
 
   const searchContent = (
     <>
-      <div className="flex items-center border-b border-border/40 px-4">
-        <RiSearchLine className="size-4 text-muted-foreground mr-3" />
+      <div className="flex items-center border-b border-border/20 px-6 py-2 bg-muted/5">
+        <div className="flex items-center gap-2 mr-4 opacity-40">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest">cmd</span>
+            <span className="text-[10px] font-mono opacity-50">&gt;</span>
+        </div>
         <Input
           ref={inputRef}
           type="text"
-          placeholder="search documentation..."
+          placeholder="query documentation index..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="flex-1 border-0 focus-visible:ring-0 shadow-none px-0 h-14 text-sm bg-transparent"
+          className="flex-1 border-0 focus-visible:ring-0 shadow-none px-0 h-14 text-lg bg-transparent! font-sans tracking-tight"
         />
-        {query && (
-          <Button
-            size="icon-xs"
-            onClick={() => setQuery("")}
-            variant="ghost"
-          >
-            <RiCloseLine />
-          </Button>
-        )}
+        <div className="flex items-center gap-4">
+          {query && (
+            <Button 
+              size="icon-xs" 
+              onClick={() => setQuery("")} 
+              variant="ghost"
+              className="opacity-30 hover:opacity-100 transition-opacity"
+            >
+              <RiCloseLine className="size-4" />
+            </Button>
+          )}
+          <div className="hidden sm:flex items-center gap-2 px-2 py-1 border border-border/20 bg-background/50">
+            <span className="text-[9px] font-mono opacity-40 uppercase tracking-[0.2em] font-bold">exit</span>
+            <kbd className="text-[9px] font-mono opacity-60">ESC</kbd>
+          </div>
+        </div>
       </div>
 
-      <ScrollArea className="max-h-[500px]">
+      <ScrollArea className="max-h-[70vh]">
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center py-16 gap-3">
-            <div className="animate-spin size-5 border-2 border-primary border-t-transparent rounded-full" />
-            <span className="text-xs text-muted-foreground tracking-widest uppercase opacity-70">searching...</span>
+          <div className="flex flex-col items-center justify-center py-24 gap-5">
+            <div className="relative size-8">
+                <div className="absolute inset-0 border border-primary/10 animate-[spin_4s_linear_infinite]" />
+                <div className="absolute inset-1.5 border-t border-primary/40 animate-[spin_1.5s_ease-in-out_infinite]" />
+                <div className="absolute inset-3 bg-primary/20 animate-pulse" />
+            </div>
+            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.4em] uppercase opacity-40">
+              parsing_index
+            </span>
           </div>
         ) : results.length > 0 ? (
-          <div className="py-2">
+          <div className="py-6">
             {groupSearchResults(results).map((group) => (
               <div
                 key={group.page.id}
-                className="border-b border-border/20 last:border-b-0"
+                className="mb-8 last:mb-0"
               >
-                <button
-                  type="button"
-                  onClick={() => handleResultClick(group.page.url)}
-                  className="w-full text-left px-5 py-3 hover:bg-muted/30 transition-colors"
-                >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <h3 className="font-semibold text-foreground text-sm">
-                      {highlightMatch(group.page.title, query)}
-                    </h3>
-                    {group.page.category && (
-                      <span className="inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-primary/10 text-primary uppercase tracking-wider">
-                        {group.page.category}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground line-clamp-1 opacity-80">
-                    {highlightMatch(
-                      group.page.content.slice(0, 100) +
-                        (group.page.content.length > 100 ? "..." : ""),
-                      query
-                    )}
-                  </p>
-                </button>
+                <div className="px-6 mb-2">
+                    <button
+                    type="button"
+                    onClick={() => handleResultClick(group.page.url)}
+                    className="w-full text-left group/page relative flex flex-col"
+                    >
+                        <div className="flex items-center gap-4">
+                            <h3 className="font-bold text-foreground text-base tracking-tighter group-hover/page:text-primary transition-colors flex items-center">
+                                <span className="opacity-20 mr-3 text-xs font-mono font-normal">#</span>
+                                {highlightMatch(group.page.title, query)}
+                            </h3>
+                            <div className="h-px flex-1 bg-border/5" />
+                            {group.page.category && (
+                            <span className="text-[9px] font-mono font-bold text-primary/40 uppercase tracking-[0.3em] border border-primary/10 px-2 py-0.5 bg-primary/5">
+                                {group.page.category}
+                            </span>
+                            )}
+                        </div>
+                        <div className="pl-7 mt-1">
+                            <p className="text-sm text-muted-foreground line-clamp-1 opacity-60 leading-relaxed">
+                                {highlightMatch(
+                                group.page.content.slice(0, 180) +
+                                    (group.page.content.length > 180 ? "..." : ""),
+                                query,
+                                )}
+                            </p>
+                        </div>
+                    </button>
+                </div>
 
                 {group.sections.length > 0 && (
-                  <div className="pl-5 pb-3 pt-1">
-                    <div className="text-[9px] text-muted-foreground mb-2 px-2 font-semibold opacity-60 uppercase tracking-widest">
-                      {group.sections.length} section{group.sections.length > 1 ? "s" : ""}
-                    </div>
+                  <div className="px-6 grid grid-cols-1 gap-1">
                     {group.sections.map((section) => (
                       <button
                         key={section.id}
                         type="button"
                         onClick={() => handleResultClick(section.url)}
-                        className="w-full cursor-pointer text-left px-3 py-2.5 hover:bg-muted/30 rounded-md transition-all group flex items-start gap-3"
+                        className="w-full cursor-pointer text-left px-4 py-3 hover:bg-muted/30 transition-all group flex items-start gap-4 border-l-2 border-border/10 hover:border-primary ml-7 relative"
                       >
-                        <div className="w-1 h-1 bg-primary/40 rounded-full flex-shrink-0 mt-2" />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="font-medium text-foreground text-xs group-hover:text-primary transition-colors">
+                            <span className="font-bold text-foreground text-xs uppercase tracking-wide group-hover:text-primary transition-colors">
                               {highlightMatch(section.title, query)}
                             </span>
                           </div>
-                          <p className="text-[11px] text-muted-foreground line-clamp-1 mt-1 opacity-70">
+                          <p className="text-xs text-muted-foreground line-clamp-1 mt-1 opacity-50 font-mono italic">
                             {highlightMatch(
-                              section.content.slice(0, 80) +
-                                (section.content.length > 80 ? "..." : ""),
-                              query
+                              section.content.slice(0, 120) +
+                                (section.content.length > 120 ? "..." : ""),
+                              query,
                             )}
                           </p>
+                        </div>
+                        <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all">
+                            <span className="text-[10px] font-mono text-primary uppercase tracking-widest font-bold">go</span>
+                            <RiCornerDownLeftLine className="size-3.5 text-primary" />
                         </div>
                       </button>
                     ))}
@@ -241,45 +268,58 @@ export function SearchComp({ className }: SearchProps) {
             ))}
           </div>
         ) : query.trim() ? (
-          <div className="flex flex-col items-center justify-center py-16 gap-3">
-            <div className="size-12 bg-muted/50 rounded-full flex items-center justify-center">
-              <RiSearchLine className="size-5 text-muted-foreground opacity-50" />
+          <div className="flex flex-col items-center justify-center py-24 gap-5">
+            <div className="size-14 border border-border/10 flex items-center justify-center relative">
+                <div className="absolute inset-0 border border-primary/5 opacity-20" />
+                <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
             </div>
-            <div className="text-center font-mono uppercase tracking-widest">
-                <p className="text-muted-foreground text-[10px] font-bold">no results found</p>
-                <p className="text-muted-foreground/60 text-[9px] mt-1">try different keywords</p>
+            <div className="text-center font-mono uppercase tracking-[0.3em]">
+              <p className="text-muted-foreground text-[10px] font-bold">
+                0_results_found
+              </p>
+              <p className="text-muted-foreground/30 text-[9px] mt-2">
+                check syntax and retry
+              </p>
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-16 gap-3">
-             <div className="size-12 bg-muted/50 rounded-full flex items-center justify-center">
-              <RiSearchLine className="size-5 text-muted-foreground opacity-50" />
+          <div className="flex flex-col items-center justify-center py-24 gap-5">
+            <div className="size-14 border border-border/10 flex items-center justify-center relative">
+                <div className="absolute inset-0 border border-primary/5 opacity-20" />
+                <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
             </div>
-            <div className="text-center font-mono uppercase tracking-widest">
-                <p className="text-muted-foreground text-[10px] font-bold">start typing to search</p>
-                <p className="text-muted-foreground/60 text-[9px] mt-1">find docs, guides, and more</p>
+            <div className="text-center font-mono uppercase tracking-[0.3em]">
+              <p className="text-muted-foreground text-[10px] font-bold">
+                index_ready
+              </p>
+              <p className="text-muted-foreground/30 text-[9px] mt-2">
+                awaiting_input_stream
+              </p>
             </div>
           </div>
         )}
       </ScrollArea>
 
-      <div className="border-t border-border/40 px-4 py-3 bg-muted/10">
-        <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-widest font-semibold opacity-60">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-1.5">
-              <RiArrowUpDownLine className="size-3.5" />
+      <div className="border-t border-border/20 px-6 py-4 bg-muted/10 relative overflow-hidden">
+        <div className="absolute left-0 top-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em] font-bold opacity-40">
+          <div className="flex items-center gap-10">
+            <div className="flex items-center gap-2">
+              <div className="size-1 bg-border/40" />
               <span>navigate</span>
+              <span className="opacity-30 ml-1">[&uarr;&darr;]</span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <RiCornerDownLeftLine className="size-3.5" />
+            <div className="flex items-center gap-2">
+              <div className="size-1 bg-border/40" />
               <span>select</span>
+              <span className="opacity-30 ml-1">[enter]</span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <kbd className="px-1.5 py-0.5 bg-background border border-border/60 text-[9px] font-mono min-w-[2rem] text-center rounded-sm shadow-sm">
-              ESC
-            </kbd>
-            <span>close</span>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+                <span className="text-[9px] opacity-50">engine::v1.0.0</span>
+                <div className="size-1.5 bg-primary/40 rounded-full animate-pulse" />
+            </div>
           </div>
         </div>
       </div>
@@ -294,8 +334,9 @@ export function SearchComp({ className }: SearchProps) {
         size={isMobile ? "icon-sm" : "sm"}
         className={cn(
           "text-muted-foreground hover:text-primary transition-all h-9 group/search",
-          !isMobile && "w-32 sm:w-64 justify-start px-0 font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100",
-          className
+          !isMobile &&
+            "w-32 sm:w-64 justify-start px-3 font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100",
+          className,
         )}
       >
         <RiSearchLine className="size-4 mr-2 group-hover/search:scale-110 transition-transform" />
@@ -304,9 +345,9 @@ export function SearchComp({ className }: SearchProps) {
 
       {isMobile ? (
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
-          <DrawerContent className="max-h-[80vh]">
+          <DrawerContent className="max-h-[80vh] rounded-none">
             <DrawerHeader>
-              <DrawerTitle>search documentation</DrawerTitle>
+              <DrawerTitle className="sr-only">search documentation</DrawerTitle>
             </DrawerHeader>
             {searchContent}
           </DrawerContent>
@@ -314,7 +355,7 @@ export function SearchComp({ className }: SearchProps) {
       ) : (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogContent
-            className="p-0 max-w-2xl top-[10vh] translate-y-0"
+            className="p-0 max-w-5xl top-[10vh] translate-y-0 rounded-none border-border/20 shadow-2xl bg-background/95 backdrop-blur-xl"
             showCloseButton={false}
           >
             <DialogTitle className="sr-only">search documentation</DialogTitle>

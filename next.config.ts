@@ -41,7 +41,6 @@ const pwaConfig = withPWA({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  // Other Next.js config options
 };
 
 const withMDX = createMDX({

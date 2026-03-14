@@ -10,14 +10,20 @@ export function PageHeader() {
     <header className="border-b border-dashed">
       <div className="container flex h-14 items-center justify-between py-2 px-4 md:px-6 lg:px-8">
         <div className="flex items-center">
-          <Link className="cursor-pointer flex items-center font-mono font-bold text-sm uppercase tracking-[0.3em] group/logo" href="/">
-            <div className="relative size-4 mr-3 flex items-center justify-center">
-              <div className="absolute inset-0 border border-border/40 rotate-45 transition-transform group-hover/logo:rotate-90 duration-500" />
-              <div className="absolute inset-0.5 border border-primary/30 group-hover/logo:scale-110 transition-transform duration-500" />
-              <div className="size-1 bg-primary animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.5)]" />
+          <Link className="cursor-pointer flex items-center group/logo select-none" href="/">
+            <div className="flex items-center font-mono text-primary font-bold">
+                <span className="opacity-40">[</span>
+                <div className="relative size-2 mx-1">
+                    <div className="absolute inset-0 bg-primary/20 rotate-45" />
+                    <div className="absolute inset-0.5 bg-primary animate-pulse" />
+                </div>
+                <span className="opacity-40">]</span>
             </div>
-            <span className="text-foreground transition-colors group-hover/logo:text-primary">{muniConfig.title?.toLowerCase() ?? "muni"}</span>
-            <span className="ml-1 text-primary opacity-50">_</span>
+            <div className="flex flex-col ml-2.5">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground leading-none">
+                    {muniConfig.title?.toLowerCase() ?? "muni"}
+                </span>
+            </div>
           </Link>
         </div>
 
