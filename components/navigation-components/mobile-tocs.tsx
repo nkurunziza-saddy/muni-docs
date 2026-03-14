@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function MobileTableOfContents() {
   const [isOpen, setIsOpen] = useState(false);
-  const { toc, activeId } = useTableOfContents();
+  const { toc, activeId, handleClick } = useTableOfContents();
 
   if (toc.length === 0) {
     return null;
@@ -20,9 +20,9 @@ export function MobileTableOfContents() {
       <Button
         onClick={() => setIsOpen(true)}
         variant="outline"
-        className="w-full justify-between border-dashed text-muted-foreground min-w-0 h-9"
+        className="w-full justify-between border-dashed text-muted-foreground min-w-0 h-10"
       >
-        <span className="text-xs font-semibold truncate uppercase tracking-widest opacity-70">on this page</span>
+        <span className="text-xs font-mono font-semibold truncate uppercase tracking-widest opacity-70">on this page</span>
         <RiArrowDownSLine
           className={cn(
             "transition-transform duration-200",
@@ -36,7 +36,7 @@ export function MobileTableOfContents() {
         <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-background border border-border shadow-lg animate-in slide-in-from-top-2 duration-200">
           {/* header */}
           <div className="flex items-center justify-between px-4 py-2 border-b border-border">
-            <h3 className="text-xs font-semibold uppercase tracking-widest opacity-70">on this page</h3>
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-widest opacity-70">on this page</h3>
             <Button
               variant="ghost"
               size="icon-xs"
@@ -59,18 +59,22 @@ export function MobileTableOfContents() {
                     "ml-8": item.level === 5,
                   })}
                 >
-                  <a
-                    href={`#${item.id}`}
-                    onClick={() => setIsOpen(false)}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleClick(item.id);
+                      setIsOpen(false);
+                    }}
                     className={cn(
-                      "text-xs transition-colors block py-2 px-2 border border-transparent",
+                      "w-full text-left text-xs font-mono transition-all duration-300 block py-2 px-3 outline-none uppercase tracking-wide",
                       activeId === item.id
-                        ? "bg-muted border-border text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        ? "text-foreground font-bold opacity-100"
+                        : "text-muted-foreground opacity-40 hover:opacity-100"
                     )}
+
                   >
                     {item.text.toLowerCase()}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

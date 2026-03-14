@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RiArrowRightLine, RiBookOpenLine, RiCodeLine, RiPaletteLine, RiFlashlightLine } from "@remixicon/react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const features = [
@@ -37,29 +38,37 @@ export default function Home() {
   ];
 
   return (
-    <div className="cpx py-12 space-y-20">
+    <div className="container py-20 space-y-32">
       {/* hero section */}
-      <div className="text-center space-y-8 max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight lowercase">
-          muni docs
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          a minimal documentation template built with next.js 15, typescript,
-          and tailwind css 4. perfect for creating clean, professional
-          documentation sites.
+      <div className="relative flex flex-col items-start space-y-10 max-w-4xl">
+        <div className="space-y-4">
+            <div className="flex items-center gap-3">
+                <div className="size-2 bg-primary" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-50">industrial documentation engine</span>
+            </div>
+            <h1 className="text-5xl md:text-8xl font-bold tracking-[-0.04em] leading-[0.9] lowercase">
+              muni<span className="text-primary">.</span>docs
+            </h1>
+        </div>
+        
+        <p className="text-xl md:text-2xl text-muted-foreground leading-tight tracking-tight max-w-2xl lowercase">
+          a high-performance, minimal documentation template engineered with next.js 15 and tailwind css 4.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+        <div className="flex flex-wrap gap-4">
           <Button
             render={<Link href="/docs/getting-started" />}
             size="lg"
+            className="h-14 px-8 text-sm uppercase tracking-widest font-bold border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-all"
           >
             get started
-            <RiArrowRightLine className="ms-2" />
+            <RiArrowRightLine className="ms-2 size-4" />
           </Button>
           <Button
             render={<Link href="/docs/introduction" />}
             variant="outline"
             size="lg"
+            className="h-14 px-8 text-sm uppercase tracking-widest font-bold border-2 border-border hover:border-foreground transition-all"
           >
             learn more
           </Button>
@@ -67,43 +76,49 @@ export default function Home() {
       </div>
 
       {/* features section */}
-      <div className="space-y-12">
-        <h2 className="text-2xl font-semibold text-center lowercase">why choose muni?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-border/40">
+          {features.map((feature, i) => {
             const Icon = feature.icon;
             return (
-              <div key={feature.title} className="text-center space-y-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-muted/50 text-foreground">
-                  <Icon className="size-6" />
+              <div key={feature.title} className={cn(
+                "p-8 space-y-6 border-b border-border/40 md:border-r last:border-r-0",
+                i === 3 && "lg:border-r-0"
+              )}>
+                <div className="flex items-center justify-between">
+                    <Icon className="size-5 opacity-40" />
+                    <span className="text-[10px] font-mono opacity-20">0{i + 1}</span>
                 </div>
                 <div className="space-y-2">
-                    <h3 className="font-semibold text-sm uppercase tracking-widest opacity-80">{feature.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
+                    <h3 className="font-bold text-[11px] uppercase tracking-[0.2em]">{feature.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed lowercase">
                     {feature.description}
                     </p>
                 </div>
               </div>
             );
           })}
-        </div>
       </div>
 
       {/* quick links section */}
-      <div className="space-y-8">
-        <h2 className="text-2xl font-semibold text-center lowercase">documentation</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="space-y-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border/40 pb-8">
+            <h2 className="text-3xl font-bold tracking-tight lowercase">documentation index</h2>
+            <p className="text-sm text-muted-foreground max-w-xs lowercase">quick access to the core modules and guides.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/40 border border-border/40">
           {quickLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="block p-4 border border-dashed hover:border-solid hover:bg-muted/30 transition-all group"
+              className="bg-background p-8 hover:bg-muted/30 transition-all group flex flex-col justify-between h-48 relative overflow-hidden"
             >
+              <div className="absolute top-0 right-0 w-1 h-0 bg-primary transition-all duration-300 group-hover:h-full" />
+              <span className="text-[10px] font-mono opacity-20 uppercase tracking-widest">module</span>
               <div className="flex items-center justify-between">
-                <span className="font-medium text-sm group-hover:text-primary transition-colors lowercase">
+                <span className="font-bold text-lg lowercase group-hover:text-primary transition-colors">
                   {link.title}
                 </span>
-                <RiArrowRightLine className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                <RiArrowRightLine className="size-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
           ))}
@@ -111,15 +126,16 @@ export default function Home() {
       </div>
 
       {/* cta section */}
-      <div className="text-center space-y-6 py-12 border-t border-border border-dashed">
-        <h2 className="text-xl font-semibold lowercase">ready to build your docs?</h2>
-        <p className="text-muted-foreground text-sm max-w-md mx-auto">
-          start with our getting started guide and have your documentation site
-          running in minutes.
-        </p>
-        <Button render={<Link href="/docs/getting-started" />} size="lg">
+      <div className="flex flex-col items-center text-center space-y-10 py-32 border-t border-border/40 border-dashed relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 size-2 bg-primary rotate-45" />
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter lowercase max-w-2xl">ready to build your engine?</h2>
+        <Button 
+            render={<Link href="/docs/getting-started" />} 
+            size="lg"
+            className="h-16 px-12 text-sm uppercase tracking-widest font-bold border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-all"
+        >
           start building
-          <RiArrowRightLine className="ms-2" />
+          <RiArrowRightLine className="ms-2 size-5" />
         </Button>
       </div>
     </div>

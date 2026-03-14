@@ -18,98 +18,112 @@ import { useIsMobile } from "@/lib/hooks/use-mobile";
 
 export function DocsHeader() {
   const isMobile = useIsMobile();
+  const { features, version, headingLinks } = muniConfig;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-16 items-center px-4 md:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-dashed border-border/40 bg-background/80 backdrop-blur-md">
+      <div className="flex h-14 items-center px-4 md:px-6 lg:px-8">
         <div className="flex items-center gap-4 md:gap-8 justify-between w-full">
-          <div className="flex items-center gap-2">
-            <SidebarTrigger className="md:hidden" />
-            <SearchComp />
+          <div className="flex items-center gap-3">
+            <SidebarTrigger className="md:hidden opacity-60" />
+            <div className="md:hidden flex items-center mr-2">
+                <div className="relative size-4 flex items-center justify-center">
+                    <div className="absolute inset-0 border border-border/40 rotate-45" />
+                    <div className="absolute inset-0.5 border border-primary/30" />
+                    <div className="size-1 bg-primary animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.5)]" />
+                </div>
+            </div>
+            {features?.search !== false && <SearchComp />}
           </div>
 
-          {/* desktop header links */}
-          <div className="hidden md:flex items-center gap-2">
-            {muniConfig.version && (
-              <span className="text-sm font-semibold">
-                v{muniConfig.version}
-              </span>
-            )}
+          <div className="flex items-center gap-6">
+            {!isMobile && (
+              <div className="flex items-center gap-6">
+                {headingLinks && headingLinks.length > 0 && (
+                  <nav className="flex items-center gap-8">
+                    {headingLinks.map((link, i) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-[0.15em] opacity-50 hover:opacity-100 hover:text-primary transition-all group/link"
+                      >
+                        <span className="opacity-30">0{i + 1}</span>
+                        <span>{link.title.toLowerCase()}</span>
+                        <span className="absolute -bottom-4 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
+                      </a>
+                    ))}
+                  </nav>
 
-            {muniConfig.version &&
-              muniConfig.headingLinks &&
-              muniConfig.headingLinks.length > 0 && (
-                <Separator orientation="vertical" className="h-4" />
-              )}
-
-            {muniConfig.headingLinks && muniConfig.headingLinks.length > 0 && (
-              <div className="flex items-center space-x-3">
-                {muniConfig.headingLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm hover:underline"
-                  >
-                    {link.title}
-                  </a>
-                ))}
-                <ThemeToggle />
+                )}
+                
+                {(version || features?.themeToggle !== false) && (
+                  <div className="flex items-center gap-4 border-l border-border/40 pl-6 h-8">
+                    {version && (
+                      <span className="text-[10px] font-mono opacity-40">
+                        v{version}
+                      </span>
+                    )}
+                    {features?.themeToggle !== false && <ThemeToggle />}
+                  </div>
+                )}
               </div>
             )}
-          </div>
 
-          {/* mobile header links drawer */}
-          {isMobile && (
-            <Drawer>
-              <DrawerTrigger asChild>
-                <Button variant="ghost" size="icon" className="size-11">
-                  <RiMenuLine />
-                  <span className="sr-only">open menu</span>
-                </Button>
-              </DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>
-                  <DrawerTitle>menu</DrawerTitle>
-                </DrawerHeader>
-                <div className="px-4 pb-4 space-y-4">
-                  {muniConfig.version && (
-                    <div className="text-sm font-semibold">
-                      version {muniConfig.version}
-                    </div>
-                  )}
-
-                  {muniConfig.headingLinks &&
-                    muniConfig.headingLinks.length > 0 && (
-                      <div className="space-y-2">
-                        <div className="text-sm font-medium text-muted-foreground">
-                          links
-                        </div>
-                        {muniConfig.headingLinks.map((link) => (
-                          <a
-                            key={link.href}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block text-sm hover:underline py-1"
-                          >
-                            {link.title}
-                          </a>
-                        ))}
+            {isMobile && (
+              <Drawer>
+                <DrawerTrigger asChild>
+                  <Button variant="ghost" size="icon-sm" className="size-9 opacity-60">
+                    <RiMenuLine className="size-4" />
+                    <span className="sr-only">open menu</span>
+                  </Button>
+                </DrawerTrigger>
+                <DrawerContent>
+                  <DrawerHeader>
+                    <DrawerTitle className="sr-only">menu</DrawerTitle>
+                  </DrawerHeader>
+                  <div className="px-4 pb-6 space-y-6">
+                    {version && (
+                      <div className="text-[10px] font-mono opacity-40">
+                        version {version}
                       </div>
                     )}
 
-                  <div className="space-y-2">
-                    <div className="text-sm font-medium text-muted-foreground">
-                      theme
-                    </div>
-                    <ThemeToggle />
+                    {headingLinks && headingLinks.length > 0 && (
+                      <div className="space-y-3">
+                        <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.2em] opacity-50">
+                          links
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          {headingLinks.map((link) => (
+                            <a
+                              key={link.href}
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs hover:text-primary transition-colors lowercase"
+                            >
+                              {link.title.toLowerCase()}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {features?.themeToggle !== false && (
+                      <div className="space-y-3">
+                        <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.2em] opacity-50">
+                          theme
+                        </div>
+                        <ThemeToggle />
+                      </div>
+                    )}
                   </div>
-                </div>
-              </DrawerContent>
-            </Drawer>
-          )}
+                </DrawerContent>
+              </Drawer>
+            )}
+          </div>
         </div>
       </div>
     </header>

@@ -13,7 +13,7 @@ export function Heading({
       {...props}
       id={props.id}
       className={cn(
-        "relative items-center font-semibold text-foreground gap-[0.25em] leading-[1.5em]",
+        "relative items-center font-semibold text-foreground gap-[0.25em] leading-[1.5em] scroll-m-20",
         props.className,
       )}
     >

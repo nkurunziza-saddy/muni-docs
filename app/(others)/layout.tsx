@@ -20,10 +20,10 @@ export default function OthersLayout({
       >
         <div className="min-h-screen">
           <div className="space-y-2 py-8">
-            <h1 className="font-bold text-4xl lowercase">
+            <h1 className="font-mono font-bold text-4xl lowercase tracking-tighter">
               muni documentations
             </h1>
-            <p className="text-muted-foreground text-sm">
+            <p className="font-mono text-muted-foreground text-xs uppercase tracking-widest opacity-60">
               build your minimalistic, simple docs
             </p>
           </div>

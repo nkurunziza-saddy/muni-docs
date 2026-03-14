@@ -16,7 +16,7 @@ export function PageFooter() {
             nkurunziza saddy
           </Link>
         </p>
-        <p className="text-muted-foreground uppercase tracking-widest text-[10px] opacity-70">
+        <p className="text-muted-foreground uppercase tracking-widest text-[10px] font-mono opacity-70">
           &copy; {new Date().getFullYear()} muni
         </p>
       </div>

@@ -72,7 +72,7 @@ export function PageActions({ slug, className }: PageActionsProps) {
           <Button
             variant="outline"
             size="sm"
-            className={cn("text-xs min-w-0 border-dashed", className)}
+            className={cn("text-[10px] font-mono uppercase tracking-widest min-w-0 border-dashed", className)}
           >
             <RiExternalLinkLine className="me-2" />
             <span className="truncate">actions</span>
@@ -121,7 +121,7 @@ export function PageActions({ slug, className }: PageActionsProps) {
           <Button
             variant="outline"
             size="sm"
-            className={cn("text-xs min-w-0 border-dashed", className)}
+            className={cn("text-[10px] font-mono uppercase tracking-widest min-w-0 border-dashed", className)}
           />
         }
       >

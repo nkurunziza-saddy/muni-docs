@@ -59,15 +59,15 @@ export function DocsPagination() {
       <div>
         {previousPage && (
           <Link
-            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-all group/prev"
             href={`/docs/${
               previousPage.slug === "index" ? "" : previousPage.slug
             }`}
           >
-            <RiArrowLeftSLine className="size-4" />
+            <RiArrowLeftSLine className="size-4 group-hover/prev:text-primary transition-colors" />
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider opacity-70">previous</span>
-              <span className="font-medium text-sm">{previousPage.title}</span>
+              <span className="text-[10px] font-mono uppercase tracking-wider opacity-70">previous</span>
+              <span className="font-medium text-sm group-hover/prev:text-primary transition-colors">{previousPage.title}</span>
             </div>
           </Link>
         )}
@@ -75,14 +75,14 @@ export function DocsPagination() {
       <div>
         {nextPage && (
           <Link
-            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors text-end"
+            className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-all text-end group/next"
             href={`/docs/${nextPage.slug === "index" ? "" : nextPage.slug}`}
           >
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider opacity-70">next</span>
-              <span className="font-medium text-sm">{nextPage.title}</span>
+              <span className="text-[10px] font-mono uppercase tracking-wider opacity-70">next</span>
+              <span className="font-medium text-sm group-hover/next:text-primary transition-colors">{nextPage.title}</span>
             </div>
-            <RiArrowRightSLine className="size-4" />
+            <RiArrowRightSLine className="size-4 group-hover/next:text-primary transition-colors" />
           </Link>
         )}
       </div>

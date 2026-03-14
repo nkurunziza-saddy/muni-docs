@@ -1,4 +1,4 @@
-export type Theme = "minimal" | "minimal-dark" | "mono";
+export type Theme = "light" | "dark" | "system";
 
 export interface NavigationItem {
   title: string;
@@ -11,6 +11,20 @@ export interface HeadingLink {
   href: string;
 }
 
+export interface FeaturesConfig {
+  search?: boolean;
+  themeToggle?: boolean;
+  toc?: boolean;
+}
+
+export interface SEOConfig {
+  description?: string;
+  openGraph?: {
+    image?: string;
+    twitterHandle?: string;
+  };
+}
+
 export interface MuniConfig {
   title: string;
   version?: string;
@@ -19,48 +33,61 @@ export interface MuniConfig {
   headingLinks?: HeadingLink[];
   navigation: NavigationItem[];
   githubRepo?: string;
+  features?: FeaturesConfig;
+  seo?: SEOConfig;
 }
 
 const muniConfig: MuniConfig = {
-  title: "Muni",
+  title: "muni",
   version: "1.0.0",
-  defaultTheme: "minimal",
+  defaultTheme: "system",
   showFrontmatterMeta: true,
+  features: {
+    search: true,
+    themeToggle: true,
+    toc: true,
+  },
+  seo: {
+    description: "A minimal documentation template built with Next.js 15, TypeScript, and Tailwind CSS 4.",
+    openGraph: {
+      twitterHandle: "@nk_saddy"
+    }
+  },
   headingLinks: [
-    { title: "GitHub", href: "https://github.com/nkurunziza-saddy/muni-docs" },
-    { title: "Twitter", href: "https://twitter.com/nk_saddy" },
+    { title: "github", href: "https://github.com/nkurunziza-saddy/muni-docs" },
+    { title: "twitter", href: "https://twitter.com/nk_saddy" },
   ],
   navigation: [
     {
-      title: "Introduction",
+      title: "introduction",
       slug: "index",
     },
     {
-      title: "Getting Started",
+      title: "getting started",
       slug: "getting-started",
     },
     {
-      title: "Configuration",
+      title: "configuration",
       slug: "configuration",
     },
     {
-      title: "Themes",
+      title: "themes",
       slug: "themes",
     },
     {
-      title: "Markdown",
+      title: "markdown",
       slug: "markdown",
     },
     {
-      title: "Components Showcase",
+      title: "components showcase",
       slug: "components-showcase",
     },
     {
-      title: "Deployment",
+      title: "deployment",
       slug: "deployment",
     },
     {
-      title: "Project Structure",
+      title: "project structure",
       slug: "project-structure",
     },
   ],

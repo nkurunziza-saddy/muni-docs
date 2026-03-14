@@ -78,7 +78,7 @@ const withMDX = createMDX({
             dark: "vitesse-dark",
             light: "vitesse-light",
           },
-          defaultColor: "light",
+          defaultColor: false,
           transformers: [
             transformerRemoveNotationEscape(),
             transformerNotationDiff({ matchAlgorithm: "v3" }),
@@ -106,7 +106,7 @@ const withMDX = createMDX({
             dark: "vitesse-dark",
             light: "vitesse-light",
           },
-          defaultColor: "light",
+          defaultColor: false,
         },
       ],
       rehypeShikiDisplayNotation,

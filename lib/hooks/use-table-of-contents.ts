@@ -13,54 +13,75 @@ export function useTableOfContents() {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const _pathname = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-    }
-
     const extractHeadings = () => {
-      const headings = Array.from(
-        document.querySelectorAll("h2, h3, h4, h5, h6"),
-      )
+      const headingElements = Array.from(
+        document.querySelectorAll(".mdx-content h2, .mdx-content h3, .mdx-content h4"),
+      );
+
+      const headings = headingElements
         .filter((heading) => heading.id)
         .map((heading) => ({
           id: heading.id,
-          text: heading.textContent || "",
+          text: (heading as HTMLElement).innerText || heading.textContent || "",
           level: Number.parseInt(heading.tagName.charAt(1), 10),
         }));
 
       setToc(headings);
 
-      if (headings.length > 0) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) {
-                setActiveId(entry.target.id);
-              }
-            }
-          },
-          {
-            rootMargin: "0% 0% -80% 0%",
-            threshold: 1.0,
-          },
-        );
-
-        headings.forEach((heading) => {
-          const element = document.getElementById(heading.id);
-          if (element) observer.observe(element);
-        });
-
-        observerRef.current = observer;
+      if (observerRef.current) {
+        observerRef.current.disconnect();
       }
+
+      const visibleHeadings = new Map<string, number>();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              visibleHeadings.set(entry.target.id, entry.intersectionRatio);
+            } else {
+              visibleHeadings.delete(entry.target.id);
+            }
+          }
+
+          if (visibleHeadings.size > 0) {
+            const sorted = Array.from(visibleHeadings.keys()).sort((a, b) => {
+              const elA = document.getElementById(a);
+              const elB = document.getElementById(b);
+              if (!elA || !elB) return 0;
+              return elA.getBoundingClientRect().top - elB.getBoundingClientRect().top;
+            });
+            
+            setActiveId(sorted[0]);
+          }
+        },
+        {
+          rootMargin: "-60px 0% -70% 0%",
+          threshold: [0, 1],
+        },
+      );
+
+      headingElements.forEach((el) => observer.observe(el));
+      observerRef.current = observer;
     };
 
-    setToc([]);
-    setActiveId("");
-
-    const timer = setTimeout(extractHeadings, 300);
+    const timer = setTimeout(() => {
+      extractHeadings();
+      
+      if (window.location.hash) {
+        const id = window.location.hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          const yOffset = -80;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "instant" });
+          setActiveId(id);
+        }
+      }
+    }, 200);
 
     return () => {
       clearTimeout(timer);
@@ -68,16 +89,36 @@ export function useTableOfContents() {
         observerRef.current.disconnect();
       }
     };
-  }, []); // This is the key - re-run when pathname changes
+  }, [pathname]);
+
+  useEffect(() => {
+    if (activeId) {
+      const tocElement = document.getElementById(`toc-${activeId}`);
+      const tocContainer = document.getElementById("toc-container");
+      
+      if (tocElement && tocContainer) {
+        const containerRect = tocContainer.getBoundingClientRect();
+        const elementRect = tocElement.getBoundingClientRect();
+        
+        if (elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom) {
+          tocElement.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+        }
+      }
+    }
+  }, [activeId]);
 
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      const yOffset = -80; 
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
       window.history.pushState(null, "", `#${id}`);
+      setActiveId(id);
     }
   };
 
