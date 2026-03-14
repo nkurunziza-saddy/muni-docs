@@ -12,10 +12,11 @@ export function H3(
     <Heading
       {...props}
       className={cn(
-        "scroll-m-20 text-xl font-semibold tracking-tight",
+        "",
         props.className,
       )}
       level={3}
     />
   );
 }
+

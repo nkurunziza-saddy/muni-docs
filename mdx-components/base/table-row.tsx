@@ -10,7 +10,7 @@ export function TableRow(
   return (
     <tr
       {...props}
-      className={cn("even:bg-muted m-0 border-t p-0", props.className)}
+      className={cn("", props.className)}
     />
   );
 }

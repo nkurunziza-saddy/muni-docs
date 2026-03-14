@@ -1,94 +1,107 @@
-h1 {
-  @apply text-4xl font-bold tracking-[-0.03em] leading-[1.1] text-foreground mb-10 lowercase;
+/* Muni Docs: Clean Typography System
+   Scale: Major Third (1.25)
+   Base: 17px (prose)
+*/
+
+@import "tailwindcss";
+
+:root {
+  --prose-max-width: 68ch;
+  --prose-body-size: 1.0625rem;
+  --prose-leading: 1.7;
+  --prose-heading-leading: 1.25;
 }
 
-h2 {
-  @apply text-2xl font-bold tracking-tight leading-tight text-foreground mt-16 mb-6 lowercase;
-}
-
-h3 {
-  @apply text-lg font-semibold tracking-tight leading-snug text-foreground mt-12 mb-4 lowercase;
-}
-
-p {
-  @apply text-[15px] leading-[1.7] text-muted-foreground/90 mb-6;
+.mdx-content {
+  color: hsl(var(--foreground));
 }
 
 .prose {
-  @apply text-[15px] leading-[1.7] text-muted-foreground/90;
+  font-size: var(--prose-body-size);
+  line-height: var(--prose-leading);
+  color: hsl(var(--foreground));
 }
 
-.prose h1 {
-  @apply text-4xl font-bold mb-12 pb-6 border-b border-border/10 tracking-[-0.03em] text-foreground lowercase;
-}
-
-.prose h2 {
-  @apply text-2xl font-bold mt-20 mb-6 pb-2 border-b border-border/5 tracking-tight text-foreground lowercase flex items-center gap-3;
-}
-
-.prose h2::before {
-  content: "02";
-  @apply font-mono text-[10px] font-bold text-primary opacity-30 tracking-widest;
-}
-
-.prose h3 {
-  @apply text-lg font-semibold mt-14 mb-4 tracking-tight text-foreground lowercase flex items-center gap-3;
-}
-
-.prose h3::before {
-  content: "03";
-  @apply font-mono text-[10px] font-bold text-primary opacity-20 tracking-widest;
+.prose :where(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote) {
+  max-width: var(--prose-max-width);
 }
 
 .prose p {
-  @apply mb-6;
+  @apply text-muted-foreground;
 }
 
-.prose ul,
+.prose h1 {
+  @apply text-3xl md:text-4xl font-semibold tracking-tight text-foreground;
+  line-height: var(--prose-heading-leading);
+}
+
+.prose h2 {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight text-foreground;
+  line-height: var(--prose-heading-leading);
+}
+
+.prose h3 {
+  @apply text-xl md:text-2xl font-semibold tracking-tight text-foreground;
+  line-height: var(--prose-heading-leading);
+}
+
+.prose h4 {
+  @apply text-lg md:text-xl font-semibold text-foreground;
+  line-height: var(--prose-heading-leading);
+}
+
+.prose h5 {
+  @apply text-base md:text-lg font-semibold text-foreground;
+  line-height: var(--prose-heading-leading);
+}
+
+.prose h6 {
+  @apply text-sm md:text-base font-semibold text-foreground;
+  line-height: var(--prose-heading-leading);
+}
+
+.prose a {
+  @apply text-primary font-medium underline underline-offset-[6px] decoration-primary/30 hover:decoration-primary transition-colors;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
 .prose ol {
-  @apply mb-8 pl-0 list-none;
-}
-
-.prose li {
-  @apply relative pl-6 mb-3 flex items-start gap-2;
-}
-
-.prose ul li::before {
-  content: "—";
-  @apply absolute left-0 text-primary/40 font-mono font-bold;
-}
-
-.prose ol {
-  counter-reset: item;
-}
-
-.prose ol li::before {
-  counter-increment: item;
-  content: counter(item, decimal-leading-zero);
-  @apply absolute left-0 text-[10px] font-mono font-bold text-primary/40 mt-1;
+  @apply list-decimal;
 }
 
 .prose code {
-  @apply text-[13px] font-mono px-1.5 py-0.5 border border-border/40 bg-muted/20 text-foreground lowercase;
+  @apply text-[0.9em] font-mono px-1.5 py-0.5 border border-border/40 bg-muted/30 text-foreground;
 }
 
 .prose blockquote {
-  @apply border-l-2 border-primary/20 pl-8 py-2 my-12 italic text-muted-foreground/80 bg-muted/5 pr-6;
+  @apply pl-4 italic text-muted-foreground;
 }
 
 .prose table {
-  @apply w-full text-[13px] border border-border/10 my-12 border-collapse;
+  @apply w-full text-[14px] border border-border/20 border-collapse;
 }
 
 .prose th {
-  @apply border-b border-border/10 bg-muted/10 px-5 py-4 text-left font-mono font-bold text-[11px] uppercase tracking-widest text-foreground/60;
+  @apply border-b border-border/20 bg-muted/10 px-4 py-3 text-left font-semibold text-foreground/80;
 }
 
 .prose td {
-  @apply border-b border-border/10 px-5 py-4 text-muted-foreground/80 leading-relaxed;
+  @apply border-b border-border/10 px-4 py-3 text-muted-foreground leading-relaxed;
 }
 
 .prose hr {
-  @apply border-t border-border/10 my-20 border-dashed;
+  @apply border-t border-border/30;
 }
 
+.prose .not-prose,
+.prose pre {
+  @apply my-6;
+}
+
+.prose li > .not-prose,
+.prose li > pre {
+  @apply mt-3 mb-2;
+}

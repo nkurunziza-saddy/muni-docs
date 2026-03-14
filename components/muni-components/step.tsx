@@ -26,13 +26,13 @@ export function Step({
   }[titleLevel];
 
   return (
-    <div className={cn("mb-7", className)}>
-      <div className="relative">
-        <div className="absolute left-[-39px] -top-0.5 flex items-center justify-center size-[34px] bg-muted rounded-full border-[0.5em] border-background text-muted-foreground text-xs font-normal">
-          {step}
-        </div>
+    <div className={cn("space-y-3", className)}>
+      <div className="text-[11px] font-mono font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+        step {step.toString().padStart(2, "0")}
+      </div>
+      <div>
         {typeof title === "string" ? (
-          <HeadingComponent>{title}</HeadingComponent>
+          <HeadingComponent className="!mt-0 !mb-2">{title}</HeadingComponent>
         ) : (
           title
         )}

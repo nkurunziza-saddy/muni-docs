@@ -21,22 +21,23 @@ export default function DocsLayout({
           <DocsHeader />
 
           <div className="flex flex-1 min-w-0 justify-center">
-            <div className="flex-1 max-w-4xl px-6 py-12 md:px-12 md:py-16 lg:px-20 min-w-0">
+            <div className="flex-1 max-w-4xl px-4 py-10 md:px-8 md:py-12 lg:px-12 min-w-0">
               {muniConfig.features?.toc !== false && (
-                <div className="xl:hidden mb-12">
+                <div className="xl:hidden mb-8">
                   <MobileTableOfContents />
                 </div>
               )}
 
-              <div className="w-full min-w-0 mdx-content">{children}</div>
-              
-              <div className="mt-32 pt-12 border-t border-border/10 border-dashed">
+              <div className="w-full min-w-0">{children}</div>
+
+              <div className="mt-16 pt-8 border-t border-border/10 border-dashed">
                 <DocsPagination />
               </div>
             </div>
 
             <TableOfContents />
           </div>
+
         </SidebarInset>
 
       </div>

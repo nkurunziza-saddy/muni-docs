@@ -20,12 +20,12 @@ export function Tabs({
 
   return (
     <TabsPrimitive.Root
-      className={cn("not-prose w-full mb-6 border border-input rounded-lg")}
+      className={cn("not-prose w-full my-6 border border-border/30 rounded-lg shadow-none")}
       defaultValue={defaultValue}
     >
       <TabsPrimitive.List
         className={cn(
-          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg"
+          "bg-muted/10 border-b border-border/30 flex px-3"
         )}
       >
         {children.map((child) => {
@@ -36,10 +36,10 @@ export function Tabs({
               key={c.props.value}
               value={c.props.value}
               className={cn(
-                "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
+                "border-b-2 border-transparent text-muted-foreground/70 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] px-4 py-2.5 transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
               )}
             >
-              {c.props.value}
+              {c.props.value.toLowerCase()}
             </TabsPrimitive.Trigger>
           );
         })}
@@ -52,7 +52,7 @@ export function Tabs({
           <TabsPrimitive.Content
             key={c.props.value}
             value={c.props.value}
-            className="p-6 focus:outline-none"
+            className="p-4 focus:outline-none bg-background/50"
             role="tabpanel"
             aria-labelledby={`tab-${c.props.value}`}
             tabIndex={0}
@@ -66,5 +66,5 @@ export function Tabs({
 }
 
 export function TabsItem({ children }: TabsItemProps) {
-  return <div className="prose max-w-none">{children}</div>;
+  return <div className="prose">{children}</div>;
 }

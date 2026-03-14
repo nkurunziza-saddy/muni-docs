@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "typography-system": {
+      "source": "sanky369/vibe-building-skills",
+      "sourceType": "github",
+      "computedHash": "001ede16ee8bbadc20a8cd3b371cc7b5057e87f7e5740581a1803c43aa0b464e"
+    },
+    "web-typography": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "computedHash": "154c59a8ef89a5f47127eec776cf46a7d00e6ae331bc2ac407b395b819589017"
+    }
+  }
+}

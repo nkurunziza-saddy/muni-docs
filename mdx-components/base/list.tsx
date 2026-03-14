@@ -21,7 +21,7 @@ export function List({ ordered = false, ...props }: ListProps) {
     return (
       <ol
         {...rest}
-        className={cn("my-2 ml-6", "list-decimal", "[&>li]:mt-2", className)}
+        className={cn("", className)}
       />
     );
   } else {
@@ -29,7 +29,7 @@ export function List({ ordered = false, ...props }: ListProps) {
     return (
       <ul
         {...rest}
-        className={cn("my-2 ml-6", "list-disc", "[&>li]:mt-2", className)}
+        className={cn("", className)}
       />
     );
   }

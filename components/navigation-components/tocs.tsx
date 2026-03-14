@@ -21,7 +21,7 @@ export function TableOfContents() {
           <div className="relative flex-1 overflow-hidden group/toc">
             <nav
               id="toc-container"
-              className="h-full max-h-[80vh] overflow-y-auto no-scrollbar overscroll-contain border-l border-border/10 relative pl-4"
+              className="h-full max-h-[80vh] overflow-y-auto no-scrollbar overscroll-contain relative pr-2"
             >
               <ul className="space-y-4 py-1">
                 {toc.map((item) => (
@@ -38,10 +38,10 @@ export function TableOfContents() {
                       type="button"
                       onClick={() => handleClick(item.id)}
                       className={cn(
-                        "w-full text-left text-[11px] font-mono transition-all duration-300 outline-none uppercase tracking-wide cursor-pointer",
+                        "w-full text-left text-[13px] font-sans transition-all duration-300 outline-none cursor-pointer",
                         activeId === item.id
                           ? "text-foreground font-bold opacity-100"
-                          : "text-muted-foreground opacity-40 hover:opacity-100",
+                          : "text-muted-foreground opacity-50 hover:opacity-100",
                       )}
                     >
                       <span className="line-clamp-2 leading-relaxed">

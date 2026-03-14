@@ -16,15 +16,15 @@ export function CodeTitle({
       {...props}
       className={cn(
         "not-prose bg-muted/30 backdrop-blur-md",
-        "flex items-center justify-between px-4 py-2 text-[10px] uppercase tracking-[0.15em] font-mono font-semibold group-[.code-group]:hidden border-b border-border/40",
+        "flex items-center justify-between px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-mono font-bold group-[.code-group]:hidden border-b border-border/40",
         className,
       )}
     >
       <div className="flex items-center gap-2.5 opacity-80">
         {language === "bash" ? (
-          <RiCommandLine className="size-3.5 opacity-60" />
+          <RiCommandLine className="size-4 opacity-60" />
         ) : children.match(/\.(.*)$/) ? (
-          <RiFile3Line className="size-3.5 opacity-60" />
+          <RiFile3Line className="size-4 opacity-60" />
         ) : null}
         <span className="text-foreground">{children.toLowerCase()}</span>
       </div>

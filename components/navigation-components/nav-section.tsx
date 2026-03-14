@@ -28,14 +28,14 @@ function NavLink({ item }: { item: NavItem }) {
       <Link
         href={href}
         className={cn(
-          "flex items-center gap-2 text-xs font-mono py-1.5 px-3 transition-all duration-200 group/nav",
+          "flex items-center gap-2 text-[13px] font-sans py-1.5 px-3 transition-all duration-200 group/nav",
           isActive
             ? "text-primary font-bold"
             : "text-muted-foreground/60 hover:text-foreground",
         )}
       >
         <span className={cn(
-            "text-[10px] font-bold transition-all",
+            "text-[10px] font-mono font-bold transition-all",
             isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/nav:opacity-30"
         )}>&gt;</span>
         {item.title.toLowerCase()}
@@ -65,14 +65,14 @@ export function NavSection({
         <Link
           href={href}
           className={cn(
-            "flex items-center gap-2 text-sm font-mono py-2.5 px-3 transition-all duration-200 group/nav",
+            "flex items-center gap-2 text-[14px] font-sans py-2 px-3 transition-all duration-200 group/nav",
             isActive
               ? "text-primary font-bold"
               : "text-muted-foreground/60 hover:text-foreground",
           )}
         >
           <span className={cn(
-            "text-[10px] font-bold transition-all",
+            "text-[10px] font-mono font-bold transition-all",
             isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/nav:opacity-30"
           )}>&gt;</span>
           {item.title.toLowerCase()}

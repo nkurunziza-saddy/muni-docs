@@ -14,13 +14,10 @@ export function Heading({
       {...props}
       id={props.id}
       className={cn(
-        "group flex items-center gap-3 scroll-m-32",
+        "group flex items-center gap-2 scroll-m-32",
         props.className,
       )}
     >
-      <span className="font-mono text-[10px] font-bold text-primary opacity-0 -ml-6 transition-all group-hover:opacity-30 group-hover:ml-0 hidden md:inline">
-        {Array(level).fill('#').join('')}
-      </span>
       <span className="flex-1">{props.children}</span>
       {props.id && (
         <a 

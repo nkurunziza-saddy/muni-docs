@@ -54,13 +54,20 @@ export function Callout({ children, type, title, className }: CalloutProps) {
   const Icon = config.icon;
 
   return (
-    <Alert variant={config.variant} className={cn("not-prose my-8 rounded-none border-l-4", className)}>
-      <div className="flex flex-col gap-1 w-full">
-        <div className="flex items-center gap-2 mb-1">
-            <Icon className="size-3.5 opacity-80" />
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] opacity-80">{(title ?? config.title).toLowerCase()}</span>
+    <Alert
+      variant={config.variant}
+      className={cn("not-prose my-6 rounded-lg border px-4 py-3", className)}
+    >
+      <div className="flex flex-col gap-2 w-full">
+        <div className="flex items-center gap-2">
+          <Icon className="size-4 opacity-70" />
+          <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            {(title ?? config.title).toLowerCase()}
+          </span>
         </div>
-        <AlertDescription className="no-mdx-block text-sm leading-relaxed">{children}</AlertDescription>
+        <AlertDescription className="no-mdx-block text-[15px] leading-relaxed">
+          {children}
+        </AlertDescription>
       </div>
     </Alert>
   );

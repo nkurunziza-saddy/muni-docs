@@ -62,10 +62,10 @@ export function MobileTableOfContents() {
                       setIsOpen(false);
                     }}
                     className={cn(
-                      "w-full text-left text-xs font-mono transition-all duration-300 block py-2 px-3 outline-none uppercase tracking-wide",
+                      "w-full text-left text-[13px] font-sans transition-all duration-200 block py-2 px-3 outline-none",
                       activeId === item.id
                         ? "text-foreground font-bold opacity-100"
-                        : "text-muted-foreground opacity-40 hover:opacity-100"
+                        : "text-muted-foreground opacity-50 hover:text-foreground hover:bg-muted/50"
                     )}
 
                   >

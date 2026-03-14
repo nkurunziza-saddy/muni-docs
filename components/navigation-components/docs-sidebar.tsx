@@ -44,10 +44,10 @@ export function DocsSidebar() {
                 <span className="opacity-40">]</span>
             </div>
             <div className="flex flex-col">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-foreground leading-none">
+                <span className="text-[12px] font-mono font-bold uppercase tracking-[0.2em] text-foreground leading-none">
                     {muniConfig.title?.toLowerCase() ?? "muni"}
                 </span>
-                <span className="text-[8px] font-mono opacity-30 uppercase tracking-[0.1em] mt-1">docs_engine.v1</span>
+                <span className="text-[9px] font-mono opacity-30 uppercase tracking-[0.1em] mt-1">docs_engine.v1</span>
             </div>
           </div>
         </div>

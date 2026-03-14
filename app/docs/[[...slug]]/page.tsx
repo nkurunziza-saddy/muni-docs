@@ -121,17 +121,17 @@ export default async function Page({ params }: PageProps) {
     return (
       <div className="w-full">
         {/* page actions at the top */}
-        <div className="mb-12 flex justify-end">
+        <div className="mb-10 flex justify-end">
           <PageActions slug={slug} />
         </div>
 
-        <div className="mdx-content prose prose-muted dark:prose-invert max-w-none">
+        <div className="mdx-content prose dark:prose-invert">
           <Post />
         </div>
 
-        <div className="mt-24 pt-8 border-t border-border/10 border-dashed">
+        <div className="mt-20 pt-6 border-t border-border/10 border-dashed">
           {muniConfig.showFrontmatterMeta !== false && (
-            <div className="flex flex-col gap-1 px-4 border-l-2 border-primary/20">
+            <div className="flex flex-col gap-2 px-4">
                 <FrontmatterMeta frontmatter={frontmatter} />
             </div>
           )}

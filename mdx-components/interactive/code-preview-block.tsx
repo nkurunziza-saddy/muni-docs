@@ -73,7 +73,7 @@ export function CodePreviewBlock({
         aria-labelledby="tab-preview"
         tabIndex={0}
       >
-        <div className="w-full p-6 bg-muted/20 rounded-b-lg not-prose">
+        <div className="w-full p-4 bg-muted/20 rounded-b-lg not-prose">
           {previewChild}
         </div>
       </TabsPrimitive.Content>

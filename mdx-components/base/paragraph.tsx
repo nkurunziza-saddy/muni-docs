@@ -10,7 +10,7 @@ export function Paragraph(
   return (
     <p
       {...props}
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", props.className)}
+      className={cn("", props.className)}
     />
   );
 }

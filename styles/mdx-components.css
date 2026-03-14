@@ -47,90 +47,42 @@
 
 /* MDX Component Base Styles */
 .mdx-content {
-  /* Ensure proper spacing and typography */
-  line-height: 1.7;
-  color: hsl(var(--foreground));
   /* Prevent horizontal overflow */
   overflow-x: hidden;
   word-wrap: break-word;
   word-break: break-word;
 }
 
-.mdx-content h1,
-.mdx-content h2,
-.mdx-content h3,
-.mdx-content h4,
-.mdx-content h5,
-.mdx-content h6 {
-  scroll-margin-top: 2rem;
-  font-weight: 600;
-  line-height: 1.25;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.mdx-content h1:first-child,
-.mdx-content h2:first-child,
-.mdx-content h3:first-child,
-.mdx-content h4:first-child,
-.mdx-content h5:first-child,
-.mdx-content h6:first-child {
-  margin-top: 0;
-}
-
-.mdx-content p {
-  margin-bottom: var(--mdx-space-md);
-}
-
-.mdx-content ul,
-.mdx-content ol {
-  margin-bottom: var(--mdx-space-md);
-  padding-left: 1.5rem;
-}
-
-.mdx-content li {
-  margin-bottom: 0.25rem;
-}
-
-.mdx-content blockquote {
-  border-left: 4px solid hsl(var(--border));
-  padding-left: var(--mdx-space-md);
-  margin: var(--mdx-space-lg) 0;
-  font-style: italic;
-  color: hsl(var(--muted-foreground));
+/* Keep heading anchors consistent without overriding typography */
+:where(.mdx-content h1, .mdx-content h2, .mdx-content h3, .mdx-content h4, .mdx-content h5, .mdx-content h6) {
+  scroll-margin-top: 6rem;
 }
 
 .mdx-content code {
-  background: hsl(var(--muted));
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
     "Liberation Mono", Menlo, monospace;
 }
 
 .mdx-content pre {
-  /* background: var(--mdx-code-bg); */
   border: 1px solid var(--mdx-code-border);
-  border-radius: 0;
-  padding: var(--mdx-code-padding);
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
   overflow-x: auto;
-  margin: 0;
 }
 
 .mdx-content pre code {
   background: transparent;
   padding: 0;
   border-radius: 0;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  border: none;
 }
 
 /* Callout Styles */
 .mdx-callout {
-  border-radius: var(--mdx-code-radius);
-  padding: var(--mdx-space-md);
-  margin: var(--mdx-space-lg) 0;
-  border-left: 4px solid;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--mdx-code-border);
 }
 
 .mdx-callout--note {
@@ -271,22 +223,6 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .mdx-content {
-    font-size: 0.875rem;
-  }
-
-  .mdx-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .mdx-content h2 {
-    font-size: 1.25rem;
-  }
-
-  .mdx-content h3 {
-    font-size: 1.125rem;
-  }
-
   .mdx-tabs-list {
     flex-wrap: wrap;
   }

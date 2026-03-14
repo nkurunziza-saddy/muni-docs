@@ -10,7 +10,7 @@ export function Blockquote(
   return (
     <blockquote
       {...props}
-      className={cn("border-l-2 pl-6 italic", props.className)}
+      className={cn("", props.className)}
     >
       {props.children}
     </blockquote>

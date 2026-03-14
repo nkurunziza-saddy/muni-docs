@@ -12,7 +12,7 @@ export function H2(
     <Heading
       {...props}
       className={cn(
-        "scroll-m-20 text-3xl font-bold tracking-tight first:mt-0 ",
+        "",
         props.className,
       )}
       level={2}

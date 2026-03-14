@@ -2,9 +2,9 @@
 
 .shiki {
   background-color: var(--shiki-light-bg);
-  @apply text-[13px] leading-relaxed;
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--radius-sm);
+  @apply text-[15px] leading-[1.8];
+  padding: 2.5rem;
+  border-radius: 0;
   overflow-x: auto;
 }
 
@@ -95,12 +95,12 @@
 
 .shiki.has-line-numbers .line::before {
   content: attr(data-line-number);
-  @apply absolute -left-9 w-6 text-right text-muted-foreground/60 text-xs font-mono select-none;
+  @apply absolute -left-14 w-10 text-right text-muted-foreground/30 text-[12px] font-mono select-none;
 }
 
 .shiki.has-line-numbers::before {
   content: "";
-  @apply absolute left-11 top-0 bottom-0 w-px bg-border/50;
+  @apply absolute left-16 top-0 bottom-0 w-px bg-border/10;
 }
 
 @media (prefers-reduced-motion: reduce) {

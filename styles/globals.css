@@ -13,15 +13,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply text-sm bg-background text-foreground;
+    @apply font-sans text-base bg-background text-foreground antialiased;
     font-display: swap;
     overflow-x: hidden;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
   }
+
 
   ::-webkit-scrollbar {
     width: 5px;

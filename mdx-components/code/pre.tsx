@@ -64,25 +64,26 @@ export function Pre({
                 {props["data-title"]}
               </CodeTitle>
             ) : (
-              <div className="flex items-center justify-between px-4 py-2 border-b border-border/40 bg-muted/10">
-                <div className="flex items-center gap-1.5">
+              <div className="flex items-center justify-between px-6 py-3 border-b border-border/40 bg-muted/10">
+                <div className="flex items-center gap-2">
                   <div className="size-1.5 bg-border/60" />
-                  <span className="text-[9px] uppercase tracking-widest font-mono opacity-40 font-semibold">terminal</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-40 font-bold">terminal</span>
                 </div>
                 {props["data-lang"] && (
-                  <span className="text-[9px] uppercase tracking-widest font-mono opacity-40 font-semibold">
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-40 font-bold">
                     {props["data-lang"]}
                   </span>
                 )}
               </div>
             )
           )}
-          <div className="shiki group/code-wrapper relative">{children}</div>
+          <div className="group/code-wrapper relative">{children}</div>
         </CodeBlock>
       );
     }
     return children;
   };
+
 
   return (
     <IsInCodeBlockContext.Provider value={true}>
@@ -90,9 +91,9 @@ export function Pre({
         <pre
           ref={ref}
           {...props}
-          className={cn(className, "overflow-auto custom-scrollbar p-0 m-0 group/pre relative")}
+          className={cn(className, "overflow-auto custom-scrollbar m-0 group/pre relative")}
         >
-          <CopyButton copied={copied} copy={copy} className="top-2 end-2 group-hover/pre:opacity-100" />
+          <CopyButton copied={copied} copy={copy} className="top-3 end-4 group-hover/pre:opacity-100" />
           {children_}
         </pre>
       )}

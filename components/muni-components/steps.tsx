@@ -9,7 +9,7 @@ export type StepsProps = {
 export function Steps({ children, className }: StepsProps) {
   return (
     <div
-      className={cn("border-l border-border pl-6 ml-3 mt-6 md:ml-1", className)}
+      className={cn("space-y-8", className)}
     >
       {children}
     </div>

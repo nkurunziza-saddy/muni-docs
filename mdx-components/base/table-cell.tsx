@@ -3,17 +3,15 @@ import { cn } from "@/lib/utils";
 
 export function TableCell(
   props: DetailedHTMLProps<
-    TdHTMLAttributes<HTMLTableCellElement>,
-    HTMLTableCellElement
+    TdHTMLAttributes<HTMLTableDataCellElement>,
+    HTMLTableDataCellElement
   >,
 ) {
   return (
     <td
       {...props}
-      className={cn(
-        "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        props.className,
-      )}
+      className={cn("", props.className)}
     />
   );
 }
+
