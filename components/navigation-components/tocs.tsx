@@ -12,7 +12,7 @@ export function TableOfContents() {
 
   return (
     <aside className="hidden xl:block w-64 shrink-0 relative">
-      <div className="sticky top-14 h-[calc(100vh-3.5rem)] py-12 px-8 flex flex-col">
+      <div className="sticky top-14 h-[calc(100vh-3.5rem)] py-12 flex flex-col">
         <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] mb-8 opacity-20 select-none">
           index
         </h4>
@@ -21,7 +21,7 @@ export function TableOfContents() {
           <div className="relative flex-1 overflow-hidden group/toc">
             <nav
               id="toc-container"
-              className="h-full max-h-[80vh] overflow-y-auto no-scrollbar overscroll-contain border-l border-border/10 relative"
+              className="h-full max-h-[80vh] overflow-y-auto no-scrollbar overscroll-contain border-l border-border/10 relative pl-4"
             >
               <ul className="space-y-4 py-1">
                 {toc.map((item) => (
@@ -30,8 +30,8 @@ export function TableOfContents() {
                     id={`toc-${item.id}`}
                     className={cn("transition-all duration-300", {
                       "pl-0": item.level === 2,
-                      "pl-4": item.level === 3,
-                      "pl-8": item.level === 4,
+                      "pl-2": item.level === 3,
+                      "pl-4": item.level === 4,
                     })}
                   >
                     <button
