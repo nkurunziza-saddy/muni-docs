@@ -15,7 +15,7 @@ This is a Next.js 15 documentation template built with TypeScript, Tailwind CSS 
   - `muni-components/` - Custom Muni components
 - `content/pages/` - MDX documentation content
 - `mdx-components/` - MDX component overrides organized by category
-- `lib/` - Utility functions, hooks, and plugins
+- `lib/` - Utility functions, hooks, and Shiki transformers
 - `styles/` - CSS files with theme system
 
 ## Configuration

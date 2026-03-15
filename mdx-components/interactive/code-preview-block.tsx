@@ -2,9 +2,8 @@
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement } from "react";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
+import { IsInCodeBlockContext, IsTabContentContext } from "@/lib/hooks/use-in-code";
 import { cn } from "@/lib/utils";
-import { Pre } from "../code/pre";
 
 export interface CodePreviewBlockProps {
   children: ReactElement<{ className?: string; children?: ReactElement }>[];
@@ -20,14 +19,7 @@ export function CodePreviewBlock({
   if (!Array.isArray(children)) return null;
 
   const previewChild = children[0];
-  const codeChild = children[1] as ReactElement<{
-    className?: string;
-    children?: ReactElement;
-  }>;
-
-  const props = codeChild?.props?.children?.props ?? codeChild?.props;
-  const codeClassName = codeChild?.props?.className;
-  const isShiki = String(codeClassName ?? "").includes("shiki");
+  const codeChild = children[1];
 
   return (
     <TabsPrimitive.Root
@@ -79,14 +71,15 @@ export function CodePreviewBlock({
       </TabsPrimitive.Content>
       <TabsPrimitive.Content
         value="code"
-        data-shiki={isShiki}
         className="focus:outline-none"
         role="tabpanel"
         aria-labelledby="tab-code"
         tabIndex={0}
       >
         <IsInCodeBlockContext.Provider value={true}>
-          <Pre isTabContent className={codeClassName} {...props} />
+          <IsTabContentContext.Provider value={true}>
+            {codeChild}
+          </IsTabContentContext.Provider>
         </IsInCodeBlockContext.Provider>
       </TabsPrimitive.Content>
     </TabsPrimitive.Root>

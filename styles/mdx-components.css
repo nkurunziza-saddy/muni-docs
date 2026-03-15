@@ -172,44 +172,20 @@
 
 /* One-line command block */
 .mdx-command {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  border: 1px solid var(--mdx-code-border);
-  border-radius: 0.75rem;
-  padding: 0.6rem 0.9rem;
-  background: hsl(var(--muted) / 0.35);
-}
-
-.mdx-command__label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
+  /* Layout handled by React component classes now */
 }
 
 .mdx-command__pre {
   margin: 0;
-  padding: 0;
   border: none;
   background: transparent;
   flex: 1;
   min-width: 0;
-  overflow: auto;
 }
 
 .mdx-command__code {
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  white-space: nowrap;
-}
-
-.mdx-command pre {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent;
 }
 
 /* Steps Styles */

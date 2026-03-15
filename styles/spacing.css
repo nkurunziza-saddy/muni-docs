@@ -12,7 +12,7 @@
 
   /* Base rhythm between blocks */
   & > * + * {
-    margin-top: var(--mdx-space-2);
+    margin-top: var(--mdx-space-3);
   }
 
   /* Headings */
@@ -26,7 +26,7 @@
 
   & h2 {
     margin-top: var(--mdx-space-4);
-    margin-bottom: var(--mdx-space-2);
+    margin-bottom: var(--mdx-space-3);
     &:first-child {
       margin-top: 0;
     }
@@ -37,7 +37,7 @@
   & h5,
   & h6 {
     margin-top: var(--mdx-space-3);
-    margin-bottom: var(--mdx-space-1);
+    margin-bottom: var(--mdx-space-2);
     &:first-child {
       margin-top: 0;
     }
@@ -58,22 +58,44 @@
   /* Lists */
   & ul,
   & ol {
-    margin: var(--mdx-space-2) 0;
+    margin: var(--mdx-space-3) 0;
     padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Direct gap between <li> items */
 
     & li {
-      margin: 0.25rem 0;
+      margin: 0;
+      padding: 0;
+
+      /* Spacing for blocks inside list items */
+      & > p {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      & > pre, 
+      & > .not-prose,
+      & > .mdx-command,
+      & > .mdx-callout {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+      }
     }
 
     & ul,
     & ol {
-      margin: 0.5rem 0;
+      margin: 1rem 0;
+      gap: 0.75rem;
     }
   }
 
-  /* Code blocks */
+  /* Code blocks - the user wants 0 margin on pre */
   & pre {
-    margin: var(--mdx-space-3) 0;
+    margin: 0 !important;
   }
 
   /* Tables, quotes, and components */
@@ -110,7 +132,7 @@
 
   /* Tighten spacing before headings */
   & > *:has(+ h1, + h2, + h3, + h4, + h5, + h6) {
-    margin-bottom: var(--mdx-space-1);
+    margin-bottom: 0;
   }
 }
 
@@ -123,7 +145,7 @@
     --mdx-space-5: 2.6rem;
 
     & > * + * {
-      margin-top: 0.6rem;
+      margin-top: 1rem;
     }
     & h1 {
       margin-top: 1.75rem;
@@ -138,25 +160,4 @@
       margin-top: 1.25rem;
     }
   }
-}
-
-/* Auto-spacing for common patterns */
-.mdx-auto-space {
-  & > * + * {
-    margin-top: var(--mdx-space, 1rem);
-  }
-}
-
-/* Utility classes for spacing overrides */
-.mdx-tight {
-  --mdx-space: 0.5rem;
-}
-.mdx-normal {
-  --mdx-space: 1rem;
-}
-.mdx-loose {
-  --mdx-space: 1.5rem;
-}
-.mdx-extra-loose {
-  --mdx-space: 2rem;
 }

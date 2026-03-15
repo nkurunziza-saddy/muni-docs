@@ -1,18 +1,5 @@
-"use client";
-import {
-  type DetailedHTMLProps,
-  type HTMLAttributes,
-  type ReactElement,
-  type ReactNode,
-  useCallback,
-  useMemo,
-} from "react";
-import { CopyButton } from "@/components/muni-components/copy-button";
-import { useCopyCode } from "@/lib/hooks/use-copy-code";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
-import { cn } from "@/lib/utils";
-import { CodeBlock } from "./code-block";
-import { CodeTitle } from "./code-title";
+import { type DetailedHTMLProps, type HTMLAttributes, type ReactElement } from "react";
+import { HighlightedCode } from "./highlighted-code";
 
 export function Pre({
   children,
@@ -20,85 +7,41 @@ export function Pre({
   isTabContent = false,
   ...props
 }: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement> & {
-  "data-lang"?: string;
-  "data-title"?: string;
   isTabContent?: boolean;
 }) {
-  const { copied, copy, ref } = useCopyCode();
+  // 1. Extract the code element
+  const codeElement = (Array.isArray(children) 
+    ? children.find(child => (child as ReactElement)?.type === "code" || (child as ReactElement)?.props?.children) 
+    : children) as ReactElement;
 
-  const recurseChildren = useCallback(
-    (children: ReactElement<any>): ReactNode => {
-      if (!children) return children;
-      if (typeof children !== "object") return children;
-      if ("props" in children)
-        return {
-          ...children,
-          props: {
-            ...children.props,
-            children: Array.isArray(children.props.children)
-              ? children.props.children.map(recurseChildren)
-              : recurseChildren(children.props.children),
-          },
-        };
-      return children;
-    },
-    []
-  );
-
-  const children_ = useMemo(
-    () => recurseChildren(children as ReactElement),
-    [children, recurseChildren]
-  );
-
-  const wrap = (children: React.ReactNode) => {
-    if (className?.includes("shiki")) {
-      return (
-        <CodeBlock
-          className={cn(
-            isTabContent
-              ? ""
-              : "border border-border/30 rounded-xl overflow-hidden shadow-none bg-muted/10"
-          )}
-        >
-          {!isTabContent && (
-            props["data-title"] ? (
-              <CodeTitle language={props["data-lang"]}>
-                {props["data-title"]}
-              </CodeTitle>
-            ) : (
-              <div className="flex items-center justify-between px-6 py-2 border-b border-border/30 bg-muted/10">
-                <div className="flex items-center gap-2">
-                  <div className="size-1.5 bg-border/60 rounded-full" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-50 font-bold">terminal</span>
-                </div>
-                {props["data-lang"] && (
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-50 font-bold">
-                    {props["data-lang"]}
-                  </span>
-                )}
-              </div>
-            )
-          )}
-          <div className="group/code-wrapper relative">{children}</div>
-        </CodeBlock>
-      );
-    }
-    return children;
+  // 2. Extract raw code
+  const extractText = (node: any): string => {
+    if (!node) return "";
+    if (typeof node === "string") return node;
+    if (Array.isArray(node)) return node.map(extractText).join("");
+    if (node.props?.children) return extractText(node.props.children);
+    return "";
   };
 
+  const rawCode = extractText(codeElement?.props?.children || children);
+  
+  // 3. Extract metadata
+  const codeClassName = codeElement?.props?.className as string || "";
+  const lang = codeClassName?.replace("language-", "") || (props as any)["data-lang"] || (props as any)["data-language"] || "text";
+  
+  // MDX passes the "meta" string (like "{1,3-5} showLineNumbers") as props to the code/pre element
+  const meta = (codeElement?.props as any)?.["data-meta"] || (props as any)?.["data-meta"] || "";
+  const title = (props as any)["data-title"] || codeElement?.props?.["data-title"] || "";
 
   return (
-    <IsInCodeBlockContext.Provider value={true}>
-      {wrap(
-        <pre
-          ref={ref}
-          {...props}
-          className={cn(className, "overflow-auto custom-scrollbar m-0 group/pre relative")}
-        >
-          <CopyButton copied={copied} copy={copy} className="top-3 end-4 group-hover/pre:opacity-100" />
-          {children_}
-        </pre>
-      )}
-    </IsInCodeBlockContext.Provider>
+    <HighlightedCode
+      {...props}
+      className={className}
+      lang={lang}
+      title={title}
+      code={rawCode}
+      meta={meta}
+      isTabContent={isTabContent}
+    />
   );
 }

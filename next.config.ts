@@ -1,36 +1,7 @@
-import path from "node:path";
 import createMDX from "@next/mdx";
-import rehypeShiki from "@shikijs/rehype";
-// Shiki transformers
-import {
-  transformerNotationDiff,
-  transformerNotationErrorLevel,
-  transformerNotationFocus,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight,
-  transformerRemoveNotationEscape,
-} from "@shikijs/transformers";
 import type { NextConfig } from "next";
 //@ts-expect-error
 import nextPWA from "next-pwa";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-
-// Essential rehype plugins
-import rehypeSlug from "rehype-slug";
-import remarkDirective from "remark-directive";
-import remarkFrontmatter from "remark-frontmatter";
-// Essential remark plugins
-import remarkGfm from "remark-gfm";
-import remarkMdxFrontmatter from "remark-mdx-frontmatter";
-import { rehypeShikiDisplayNotation } from "./lib/plugins/rehype/display-shiki-notation";
-import { rehypeInlineShiki } from "./lib/plugins/rehype/inline-shiki";
-import { rehypePreLineNumbers } from "./lib/plugins/rehype/rehype-pre-line-numbers";
-import { remarkCode } from "./lib/plugins/remark/code";
-import { remarkSubheading } from "./lib/plugins/remark/subheading";
-import { transformerNotationInclude } from "./lib/plugins/transformers/transformer-include";
-import { transformerLineNumbers } from "./lib/plugins/transformers/transformer-line-numbers";
-import { transformerTagline } from "./lib/plugins/transformers/transformer-tagline";
-import { transformerTitle } from "./lib/plugins/transformers/transformer-title";
 
 const withPWA = nextPWA({
   dest: "public",
@@ -41,77 +12,17 @@ const withPWA = nextPWA({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  experimental: {
+    // Rust-based MDX compiler is stable and fast with Turbopack
+    mdxRs: true,
+  },
+  turbopack: {
+    resolveExtensions: [".json", ".ts", ".tsx", ".js", ".jsx", ".md", ".mdx"],
+  },
 };
 
 const withMDX = createMDX({
-  options: {
-    remarkPlugins: [
-      remarkGfm,
-      remarkDirective,
-      remarkFrontmatter,
-      remarkMdxFrontmatter,
-      // Custom
-      remarkCode,
-      remarkSubheading,
-    ],
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "append",
-          content: () => [
-            {
-              type: "element",
-              tagName: "div",
-              properties: { "data-autolink-icon": true },
-              children: [],
-            },
-          ],
-        },
-      ],
-      [
-        rehypeShiki,
-        {
-          themes: {
-            dark: "vitesse-dark",
-            light: "vitesse-light",
-          },
-          defaultColor: false,
-          transformers: [
-            transformerRemoveNotationEscape(),
-            transformerNotationDiff({ matchAlgorithm: "v3" }),
-            transformerNotationFocus({ matchAlgorithm: "v3" }),
-            transformerNotationHighlight({ matchAlgorithm: "v3" }),
-            transformerNotationWordHighlight({ matchAlgorithm: "v3" }),
-            transformerNotationErrorLevel({ matchAlgorithm: "v3" }),
-            // Custom
-            transformerNotationInclude({
-              rootDir: path.resolve(
-                __dirname,
-                process.env.MUNI_DOCS_ROOT || ".",
-              ),
-            }),
-            transformerLineNumbers(),
-            transformerTitle(),
-            transformerTagline(),
-          ].filter(Boolean),
-        },
-      ],
-      [
-        rehypeInlineShiki,
-        {
-          themes: {
-            dark: "vitesse-dark",
-            light: "vitesse-light",
-          },
-          defaultColor: false,
-        },
-      ],
-      rehypeShikiDisplayNotation,
-      rehypePreLineNumbers,
-    ],
-  },
+  // zero options for Turbopack compatibility
 });
 
 export default withPWA(withMDX(nextConfig)) as NextConfig;

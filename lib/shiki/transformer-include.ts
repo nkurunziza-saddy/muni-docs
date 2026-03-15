@@ -2,6 +2,11 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import type { ShikiTransformer } from "shiki";
 
+// We use a conditional check to avoid "server-only" error in next.config.ts (which is evaluated in a mixed environment)
+if (process.env.NODE_ENV === "production") {
+  import("server-only");
+}
+
 const includeRegex = /\/\/ \[!include ([^\]]+)\]/;
 const regionRegex = /\/\/ \[!region ([^\]]+)\]/;
 const regionRegexLineGlobal = /\/\/ \[!region (.*)\]\n/g;

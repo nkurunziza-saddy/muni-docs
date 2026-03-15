@@ -17,20 +17,27 @@ export function useTableOfContents() {
 
   useEffect(() => {
     const extractHeadings = () => {
+      // Find all headings within the content area
       const headingElements = Array.from(
         document.querySelectorAll(".mdx-content h2, .mdx-content h3, .mdx-content h4"),
       );
 
       const headings = headingElements
-        .filter((heading) => heading.id)
-        .map((heading) => ({
-          id: heading.id,
-          text: (heading as HTMLElement).innerText || heading.textContent || "",
-          level: Number.parseInt(heading.tagName.charAt(1), 10),
-        }));
+        .map((heading) => {
+          // If ID is missing (shouldn't happen with our Heading component), skip it
+          if (!heading.id) return null;
+          
+          return {
+            id: heading.id,
+            text: (heading as HTMLElement).innerText || heading.textContent || "",
+            level: Number.parseInt(heading.tagName.charAt(1), 10),
+          };
+        })
+        .filter((h): h is TocItem => h !== null && h.text.trim().length > 0);
 
       setToc(headings);
 
+      // Setup Intersection Observer for active heading tracking
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
@@ -48,6 +55,7 @@ export function useTableOfContents() {
           }
 
           if (visibleHeadings.size > 0) {
+            // Sort by top position to find the "current" heading
             const sorted = Array.from(visibleHeadings.keys()).sort((a, b) => {
               const elA = document.getElementById(a);
               const elB = document.getElementById(b);
@@ -55,11 +63,11 @@ export function useTableOfContents() {
               return elA.getBoundingClientRect().top - elB.getBoundingClientRect().top;
             });
             
-            setActiveId(sorted[0]);
+            if (sorted[0]) setActiveId(sorted[0]);
           }
         },
         {
-          rootMargin: "-60px 0% -70% 0%",
+          rootMargin: "-80px 0% -70% 0%",
           threshold: [0, 1],
         },
       );
@@ -68,29 +76,30 @@ export function useTableOfContents() {
       observerRef.current = observer;
     };
 
-    const timer = setTimeout(() => {
+    // Use a small delay to ensure React has finished rendering the MDX content
+    const timer = setTimeout(extractHeadings, 300);
+
+    // Also use a MutationObserver to catch late-rendering elements if any
+    const mutationObserver = new MutationObserver(() => {
+      clearTimeout(timer);
       extractHeadings();
-      
-      if (window.location.hash) {
-        const id = window.location.hash.substring(1);
-        const element = document.getElementById(id);
-        if (element) {
-          const yOffset = -80;
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "instant" });
-          setActiveId(id);
-        }
-      }
-    }, 200);
+    });
+
+    const contentElement = document.querySelector(".mdx-content");
+    if (contentElement) {
+      mutationObserver.observe(contentElement, { childList: true, subtree: true });
+    }
 
     return () => {
       clearTimeout(timer);
+      mutationObserver.disconnect();
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
     };
   }, [pathname]);
 
+  // Scroll active TOC item into view
   useEffect(() => {
     if (activeId) {
       const tocElement = document.getElementById(`toc-${activeId}`);

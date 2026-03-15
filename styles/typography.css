@@ -71,12 +71,25 @@
   @apply text-primary font-medium underline underline-offset-[6px] decoration-primary/30 hover:decoration-primary transition-colors;
 }
 
+.prose ul,
+.prose ol {
+  @apply my-6 pl-6;
+}
+
 .prose ul {
   @apply list-disc;
 }
 
 .prose ol {
   @apply list-decimal;
+}
+
+.prose li {
+  @apply mt-2;
+}
+
+.prose li :where(p) {
+  @apply my-2;
 }
 
 .prose code {

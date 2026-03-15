@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import muniConfig from "@/muni.config";
 import { PageActions } from "@/components/page-actions";
+import fs from "node:fs/promises";
+import path from "node:path";
+import matter from "gray-matter";
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -38,7 +41,7 @@ function FrontmatterMeta({
   }
 
   const displayDate =
-    date && typeof date === "string"
+    date && (typeof date === "string" || date instanceof Date)
       ? new Date(date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
@@ -70,6 +73,17 @@ export async function generateMetadata({
   const resolvedParams = await params;
   const slug = resolvedParams.slug?.join("/") || "index";
 
+  // Try to get frontmatter for better metadata
+  let frontmatter: any = {};
+  try {
+    const filePath = path.join(process.cwd(), "content", "pages", `${slug}.mdx`);
+    const fileContent = await fs.readFile(filePath, "utf-8");
+    const parsed = matter(fileContent);
+    frontmatter = parsed.data;
+  } catch (e) {
+    // ignore
+  }
+
   const findPage = (
     items: NavigationItem[],
     targetSlug: string
@@ -86,10 +100,10 @@ export async function generateMetadata({
 
   const currentPage = findPage(muniConfig.navigation, slug);
 
-  const pageTitle = currentPage
+  const pageTitle = frontmatter.title || (currentPage
     ? `${currentPage.title} | ${muniConfig.title}`
-    : muniConfig.title;
-  const pageDescription = `Documentation for ${currentPage?.title || "Muni"}`;
+    : muniConfig.title);
+  const pageDescription = frontmatter.description || `Documentation for ${currentPage?.title || "Muni"}`;
 
   return {
     title: pageTitle,
@@ -111,10 +125,17 @@ export default async function Page({ params }: PageProps) {
   const slug = resolvedParams.slug?.join("/") || "index";
 
   try {
-    const { default: Post, frontmatter } = await import(
+    // 1. Get frontmatter manually using gray-matter
+    const filePath = path.join(process.cwd(), "content", "pages", `${slug}.mdx`);
+    const fileContent = await fs.readFile(filePath, "utf-8");
+    const { data: frontmatter } = matter(fileContent);
+
+    // 2. Import the MDX component
+    // Dynamic imports work with @next/mdx
+    const { default: Post } = await import(
       `@/content/pages/${slug}.mdx`
-    ).catch(() => {
-      console.error(`Failed to import ${slug}.mdx`);
+    ).catch((err) => {
+      console.error(`Failed to import ${slug}.mdx`, err);
       throw new Error(`Failed to load page: ${slug}`);
     });
 

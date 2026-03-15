@@ -13,14 +13,17 @@ interface SearchItem {
   sectionType?: "page" | "h2" | "h3" | "h4";
 }
 
-// Convert heading text to URL-safe slug
+// Convert heading text to URL-safe slug (matching lib/utils.ts)
 function slugify(text: string): string {
   return text
+    .toString()
     .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
+    .trim()
     .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
     .replace(/--+/g, "-")
-    .trim();
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
 }
 
 function getAllMDXFiles(dir: string): string[] {
@@ -74,12 +77,12 @@ function generateSearchData() {
         .replace(/^---[\s\S]*?---/, "") // Remove frontmatter
         .replace(/```[\s\S]*?```/g, "") // Remove code blocks
         .replace(/`[^`]*`/g, "") // Remove inline code
-        .replace(/^#{1,6}\s+/gm, "") // Remove heading markers (improved regex)
-        .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // Convert links to text (fixed regex)
-        .replace(/\*\*([^*]*)\*\*/g, "$1") // Remove bold markers
-        .replace(/\*([^*]*)\*/g, "$1") // Remove italic markers
-        .replace(/\n+/g, " ") // Replace newlines with spaces
-        .replace(/\s+/g, " ") // Replace multiple spaces with single space
+        .replace(/^#{1,6}\s+/gm, "") 
+        .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") 
+        .replace(/\*\*([^*]*)\*\*/g, "$1") 
+        .replace(/\*([^*]*)\*/g, "$1") 
+        .replace(/\n+/g, " ") 
+        .replace(/\s+/g, " ") 
         .trim();
 
       // Add page-level search item
@@ -124,17 +127,17 @@ function generateSearchData() {
         const endPos = nextHeading ? nextHeading.position : content.length;
         const sectionContent = content
           .slice(startPos, endPos)
-          .replace(/^---[\s\S]*?---/, "") // Remove frontmatter
-          .replace(/```[\s\S]*?```/g, "") // Remove code blocks
-          .replace(/`[^`]*`/g, "") // Remove inline code
-          .replace(/^#{1,6}\s+/gm, "") // Remove heading markers (improved regex)
-          .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // Convert links to text (fixed regex)
-          .replace(/\*\*([^*]*)\*\*/g, "$1") // Remove bold markers
-          .replace(/\*([^*]*)\*/g, "$1") // Remove italic markers
-          .replace(/\n+/g, " ") // Replace newlines with spaces
-          .replace(/\s+/g, " ") // Replace multiple spaces with single space
+          .replace(/^---[\s\S]*?---/, "") 
+          .replace(/```[\s\S]*?```/g, "") 
+          .replace(/`[^`]*`/g, "") 
+          .replace(/^#{1,6}\s+/gm, "") 
+          .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") 
+          .replace(/\*\*([^*]*)\*\*/g, "$1") 
+          .replace(/\*([^*]*)\*/g, "$1") 
+          .replace(/\n+/g, " ") 
+          .replace(/\s+/g, " ") 
           .trim()
-          .slice(0, 120); // Limit to ~120 chars
+          .slice(0, 120); 
 
         const headingSlug = slugify(heading.text);
         const sectionId = `${slug || "index"}/${headingSlug}`;

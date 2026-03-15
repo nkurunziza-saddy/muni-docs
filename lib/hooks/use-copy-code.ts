@@ -15,12 +15,21 @@ export function useCopyCode() {
   function copy() {
     setCopied(true);
 
-    const node = ref.current?.cloneNode(true) as HTMLPreElement;
-    const nodesToRemove = node?.querySelectorAll(
+    if (!ref.current) return;
+
+    // Prefer data-raw for accurate copying (avoids diff signs etc.)
+    const raw = ref.current.getAttribute("data-raw");
+    if (raw) {
+      navigator.clipboard.writeText(raw);
+      return;
+    }
+
+    const node = ref.current.cloneNode(true) as HTMLPreElement;
+    const nodesToRemove = node.querySelectorAll(
       "button,.line.diff.remove,.twoslash-popup-info-hover,.twoslash-popup-info,.twoslash-meta-line,.twoslash-tag-line",
     );
-    for (const node of nodesToRemove ?? []) node.remove();
-    navigator.clipboard.writeText(node?.textContent as string);
+    for (const n of Array.from(nodesToRemove)) n.remove();
+    navigator.clipboard.writeText(node.textContent || "");
   }
 
   return {

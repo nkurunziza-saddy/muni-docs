@@ -2,9 +2,8 @@
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement } from "react";
-import { IsInCodeBlockContext } from "@/lib/hooks/use-in-code";
+import { IsInCodeBlockContext, IsTabContentContext } from "@/lib/hooks/use-in-code";
 import { cn } from "@/lib/utils";
-import * as PreComponent from "../code/pre";
 
 export interface CodeGroupProps {
   children: ReactElement<{ "data-title"?: string; children?: ReactElement }>[];
@@ -31,7 +30,7 @@ export function CodeGroup({
         ? (child as any).props
         : {};
     const tabTitle = props?.["data-title"] as string | undefined;
-    return { tabTitle, props };
+    return { tabTitle, child: child_ };
   });
 
   return (
@@ -65,24 +64,21 @@ export function CodeGroup({
         ))}
       </TabsPrimitive.TabsList>
 
-      {tabs.map(({ tabTitle, props }, i) => {
-        const isShiki = String((props as any)?.className ?? "").includes(
-          "shiki",
-        );
-
+      {tabs.map(({ tabTitle, child }, i) => {
         return (
           <IsInCodeBlockContext.Provider key={tabTitle || i} value={true}>
-            <TabsPrimitive.Content
-              key={tabTitle || i}
-              data-shiki={isShiki}
-              value={tabTitle ?? ""}
-              className={cn("focus:outline-none ")}
-              role="tabpanel"
-              aria-labelledby={`tab-${tabTitle}`}
-              tabIndex={0}
-            >
-              <PreComponent.Pre isTabContent {...props} />
-            </TabsPrimitive.Content>
+            <IsTabContentContext.Provider value={true}>
+              <TabsPrimitive.Content
+                key={tabTitle || i}
+                value={tabTitle ?? ""}
+                className={cn("focus:outline-none ")}
+                role="tabpanel"
+                aria-labelledby={`tab-${tabTitle}`}
+                tabIndex={0}
+              >
+                {child}
+              </TabsPrimitive.Content>
+            </IsTabContentContext.Provider>
           </IsInCodeBlockContext.Provider>
         );
       })}

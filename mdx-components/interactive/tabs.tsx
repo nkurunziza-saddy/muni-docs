@@ -3,6 +3,7 @@
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { IsTabContentContext } from "@/lib/hooks/use-in-code";
 
 type TabsItemProps = {
   value: string;
@@ -57,7 +58,9 @@ export function Tabs({
             aria-labelledby={`tab-${c.props.value}`}
             tabIndex={0}
           >
-            {c.props.children}
+            <IsTabContentContext.Provider value={true}>
+              {c.props.children}
+            </IsTabContentContext.Provider>
           </TabsPrimitive.Content>
         );
       })}
