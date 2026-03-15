@@ -10,12 +10,6 @@ const CodePreviewBlock = lazy(() =>
   })),
 );
 
-const CodeGroup = lazy(() =>
-  import("@/mdx-components/interactive/code-group").then((module) => ({
-    default: module.CodeGroup,
-  })),
-);
-
 const Steps = lazy(() =>
   import("@/mdx-components/layout/steps").then((module) => ({
     default: module.Steps,
@@ -39,12 +33,6 @@ export const LazyCodePreviewBlock = memo((props: any) => (
   </Suspense>
 ));
 
-export const LazyCodeGroup = memo((props: any) => (
-  <Suspense fallback={<ComponentLoader className="h-24" />}>
-    <CodeGroup {...props} />
-  </Suspense>
-));
-
 export const LazySteps = memo((props: any) => (
   <Suspense fallback={<ComponentLoader className="h-20" />}>
     <Steps {...props} />
@@ -52,5 +40,4 @@ export const LazySteps = memo((props: any) => (
 ));
 
 LazyCodePreviewBlock.displayName = "LazyCodePreviewBlock";
-LazyCodeGroup.displayName = "LazyCodeGroup";
 LazySteps.displayName = "LazySteps";

@@ -1,21 +1,27 @@
-import type { ReactNode } from "react";
-import { Step } from "@/components/muni-components/step";
-import { Steps as Steps_ } from "@/components/muni-components/steps";
+import { type ReactNode, Children, isValidElement } from "react";
+import { cn } from "@/lib/utils";
 
-export function Steps({ children }: { children: ReactNode }) {
-  if (!Array.isArray(children)) return null;
+export interface StepsProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function Steps({ children, className }: StepsProps) {
+  const childrenArray = Children.toArray(children).filter(isValidElement);
+
   return (
-    <Steps_ className="not-prose">
-      {children.map(({ props }, i) => {
-        const [title, ...children] = Array.isArray(props.children)
-          ? props.children
-          : [props.children];
-        return (
-          <Step key={i} title={title} step={i + 1}>
-            {children}
-          </Step>
-        );
+    <div
+      className={cn(
+        "steps-container relative my-12 ml-4 border-l border-border/50 pl-8 space-y-12 [counter-reset:step]",
+        className
+      )}
+    >
+      {childrenArray.map((child: any, i) => {
+        // MDX passes children as props to the Step component
+        // We want to pass the index + 1 as the step number if needed, 
+        // but our Step component now uses CSS counters.
+        return child;
       })}
-    </Steps_>
+    </div>
   );
 }

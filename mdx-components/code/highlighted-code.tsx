@@ -11,8 +11,6 @@ import { PreClient } from "./pre-client";
 
 // Custom transformers
 import { transformerLineNumbers } from "@/lib/shiki/transformer-line-numbers";
-import { transformerTitle } from "@/lib/shiki/transformer-title";
-import { transformerTagline } from "@/lib/shiki/transformer-tagline";
 import { transformerNotationInclude } from "@/lib/shiki/transformer-include";
 
 interface HighlightedCodeProps {
@@ -23,6 +21,14 @@ interface HighlightedCodeProps {
   meta?: string;
   isTabContent?: boolean;
 }
+
+// React attribute mapping
+const attrMap: Record<string, string> = {
+  class: "className",
+  tabindex: "tabIndex",
+  readonly: "readOnly",
+  for: "htmlFor",
+};
 
 export async function HighlightedCode({
   code,
@@ -35,9 +41,13 @@ export async function HighlightedCode({
 }: HighlightedCodeProps) {
   let highlightedHtml = "";
   
+  // List of common languages to ensure we don't fail
+  // Shiki bundles many, but some like 'dockerignore' might be missing depending on version
+  const safeLang = lang === 'dockerignore' ? 'text' : lang;
+
   try {
     highlightedHtml = await codeToHtml(code, {
-      lang,
+      lang: safeLang,
       meta: { __raw: meta },
       themes: {
         dark: "vitesse-dark",
@@ -56,8 +66,6 @@ export async function HighlightedCode({
           rootDir: process.cwd(),
         }),
         transformerLineNumbers(),
-        transformerTitle(),
-        transformerTagline(),
         // Add classes to <pre> based on what's inside
         {
           name: 'meta-classes',
@@ -77,8 +85,17 @@ export async function HighlightedCode({
       ],
     });
   } catch (e) {
-    console.error("Shiki highlighting failed:", e);
-    highlightedHtml = code;
+    console.error(`Shiki highlighting failed for lang "${lang}":`, e);
+    // Fallback to plain text if highlighting fails
+    try {
+        highlightedHtml = await codeToHtml(code, {
+            lang: 'text',
+            themes: { dark: "vitesse-dark", light: "vitesse-light" },
+            defaultColor: false,
+        });
+    } catch (innerError) {
+        highlightedHtml = `<code>${code}</code>`;
+    }
   }
 
   // Extract attributes from <pre>
@@ -90,13 +107,16 @@ export async function HighlightedCode({
   const codeAttrsStr = codeMatch ? codeMatch[1] : "";
   const codeInnerHtml = codeMatch ? codeMatch[2] : code;
 
-  // Helper to parse attributes string into an object
+  // Helper to parse attributes string into an object with React mapping
   const parseAttrs = (attrsStr: string) => {
     const attrs: Record<string, string> = {};
     const regex = /(\w+[-\w]*)=(?:"([^"]*)"|'([^']*)'|(\S+))/g;
     let match;
     while ((match = regex.exec(attrsStr)) !== null) {
-      attrs[match[1]] = match[2] || match[3] || match[4];
+      const name = match[1].toLowerCase();
+      const value = match[2] || match[3] || match[4];
+      const reactName = attrMap[name] || match[1];
+      attrs[reactName] = value;
     }
     return attrs;
   };
@@ -119,7 +139,7 @@ export async function HighlightedCode({
     >
       <code 
         {...codeAttrs}
-        className={`font-mono text-sm ${codeAttrs.class || ''} language-${lang}`}
+        className={`font-mono text-sm ${codeAttrs.className || ''} language-${lang}`}
         dangerouslySetInnerHTML={{ __html: codeInnerHtml }}
       />
     </PreClient>

@@ -245,7 +245,18 @@
   overflow-wrap: break-word;
 }
 
-/* Responsive Design */
+/* Details and Summary styling */
+details[open] summary {
+  @apply border-b border-border/10 mb-4;
+}
+
+details > *:not(summary) {
+  @apply px-5 pb-4;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
 @media (max-width: 768px) {
   .mdx-tabs-list {
     flex-wrap: wrap;

@@ -2,7 +2,7 @@
   {
     "id": "components-showcase",
     "title": "Components Showcase",
-    "content": "Components Showcase This page demonstrates all the available MDX components in the Muni documentation system. Callouts and Info Boxes Callout Component <Callout type=\"info\"> This is an info callout with some important information. </Callout> <Callout type=\"warning\" title=\"Important\"> This is a warning callout with a custom title. </Callout> <Callout type=\"success\"> This is a success callout indicating something worked correctly. </Callout> <Callout type=\"danger\"> This is a danger callout for critical information. </Callout> <Callout type=\"tip\">This is a tip callout with helpful advice.</Callout> InfoBox Component <InfoBox type=\"info\">This is an InfoBox component (alias for Callout).</InfoBox> <InfoBox type=\"warning\" title=\"API Rate Limit\"> The API rate limit is 1000 requests per hour per API key. </InfoBox> Code Components Code Groups <CodeGroup> </CodeGroup> Code Preview Blocks <CodePreviewBlock> <div className=\"p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white\"> <h3 className=\"text-xl font-bold mb-2\">Gradient Card</h3> <p className=\"text-blue-100\"> This is a preview of a gradient card component. </p> <button className=\"mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors\"> Click me </button> </div> </CodePreviewBlock> Individual Code Blocks Interactive Components Tabs <Tabs> <TabsItem value=\"Overview\"> ## Overview This is the overview tab with some basic information about the project. - Feature 1: Description of the first feature - Feature 2: Description of the second feature - Feature 3: Description of the third feature > This is a blockquote in the overview tab. </TabsItem> <TabsItem value=\"Installation\"> ## Installation Install the package using your preferred package manager: <Command label=\"npm\">npm install @muni-docs/components</Command> <Command label=\"yarn\">yarn add @muni-docs/components</Command> <Command label=\"pnpm\">pnpm add @muni-docs/components</Command> Then import the components you need: </TabsItem> <TabsItem value=\"Configuration\"> ## Configuration Configure the components by passing props: ### Environment Variables Set these environment variables in your : - : The default theme - : The API base URL </TabsItem> </Tabs> Layout Components Steps <Steps> <Step> ## Step 1: Project Setup Create a new Next.js project and install the required dependencies. </Step> <Step> ## Step 2: Configuration Set up your configuration file and environment variables. Create a file in your project root: </Step> <Step> ## Step 3: Create Content Start creating your documentation content using MDX files. Place your content files in the directory and they will be automatically processed. </Step> </Steps> Details and Summary <Details> <Summary>Click to expand for more information</Summary> This is additional information that can be expanded or collapsed. It's useful for: - Hiding detailed technical information - Creating FAQ sections - Providing optional context </Details> Typography and Text Headings The documentation system supports all standard heading levels with proper styling and anchor links. Inline Code Use for short code snippets, function names, or technical terms. Code Blocks Use triple backticks for code blocks with syntax highlighting: Lists - Unordered lists work great for bullet points - They support bold text and - And can be nested: - Like this nested item - And this one too 1. Ordered lists are perfect for step-by-step instructions 2. They maintain proper numbering 3. And can also be nested: 1. First nested item 2. Second nested item Blockquotes > This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full callout component styling. Tables | Component | Type | Description | | --------- | ----------- | ------------------------------- | | Callout | Layout | Alert-style callouts with icons | | CodeGroup | Interactive | Tabbed code blocks | | Tabs | Interactive | General-purpose tabs | | Steps | Layout | Step-by-step instructions | | InfoBox | Layout | Alias for Callout component | Best Practices 1. Use semantic components - Choose the right component for your content 2. Keep code blocks focused - Don't make them too long 3. Use descriptive titles - Help users understand what they're looking at 4. Test interactivity - Make sure tabs and other interactive elements work 5. Maintain consistency - Use similar patterns throughout your documentation Conclusion This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to be: - Accessible - Proper ARIA attributes and keyboard navigation - Customizable - Flexible props and styling options - Consistent - Unified design language across all components - Performant - Optimized for fast loading and smooth interactions Use these components to create rich, interactive documentation that your users will love!",
+    "content": "Components Showcase This page demonstrates all the available MDX components in the Muni documentation system. Callouts and Info Boxes Callout Component <Callout type=\"info\"> This is an info callout with some important information. </Callout> <Callout type=\"warning\" title=\"Important\"> This is a warning callout with a custom title. </Callout> <Callout type=\"success\"> This is a success callout indicating something worked correctly. </Callout> <Callout type=\"danger\"> This is a danger callout for critical information. </Callout> <Callout type=\"tip\">This is a tip callout with helpful advice.</Callout> InfoBox Component <InfoBox type=\"info\">This is an InfoBox component (alias for Callout).</InfoBox> <InfoBox type=\"warning\" title=\"API Rate Limit\"> The API rate limit is 1000 requests per hour per API key. </InfoBox> Code Components Code Tabs <Tabs> <TabsItem value=\"TypeScript\"> </TabsItem> <TabsItem value=\"JavaScript\"> </TabsItem> <TabsItem value=\"Python\"> </TabsItem> </Tabs> Code Preview Blocks <CodePreviewBlock> <div className=\"p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white\"> <h3 className=\"text-xl font-bold mb-2\">Gradient Card</h3> <p className=\"text-blue-100\"> This is a preview of a gradient card component. </p> <button className=\"mt-3 px-4 py-2 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors\"> Click me </button> </div> </CodePreviewBlock> Individual Code Blocks Interactive Components Tabs <Tabs> <TabsItem value=\"Overview\"> ## Overview This is the overview tab with some basic information about the project. - Feature 1: Description of the first feature - Feature 2: Description of the second feature - Feature 3: Description of the third feature > This is a blockquote in the overview tab. </TabsItem> <TabsItem value=\"Installation\"> ## Installation Install the package using your preferred package manager: <Command label=\"npm\">npm install @muni-docs/components</Command> <Command label=\"yarn\">yarn add @muni-docs/components</Command> <Command label=\"pnpm\">pnpm add @muni-docs/components</Command> Then import the components you need: </TabsItem> <TabsItem value=\"Configuration\"> ## Configuration Configure the components by passing props: ### Environment Variables Set these environment variables in your : - : The default theme - : The API base URL </TabsItem> </Tabs> Layout Components Steps <Steps> <Step title=\"Project Setup\"> Create a new Next.js project and install the required dependencies. </Step> <Step title=\"Configuration\"> Set up your configuration file and environment variables. Create a file in your project root: </Step> <Step title=\"Create Content\"> Start creating your documentation content using MDX files. Place your content files in the directory and they will be automatically processed. </Step> </Steps> Details and Summary <Details> <Summary>Click to expand for more information</Summary> This is additional information that can be expanded or collapsed. It's useful for: - Hiding detailed technical information - Creating FAQ sections - Providing optional context </Details> Typography and Text Headings The documentation system supports all standard heading levels with proper styling and anchor links. Inline Code Use for short code snippets, function names, or technical terms. Code Blocks Use triple backticks for code blocks with syntax highlighting: Lists - Unordered lists work great for bullet points - They support bold text and - And can be nested: - Like this nested item - And this one too 1. Ordered lists are perfect for step-by-step instructions 2. They maintain proper numbering 3. And can also be nested: 1. First nested item 2. Second nested item Blockquotes > This is a blockquote. It's great for highlighting important information, quotes, or callouts that don't need the full callout component styling. Tables | Component | Type | Description | | --------- | ----------- | ------------------------------- | | Callout | Layout | Alert-style callouts with icons | | CodePreviewBlock | Interactive | Preview with code source | | Tabs | Interactive | General-purpose tabs | | Steps | Layout | Step-by-step instructions | | InfoBox | Layout | Alias for Callout component | Best Practices 1. Use semantic components - Choose the right component for your content 2. Keep code blocks focused - Don't make them too long 3. Use descriptive titles - Help users understand what they're looking at 4. Test interactivity - Make sure tabs and other interactive elements work 5. Maintain consistency - Use similar patterns throughout your documentation Conclusion This showcase demonstrates all the available components in the Muni documentation system. Each component is designed to be: - Accessible - Proper ARIA attributes and keyboard navigation - Customizable - Flexible props and styling options - Consistent - Unified design language across all components - Performant - Optimized for fast loading and smooth interactions Use these components to create rich, interactive documentation that your users will love!",
     "url": "/docs/components-showcase",
     "tags": [],
     "sectionType": "page"
@@ -44,10 +44,10 @@
     "sectionType": "h2"
   },
   {
-    "id": "components-showcase/code-groups",
-    "title": "Code Groups",
-    "content": "<CodeGroup> </CodeGroup>",
-    "url": "/docs/components-showcase#code-groups",
+    "id": "components-showcase/code-tabs",
+    "title": "Code Tabs",
+    "content": "<Tabs> <TabsItem value=\"TypeScript\"> </TabsItem> <TabsItem value=\"JavaScript\"> </TabsItem> <TabsItem value=\"Python\"> </T",
+    "url": "/docs/components-showcase#code-tabs",
     "tags": [],
     "parentPage": "Components Showcase",
     "sectionType": "h3"
@@ -100,7 +100,7 @@
   {
     "id": "components-showcase/steps",
     "title": "Steps",
-    "content": "<Steps> <Step> ## Step 1: Project Setup Create a new Next.js project and install the required dependencies. </Step> <Ste",
+    "content": "<Steps> <Step title=\"Project Setup\"> Create a new Next.js project and install the required dependencies. </Step> <Step t",
     "url": "/docs/components-showcase#steps",
     "tags": [],
     "parentPage": "Components Showcase",
@@ -1158,60 +1158,24 @@
   {
     "id": "markdown",
     "title": "Markdown Features",
-    "content": "Markdown Features Muni supports standard Markdown syntax with additional features for rich documentation. Basic Markdown Headings Text Formatting Lists Links and Images Code Blocks javascript function hello() { console.log(\"Hello, world!\"); } python def hello(): print(\"Hello, world!\") titledescriptionauthordatetags Supported Languages - JavaScript/TypeScript - Python - Java - C/C++ - Go - Rust - HTML/CSS - JSON - YAML - And many more... Custom Styling Inline Styles Use Tailwind CSS classes for styling: CSS Classes You can also use custom CSS classes: Advanced Features Math Equations Use KaTeX for mathematical expressions: Diagrams Create diagrams using Mermaid: mermaid graph TD A[Start] --> B{Decision} B -->|Yes| C[Action 1] B -->|No| D[Action 2] C --> E[End] D --> E textCode in cells~~text~~text$E = mc^2$target=\"_blank\" Endpoints GET /users Retrieve a list of users. Parameters: - (optional): Number of users to return (default: 10) - (optional): Number of users to skip (default: 0) Response: <InfoBox type=\"info\"> The API rate limit is 1000 requests per hour per API key. </InfoBox> `",
+    "content": "Markdown Features Muni supports standard CommonMark, GitHub Flavored Markdown (GFM), and custom MDX components. Basic Syntax Standard markdown syntax is supported for all basic text formatting. Text Formatting - Bold text using - _Italic text_ using or - ~~Strikethrough~~ using - using backticks Lists Unordered Lists - Item 1 - Item 2 - Sub-item 2.1 - Sub-item 2.2 Ordered Lists 1. First step 2. Second step 1. Sub-step 2.1 2. Sub-step 2.2 Blockquotes > \"Simplicity is the ultimate sophistication.\" > — Leonardo da Vinci Links and Images - Internal Link - External Link - Images: --- Technical Features Code Blocks Code blocks are powered by Shiki with support for multiple themes, line numbering, and rich annotations. Basic Code Block Code Block with Title Line Numbers Annotations Highlighting Lines Diff Markers Focus Advanced Layouts Callouts <Callout type=\"info\"> This is an info callout for general announcements. </Callout> <Callout type=\"warning\" title=\"Watch out!\"> This is a warning callout with a custom title. </Callout> <Callout type=\"danger\"> Critical error or dangerous operation warning. </Callout> <Callout type=\"success\"> Operation completed successfully. </Callout> Steps Component <Steps> <Step title=\"Initialize\"> Start your project. </Step> <Step title=\"Develop\"> Write your code. </Step> <Step title=\"Deploy\"> Ship to production. </Step> </Steps> Interactive Tabs <Tabs> <TabsItem value=\"NPM\"> </TabsItem> <TabsItem value=\"PNPM\"> </TabsItem> <TabsItem value=\"Yarn\"> </TabsItem> </Tabs> Details/Accordion <Details> <Summary>Advanced Configuration</Summary> You can configure the following environment variables: - - </Details> --- Best Practices 1. Keep it simple - Use standard markdown whenever possible. 2. Use components sparingly - Components are great for emphasis but can clutter the reading experience. 3. Organize with headings - Proper heading hierarchy helps both readers and the search engine. 4. Annotate code - Use Shiki annotations to call out specific parts of your code. _Last updated: 2024-01-15_",
     "url": "/docs/markdown",
     "tags": [],
     "sectionType": "page"
   },
   {
-    "id": "markdown/basic-markdown",
-    "title": "Basic Markdown",
-    "content": "",
-    "url": "/docs/markdown#basic-markdown",
+    "id": "markdown/basic-syntax",
+    "title": "Basic Syntax",
+    "content": "Standard markdown syntax is supported for all basic text formatting.",
+    "url": "/docs/markdown#basic-syntax",
     "tags": [],
     "parentPage": "Markdown Features",
     "sectionType": "h2"
-  },
-  {
-    "id": "markdown/headings",
-    "title": "Headings",
-    "content": "`markdown Heading 1",
-    "url": "/docs/markdown#headings",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/heading-2",
-    "title": "Heading 2",
-    "content": "",
-    "url": "/docs/markdown#heading-2",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h2"
-  },
-  {
-    "id": "markdown/heading-3",
-    "title": "Heading 3",
-    "content": "",
-    "url": "/docs/markdown#heading-3",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/heading-4",
-    "title": "Heading 4",
-    "content": "Heading 5 Heading 6 `",
-    "url": "/docs/markdown#heading-4",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h4"
   },
   {
     "id": "markdown/text-formatting",
     "title": "Text Formatting",
-    "content": "",
+    "content": "- Bold text using - _Italic text_ using or - ~~Strikethrough~~ using - using backticks",
     "url": "/docs/markdown#text-formatting",
     "tags": [],
     "parentPage": "Markdown Features",
@@ -1227,154 +1191,100 @@
     "sectionType": "h3"
   },
   {
-    "id": "markdown/links-and-images",
-    "title": "Links and Images",
-    "content": "",
-    "url": "/docs/markdown#links-and-images",
+    "id": "markdown/unordered-lists",
+    "title": "Unordered Lists",
+    "content": "- Item 1 - Item 2 - Sub-item 2.1 - Sub-item 2.2",
+    "url": "/docs/markdown#unordered-lists",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/code-blocks",
-    "title": "Code Blocks",
-    "content": "javascript function hello() { console.log(\"Hello, world!\"); } python def hello(): print(\"Hello, world!\") `",
-    "url": "/docs/markdown#code-blocks",
+    "id": "markdown/ordered-lists",
+    "title": "Ordered Lists",
+    "content": "1. First step 2. Second step 1. Sub-step 2.1 2. Sub-step 2.2",
+    "url": "/docs/markdown#ordered-lists",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
     "id": "markdown/blockquotes",
     "title": "Blockquotes",
-    "content": "",
+    "content": "> \"Simplicity is the ultimate sophistication.\" > — Leonardo da Vinci",
     "url": "/docs/markdown#blockquotes",
     "tags": [],
     "parentPage": "Markdown Features",
     "sectionType": "h3"
   },
   {
-    "id": "markdown/tables",
-    "title": "Tables",
+    "id": "markdown/links-and-images",
+    "title": "Links and Images",
+    "content": "- Internal Link - External Link - Images: ---",
+    "url": "/docs/markdown#links-and-images",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/technical-features",
+    "title": "Technical Features",
     "content": "",
-    "url": "/docs/markdown#tables",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/mdx-features",
-    "title": "MDX Features",
-    "content": "Muni uses MDX, which allows you to use React components in your Markdown.",
-    "url": "/docs/markdown#mdx-features",
+    "url": "/docs/markdown#technical-features",
     "tags": [],
     "parentPage": "Markdown Features",
     "sectionType": "h2"
   },
   {
-    "id": "markdown/react-components",
-    "title": "React Components",
+    "id": "markdown/code-blocks",
+    "title": "Code Blocks",
+    "content": "Code blocks are powered by Shiki with support for multiple themes, line numbering, and rich annotations.",
+    "url": "/docs/markdown#code-blocks",
+    "tags": [],
+    "parentPage": "Markdown Features",
+    "sectionType": "h3"
+  },
+  {
+    "id": "markdown/basic-code-block",
+    "title": "Basic Code Block",
     "content": "",
-    "url": "/docs/markdown#react-components",
+    "url": "/docs/markdown#basic-code-block",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/custom-components",
-    "title": "Custom Components",
-    "content": "You can create custom components for your documentation: Then use it in your MDX:",
-    "url": "/docs/markdown#custom-components",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/frontmatter",
-    "title": "Frontmatter",
-    "content": "Add metadata to your pages using YAML frontmatter:",
-    "url": "/docs/markdown#frontmatter",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h2"
-  },
-  {
-    "id": "markdown/available-frontmatter-fields",
-    "title": "Available Frontmatter Fields",
-    "content": "- : Page title (used in navigation) - : Meta description for SEO - : Author name (shown in footer) - : Publication date ",
-    "url": "/docs/markdown#available-frontmatter-fields",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/syntax-highlighting",
-    "title": "Syntax Highlighting",
-    "content": "Code blocks are automatically syntax highlighted using Shiki: javascript // JavaScript with syntax highlighting function",
-    "url": "/docs/markdown#syntax-highlighting",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h2"
-  },
-  {
-    "id": "markdown/supported-languages",
-    "title": "Supported Languages",
-    "content": "- JavaScript/TypeScript - Python - Java - C/C++ - Go - Rust - HTML/CSS - JSON - YAML - And many more...",
-    "url": "/docs/markdown#supported-languages",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/custom-styling",
-    "title": "Custom Styling",
+    "id": "markdown/code-block-with-title",
+    "title": "Code Block with Title",
     "content": "",
-    "url": "/docs/markdown#custom-styling",
+    "url": "/docs/markdown#code-block-with-title",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h2"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/inline-styles",
-    "title": "Inline Styles",
-    "content": "Use Tailwind CSS classes for styling:",
-    "url": "/docs/markdown#inline-styles",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/css-classes",
-    "title": "CSS Classes",
-    "content": "You can also use custom CSS classes:",
-    "url": "/docs/markdown#css-classes",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/advanced-features",
-    "title": "Advanced Features",
+    "id": "markdown/line-numbers",
+    "title": "Line Numbers",
     "content": "",
-    "url": "/docs/markdown#advanced-features",
+    "url": "/docs/markdown#line-numbers",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h2"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/math-equations",
-    "title": "Math Equations",
-    "content": "Use KaTeX for mathematical expressions:",
-    "url": "/docs/markdown#math-equations",
+    "id": "markdown/annotations",
+    "title": "Annotations",
+    "content": "Highlighting Lines Diff Markers Focus",
+    "url": "/docs/markdown#annotations",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/diagrams",
-    "title": "Diagrams",
-    "content": "Create diagrams using Mermaid: mermaid graph TD A[Start] --> B{Decision} B -->|Yes| C[Action 1] B -->|No| D[Action 2] C ",
-    "url": "/docs/markdown#diagrams",
+    "id": "markdown/advanced-layouts",
+    "title": "Advanced Layouts",
+    "content": "",
+    "url": "/docs/markdown#advanced-layouts",
     "tags": [],
     "parentPage": "Markdown Features",
     "sectionType": "h3"
@@ -1382,182 +1292,47 @@
   {
     "id": "markdown/callouts",
     "title": "Callouts",
-    "content": "Use custom callout components:",
+    "content": "<Callout type=\"info\"> This is an info callout for general announcements. </Callout> <Callout type=\"warning\" title=\"Watch",
     "url": "/docs/markdown#callouts",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/advanced-markdown-features",
-    "title": "Advanced Markdown Features",
-    "content": "",
-    "url": "/docs/markdown#advanced-markdown-features",
+    "id": "markdown/steps-component",
+    "title": "Steps Component",
+    "content": "<Steps> <Step title=\"Initialize\"> Start your project. </Step> <Step title=\"Develop\"> Write your code. </Step> <Step titl",
+    "url": "/docs/markdown#steps-component",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h2"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/custom-directives",
-    "title": "Custom Directives",
-    "content": "Muni supports custom MDX directives for enhanced functionality:",
-    "url": "/docs/markdown#custom-directives",
+    "id": "markdown/interactive-tabs",
+    "title": "Interactive Tabs",
+    "content": "<Tabs> <TabsItem value=\"NPM\"> </TabsItem> <TabsItem value=\"PNPM\"> </TabsItem> <TabsItem value=\"Yarn\"> </TabsItem> </Tabs",
+    "url": "/docs/markdown#interactive-tabs",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
-    "id": "markdown/code-folding",
-    "title": "Code Folding",
-    "content": "typescript function complexFunction() { // Complex implementation here return result; }",
-    "url": "/docs/markdown#code-folding",
+    "id": "markdown/detailsaccordion",
+    "title": "Details/Accordion",
+    "content": "<Details> <Summary>Advanced Configuration</Summary> You can configure the following environment variables: - - </Details",
+    "url": "/docs/markdown#detailsaccordion",
     "tags": [],
     "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/inline-components",
-    "title": "Inline Components",
-    "content": "<CodeGroup> </CodeGroup>",
-    "url": "/docs/markdown#inline-components",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/advanced-tables",
-    "title": "Advanced Tables",
-    "content": "| Feature | Support | Notes | |---------|---------|-------| | Bold headers | ✅ | Use | | | ✅ | Use backticks | | Links |",
-    "url": "/docs/markdown#advanced-tables",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/mathematical-expressions",
-    "title": "Mathematical Expressions",
-    "content": "Inline math: Block math:",
-    "url": "/docs/markdown#mathematical-expressions",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/diagrams-with-mermaid",
-    "title": "Diagrams with Mermaid",
-    "content": "",
-    "url": "/docs/markdown#diagrams-with-mermaid",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
+    "sectionType": "h4"
   },
   {
     "id": "markdown/best-practices",
     "title": "Best Practices",
-    "content": "",
+    "content": "1. Keep it simple - Use standard markdown whenever possible. 2. Use components sparingly - Components are great for emph",
     "url": "/docs/markdown#best-practices",
     "tags": [],
     "parentPage": "Markdown Features",
     "sectionType": "h2"
-  },
-  {
-    "id": "markdown/writing-style",
-    "title": "Writing Style",
-    "content": "1. Use clear headings: Structure your content with descriptive headings 2. Keep paragraphs short: Break up long text int",
-    "url": "/docs/markdown#writing-style",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/code-examples",
-    "title": "Code Examples",
-    "content": "1. Use syntax highlighting: Always specify the language for code blocks 2. Include context: Explain what the code does 3",
-    "url": "/docs/markdown#code-examples",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/images",
-    "title": "Images",
-    "content": "1. Optimize images: Use appropriate formats and sizes 2. Add alt text: Always include descriptive alt text 3. Use consis",
-    "url": "/docs/markdown#images",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/links",
-    "title": "Links",
-    "content": "1. Use descriptive text: Don't use \"click here\" or \"read more\" 2. Check your links: Make sure all links work 3. Use rela",
-    "url": "/docs/markdown#links",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/content-organization",
-    "title": "Content Organization",
-    "content": "1. Start with an outline: Plan your content structure first 2. Use consistent formatting: Apply the same style throughou",
-    "url": "/docs/markdown#content-organization",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/accessibility",
-    "title": "Accessibility",
-    "content": "1. Use semantic HTML: Let MDX generate proper HTML structure 2. Add alt text: Include descriptive alt text for images 3.",
-    "url": "/docs/markdown#accessibility",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/examples",
-    "title": "Examples",
-    "content": "",
-    "url": "/docs/markdown#examples",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h2"
-  },
-  {
-    "id": "markdown/complete-page-example",
-    "title": "Complete Page Example",
-    "content": "markdown API Reference Our API provides a simple interface for managing resources.",
-    "url": "/docs/markdown#complete-page-example",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
-  },
-  {
-    "id": "markdown/authentication",
-    "title": "Authentication",
-    "content": "All API requests require authentication using an API key:",
-    "url": "/docs/markdown#authentication",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h2"
-  },
-  {
-    "id": "markdown/endpoints",
-    "title": "Endpoints",
-    "content": "",
-    "url": "/docs/markdown#endpoints",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h2"
-  },
-  {
-    "id": "markdown/get-users",
-    "title": "GET /users",
-    "content": "Retrieve a list of users. Parameters: - (optional): Number of users to return (default: 10) - (optional): Number of user",
-    "url": "/docs/markdown#get-users",
-    "tags": [],
-    "parentPage": "Markdown Features",
-    "sectionType": "h3"
   },
   {
     "id": "project-structure",

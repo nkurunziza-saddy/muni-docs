@@ -24,56 +24,50 @@ export function CodePreviewBlock({
   return (
     <TabsPrimitive.Root
       className={cn(
-        "not-prose border w-full flex-1 border-input rounded-lg mb-6 overflow-hidden",
+        "not-prose w-full my-8 border border-border/30 rounded-xl overflow-hidden shadow-none",
         className,
       )}
       defaultValue="preview"
       orientation="horizontal"
     >
-      <TabsPrimitive.TabsList
+      <TabsPrimitive.List
         className={cn(
-          "bg-muted/40 backdrop-blur-3xl border-b flex px-2 rounded-t-lg",
+          "bg-muted/10 border-b border-border/30 flex px-3"
         )}
         aria-label={ariaLabel}
         role="tablist"
       >
-        <TabsPrimitive.TabsTrigger
+        <TabsPrimitive.Trigger
           value="preview"
           className={cn(
-            "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none ",
+            "border-b-2 border-transparent text-muted-foreground/70 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] px-4 py-2.5 transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
           )}
-          aria-selected={true}
-          tabIndex={0}
         >
           Preview
-        </TabsPrimitive.TabsTrigger>
-        <TabsPrimitive.TabsTrigger
+        </TabsPrimitive.Trigger>
+        <TabsPrimitive.Trigger
           value="code"
           className={cn(
-            "border-b-2 border-transparent text-muted-foreground text-sm font-medium px-3 py-2 transition-colors duration-100 hover:text-foreground hover:bg-muted/60 data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none ",
+            "border-b-2 border-transparent text-muted-foreground/70 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] px-4 py-2.5 transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
           )}
-          aria-selected={false}
-          tabIndex={-1}
         >
           Code
-        </TabsPrimitive.TabsTrigger>
-      </TabsPrimitive.TabsList>
+        </TabsPrimitive.Trigger>
+      </TabsPrimitive.List>
       <TabsPrimitive.Content
         value="preview"
-        className="focus:outline-none"
+        className="p-6 focus:outline-none bg-background/50 flex justify-center"
         role="tabpanel"
-        aria-labelledby="tab-preview"
         tabIndex={0}
       >
-        <div className="w-full p-4 bg-muted/20 rounded-b-lg not-prose">
+        <div className="w-full max-w-full overflow-auto">
           {previewChild}
         </div>
       </TabsPrimitive.Content>
       <TabsPrimitive.Content
         value="code"
-        className="focus:outline-none"
+        className="focus:outline-none !m-0 bg-[#121212]"
         role="tabpanel"
-        aria-labelledby="tab-code"
         tabIndex={0}
       >
         <IsInCodeBlockContext.Provider value={true}>

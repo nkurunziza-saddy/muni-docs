@@ -1,6 +1,6 @@
 "use client";
 import { type ReactNode } from "react";
-import { CopyButton } from "@/components/muni-components/copy-button";
+import { CopyButton } from "@/components/ui/copy-button";
 import { useCopyCode } from "@/lib/hooks/use-copy-code";
 import { IsInCodeBlockContext, useIsTabContent } from "@/lib/hooks/use-in-code";
 import { cn } from "@/lib/utils";
@@ -51,7 +51,7 @@ export function PreClient({
               {title}
             </CodeTitle>
           ) : (
-            <div className="flex items-center justify-between px-4 py-2 border-b border-border/30 bg-muted/10">
+            <div className="flex items-center justify-between px-6 py-2 border-b border-border/30 bg-muted/10">
               <div className="flex items-center gap-2 text-[#888]">
                 <div className="flex gap-1.5 mr-2">
                   <div className="size-2 rounded-full bg-[#333]" />
@@ -87,17 +87,18 @@ export function PreClient({
   };
 
   const preStyle = parseStyle(shikiAttrs?.pre?.style);
+  const { className: shikiClassName, ...otherPreAttrs } = shikiAttrs?.pre || {};
 
   return (
     <IsInCodeBlockContext.Provider value={true}>
       {wrap(
         <pre
-          {...shikiAttrs?.pre}
+          {...otherPreAttrs}
           ref={ref}
           style={{ ...preStyle, backgroundColor: 'transparent' }}
           className={cn(
             className, 
-            shikiAttrs?.pre?.class,
+            shikiClassName,
             "overflow-auto custom-scrollbar m-0 group/pre relative p-3 lg:p-4 !bg-transparent"
           )}
           data-raw={rawCode}

@@ -1,127 +1,93 @@
 import type { MDXComponents } from "mdx/types";
 import { MDXErrorBoundary } from "@/components/mdx-error-boundary";
-import { Step } from "@/components/muni-components/step";
 import { cn } from "@/lib/utils";
 import { Anchor } from "./anchor";
-// Base components
 import * as Base from "./base";
-// Code components
 import * as Code from "./code";
-// Interactive components
 import * as Interactive from "./interactive";
-// Layout components
 import * as Layout from "./layout";
 
-const mdxComponents: MDXComponents = {
-  // Layout components
-  Callout: (props) => (
-    <MDXErrorBoundary>
-      <Layout.Callout {...props} />
-    </MDXErrorBoundary>
-  ),
-  Command: (props) => (
-    <MDXErrorBoundary>
-      <Layout.Command {...props} />
-    </MDXErrorBoundary>
-  ),
-  Steps: (props) => (
-    <MDXErrorBoundary>
-      <Layout.Steps {...props} />
-    </MDXErrorBoundary>
-  ),
-  Step: (props) => (
-    <MDXErrorBoundary>
-      <Step {...props} />
-    </MDXErrorBoundary>
-  ),
-  InfoBox: (props) => (
-    <MDXErrorBoundary>
-      <Layout.InfoBox {...props} />
-    </MDXErrorBoundary>
-  ),
-  Aside: Layout.Aside,
-  Details: Layout.Details,
-  Summary: Layout.Summary,
-  Section: Layout.Section,
-  Header: Layout.Header,
-  Div: Layout.Div,
-
-  // Interactive components
-  CodeGroup: (props) => (
-    <MDXErrorBoundary>
-      <Interactive.CodeGroup {...props} />
-    </MDXErrorBoundary>
-  ),
-  CodePreviewBlock: (props) => (
-    <MDXErrorBoundary>
-      <Interactive.CodePreviewBlock {...props} />
-    </MDXErrorBoundary>
-  ),
-  Tabs: Interactive.Tabs,
-  TabsItem: Interactive.TabsItem,
-
-  // Code components
-  CodeBlock: Code.CodeBlock,
-  CodeTitle: Code.CodeTitle,
-  Figure: Code.Figure,
-  Figcaption: Code.Figcaption,
-
-  // Base HTML elements
-  a: Anchor as React.ComponentType<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>
-  >,
-  aside: Layout.Aside,
-  blockquote: Base.Blockquote,
-  code: Code.Code,
-  details: Layout.Details,
-  div: Layout.Div,
-  pre: Code.Pre,
-  header: Layout.Header,
-  figcaption: Code.Figcaption,
-  figure: Code.Figure,
+export const mdxComponents: MDXComponents = {
   h1: Base.H1,
   h2: Base.H2,
   h3: Base.H3,
   h4: Base.H4,
   h5: Base.H5,
   h6: Base.H6,
-  hr: Base.HorizontalRule,
-  kbd: Base.Kbd,
-  li: Base.ListItem,
-  ol: (props) => <Base.List ordered {...props} />,
   p: Base.Paragraph,
-  section: Layout.Section,
-  span: Base.Span,
-  strong: Base.Strong,
-  summary: Layout.Summary,
+  ul: function UnorderedList(props) { return <Base.List {...props} ordered={false} /> },
+  ol: function OrderedList(props) { return <Base.List {...props} ordered={true} /> },
+  li: Base.ListItem,
   table: Base.Table,
-  td: Base.TableCell,
-  th: Base.TableHeader,
-  tr: Base.TableRow,
-  ul: (props) => <Base.List ordered={false} {...props} />,
+  a: Anchor,
+  section: Layout.Section,
+  pre: Code.Pre,
+  code: Code.Code,
+  img: function MdxImage(props) {
+    return (
+      <img
+        {...props}
+        className={cn("rounded-lg border border-border/40 my-8", props.className)}
+        alt={props.alt || ""}
+      />
+    )
+  },
 
-  // Custom components
-  Space: ({
-    size = "md",
-    className,
-  }: {
-    size?: "sm" | "md" | "lg" | "xl" | "2xl";
-    className?: string;
-  }) => (
-    <div
-      className={cn(
-        "block",
-        size === "sm" && "my-2",
-        size === "md" && "my-64",
-        size === "lg" && "my-6",
-        size === "xl" && "my-8",
-        size === "2xl" && "my-12",
-        className,
-      )}
-      data-component="space"
-      data-spacing={size}
-    />
-  ),
+  // Layout Components
+  Callout: Layout.Callout,
+  InfoBox: Layout.InfoBox,
+  Steps: Layout.Steps,
+  Step: Layout.Step,
+  Section: Layout.Section,
+  Aside: Layout.Aside,
+  Details: Layout.Details,
+  Summary: Layout.Summary,
+  Command: Layout.Command,
+
+  // Interactive Components
+  CodePreviewBlock: Interactive.CodePreviewBlock,
+  Tabs: Interactive.Tabs,
+  TabsItem: Interactive.TabsItem,
+
+  // Utilities
+  StepItem: Layout.Step,
+  
+  // Wrapper for error boundary
+  wrapper: function MdxWrapper({ children }) {
+    return (
+      <MDXErrorBoundary>
+        <div className="mdx-wrapper animate-in fade-in duration-500">
+          {children}
+        </div>
+      </MDXErrorBoundary>
+    )
+  },
+
+  // Custom components (Aliases)
+  Info: Layout.InfoBox,
+  Warning: function MdxWarning(props) { return <Layout.Callout {...props} type="warning" /> },
+  Danger: function MdxDanger(props) { return <Layout.Callout {...props} type="danger" /> },
+  Note: function MdxNote(props) { return <Layout.Callout {...props} type="note" /> },
+  Tip: function MdxTip(props) { return <Layout.Callout {...props} type="tip" /> },
+  Success: function MdxSuccess(props) { return <Layout.Callout {...props} type="success" /> },
+
+  // Space helper
+  Space: function MdxSpace({ size = "md", className }: { size?: "sm" | "md" | "lg" | "xl" | "2xl", className?: string }) {
+    return (
+      <div 
+        className={cn(
+          size === "sm" && "my-2",
+          size === "md" && "my-4",
+          size === "lg" && "my-6",
+          size === "xl" && "my-8",
+          size === "2xl" && "my-12",
+          className,
+        )}
+        data-component="space"
+        data-spacing={size}
+      />
+    )
+  },
 };
 
 export function useMDXComponents(): MDXComponents {

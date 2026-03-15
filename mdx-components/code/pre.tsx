@@ -11,8 +11,8 @@ export function Pre({
 }) {
   // 1. Extract the code element
   const codeElement = (Array.isArray(children) 
-    ? children.find(child => (child as ReactElement)?.type === "code" || (child as ReactElement)?.props?.children) 
-    : children) as ReactElement;
+    ? children.find(child => (child as any)?.type === "code" || (child as any)?.props?.children) 
+    : children) as any;
 
   // 2. Extract raw code
   const extractText = (node: any): string => {

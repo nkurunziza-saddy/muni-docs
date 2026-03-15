@@ -92,6 +92,10 @@
   @apply my-2;
 }
 
+.prose kbd {
+  @apply px-[0.3rem] py-[0.2rem] text-[0.8em] font-sans bg-muted border border-border/40 rounded-md shadow-[0_1px_0_rgba(0,0,0,0.1)];
+}
+
 .prose code {
   @apply text-[0.9em] font-mono px-1.5 py-0.5 border border-border/40 bg-muted/30 text-foreground;
 }
