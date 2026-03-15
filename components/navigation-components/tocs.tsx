@@ -11,9 +11,9 @@ export function TableOfContents() {
   }
 
   return (
-    <aside className="hidden xl:block w-64 shrink-0 relative">
+    <aside className="hidden xl:block w-56 shrink-0 relative">
       <div className="sticky top-14 h-[calc(100vh-3.5rem)] py-12 flex flex-col">
-        <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] mb-8 opacity-20 select-none">
+        <h4 className="ui-section-title mb-6 opacity-50 select-none">
           index
         </h4>
 
@@ -23,7 +23,7 @@ export function TableOfContents() {
               id="toc-container"
               className="h-full max-h-[80vh] overflow-y-auto no-scrollbar overscroll-contain relative pr-2"
             >
-              <ul className="space-y-4 py-1">
+              <ul className="space-y-3 py-1">
                 {toc.map((item) => (
                   <li
                     key={item.id}
@@ -38,10 +38,10 @@ export function TableOfContents() {
                       type="button"
                       onClick={() => handleClick(item.id)}
                       className={cn(
-                        "w-full text-left text-[13px] font-sans transition-all duration-300 outline-none cursor-pointer",
+                        "w-full text-left ui-nav-link transition-all duration-300 outline-none cursor-pointer",
                         activeId === item.id
-                          ? "text-foreground font-bold opacity-100"
-                          : "text-muted-foreground opacity-50 hover:opacity-100",
+                          ? "ui-nav-link-active opacity-100"
+                          : "opacity-60 hover:opacity-100",
                       )}
                     >
                       <span className="line-clamp-2 leading-relaxed">

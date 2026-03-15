@@ -55,7 +55,9 @@ export function Pre({
       return (
         <CodeBlock
           className={cn(
-            isTabContent ? "" : "border border-border/40 rounded-none overflow-hidden shadow-none"
+            isTabContent
+              ? ""
+              : "border border-border/30 rounded-xl overflow-hidden shadow-none bg-muted/10"
           )}
         >
           {!isTabContent && (
@@ -64,13 +66,13 @@ export function Pre({
                 {props["data-title"]}
               </CodeTitle>
             ) : (
-              <div className="flex items-center justify-between px-6 py-3 border-b border-border/40 bg-muted/10">
+              <div className="flex items-center justify-between px-6 py-2 border-b border-border/30 bg-muted/10">
                 <div className="flex items-center gap-2">
-                  <div className="size-1.5 bg-border/60" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-40 font-bold">terminal</span>
+                  <div className="size-1.5 bg-border/60 rounded-full" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-50 font-bold">terminal</span>
                 </div>
                 {props["data-lang"] && (
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-40 font-bold">
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono opacity-50 font-bold">
                     {props["data-lang"]}
                   </span>
                 )}

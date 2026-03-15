@@ -19,6 +19,11 @@ const mdxComponents: MDXComponents = {
       <Layout.Callout {...props} />
     </MDXErrorBoundary>
   ),
+  Command: (props) => (
+    <MDXErrorBoundary>
+      <Layout.Command {...props} />
+    </MDXErrorBoundary>
+  ),
   Steps: (props) => (
     <MDXErrorBoundary>
       <Layout.Steps {...props} />

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 .shiki {
-  background-color: var(--shiki-light-bg);
+  background-color: transparent;
   @apply text-[15px] leading-[1.8];
-  padding: 2.5rem;
+  padding: 0;
   border-radius: 0;
   overflow-x: auto;
 }
@@ -16,9 +16,7 @@
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-.dark .shiki {
-  background-color: var(--shiki-dark-bg);
-}
+/* Background handled by the code container */
 
 .dark .shiki,
 .dark .shiki span {
@@ -51,8 +49,7 @@
 }
 
 .shiki.has-highlighted .line.highlighted {
-  @apply bg-primary/10 border-l-2 border-primary;
-  padding-left: 0.875rem; 
+  @apply bg-primary/10;
 }
 
 .shiki .highlighted-word {
@@ -76,13 +73,11 @@
 }
 
 .shiki .line.highlighted.error {
-  @apply bg-destructive/15 border-l-2 border-destructive;
-  padding-left: 0.875rem;
+  @apply bg-destructive/15;
 }
 
 .shiki .line.highlighted.warning {
-  @apply bg-warning/15 border-l-2 border-warning;
-  padding-left: 0.875rem;
+  @apply bg-warning/15;
 }
 
 .shiki.has-line-numbers {

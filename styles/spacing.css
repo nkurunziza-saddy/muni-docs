@@ -1,9 +1,9 @@
 .mdx-content {
   --mdx-space-1: 0.5rem;
-  --mdx-space-2: 0.75rem;
-  --mdx-space-3: 1.25rem;
-  --mdx-space-4: 1.75rem;
-  --mdx-space-5: 2.25rem;
+  --mdx-space-2: 0.8rem;
+  --mdx-space-3: 1.6rem;
+  --mdx-space-4: 2.5rem;
+  --mdx-space-5: 3.4rem;
 
   /* Normalize margins */
   & * {
@@ -18,7 +18,7 @@
   /* Headings */
   & h1 {
     margin-top: var(--mdx-space-5);
-    margin-bottom: var(--mdx-space-2);
+    margin-bottom: var(--mdx-space-3);
     &:first-child {
       margin-top: 0;
     }
@@ -82,7 +82,8 @@
   & .mdx-callout,
   & .mdx-tabs,
   & .mdx-code-group,
-  & .mdx-steps {
+  & .mdx-steps,
+  & .mdx-command {
     margin: var(--mdx-space-3) 0;
   }
 
@@ -116,6 +117,11 @@
 /* Responsive spacing adjustments */
 @media (max-width: 768px) {
   .mdx-content {
+    --mdx-space-2: 0.7rem;
+    --mdx-space-3: 1.3rem;
+    --mdx-space-4: 2rem;
+    --mdx-space-5: 2.6rem;
+
     & > * + * {
       margin-top: 0.6rem;
     }

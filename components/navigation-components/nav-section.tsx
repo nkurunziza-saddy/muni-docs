@@ -28,16 +28,20 @@ function NavLink({ item }: { item: NavItem }) {
       <Link
         href={href}
         className={cn(
-          "flex items-center gap-2 text-[13px] font-sans py-1.5 px-3 transition-all duration-200 group/nav",
+          "flex items-center gap-2 py-1.5 px-3 transition-all duration-200 group/nav ui-nav-link",
           isActive
-            ? "text-primary font-bold"
-            : "text-muted-foreground/60 hover:text-foreground",
+            ? "ui-nav-link-active text-primary"
+            : "",
         )}
       >
-        <span className={cn(
-            "text-[10px] font-mono font-bold transition-all",
-            isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/nav:opacity-30"
-        )}>&gt;</span>
+        <span
+          className={cn(
+            "ui-nav-bullet",
+            isActive
+              ? "bg-primary"
+              : "opacity-0 group-hover/nav:opacity-60",
+          )}
+        />
         {item.title.toLowerCase()}
       </Link>
     </li>
@@ -65,16 +69,20 @@ export function NavSection({
         <Link
           href={href}
           className={cn(
-            "flex items-center gap-2 text-[14px] font-sans py-2 px-3 transition-all duration-200 group/nav",
+            "flex items-center gap-2 py-2 px-3 transition-all duration-200 group/nav ui-nav-link",
             isActive
-              ? "text-primary font-bold"
-              : "text-muted-foreground/60 hover:text-foreground",
+              ? "ui-nav-link-active text-primary"
+              : "",
           )}
         >
-          <span className={cn(
-            "text-[10px] font-mono font-bold transition-all",
-            isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/nav:opacity-30"
-          )}>&gt;</span>
+          <span
+            className={cn(
+              "ui-nav-bullet",
+              isActive
+                ? "bg-primary"
+                : "opacity-0 group-hover/nav:opacity-60",
+            )}
+          />
           {item.title.toLowerCase()}
         </Link>
       </SidebarMenuItem>
@@ -87,9 +95,11 @@ export function NavSection({
         <button
           type="button"
           onClick={onToggle}
-          className="flex items-center justify-between w-full text-[11px] font-mono font-bold py-2 px-3 hover:bg-muted/30 transition-all uppercase tracking-[0.25em] group/section"
+          className="flex items-center justify-between w-full py-2 px-3 hover:bg-muted/30 transition-all group/section ui-section-title"
         >
-          <span className="opacity-40 group-hover/section:opacity-100 group-hover/section:text-primary transition-all">{item.title.toLowerCase()}</span>
+          <span className="opacity-60 group-hover/section:opacity-100 group-hover/section:text-primary transition-all">
+            {item.title.toLowerCase()}
+          </span>
           <div className="flex items-center gap-2">
             <div className="h-px w-4 bg-border/20 group-hover/section:w-6 group-hover/section:bg-primary/40 transition-all" />
             {isOpen ? (

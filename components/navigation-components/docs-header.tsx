@@ -50,7 +50,7 @@ export function DocsHeader() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-[0.15em] opacity-50 hover:opacity-100 hover:text-primary transition-all relative group/link"
+                        className="flex items-center gap-2 ui-label opacity-60 hover:opacity-100 hover:text-primary transition-all relative group/link"
                       >
                         <span>{link.title.toLowerCase()}</span>
                         <span className="absolute -bottom-4 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
@@ -63,7 +63,7 @@ export function DocsHeader() {
                 {(version || features?.themeToggle !== false) && (
                   <div className="flex items-center gap-4 border-l border-border/40 pl-6 h-8">
                     {version && (
-                      <span className="text-[11px] font-mono opacity-40">
+                      <span className="ui-label opacity-60">
                         v{version}
                       </span>
                     )}
@@ -87,14 +87,14 @@ export function DocsHeader() {
                   </DrawerHeader>
                   <div className="px-4 pb-6 space-y-6">
                     {version && (
-                      <div className="text-[10px] font-mono opacity-40">
+                      <div className="ui-label opacity-60">
                         version {version}
                       </div>
                     )}
 
                     {headingLinks && headingLinks.length > 0 && (
                       <div className="space-y-3">
-                        <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.2em] opacity-50">
+                        <div className="ui-section-title opacity-60">
                           links
                         </div>
                         <div className="flex flex-col gap-2">
@@ -104,7 +104,7 @@ export function DocsHeader() {
                               href={link.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-xs hover:text-primary transition-colors lowercase"
+                              className="text-sm hover:text-primary transition-colors lowercase"
                             >
                               {link.title.toLowerCase()}
                             </a>
@@ -115,7 +115,7 @@ export function DocsHeader() {
 
                     {features?.themeToggle !== false && (
                       <div className="space-y-3">
-                        <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-[0.2em] opacity-50">
+                        <div className="ui-section-title opacity-60">
                           theme
                         </div>
                         <ThemeToggle />

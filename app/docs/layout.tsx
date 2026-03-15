@@ -21,7 +21,7 @@ export default function DocsLayout({
           <DocsHeader />
 
           <div className="flex flex-1 min-w-0 justify-center">
-            <div className="flex-1 max-w-4xl px-4 py-10 md:px-8 md:py-12 lg:px-12 min-w-0">
+            <div className="flex-1 max-w-5xl px-4 py-10 md:px-8 md:py-12 lg:px-12 min-w-0">
               {muniConfig.features?.toc !== false && (
                 <div className="xl:hidden mb-8">
                   <MobileTableOfContents />

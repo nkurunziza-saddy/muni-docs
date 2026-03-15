@@ -154,9 +154,8 @@ export function SearchComp({ className }: SearchProps) {
   const searchContent = (
     <>
       <div className="flex items-center border-b border-border/20 px-6 py-2 bg-muted/5">
-        <div className="flex items-center gap-2 mr-4 opacity-40">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest">cmd</span>
-            <span className="text-[10px] font-mono opacity-50">&gt;</span>
+        <div className="flex items-center gap-2 mr-4 opacity-60">
+            <span className="ui-label">search</span>
         </div>
         <Input
           ref={inputRef}
@@ -164,7 +163,7 @@ export function SearchComp({ className }: SearchProps) {
           placeholder="query documentation index..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="flex-1 border-0 focus-visible:ring-0 shadow-none px-0 h-14 text-lg bg-transparent! font-sans tracking-tight"
+          className="flex-1 border-0 focus-visible:ring-0 shadow-none px-0 h-14 text-base bg-transparent! font-sans tracking-tight"
         />
         <div className="flex items-center gap-4">
           {query && (
@@ -178,8 +177,8 @@ export function SearchComp({ className }: SearchProps) {
             </Button>
           )}
           <div className="hidden sm:flex items-center gap-2 px-2 py-1 border border-border/20 bg-background/50">
-            <span className="text-[9px] font-mono opacity-40 uppercase tracking-[0.2em] font-bold">exit</span>
-            <kbd className="text-[9px] font-mono opacity-60">ESC</kbd>
+            <span className="ui-label opacity-60">esc</span>
+            <kbd className="ui-kbd">ESC</kbd>
           </div>
         </div>
       </div>
@@ -192,7 +191,7 @@ export function SearchComp({ className }: SearchProps) {
                 <div className="absolute inset-1.5 border-t border-primary/40 animate-[spin_1.5s_ease-in-out_infinite]" />
                 <div className="absolute inset-3 bg-primary/20 animate-pulse" />
             </div>
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.4em] uppercase opacity-40">
+            <span className="ui-label opacity-40">
               parsing_index
             </span>
           </div>
@@ -210,19 +209,18 @@ export function SearchComp({ className }: SearchProps) {
                     className="w-full text-left group/page relative flex flex-col"
                     >
                         <div className="flex items-center gap-4">
-                            <h3 className="font-bold text-foreground text-base tracking-tighter group-hover/page:text-primary transition-colors flex items-center">
-                                <span className="opacity-20 mr-3 text-xs font-mono font-normal">#</span>
+                            <h3 className="font-semibold text-foreground text-base tracking-tight group-hover/page:text-primary transition-colors flex items-center">
                                 {highlightMatch(group.page.title, query)}
                             </h3>
                             <div className="h-px flex-1 bg-border/5" />
                             {group.page.category && (
-                            <span className="text-[9px] font-mono font-bold text-primary/40 uppercase tracking-[0.3em] border border-primary/10 px-2 py-0.5 bg-primary/5">
+                            <span className="ui-label border border-primary/10 px-2 py-0.5 bg-primary/5 text-primary/50">
                                 {group.page.category}
                             </span>
                             )}
                         </div>
                         <div className="pl-7 mt-1">
-                            <p className="text-sm text-muted-foreground line-clamp-1 opacity-60 leading-relaxed">
+                            <p className="text-sm text-muted-foreground line-clamp-1 opacity-70 leading-relaxed">
                                 {highlightMatch(
                                 group.page.content.slice(0, 180) +
                                     (group.page.content.length > 180 ? "..." : ""),
@@ -240,15 +238,15 @@ export function SearchComp({ className }: SearchProps) {
                         key={section.id}
                         type="button"
                         onClick={() => handleResultClick(section.url)}
-                        className="w-full cursor-pointer text-left px-4 py-3 hover:bg-muted/30 transition-all group flex items-start gap-4 border-l-2 border-border/10 hover:border-primary ml-7 relative"
+                        className="w-full cursor-pointer text-left px-4 py-3 hover:bg-muted/30 transition-all group flex items-start gap-4 relative rounded-md"
                       >
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="font-bold text-foreground text-xs uppercase tracking-wide group-hover:text-primary transition-colors">
+                            <span className="font-semibold text-foreground text-xs tracking-wide group-hover:text-primary transition-colors">
                               {highlightMatch(section.title, query)}
                             </span>
                           </div>
-                          <p className="text-xs text-muted-foreground line-clamp-1 mt-1 opacity-50 font-mono italic">
+                          <p className="text-xs text-muted-foreground line-clamp-1 mt-1 opacity-60">
                             {highlightMatch(
                               section.content.slice(0, 120) +
                                 (section.content.length > 120 ? "..." : ""),
@@ -257,7 +255,7 @@ export function SearchComp({ className }: SearchProps) {
                           </p>
                         </div>
                         <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all">
-                            <span className="text-[10px] font-mono text-primary uppercase tracking-widest font-bold">go</span>
+                            <span className="ui-label text-primary">go</span>
                             <RiCornerDownLeftLine className="size-3.5 text-primary" />
                         </div>
                       </button>
@@ -273,11 +271,11 @@ export function SearchComp({ className }: SearchProps) {
                 <div className="absolute inset-0 border border-primary/5 opacity-20" />
                 <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
             </div>
-            <div className="text-center font-mono uppercase tracking-[0.3em]">
-              <p className="text-muted-foreground text-[10px] font-bold">
+            <div className="text-center">
+              <p className="ui-label">
                 0_results_found
               </p>
-              <p className="text-muted-foreground/30 text-[9px] mt-2">
+              <p className="text-muted-foreground/50 text-[11px] mt-2">
                 check syntax and retry
               </p>
             </div>
@@ -288,11 +286,11 @@ export function SearchComp({ className }: SearchProps) {
                 <div className="absolute inset-0 border border-primary/5 opacity-20" />
                 <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
             </div>
-            <div className="text-center font-mono uppercase tracking-[0.3em]">
-              <p className="text-muted-foreground text-[10px] font-bold">
+            <div className="text-center">
+              <p className="ui-label">
                 index_ready
               </p>
-              <p className="text-muted-foreground/30 text-[9px] mt-2">
+              <p className="text-muted-foreground/50 text-[11px] mt-2">
                 awaiting_input_stream
               </p>
             </div>
@@ -302,7 +300,7 @@ export function SearchComp({ className }: SearchProps) {
 
       <div className="border-t border-border/20 px-6 py-4 bg-muted/10 relative overflow-hidden">
         <div className="absolute left-0 top-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em] font-bold opacity-40">
+        <div className="flex items-center justify-between text-[10px] text-muted-foreground uppercase tracking-[0.2em] font-semibold opacity-40">
           <div className="flex items-center gap-10">
             <div className="flex items-center gap-2">
               <div className="size-1 bg-border/40" />
@@ -335,7 +333,7 @@ export function SearchComp({ className }: SearchProps) {
         className={cn(
           "text-muted-foreground hover:text-primary transition-all h-9 group/search",
           !isMobile &&
-            "w-32 sm:w-64 justify-start px-3 font-mono text-[10px] uppercase tracking-[0.2em] opacity-50 hover:opacity-100",
+            "w-32 sm:w-64 justify-start px-3 text-[12px] font-medium opacity-60 hover:opacity-100",
           className,
         )}
       >

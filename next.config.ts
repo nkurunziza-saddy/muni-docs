@@ -12,7 +12,7 @@ import {
 } from "@shikijs/transformers";
 import type { NextConfig } from "next";
 //@ts-expect-error
-import withPWA from "next-pwa";
+import nextPWA from "next-pwa";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 // Essential rehype plugins
@@ -32,7 +32,7 @@ import { transformerLineNumbers } from "./lib/plugins/transformers/transformer-l
 import { transformerTagline } from "./lib/plugins/transformers/transformer-tagline";
 import { transformerTitle } from "./lib/plugins/transformers/transformer-title";
 
-const pwaConfig = withPWA({
+const withPWA = nextPWA({
   dest: "public",
   register: true,
   skipWaiting: true,
@@ -114,4 +114,4 @@ const withMDX = createMDX({
   },
 });
 
-export default pwaConfig(withMDX(nextConfig)) as NextConfig;
+export default withPWA(withMDX(nextConfig)) as NextConfig;

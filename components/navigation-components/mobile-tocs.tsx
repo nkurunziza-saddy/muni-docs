@@ -21,7 +21,7 @@ export function MobileTableOfContents() {
         variant="outline"
         className="w-full justify-between border-dashed text-muted-foreground min-w-0 h-10"
       >
-        <span className="text-xs font-mono font-semibold truncate uppercase tracking-widest opacity-70">on this page</span>
+        <span className="ui-section-title truncate opacity-70">on this page</span>
         <RiArrowDownSLine
           className={cn(
             "transition-transform duration-200",
@@ -33,7 +33,7 @@ export function MobileTableOfContents() {
       {isOpen && (
         <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-background border border-border shadow-lg animate-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between px-4 py-2 border-b border-border">
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-widest opacity-70">on this page</h3>
+            <h3 className="ui-section-title opacity-70">on this page</h3>
             <Button
               variant="ghost"
               size="icon-xs"
@@ -62,10 +62,10 @@ export function MobileTableOfContents() {
                       setIsOpen(false);
                     }}
                     className={cn(
-                      "w-full text-left text-[13px] font-sans transition-all duration-200 block py-2 px-3 outline-none",
+                      "w-full text-left ui-nav-link transition-all duration-200 block py-2 px-3 outline-none",
                       activeId === item.id
-                        ? "text-foreground font-bold opacity-100"
-                        : "text-muted-foreground opacity-50 hover:text-foreground hover:bg-muted/50"
+                        ? "ui-nav-link-active opacity-100"
+                        : "opacity-60 hover:text-foreground hover:bg-muted/50"
                     )}
 
                   >
