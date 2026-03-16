@@ -40,10 +40,10 @@ export async function HighlightedCode({
   ...props
 }: HighlightedCodeProps) {
   let highlightedHtml = "";
-  
+
   // List of common languages to ensure we don't fail
   // Shiki bundles many, but some like 'dockerignore' might be missing depending on version
-  const safeLang = lang === 'dockerignore' ? 'text' : lang;
+  const safeLang = lang === "dockerignore" ? "text" : lang;
 
   try {
     highlightedHtml = await codeToHtml(code, {
@@ -53,7 +53,7 @@ export async function HighlightedCode({
         dark: "vitesse-dark",
         light: "vitesse-light",
       },
-      defaultColor: false,
+      defaultColor: 'light',
       transformers: [
         transformerRemoveNotationEscape(),
         transformerNotationDiff({ matchAlgorithm: "v3" }),
@@ -68,40 +68,46 @@ export async function HighlightedCode({
         transformerLineNumbers(),
         // Add classes to <pre> based on what's inside
         {
-          name: 'meta-classes',
+          name: "meta-classes",
           pre(hast) {
             const code = this.source;
-            if (code.includes('// [!code hl]') || code.includes('// [!code highlight]')) {
-              this.addClassToHast(hast, 'has-highlighted');
+            if (
+              code.includes("// [!code hl]") ||
+              code.includes("// [!code highlight]")
+            ) {
+              this.addClassToHast(hast, "has-highlighted");
             }
-            if (code.includes('// [!code ++]') || code.includes('// [!code --]')) {
-              this.addClassToHast(hast, 'has-diff');
+            if (
+              code.includes("// [!code ++]") ||
+              code.includes("// [!code --]")
+            ) {
+              this.addClassToHast(hast, "has-diff");
             }
-            if (code.includes('// [!code focus]')) {
-              this.addClassToHast(hast, 'has-focused');
+            if (code.includes("// [!code focus]")) {
+              this.addClassToHast(hast, "has-focused");
             }
-          }
-        }
+          },
+        },
       ],
     });
   } catch (e) {
     console.error(`Shiki highlighting failed for lang "${lang}":`, e);
     // Fallback to plain text if highlighting fails
     try {
-        highlightedHtml = await codeToHtml(code, {
-            lang: 'text',
-            themes: { dark: "vitesse-dark", light: "vitesse-light" },
-            defaultColor: false,
-        });
+      highlightedHtml = await codeToHtml(code, {
+        lang: "text",
+        themes: { dark: "vitesse-dark", light: "vitesse-light" },
+        defaultColor: 'light',
+      });
     } catch (innerError) {
-        highlightedHtml = `<code>${code}</code>`;
+      highlightedHtml = `<code>${code}</code>`;
     }
   }
 
   // Extract attributes from <pre>
   const preMatch = highlightedHtml.match(/<pre([^>]*)>/);
   const preAttrsStr = preMatch ? preMatch[1] : "";
-  
+
   // Extract attributes from <code>
   const codeMatch = highlightedHtml.match(/<code([^>]*)>([\s\S]*)<\/code>/);
   const codeAttrsStr = codeMatch ? codeMatch[1] : "";
@@ -137,9 +143,9 @@ export async function HighlightedCode({
         code: codeAttrs,
       }}
     >
-      <code 
+      <code
         {...codeAttrs}
-        className={`font-mono text-sm ${codeAttrs.className || ''} language-${lang}`}
+        className={`font-mono text-sm ${codeAttrs.className || ""} language-${lang}`}
         dangerouslySetInnerHTML={{ __html: codeInnerHtml }}
       />
     </PreClient>

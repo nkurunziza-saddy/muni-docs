@@ -19,10 +19,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     resolveExtensions: [".json", ".ts", ".tsx", ".js", ".jsx", ".md", ".mdx"],
   },
+  reactCompiler: true,
 };
 
-const withMDX = createMDX({
-  // zero options for Turbopack compatibility
-});
+const withMDX = createMDX({});
 
 export default withPWA(withMDX(nextConfig)) as NextConfig;

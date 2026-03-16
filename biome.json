@@ -19,12 +19,7 @@
     "rules": {
       "recommended": true,
       "suspicious": {
-        "noUnknownAtRules": "off",
-        "noArrayIndexKey": "off"
-      },
-      "a11y": {
-        "useKeyWithClickEvents": "off",
-        "useKeyWithMouseEvents": "off"
+        "noUnknownAtRules": "off"
       }
     },
     "domains": {

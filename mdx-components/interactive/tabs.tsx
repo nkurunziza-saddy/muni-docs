@@ -1,9 +1,14 @@
 "use client";
 
-import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { IsTabContentContext } from "@/lib/hooks/use-in-code";
+import { 
+  Tabs as TabsRoot, 
+  TabsList, 
+  TabsTrigger, 
+  TabsContent 
+} from "@/components/ui/tabs";
 
 type TabsItemProps = {
   value: string;
@@ -20,54 +25,45 @@ export function Tabs({
   const defaultValue = children[0]?.props?.value;
 
   return (
-    <TabsPrimitive.Root
-      className={cn("not-prose w-full my-6 border border-border/30 rounded-lg shadow-none")}
+    <TabsRoot
+      className={cn("not-prose w-full my-8 border border-border/30 rounded-xl overflow-hidden shadow-none bg-muted/5")}
       defaultValue={defaultValue}
     >
-      <TabsPrimitive.List
-        className={cn(
-          "bg-muted/10 border-b border-border/30 flex px-3"
-        )}
-      >
+      <TabsList className="bg-muted/10 border-b border-border/30 flex px-2 h-auto">
         {children.map((child) => {
           const c = child as ReactElement<TabsItemProps>;
           if (!c?.props?.value) return null;
           return (
-            <TabsPrimitive.Trigger
+            <TabsTrigger
               key={c.props.value}
               value={c.props.value}
-              className={cn(
-                "border-b-2 border-transparent text-muted-foreground/70 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] px-4 py-2.5 transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
-              )}
+              className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] px-4 py-3 data-active:bg-background/50 data-active:border-b-2 data-active:border-primary"
             >
               {c.props.value.toLowerCase()}
-            </TabsPrimitive.Trigger>
+            </TabsTrigger>
           );
         })}
-      </TabsPrimitive.List>
+      </TabsList>
 
       {children.map((child) => {
         const c = child as ReactElement<TabsItemProps>;
         if (!c?.props?.value) return null;
         return (
-          <TabsPrimitive.Content
+          <TabsContent
             key={c.props.value}
             value={c.props.value}
-            className="p-4 focus:outline-none bg-background/50"
-            role="tabpanel"
-            aria-labelledby={`tab-${c.props.value}`}
-            tabIndex={0}
+            className="p-6 focus:outline-none bg-background/30"
           >
             <IsTabContentContext.Provider value={true}>
               {c.props.children}
             </IsTabContentContext.Provider>
-          </TabsPrimitive.Content>
+          </TabsContent>
         );
       })}
-    </TabsPrimitive.Root>
+    </TabsRoot>
   );
 }
 
 export function TabsItem({ children }: TabsItemProps) {
-  return <div className="prose">{children}</div>;
+  return <div className="prose dark:prose-invert max-w-none">{children}</div>;
 }

@@ -1,9 +1,14 @@
 "use client";
 
-import * as TabsPrimitive from "@radix-ui/react-tabs";
 import type { ReactElement } from "react";
 import { IsInCodeBlockContext, IsTabContentContext } from "@/lib/hooks/use-in-code";
 import { cn } from "@/lib/utils";
+import { 
+  Tabs as TabsRoot, 
+  TabsList, 
+  TabsTrigger, 
+  TabsContent 
+} from "@/components/ui/tabs";
 
 export interface CodePreviewBlockProps {
   children: ReactElement<{ className?: string; children?: ReactElement }>[];
@@ -22,60 +27,50 @@ export function CodePreviewBlock({
   const codeChild = children[1];
 
   return (
-    <TabsPrimitive.Root
+    <TabsRoot
       className={cn(
         "not-prose w-full my-8 border border-border/30 rounded-xl overflow-hidden shadow-none",
         className,
       )}
       defaultValue="preview"
-      orientation="horizontal"
     >
-      <TabsPrimitive.List
+      <TabsList
         className={cn(
-          "bg-muted/10 border-b border-border/30 flex px-3"
+          "bg-muted/10 border-b border-border/30 flex px-2 h-auto"
         )}
         aria-label={ariaLabel}
-        role="tablist"
       >
-        <TabsPrimitive.Trigger
+        <TabsTrigger
           value="preview"
-          className={cn(
-            "border-b-2 border-transparent text-muted-foreground/70 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] px-4 py-2.5 transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
-          )}
+          className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] px-4 py-3 data-active:bg-background/50 data-active:border-b-2 data-active:border-primary"
         >
           Preview
-        </TabsPrimitive.Trigger>
-        <TabsPrimitive.Trigger
+        </TabsTrigger>
+        <TabsTrigger
           value="code"
-          className={cn(
-            "border-b-2 border-transparent text-muted-foreground/70 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] px-4 py-2.5 transition-all hover:text-foreground data-[state=active]:border-primary data-[state=active]:text-primary focus:outline-none"
-          )}
+          className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] px-4 py-3 data-active:bg-background/50 data-active:border-b-2 data-active:border-primary"
         >
           Code
-        </TabsPrimitive.Trigger>
-      </TabsPrimitive.List>
-      <TabsPrimitive.Content
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent
         value="preview"
-        className="p-6 focus:outline-none bg-background/50 flex justify-center"
-        role="tabpanel"
-        tabIndex={0}
+        className="p-6 focus:outline-none bg-background/30 flex justify-center"
       >
         <div className="w-full max-w-full overflow-auto">
           {previewChild}
         </div>
-      </TabsPrimitive.Content>
-      <TabsPrimitive.Content
+      </TabsContent>
+      <TabsContent
         value="code"
         className="focus:outline-none !m-0 bg-[#121212]"
-        role="tabpanel"
-        tabIndex={0}
       >
         <IsInCodeBlockContext.Provider value={true}>
           <IsTabContentContext.Provider value={true}>
             {codeChild}
           </IsTabContentContext.Provider>
         </IsInCodeBlockContext.Provider>
-      </TabsPrimitive.Content>
-    </TabsPrimitive.Root>
+      </TabsContent>
+    </TabsRoot>
   );
 }

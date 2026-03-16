@@ -100,20 +100,111 @@
   @apply text-[0.9em] font-mono px-1.5 py-0.5 border border-border/40 bg-muted/30 text-foreground;
 }
 
-.prose blockquote {
-  @apply pl-4 italic text-muted-foreground;
+/* Shiki Syntax Highlighting */
+pre.shiki {
+  @apply relative;
+  line-height: 1.5 !important;
 }
 
+pre.shiki code {
+  display: grid; /* Collapses whitespace between lines to fix double spacing */
+  line-height: 1.5 !important;
+}
+
+pre.shiki span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+  line-height: inherit !important;
+}
+
+.dark pre.shiki span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+
+/* Shiki Line Highlighting */
+pre.shiki .line {
+  @apply block px-4 -mx-4 border-l-2 border-transparent;
+  line-height: 1.5 !important;
+}
+
+pre.shiki .line.highlighted {
+  @apply bg-primary/10 border-l-primary/50;
+}
+
+pre.shiki .line.diff.add {
+  @apply bg-success/10 border-l-success/50;
+}
+
+pre.shiki .line.diff.remove {
+  @apply bg-destructive/10 border-l-destructive/50 opacity-70;
+}
+
+pre.shiki .line.diff.add::before {
+  content: "+";
+  @apply absolute left-1 text-success/60 text-[10px] font-bold;
+}
+
+pre.shiki .line.diff.remove::before {
+  content: "-";
+  @apply absolute left-1 text-destructive/60 text-[10px] font-bold;
+}
+
+/* Shiki Focus */
+pre.shiki.has-focused .line:not(.focused) {
+  @apply opacity-40 transition-all duration-300;
+  filter: grayscale(0.5) blur(0.5px);
+}
+
+pre.shiki.has-focused:hover .line:not(.focused) {
+  @apply opacity-100;
+  filter: grayscale(0) blur(0);
+}
+
+/* Shiki Line Numbers */
+pre.shiki.has-line-numbers .line::before {
+  content: attr(data-line-number);
+  @apply inline-block w-4 mr-4 text-right text-muted-foreground/30 text-[11px] font-mono select-none;
+}
+
+/* Blockquote */
+.prose blockquote {
+  @apply pl-6 my-8 border-l-2 border-primary/20 italic text-muted-foreground/90 bg-muted/5 py-4 pr-4 rounded-r-lg;
+  quotes: none;
+}
+
+.prose blockquote p:first-of-type::before {
+  content: none;
+}
+
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
+/* Tables */
 .prose table {
-  @apply w-full text-[14px] border border-border/20 border-collapse;
+  @apply w-full my-10 text-[14px] border border-border/20 border-collapse overflow-hidden rounded-xl;
+  display: table;
+}
+
+.prose thead {
+  @apply bg-muted/20 border-b border-border/20;
 }
 
 .prose th {
-  @apply border-b border-border/20 bg-muted/10 px-4 py-3 text-left font-semibold text-foreground/80;
+  @apply px-4 py-3.5 text-left font-semibold text-foreground/80 uppercase tracking-wider text-[11px];
+}
+
+.prose tr {
+  @apply border-b border-border/10 last:border-0 transition-colors hover:bg-muted/5;
 }
 
 .prose td {
-  @apply border-b border-border/10 px-4 py-3 text-muted-foreground leading-relaxed;
+  @apply px-4 py-4 text-muted-foreground leading-relaxed align-top;
 }
 
 .prose hr {

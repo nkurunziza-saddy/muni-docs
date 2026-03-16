@@ -97,6 +97,7 @@ export function PreClient({
           ref={ref}
           style={{ ...preStyle, backgroundColor: 'transparent' }}
           className={cn(
+            "shiki", // Always ensure shiki class is present for styling
             className, 
             shikiClassName,
             "overflow-auto custom-scrollbar m-0 group/pre relative p-3 lg:p-4 !bg-transparent"

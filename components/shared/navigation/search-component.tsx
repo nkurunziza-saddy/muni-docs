@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  RiArrowUpDownLine,
   RiCornerDownLeftLine,
   RiSearchLine,
   RiCloseLine,
@@ -155,7 +154,7 @@ export function SearchComp({ className }: SearchProps) {
     <>
       <div className="flex items-center border-b border-border/20 px-6 py-2 bg-muted/5">
         <div className="flex items-center gap-2 mr-4 opacity-60">
-            <span className="ui-label">search</span>
+          <span className="ui-label">search</span>
         </div>
         <Input
           ref={inputRef}
@@ -167,9 +166,9 @@ export function SearchComp({ className }: SearchProps) {
         />
         <div className="flex items-center gap-4">
           {query && (
-            <Button 
-              size="icon-xs" 
-              onClick={() => setQuery("")} 
+            <Button
+              size="icon-xs"
+              onClick={() => setQuery("")}
               variant="ghost"
               className="opacity-30 hover:opacity-100 transition-opacity"
             >
@@ -187,48 +186,43 @@ export function SearchComp({ className }: SearchProps) {
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-24 gap-5">
             <div className="relative size-8">
-                <div className="absolute inset-0 border border-primary/10 animate-[spin_4s_linear_infinite]" />
-                <div className="absolute inset-1.5 border-t border-primary/40 animate-[spin_1.5s_ease-in-out_infinite]" />
-                <div className="absolute inset-3 bg-primary/20 animate-pulse" />
+              <div className="absolute inset-0 border border-primary/10 animate-[spin_4s_linear_infinite]" />
+              <div className="absolute inset-1.5 border-t border-primary/40 animate-[spin_1.5s_ease-in-out_infinite]" />
+              <div className="absolute inset-3 bg-primary/20 animate-pulse" />
             </div>
-            <span className="ui-label opacity-40">
-              parsing_index
-            </span>
+            <span className="ui-label opacity-40">parsing_index</span>
           </div>
         ) : results.length > 0 ? (
           <div className="py-6">
             {groupSearchResults(results).map((group) => (
-              <div
-                key={group.page.id}
-                className="mb-8 last:mb-0"
-              >
+              <div key={group.page.id} className="mb-8 last:mb-0">
                 <div className="px-6 mb-2">
-                    <button
+                  <button
                     type="button"
                     onClick={() => handleResultClick(group.page.url)}
                     className="w-full text-left group/page relative flex flex-col"
-                    >
-                        <div className="flex items-center gap-4">
-                            <h3 className="font-semibold text-foreground text-base tracking-tight group-hover/page:text-primary transition-colors flex items-center">
-                                {highlightMatch(group.page.title, query)}
-                            </h3>
-                            <div className="h-px flex-1 bg-border/5" />
-                            {group.page.category && (
-                            <span className="ui-label border border-primary/10 px-2 py-0.5 bg-primary/5 text-primary/50">
-                                {group.page.category}
-                            </span>
-                            )}
-                        </div>
-                        <div className="pl-7 mt-1">
-                            <p className="text-sm text-muted-foreground line-clamp-1 opacity-70 leading-relaxed">
-                                {highlightMatch(
-                                group.page.content.slice(0, 180) +
-                                    (group.page.content.length > 180 ? "..." : ""),
-                                query,
-                                )}
-                            </p>
-                        </div>
-                    </button>
+                  >
+                    <div className="flex items-center gap-4">
+                      <h3 className="font-semibold text-foreground text-base tracking-tight group-hover/page:text-primary transition-colors flex items-center">
+                        {highlightMatch(group.page.title, query)}
+                      </h3>
+                      <div className="h-px flex-1 bg-border/5" />
+                      {group.page.category && (
+                        <span className="ui-label border border-primary/10 px-2 py-0.5 bg-primary/5 text-primary/50">
+                          {group.page.category}
+                        </span>
+                      )}
+                    </div>
+                    <div className="pl-7 mt-1">
+                      <p className="text-sm text-muted-foreground line-clamp-1 opacity-70 leading-relaxed">
+                        {highlightMatch(
+                          group.page.content.slice(0, 180) +
+                            (group.page.content.length > 180 ? "..." : ""),
+                          query,
+                        )}
+                      </p>
+                    </div>
+                  </button>
                 </div>
 
                 {group.sections.length > 0 && (
@@ -255,8 +249,8 @@ export function SearchComp({ className }: SearchProps) {
                           </p>
                         </div>
                         <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all">
-                            <span className="ui-label text-primary">go</span>
-                            <RiCornerDownLeftLine className="size-3.5 text-primary" />
+                          <span className="ui-label text-primary">go</span>
+                          <RiCornerDownLeftLine className="size-3.5 text-primary" />
                         </div>
                       </button>
                     ))}
@@ -268,13 +262,11 @@ export function SearchComp({ className }: SearchProps) {
         ) : query.trim() ? (
           <div className="flex flex-col items-center justify-center py-24 gap-5">
             <div className="size-14 border border-border/10 flex items-center justify-center relative">
-                <div className="absolute inset-0 border border-primary/5 opacity-20" />
-                <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
+              <div className="absolute inset-0 border border-primary/5 opacity-20" />
+              <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
             </div>
             <div className="text-center">
-              <p className="ui-label">
-                0_results_found
-              </p>
+              <p className="ui-label">0_results_found</p>
               <p className="text-muted-foreground/50 text-[11px] mt-2">
                 check syntax and retry
               </p>
@@ -283,13 +275,11 @@ export function SearchComp({ className }: SearchProps) {
         ) : (
           <div className="flex flex-col items-center justify-center py-24 gap-5">
             <div className="size-14 border border-border/10 flex items-center justify-center relative">
-                <div className="absolute inset-0 border border-primary/5 opacity-20" />
-                <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
+              <div className="absolute inset-0 border border-primary/5 opacity-20" />
+              <RiSearchLine className="size-6 text-muted-foreground opacity-20" />
             </div>
             <div className="text-center">
-              <p className="ui-label">
-                index_ready
-              </p>
+              <p className="ui-label">index_ready</p>
               <p className="text-muted-foreground/50 text-[11px] mt-2">
                 awaiting_input_stream
               </p>
@@ -315,8 +305,8 @@ export function SearchComp({ className }: SearchProps) {
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
-                <span className="text-[9px] opacity-50">engine::v1.0.0</span>
-                <div className="size-1.5 bg-primary/40 rounded-full animate-pulse" />
+              <span className="text-[9px] opacity-50">engine::v1.0.0</span>
+              <div className="size-1.5 bg-primary/40 rounded-full animate-pulse" />
             </div>
           </div>
         </div>
@@ -345,7 +335,9 @@ export function SearchComp({ className }: SearchProps) {
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
           <DrawerContent className="max-h-[80vh] rounded-none">
             <DrawerHeader>
-              <DrawerTitle className="sr-only">search documentation</DrawerTitle>
+              <DrawerTitle className="sr-only">
+                search documentation
+              </DrawerTitle>
             </DrawerHeader>
             {searchContent}
           </DrawerContent>
