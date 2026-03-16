@@ -2,7 +2,7 @@
 
 import { RiMenuLine } from "@remixicon/react";
 import muniConfig from "@/muni.config";
-import { SearchComp } from "../search-component";
+import { SearchComp } from "./search-component";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +13,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Separator } from "@/components/ui/separator";
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "./theme-toggle";
 import { useIsMobile } from "@/lib/hooks/use-mobile";
 
 export function DocsHeader() {
@@ -23,7 +23,7 @@ export function DocsHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-dashed border-border/40 bg-background/80 backdrop-blur-md">
       <div className="flex h-14 items-center px-4 md:px-6 lg:px-8">
-        <div className="flex items-center gap-4 md:gap-8 justify-between w-full">
+        <div className="flex h-full items-center gap-4 md:gap-8 justify-between w-full">
           <div className="flex items-center gap-3">
             <SidebarTrigger className="md:hidden opacity-60" />
             <div className="md:hidden flex items-center mr-2">

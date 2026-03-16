@@ -4,7 +4,7 @@ import { RiArrowDownSLine, RiArrowRightSLine } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { SidebarMenuItem } from "../ui/sidebar";
+import { SidebarMenuItem } from "@/components/ui/sidebar";
 
 function createDocHref(slug: string): string {
   if (slug === "index") return "/docs";

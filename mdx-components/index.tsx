@@ -1,5 +1,5 @@
 import type { MDXComponents } from "mdx/types";
-import { MDXErrorBoundary } from "@/components/mdx-error-boundary";
+import { MDXErrorBoundary } from "@/components/shared/navigation/mdx-error-boundary";
 import { cn } from "@/lib/utils";
 import { Anchor } from "./anchor";
 import * as Base from "./base";
@@ -15,23 +15,21 @@ export const mdxComponents: MDXComponents = {
   h5: Base.H5,
   h6: Base.H6,
   p: Base.Paragraph,
-  ul: function UnorderedList(props) { return <Base.List {...props} ordered={false} /> },
-  ol: function OrderedList(props) { return <Base.List {...props} ordered={true} /> },
+  ul: (props) => <Base.List {...props} ordered={false} />,
+  ol: (props) => <Base.List {...props} ordered={true} />,
   li: Base.ListItem,
   table: Base.Table,
   a: Anchor,
   section: Layout.Section,
   pre: Code.Pre,
   code: Code.Code,
-  img: function MdxImage(props) {
-    return (
-      <img
-        {...props}
-        className={cn("rounded-lg border border-border/40 my-8", props.className)}
-        alt={props.alt || ""}
-      />
-    )
-  },
+  img: ({ className, alt, ...props }) => (
+    <img
+      {...props}
+      className={cn("rounded-lg border border-border/40 my-8", className)}
+      alt={alt || ""}
+    />
+  ),
 
   // Layout Components
   Callout: Layout.Callout,
@@ -49,45 +47,36 @@ export const mdxComponents: MDXComponents = {
   Tabs: Interactive.Tabs,
   TabsItem: Interactive.TabsItem,
 
-  // Utilities
-  StepItem: Layout.Step,
-  
-  // Wrapper for error boundary
-  wrapper: function MdxWrapper({ children }) {
-    return (
-      <MDXErrorBoundary>
-        <div className="mdx-wrapper animate-in fade-in duration-500">
-          {children}
-        </div>
-      </MDXErrorBoundary>
-    )
-  },
-
-  // Custom components (Aliases)
+  // Semantic Aliases
   Info: Layout.InfoBox,
-  Warning: function MdxWarning(props) { return <Layout.Callout {...props} type="warning" /> },
-  Danger: function MdxDanger(props) { return <Layout.Callout {...props} type="danger" /> },
-  Note: function MdxNote(props) { return <Layout.Callout {...props} type="note" /> },
-  Tip: function MdxTip(props) { return <Layout.Callout {...props} type="tip" /> },
-  Success: function MdxSuccess(props) { return <Layout.Callout {...props} type="success" /> },
+  Warning: (props) => <Layout.Callout {...props} type="warning" />,
+  Danger: (props) => <Layout.Callout {...props} type="danger" />,
+  Note: (props) => <Layout.Callout {...props} type="note" />,
+  Tip: (props) => <Layout.Callout {...props} type="tip" />,
+  Success: (props) => <Layout.Callout {...props} type="success" />,
 
   // Space helper
-  Space: function MdxSpace({ size = "md", className }: { size?: "sm" | "md" | "lg" | "xl" | "2xl", className?: string }) {
+  Space: ({ size = "md", className }: { size?: "sm" | "md" | "lg" | "xl" | "2xl", className?: string }) => {
+    const spacingMap = {
+      sm: "my-2", md: "my-4", lg: "my-6", xl: "my-8", "2xl": "my-12"
+    };
     return (
       <div 
-        className={cn(
-          size === "sm" && "my-2",
-          size === "md" && "my-4",
-          size === "lg" && "my-6",
-          size === "xl" && "my-8",
-          size === "2xl" && "my-12",
-          className,
-        )}
+        className={cn(spacingMap[size] || spacingMap.md, className)}
         data-component="space"
         data-spacing={size}
       />
-    )
+    );
   },
+
+  // Wrapper for error boundary and animation
+  wrapper: ({ children }) => (
+    <MDXErrorBoundary>
+      <div className="mdx-wrapper animate-in fade-in duration-500">
+        {children}
+      </div>
+    </MDXErrorBoundary>
+  ),
 };
 
 export function useMDXComponents(): MDXComponents {

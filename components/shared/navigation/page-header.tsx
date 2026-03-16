@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "./theme-toggle";
 import muniConfig from "@/muni.config";
-import { SearchComp } from "../search-component";
+import { SearchComp } from "./search-component";
 import { Separator } from "@/components/ui/separator";
 
 export function PageHeader() {

@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { CopyButton } from "@/components/ui/copy-button";
 import { useCopyCode } from "@/lib/hooks/use-copy-code";
-import { cn } from "@/lib/utils";
+import { cn, extractText } from "@/lib/utils";
 
 export function Command({
   children,
@@ -15,20 +15,6 @@ export function Command({
   className?: string;
 }) {
   const { copied, copy, ref } = useCopyCode();
-
-  // Extract raw text for copy button if children is a React tree
-  const extractText = (node: any): string => {
-    if (!node) return "";
-    if (typeof node === "string") return node;
-    if (Array.isArray(node)) return node.map(extractText).join("");
-    if (node.props?.children) return extractText(node.props.children);
-    if (node.props?.dangerouslySetInnerHTML?.__html) {
-        // Fallback for highlighted code
-        return node.props.dangerouslySetInnerHTML.__html.replace(/<[^>]*>/g, "");
-    }
-    return "";
-  };
-
   const rawCode = extractText(children);
 
   return (

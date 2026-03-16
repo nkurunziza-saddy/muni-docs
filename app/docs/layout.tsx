@@ -1,9 +1,9 @@
 import type React from "react";
-import { DocsHeader } from "@/components/navigation-components/docs-header";
-import { DocsPagination } from "@/components/navigation-components/docs-pagination";
-import { DocsSidebar } from "@/components/navigation-components/docs-sidebar";
-import { MobileTableOfContents } from "@/components/navigation-components/mobile-tocs";
-import { TableOfContents } from "@/components/navigation-components/tocs";
+import { DocsHeader } from "@/components/shared/navigation/docs-header";
+import { DocsPagination } from "@/components/shared/navigation/docs-pagination";
+import { DocsSidebar } from "@/components/shared/navigation/docs-sidebar";
+import { MobileTableOfContents } from "@/components/shared/navigation/mobile-tocs";
+import { TableOfContents } from "@/components/shared/navigation/tocs";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import muniConfig from "@/muni.config";
 
