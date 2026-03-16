@@ -98,15 +98,9 @@
     margin: 0 !important;
   }
 
-  /* Tables, quotes, and components */
-  & table,
-  & blockquote,
-  & .mdx-callout,
-  & .mdx-tabs,
-  & .mdx-code-group,
-  & .mdx-steps,
-  & .mdx-command {
-    margin: var(--mdx-space-3) 0;
+  /* Ensure spacing between consecutive callouts is tighter */
+  & .mdx-callout + .mdx-callout {
+    margin-top: 0.75rem !important;
   }
 
   & hr {

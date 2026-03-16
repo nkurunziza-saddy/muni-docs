@@ -39,60 +39,6 @@ This page demonstrates all the available MDX components in the Muni documentatio
 
 ## Code Components
 
-### Code Tabs
-
-<Tabs>
-  <TabsItem value="TypeScript">
-    ```typescript title="types.ts"
-    interface User {
-      id: number;
-      name: string;
-      email: string;
-    }
-
-    type UserRole = 'admin' | 'user' | 'guest';
-
-    const createUser = (userData: Omit<User, 'id'>): User => {
-      return {
-        id: Math.random(),
-        ...userData
-      };
-    };
-    ```
-  </TabsItem>
-  <TabsItem value="JavaScript">
-    ```javascript title="utils.js"
-    const user = {
-      id: 1,
-      name: "John Doe",
-      email: "john@example.com"
-    };
-
-    function formatUserName(user) {
-      return `${user.name} (${user.email})`;
-    }
-
-    export { user, formatUserName };
-    ```
-  </TabsItem>
-  <TabsItem value="Python">
-    ```python title="models.py"
-    from dataclasses import dataclass
-    from typing import Optional
-
-    @dataclass
-    class User:
-        id: int
-        name: str
-        email: str
-        role: Optional[str] = None
-
-        def __str__(self):
-            return f"User({self.name}, {self.email})"
-    ```
-  </TabsItem>
-</Tabs>
-
 ### Code Preview Blocks
 
 <CodePreviewBlock>

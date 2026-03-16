@@ -1,5 +1,6 @@
-import type { DetailedHTMLProps, DetailsHTMLAttributes } from "react";
+import React, { type DetailedHTMLProps, type DetailsHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
+import { Summary } from "./summary";
 
 export function Details({
   className,
@@ -9,6 +10,20 @@ export function Details({
   DetailsHTMLAttributes<HTMLDetailsElement>,
   HTMLDetailsElement
 >) {
+  const childrenArray = React.Children.toArray(children);
+  
+  // Find the summary component
+  const summary = childrenArray.find(
+    (child) => 
+      React.isValidElement(child) && 
+      (child.type === Summary || 
+       (child.type as any)?.name === "Summary" || 
+       (child.type as any) === "summary")
+  );
+  
+  // Get everything else as content
+  const content = childrenArray.filter((child) => child !== summary);
+
   return (
     <details 
       {...props} 
@@ -17,7 +32,10 @@ export function Details({
         className
       )}
     >
-      {children}
+      {summary}
+      <div className="px-6 pb-6 mdx-details-content">
+        {content}
+      </div>
     </details>
   );
 }
